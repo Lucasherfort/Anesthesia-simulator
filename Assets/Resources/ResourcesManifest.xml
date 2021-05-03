@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="utf-16"?>
+<DummySerializableDictionary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <keys>LogoSFH</keys>
+  <keys>ResourcesManifest</keys>
+  <keys>versionAndPathConfiguration</keys>
+  <keys>AdamJohnsNu</keys>
+  <keys>AdamJohnsNuv4</keys>
+  <keys>AdamJohnsSansMoustache</keys>
+  <keys>baseButton</keys>
+  <keys>black</keys>
+  <keys>DOTweenSettings</keys>
+  <keys>LogoIH_512</keys>
+  <keys>PF-LogoIH</keys>
+  <keys>PopinSimple</keys>
+  <keys>WhiteSquare</keys>
+  <keys>Avatar</keys>
+  <keys>Header</keys>
+  <keys>InputField</keys>
+  <keys>SideMenu</keys>
+  <keys>Appendices</keys>
+  <keys>AppendicesSmall</keys>
+  <keys>DynamicAppendices</keys>
+  <keys>DynamicAppendicesSmall</keys>
+  <keys>ClinicalExamAdditionalSubMenuItem</keys>
+  <keys>ClinicalExamAvatarLayed</keys>
+  <keys>ClinicalExamAvatarSit</keys>
+  <keys>ClinicalExamAvatarStand</keys>
+  <keys>ClinicalExamBasicExamsPanel</keys>
+  <keys>ClinicalExamCloseButton</keys>
+  <keys>ClinicalExamShowAdditionalExamsButton</keys>
+  <keys>ClinicalExamShowSynthesisButton</keys>
+  <keys>ClinicalExamSpot</keys>
+  <keys>ClinicalExamSynthesis</keys>
+  <keys>ClinicalExamToolTipItem</keys>
+  <keys>ClinicalExamToolTipTop</keys>
+  <keys>BGContent</keys>
+  <keys>CancelButton</keys>
+  <keys>CommonPage</keys>
+  <keys>ConfirmButton</keys>
+  <keys>ImageScaler</keys>
+  <keys>OpenPDFButton</keys>
+  <keys>PlayVideoButton</keys>
+  <keys>QuitAppButton</keys>
+  <keys>StartStraightButton</keys>
+  <keys>SubmitButton</keys>
+  <keys>Textfield</keys>
+  <keys>ToggleUI</keys>
+  <keys>Veil</keys>
+  <keys>VideoPlayer</keys>
+  <keys>LeftConfirmPopin</keys>
+  <keys>LoadingPopin</keys>
+  <keys>PopinAlert</keys>
+  <keys>PopinVeil</keys>
+  <keys>RightConfirmPopin</keys>
+  <keys>Choices</keys>
+  <keys>ConversationUI</keys>
+  <keys>Notification</keys>
+  <keys>NotificationDialogPause</keys>
+  <keys>ReplyChoice</keys>
+  <keys>SentenceDoctor</keys>
+  <keys>SentencePatient</keys>
+  <keys>ThoughtPatient</keys>
+  <keys>ExplainElt</keys>
+  <keys>Gauge</keys>
+  <keys>GaugeGame</keys>
+  <keys>GaugesTutorial-old</keys>
+  <keys>GaugesUI</keys>
+  <keys>GaugesUIGame</keys>
+  <keys>ExaminationTutorial</keys>
+  <keys>GaugesTutorial</keys>
+  <keys>ico-annexes-abstracts</keys>
+  <keys>ico-annexes-consensus</keys>
+  <keys>ico-annexes-etudes-cliniques</keys>
+  <keys>ico-annexes-recommandations</keys>
+  <keys>ico-titre-annexes</keys>
+  <keys>onglet-btn-annexe-selected</keys>
+  <keys>barre-ascenseur-white</keys>
+  <keys>barre-ascenseur</keys>
+  <keys>bg-ascenseur</keys>
+  <keys>bg-btn-demarrer</keys>
+  <keys>bg-btn-quitter</keys>
+  <keys>bg-texture-full-window-pop-alert</keys>
+  <keys>btn-annuler-border-masque</keys>
+  <keys>btn-annuler</keys>
+  <keys>btn-bg-masque</keys>
+  <keys>btn-demarrer-couleur</keys>
+  <keys>btn-demarrer-ico</keys>
+  <keys>btn-ico-diagnostic</keys>
+  <keys>btn-next-masque</keys>
+  <keys>btn-previous-masque</keys>
+  <keys>btn-scroll-page-masque</keys>
+  <keys>ico-actualiser</keys>
+  <keys>ico-btn-annuler-masque</keys>
+  <keys>ico-btn-valider-masque</keys>
+  <keys>ico-quitter</keys>
+  <keys>ico-titre-theme-dossier-medical</keys>
+  <keys>icone-wifi</keys>
+  <keys>onglet-connection</keys>
+  <keys>pop-alert-optimized</keys>
+  <keys>pop-alert-zone-header-masque</keys>
+  <keys>pop-alert</keys>
+  <keys>spacer-vert-base</keys>
+  <keys>VideoBoucle</keys>
+  <keys>VideoPause</keys>
+  <keys>VideoPlay</keys>
+  <keys>bg-ascenseur-conversation</keys>
+  <keys>bg-couleur-tooltip-notification</keys>
+  <keys>bg-tooltip-notification</keys>
+  <keys>bg-tooltip-notification2</keys>
+  <keys>box-dialogue-medecin</keys>
+  <keys>box-dialogue-patient</keys>
+  <keys>box-pensee-patient</keys>
+  <keys>box-reponse</keys>
+  <keys>btn-reponse-selected</keys>
+  <keys>btn-reponse</keys>
+  <keys>curseur-ascenseur</keys>
+  <keys>ico-notification-dialogues</keys>
+  <keys>picto-dialogue-medecin-femme</keys>
+  <keys>picto-dialogue-medecin</keys>
+  <keys>picto-dialogue-patient-femme</keys>
+  <keys>picto-dialogue-patient-pensee</keys>
+  <keys>picto-dialogue-patient</keys>
+  <keys>picto-reponse</keys>
+  <keys>avatar</keys>
+  <keys>bg-ico-sommaire-dossier-medical</keys>
+  <keys>bg-tableau-bottom</keys>
+  <keys>bg-tableau-top</keys>
+  <keys>bg-tableau</keys>
+  <keys>bg-titre-theme-dossier-medical</keys>
+  <keys>btn-close-masque</keys>
+  <keys>btn-sommaire-dossier-medical-masque</keys>
+  <keys>cercle-medaillon-avatar-dossier-medical-masque</keys>
+  <keys>disque-medaillon-avatar-dossier-medical-masque</keys>
+  <keys>dossier-medical-ico-antecedents--titre</keys>
+  <keys>dossier-medical-ico-antecedents</keys>
+  <keys>dossier-medical-ico-autre-question-titre</keys>
+  <keys>dossier-medical-ico-autre-question</keys>
+  <keys>dossier-medical-ico-autre-titre</keys>
+  <keys>dossier-medical-ico-autre</keys>
+  <keys>dossier-medical-ico-courrier-titre</keys>
+  <keys>dossier-medical-ico-courrier</keys>
+  <keys>dossier-medical-ico-histoire--titre</keys>
+  <keys>dossier-medical-ico-histoire</keys>
+  <keys>dossier-medical-ico-mode-de-vie--titre</keys>
+  <keys>dossier-medical-ico-mode-de-vie</keys>
+  <keys>dossier-medical-ico-motif-titre</keys>
+  <keys>dossier-medical-ico-motif</keys>
+  <keys>dossier-medical-ico-profil-titre</keys>
+  <keys>dossier-medical-ico-profil</keys>
+  <keys>dossier-medical-ico-resultats-examens-comp-titre</keys>
+  <keys>dossier-medical-ico-resultats-examens-comp</keys>
+  <keys>dossier-medical-ico-traitements-titre</keys>
+  <keys>dossier-medical-ico-traitements</keys>
+  <keys>etiquette-consultation-en-cours-masque</keys>
+  <keys>etiquette-consultation-precedente-masque</keys>
+  <keys>historique-ico-en-cours-masque</keys>
+  <keys>historique-ico-precedente-masque</keys>
+  <keys>ico-titre-sommaire-dossier-medical-bas</keys>
+  <keys>ico-titre-sommaire-dossier-medical-top-masque</keys>
+  <keys>medaillon-avatar-dossier-medical</keys>
+  <keys>ombre-bas</keys>
+  <keys>ombre-haut</keys>
+  <keys>bg-bloc-temp-tension</keys>
+  <keys>bg-btn-position-rol</keys>
+  <keys>bg-btn-position-selected</keys>
+  <keys>bg-btn-position-turn-rol</keys>
+  <keys>bg-btn-position-turn-selected</keys>
+  <keys>bg-btn-position-turn</keys>
+  <keys>bg-btn-position</keys>
+  <keys>bg-btn-quitter-examen-clinique-rol</keys>
+  <keys>bg-btn-quitter-examen-clinique-selected</keys>
+  <keys>bg-btn-quitter-examen-clinique</keys>
+  <keys>bg-btn-tooltip-examen-clinique-rol</keys>
+  <keys>bg-btn-tooltip-examen-clinique</keys>
+  <keys>bg-btn-txt-synthese-examen-clinique</keys>
+  <keys>bg-ico-btn-synthese-examen-clinique</keys>
+  <keys>btn-examen-clinique-autre-rol</keys>
+  <keys>btn-examen-clinique-autre-selected</keys>
+  <keys>btn-examen-clinique-autre</keys>
+  <keys>btn-position-allonge-turn-rol</keys>
+  <keys>btn-position-allonge-turn-selected</keys>
+  <keys>btn-position-allonge-turn</keys>
+  <keys>btn-position-debout-turn-rol</keys>
+  <keys>btn-position-debout-turn-selected</keys>
+  <keys>btn-position-debout-turn</keys>
+  <keys>examen-clinique</keys>
+  <keys>halo</keys>
+  <keys>ico-allonge-cote</keys>
+  <keys>ico-allonge</keys>
+  <keys>ico-assis</keys>
+  <keys>ico-btn-synthese-examen-clinique-masque</keys>
+  <keys>ico-debout</keys>
+  <keys>ico-synthese-examen-clinique-popup-masque</keys>
+  <keys>masque-btn-quitter-examen-clinique-white</keys>
+  <keys>masque-btn-quitter-examen-clinique</keys>
+  <keys>tooltip-examen-clinique-bottom</keys>
+  <keys>tooltip-examen-clinique-left</keys>
+  <keys>tooltip-examen-clinique-right</keys>
+  <keys>tooltip-examen-clinique-top</keys>
+  <keys>zone-examen-clinique-rol-rouge</keys>
+  <keys>zone-examen-clinique-rol</keys>
+  <keys>zone-examen-clinique-rouge</keys>
+  <keys>zone-examen-clinique-select-rouge</keys>
+  <keys>zone-examen-clinique-select</keys>
+  <keys>zone-examen-clinique</keys>
+  <keys>bg-box-jauge</keys>
+  <keys>bg-jauge-bottom</keys>
+  <keys>bg-jauge-top</keys>
+  <keys>couleur-jauge-bottom</keys>
+  <keys>couleur-jauge-top</keys>
+  <keys>ico-jauge1</keys>
+  <keys>ico-jauge2</keys>
+  <keys>ico-jauge3</keys>
+  <keys>ico-jauge4</keys>
+  <keys>bloc-bg-theme</keys>
+  <keys>bloc-contour-theme</keys>
+  <keys>ico-dialogue-patient</keys>
+  <keys>ico-play-question</keys>
+  <keys>next-previous-theme</keys>
+  <keys>separateur-40pourcent</keys>
+  <keys>bg-ascenceur-nav</keys>
+  <keys>bg-btn-dossier-annexes</keys>
+  <keys>bg-btn-nav-active-and-first</keys>
+  <keys>bg-btn-nav-active-and-last</keys>
+  <keys>bg-btn-nav-active</keys>
+  <keys>bg-btn-nav-and-first</keys>
+  <keys>bg-btn-nav-and-last</keys>
+  <keys>bg-btn-nav</keys>
+  <keys>bg-btn-terminer-consultation</keys>
+  <keys>bg-effet-btn-dossier-annexes</keys>
+  <keys>bg-ico-btn-dossier-annexes-masque-90alpha</keys>
+  <keys>bg-ico-btn-dossier-annexes</keys>
+  <keys>bg-ico-fin-consultation-couleur-alpha50</keys>
+  <keys>btn-annexes</keys>
+  <keys>btn-dossier-medical</keys>
+  <keys>curseur-ascenceur-nav</keys>
+  <keys>ico-annexes</keys>
+  <keys>ico-burger-masque</keys>
+  <keys>ico-dossier-medical</keys>
+  <keys>nav-btn-burger</keys>
+  <keys>nav-ico-diagnostic</keys>
+  <keys>nav-ico-exa-clinique</keys>
+  <keys>nav-ico-exa-complementaires</keys>
+  <keys>nav-ico-injections</keys>
+  <keys>nav-ico-inter-patient</keys>
+  <keys>nav-ico-ordo-documents</keys>
+  <keys>nav-ico-proto-reco-patient</keys>
+  <keys>nav-ico-proto-surveillance</keys>
+  <keys>nav-ico-terminer-consultation</keys>
+  <keys>nav-ico-traitements</keys>
+  <keys>nav-shadow-top</keys>
+  <keys>bg-btn-consultation-rol</keys>
+  <keys>bg-btn-consultation-selected</keys>
+  <keys>bg-btn-consultation</keys>
+  <keys>bg-nom-age</keys>
+  <keys>bg-tooltip-information-reversed</keys>
+  <keys>bg-tooltip-information</keys>
+  <keys>cercle-medaillon-avatar-salle-d-attente-masque</keys>
+  <keys>disque-medaillon-avatar-salle-d-attente-masque</keys>
+  <keys>ico-information-masque</keys>
+  <keys>medaillon-avatar-salle-d-attente</keys>
+  <keys>spacer-noir-alpha40</keys>
+  <keys>spacer-vert-alpha90</keys>
+  <keys>bg-bloc-contenu</keys>
+  <keys>bg-section-down</keys>
+  <keys>bg-section-up</keys>
+  <keys>bg-section</keys>
+  <keys>btn-valider</keys>
+  <keys>check-off-white</keys>
+  <keys>check-off</keys>
+  <keys>check-on-white</keys>
+  <keys>check-on</keys>
+  <keys>ico-checked</keys>
+  <keys>section-ico-diagnostic</keys>
+  <keys>section-ico-exa-clinique</keys>
+  <keys>section-ico-exa-complementaires</keys>
+  <keys>section-ico-injections</keys>
+  <keys>section-ico-inter-patient</keys>
+  <keys>section-ico-ordo-documents</keys>
+  <keys>section-ico-proto-reco-patient</keys>
+  <keys>section-ico-proto-surveillance</keys>
+  <keys>section-ico-traitements</keys>
+  <keys>bg-check</keys>
+  <keys>bg-pie</keys>
+  <keys>btn-close-synthese</keys>
+  <keys>cercle-pourcentage</keys>
+  <keys>check</keys>
+  <keys>disque-centre-check</keys>
+  <keys>disque-couleur-check</keys>
+  <keys>fleche-repere</keys>
+  <keys>picto-synthese-autre</keys>
+  <keys>picto-synthese-default</keys>
+  <keys>picto-synthese-diagnostic</keys>
+  <keys>picto-synthese-examen-clinique</keys>
+  <keys>picto-synthese-examen-complementaires</keys>
+  <keys>picto-synthese-injections</keys>
+  <keys>picto-synthese-interrogatoire</keys>
+  <keys>picto-synthese-ordonnances</keys>
+  <keys>picto-synthese-protocole</keys>
+  <keys>picto-synthese-recommandation</keys>
+  <keys>picto-synthese-traitement</keys>
+  <keys>synthese-ico</keys>
+  <keys>box-commentaire</keys>
+  <keys>bulle-medecin-commentaire</keys>
+  <keys>bulle-medecin</keys>
+  <keys>bulle-patient</keys>
+  <keys>cercle-picto-bulle</keys>
+  <keys>picto-medecin</keys>
+  <keys>picto-patient</keys>
+  <keys>avatar-commentaire-expert</keys>
+  <keys>bg-jauge-observance-bottom</keys>
+  <keys>bg-jauge-observance-top</keys>
+  <keys>bg-jauge-observance</keys>
+  <keys>bg-jauge</keys>
+  <keys>box-commentaire-expert</keys>
+  <keys>couleur-jauge-observance-bottom</keys>
+  <keys>couleur-jauge-observance-top</keys>
+  <keys>guillemet-close</keys>
+  <keys>guillemet-open</keys>
+  <keys>ico-jauge1-synth</keys>
+  <keys>ico-jauge2-synth</keys>
+  <keys>ico-jauge3-synth</keys>
+  <keys>ico-jauge4-synth</keys>
+  <keys>moins</keys>
+  <keys>pastille-numero</keys>
+  <keys>plus</keys>
+  <keys>bg-txt-step-timeline</keys>
+  <keys>step-off-first-and-last</keys>
+  <keys>step-off-first-and-middle</keys>
+  <keys>step-off-middle-and-last</keys>
+  <keys>step-off-middle-and-middle</keys>
+  <keys>step-on-and-first</keys>
+  <keys>step-on-and-last</keys>
+  <keys>step-on-and-middle</keys>
+  <keys>time-line-bg2</keys>
+  <keys>time-line-bg3</keys>
+  <keys>time-line-bg4</keys>
+  <keys>time-line-bg5</keys>
+  <keys>time-line-bg6</keys>
+  <keys>time-line-effet2</keys>
+  <keys>time-line-effet3</keys>
+  <keys>time-line-effet4</keys>
+  <keys>time-line-effet5</keys>
+  <keys>time-line-effet6</keys>
+  <keys>time-line-masque1</keys>
+  <keys>time-line-masque2</keys>
+  <keys>time-line-masque3</keys>
+  <keys>time-line-masque4-test</keys>
+  <keys>time-line-masque4</keys>
+  <keys>time-line-masque5</keys>
+  <keys>time-line-masque6</keys>
+  <keys>InterrogationQuestionButton</keys>
+  <keys>InterrogationSentencePatient</keys>
+  <keys>InterrogationThemeButton</keys>
+  <keys>InterrogationThemeButtonSelected</keys>
+  <keys>InterrogationUI</keys>
+  <keys>InterrogationUIMinimized</keys>
+  <keys>Logger</keys>
+  <keys>MainMenu</keys>
+  <keys>MainMenuButton</keys>
+  <keys>MainMenuOpenButton</keys>
+  <keys>MainMenuSideIcon</keys>
+  <keys>CurrentTreatmentHeader</keys>
+  <keys>CurrentTreatmentItem</keys>
+  <keys>ExaminationDetailsCurrent</keys>
+  <keys>ExaminationDetailsPrevious</keys>
+  <keys>MedicalRecord</keys>
+  <keys>MedicalRecordCurrentExamSpot</keys>
+  <keys>MedicalRecordFormerExamSpot</keys>
+  <keys>MedicalRecordHomeItemBG</keys>
+  <keys>MedicalRecordSubSection</keys>
+  <keys>MedicalRecordTheme</keys>
+  <keys>PatientProfileCurrent</keys>
+  <keys>PatientProfileExamination</keys>
+  <keys>NetworkOpenButton</keys>
+  <keys>NetworkPanel</keys>
+  <keys>ROBOTO-BLACK</keys>
+  <keys>ROBOTO-BLACKITALIC</keys>
+  <keys>ROBOTO-BOLD</keys>
+  <keys>ROBOTO-BOLDITALIC</keys>
+  <keys>ROBOTO-ITALIC</keys>
+  <keys>ROBOTO-LIGHT</keys>
+  <keys>ROBOTO-LIGHTITALIC</keys>
+  <keys>ROBOTO-MEDIUM</keys>
+  <keys>ROBOTO-MEDIUMITALIC</keys>
+  <keys>ROBOTO-REGULAR</keys>
+  <keys>ROBOTO-THIN</keys>
+  <keys>ROBOTO-THINITALIC</keys>
+  <keys>image-bg-login</keys>
+  <keys>LoginBackground</keys>
+  <keys>LoginPopin</keys>
+  <keys>LogoIH</keys>
+  <keys>ProgressBar</keys>
+  <keys>StartStraightPopin</keys>
+  <keys>DialAnswerItem</keys>
+  <keys>DialogsStats</keys>
+  <keys>DialQuestionLabel</keys>
+  <keys>DialStatsDetails</keys>
+  <keys>DialStatsHome</keys>
+  <keys>DialSynthesisItem</keys>
+  <keys>DoctorSentence</keys>
+  <keys>PatientSentence</keys>
+  <keys>GaugesStats</keys>
+  <keys>GaugeStatsElt</keys>
+  <keys>QuizAnswerItem</keys>
+  <keys>QuizQuestionLabel</keys>
+  <keys>QuizStatsDetails</keys>
+  <keys>QuizStatsHome</keys>
+  <keys>QuizSynthesisItem</keys>
+  <keys>Timeline</keys>
+  <keys>TimelineBG2</keys>
+  <keys>TimelineBG3</keys>
+  <keys>TimelineBG4</keys>
+  <keys>TimelineBG5</keys>
+  <keys>TimelineBG6</keys>
+  <keys>TimelineEffect2</keys>
+  <keys>TimelineEffect3</keys>
+  <keys>TimelineEffect4</keys>
+  <keys>TimelineEffect5</keys>
+  <keys>TimelineEffect6</keys>
+  <keys>TimelineMask1</keys>
+  <keys>TimelineMask2</keys>
+  <keys>TimelineMask3</keys>
+  <keys>TimelineMask4</keys>
+  <keys>TimelineMask5</keys>
+  <keys>TimelineMask6</keys>
+  <keys>CaseDescriptionPanel</keys>
+  <keys>CaseDescriptionPanelNoExamination</keys>
+  <keys>GotoExaminationButton</keys>
+  <keys>InfoToolTip</keys>
+  <values>LogoSFH</values>
+  <values>ResourcesManifest</values>
+  <values>versionAndPathConfiguration</values>
+  <values>bundles/characters/AdamJohnsNu</values>
+  <values>bundles/characters/AdamJohnsNuv4</values>
+  <values>bundles/characters/AdamJohnsSansMoustache</values>
+  <values>baseButton</values>
+  <values>black</values>
+  <values>DOTweenSettings</values>
+  <values>LogoIH_512</values>
+  <values>PF-LogoIH</values>
+  <values>PopinSimple</values>
+  <values>WhiteSquare</values>
+  <values>CommonGUI/Avatar</values>
+  <values>CommonGUI/Header</values>
+  <values>CommonGUI/InputField</values>
+  <values>CommonGUI/SideMenu</values>
+  <values>CommonGUI/annexes/Appendices</values>
+  <values>CommonGUI/annexes/AppendicesSmall</values>
+  <values>CommonGUI/annexes/DynamicAppendices</values>
+  <values>CommonGUI/annexes/DynamicAppendicesSmall</values>
+  <values>CommonGUI/clinicalExam/ClinicalExamAdditionalSubMenuItem</values>
+  <values>CommonGUI/clinicalExam/ClinicalExamAvatarLayed</values>
+  <values>CommonGUI/clinicalExam/ClinicalExamAvatarSit</values>
+  <values>CommonGUI/clinicalExam/ClinicalExamAvatarStand</values>
+  <values>CommonGUI/clinicalExam/ClinicalExamBasicExamsPanel</values>
+  <values>CommonGUI/clinicalExam/ClinicalExamCloseButton</values>
+  <values>CommonGUI/clinicalExam/ClinicalExamShowAdditionalExamsButton</values>
+  <values>CommonGUI/clinicalExam/ClinicalExamShowSynthesisButton</values>
+  <values>CommonGUI/clinicalExam/ClinicalExamSpot</values>
+  <values>CommonGUI/clinicalExam/ClinicalExamSynthesis</values>
+  <values>CommonGUI/clinicalExam/ClinicalExamToolTipItem</values>
+  <values>CommonGUI/clinicalExam/ClinicalExamToolTipTop</values>
+  <values>CommonGUI/common/BGContent</values>
+  <values>CommonGUI/common/CancelButton</values>
+  <values>CommonGUI/common/CommonPage</values>
+  <values>CommonGUI/common/ConfirmButton</values>
+  <values>CommonGUI/common/ImageScaler</values>
+  <values>CommonGUI/common/OpenPDFButton</values>
+  <values>CommonGUI/common/PlayVideoButton</values>
+  <values>CommonGUI/common/QuitAppButton</values>
+  <values>CommonGUI/common/StartStraightButton</values>
+  <values>CommonGUI/common/SubmitButton</values>
+  <values>CommonGUI/common/Textfield</values>
+  <values>CommonGUI/common/ToggleUI</values>
+  <values>CommonGUI/common/Veil</values>
+  <values>CommonGUI/common/VideoPlayer</values>
+  <values>CommonGUI/common/popin/LeftConfirmPopin</values>
+  <values>CommonGUI/common/popin/LoadingPopin</values>
+  <values>CommonGUI/common/popin/PopinAlert</values>
+  <values>CommonGUI/common/popin/PopinVeil</values>
+  <values>CommonGUI/common/popin/RightConfirmPopin</values>
+  <values>CommonGUI/conversation/Choices</values>
+  <values>CommonGUI/conversation/ConversationUI</values>
+  <values>CommonGUI/conversation/Notification</values>
+  <values>CommonGUI/conversation/NotificationDialogPause</values>
+  <values>CommonGUI/conversation/ReplyChoice</values>
+  <values>CommonGUI/conversation/SentenceDoctor</values>
+  <values>CommonGUI/conversation/SentencePatient</values>
+  <values>CommonGUI/conversation/ThoughtPatient</values>
+  <values>CommonGUI/gauge/ExplainElt</values>
+  <values>CommonGUI/gauge/Gauge</values>
+  <values>CommonGUI/gauge/GaugeGame</values>
+  <values>CommonGUI/gauge/GaugesTutorial-old</values>
+  <values>CommonGUI/gauge/GaugesUI</values>
+  <values>CommonGUI/gauge/GaugesUIGame</values>
+  <values>CommonGUI/help/ExaminationTutorial</values>
+  <values>CommonGUI/help/GaugesTutorial</values>
+  <values>CommonGUI/img/ANNEXES/ico-annexes-abstracts</values>
+  <values>CommonGUI/img/ANNEXES/ico-annexes-consensus</values>
+  <values>CommonGUI/img/ANNEXES/ico-annexes-etudes-cliniques</values>
+  <values>CommonGUI/img/ANNEXES/ico-annexes-recommandations</values>
+  <values>CommonGUI/img/ANNEXES/ico-titre-annexes</values>
+  <values>CommonGUI/img/ANNEXES/onglet-btn-annexe-selected</values>
+  <values>CommonGUI/img/COMMUN/barre-ascenseur-white</values>
+  <values>CommonGUI/img/COMMUN/barre-ascenseur</values>
+  <values>CommonGUI/img/COMMUN/bg-ascenseur</values>
+  <values>CommonGUI/img/COMMUN/bg-btn-demarrer</values>
+  <values>CommonGUI/img/COMMUN/bg-btn-quitter</values>
+  <values>CommonGUI/img/COMMUN/bg-texture-full-window-pop-alert</values>
+  <values>CommonGUI/img/COMMUN/btn-annuler-border-masque</values>
+  <values>CommonGUI/img/COMMUN/btn-annuler</values>
+  <values>CommonGUI/img/COMMUN/btn-bg-masque</values>
+  <values>CommonGUI/img/COMMUN/btn-demarrer-couleur</values>
+  <values>CommonGUI/img/COMMUN/btn-demarrer-ico</values>
+  <values>CommonGUI/img/COMMUN/btn-ico-diagnostic</values>
+  <values>CommonGUI/img/COMMUN/btn-next-masque</values>
+  <values>CommonGUI/img/COMMUN/btn-previous-masque</values>
+  <values>CommonGUI/img/COMMUN/btn-scroll-page-masque</values>
+  <values>CommonGUI/img/COMMUN/ico-actualiser</values>
+  <values>CommonGUI/img/COMMUN/ico-btn-annuler-masque</values>
+  <values>CommonGUI/img/COMMUN/ico-btn-valider-masque</values>
+  <values>CommonGUI/img/COMMUN/ico-quitter</values>
+  <values>CommonGUI/img/COMMUN/ico-titre-theme-dossier-medical</values>
+  <values>CommonGUI/img/COMMUN/icone-wifi</values>
+  <values>CommonGUI/img/COMMUN/onglet-connection</values>
+  <values>CommonGUI/img/COMMUN/pop-alert-optimized</values>
+  <values>CommonGUI/img/COMMUN/pop-alert-zone-header-masque</values>
+  <values>CommonGUI/img/COMMUN/pop-alert</values>
+  <values>CommonGUI/img/COMMUN/spacer-vert-base</values>
+  <values>CommonGUI/img/COMMUN/VideoBoucle</values>
+  <values>CommonGUI/img/COMMUN/VideoPause</values>
+  <values>CommonGUI/img/COMMUN/VideoPlay</values>
+  <values>CommonGUI/img/CONVERSATION/bg-ascenseur-conversation</values>
+  <values>CommonGUI/img/CONVERSATION/bg-couleur-tooltip-notification</values>
+  <values>CommonGUI/img/CONVERSATION/bg-tooltip-notification</values>
+  <values>CommonGUI/img/CONVERSATION/bg-tooltip-notification2</values>
+  <values>CommonGUI/img/CONVERSATION/box-dialogue-medecin</values>
+  <values>CommonGUI/img/CONVERSATION/box-dialogue-patient</values>
+  <values>CommonGUI/img/CONVERSATION/box-pensee-patient</values>
+  <values>CommonGUI/img/CONVERSATION/box-reponse</values>
+  <values>CommonGUI/img/CONVERSATION/btn-reponse-selected</values>
+  <values>CommonGUI/img/CONVERSATION/btn-reponse</values>
+  <values>CommonGUI/img/CONVERSATION/curseur-ascenseur</values>
+  <values>CommonGUI/img/CONVERSATION/ico-notification-dialogues</values>
+  <values>CommonGUI/img/CONVERSATION/picto-dialogue-medecin-femme</values>
+  <values>CommonGUI/img/CONVERSATION/picto-dialogue-medecin</values>
+  <values>CommonGUI/img/CONVERSATION/picto-dialogue-patient-femme</values>
+  <values>CommonGUI/img/CONVERSATION/picto-dialogue-patient-pensee</values>
+  <values>CommonGUI/img/CONVERSATION/picto-dialogue-patient</values>
+  <values>CommonGUI/img/CONVERSATION/picto-reponse</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/avatar</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/bg-ico-sommaire-dossier-medical</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/bg-tableau-bottom</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/bg-tableau-top</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/bg-tableau</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/bg-titre-theme-dossier-medical</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/btn-close-masque</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/btn-sommaire-dossier-medical-masque</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/cercle-medaillon-avatar-dossier-medical-masque</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/disque-medaillon-avatar-dossier-medical-masque</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-antecedents--titre</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-antecedents</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-autre-question-titre</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-autre-question</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-autre-titre</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-autre</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-courrier-titre</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-courrier</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-histoire--titre</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-histoire</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-mode-de-vie--titre</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-mode-de-vie</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-motif-titre</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-motif</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-profil-titre</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-profil</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-resultats-examens-comp-titre</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-resultats-examens-comp</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-traitements-titre</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/dossier-medical-ico-traitements</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/etiquette-consultation-en-cours-masque</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/etiquette-consultation-precedente-masque</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/historique-ico-en-cours-masque</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/historique-ico-precedente-masque</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/ico-titre-sommaire-dossier-medical-bas</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/ico-titre-sommaire-dossier-medical-top-masque</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/medaillon-avatar-dossier-medical</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/ombre-bas</values>
+  <values>CommonGUI/img/DOSSIER MEDICAL/ombre-haut</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/bg-bloc-temp-tension</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/bg-btn-position-rol</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/bg-btn-position-selected</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/bg-btn-position-turn-rol</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/bg-btn-position-turn-selected</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/bg-btn-position-turn</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/bg-btn-position</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/bg-btn-quitter-examen-clinique-rol</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/bg-btn-quitter-examen-clinique-selected</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/bg-btn-quitter-examen-clinique</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/bg-btn-tooltip-examen-clinique-rol</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/bg-btn-tooltip-examen-clinique</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/bg-btn-txt-synthese-examen-clinique</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/bg-ico-btn-synthese-examen-clinique</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/btn-examen-clinique-autre-rol</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/btn-examen-clinique-autre-selected</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/btn-examen-clinique-autre</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/btn-position-allonge-turn-rol</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/btn-position-allonge-turn-selected</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/btn-position-allonge-turn</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/btn-position-debout-turn-rol</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/btn-position-debout-turn-selected</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/btn-position-debout-turn</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/examen-clinique</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/halo</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/ico-allonge-cote</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/ico-allonge</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/ico-assis</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/ico-btn-synthese-examen-clinique-masque</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/ico-debout</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/ico-synthese-examen-clinique-popup-masque</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/masque-btn-quitter-examen-clinique-white</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/masque-btn-quitter-examen-clinique</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/tooltip-examen-clinique-bottom</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/tooltip-examen-clinique-left</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/tooltip-examen-clinique-right</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/tooltip-examen-clinique-top</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/zone-examen-clinique-rol-rouge</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/zone-examen-clinique-rol</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/zone-examen-clinique-rouge</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/zone-examen-clinique-select-rouge</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/zone-examen-clinique-select</values>
+  <values>CommonGUI/img/EXAMEN CLINIQUE/zone-examen-clinique</values>
+  <values>CommonGUI/img/GAUGE/bg-box-jauge</values>
+  <values>CommonGUI/img/GAUGE/bg-jauge-bottom</values>
+  <values>CommonGUI/img/GAUGE/bg-jauge-top</values>
+  <values>CommonGUI/img/GAUGE/couleur-jauge-bottom</values>
+  <values>CommonGUI/img/GAUGE/couleur-jauge-top</values>
+  <values>CommonGUI/img/GAUGE/ico-jauge1</values>
+  <values>CommonGUI/img/GAUGE/ico-jauge2</values>
+  <values>CommonGUI/img/GAUGE/ico-jauge3</values>
+  <values>CommonGUI/img/GAUGE/ico-jauge4</values>
+  <values>CommonGUI/img/INTERROGATOIRE/bloc-bg-theme</values>
+  <values>CommonGUI/img/INTERROGATOIRE/bloc-contour-theme</values>
+  <values>CommonGUI/img/INTERROGATOIRE/ico-dialogue-patient</values>
+  <values>CommonGUI/img/INTERROGATOIRE/ico-play-question</values>
+  <values>CommonGUI/img/INTERROGATOIRE/next-previous-theme</values>
+  <values>CommonGUI/img/INTERROGATOIRE/separateur-40pourcent</values>
+  <values>CommonGUI/img/NAV/bg-ascenceur-nav</values>
+  <values>CommonGUI/img/NAV/bg-btn-dossier-annexes</values>
+  <values>CommonGUI/img/NAV/bg-btn-nav-active-and-first</values>
+  <values>CommonGUI/img/NAV/bg-btn-nav-active-and-last</values>
+  <values>CommonGUI/img/NAV/bg-btn-nav-active</values>
+  <values>CommonGUI/img/NAV/bg-btn-nav-and-first</values>
+  <values>CommonGUI/img/NAV/bg-btn-nav-and-last</values>
+  <values>CommonGUI/img/NAV/bg-btn-nav</values>
+  <values>CommonGUI/img/NAV/bg-btn-terminer-consultation</values>
+  <values>CommonGUI/img/NAV/bg-effet-btn-dossier-annexes</values>
+  <values>CommonGUI/img/NAV/bg-ico-btn-dossier-annexes-masque-90alpha</values>
+  <values>CommonGUI/img/NAV/bg-ico-btn-dossier-annexes</values>
+  <values>CommonGUI/img/NAV/bg-ico-fin-consultation-couleur-alpha50</values>
+  <values>CommonGUI/img/NAV/btn-annexes</values>
+  <values>CommonGUI/img/NAV/btn-dossier-medical</values>
+  <values>CommonGUI/img/NAV/curseur-ascenceur-nav</values>
+  <values>CommonGUI/img/NAV/ico-annexes</values>
+  <values>CommonGUI/img/NAV/ico-burger-masque</values>
+  <values>CommonGUI/img/NAV/ico-dossier-medical</values>
+  <values>CommonGUI/img/NAV/nav-btn-burger</values>
+  <values>CommonGUI/img/NAV/nav-ico-diagnostic</values>
+  <values>CommonGUI/img/NAV/nav-ico-exa-clinique</values>
+  <values>CommonGUI/img/NAV/nav-ico-exa-complementaires</values>
+  <values>CommonGUI/img/NAV/nav-ico-injections</values>
+  <values>CommonGUI/img/NAV/nav-ico-inter-patient</values>
+  <values>CommonGUI/img/NAV/nav-ico-ordo-documents</values>
+  <values>CommonGUI/img/NAV/nav-ico-proto-reco-patient</values>
+  <values>CommonGUI/img/NAV/nav-ico-proto-surveillance</values>
+  <values>CommonGUI/img/NAV/nav-ico-terminer-consultation</values>
+  <values>CommonGUI/img/NAV/nav-ico-traitements</values>
+  <values>CommonGUI/img/NAV/nav-shadow-top</values>
+  <values>CommonGUI/img/SALLE D ATTENTE/bg-btn-consultation-rol</values>
+  <values>CommonGUI/img/SALLE D ATTENTE/bg-btn-consultation-selected</values>
+  <values>CommonGUI/img/SALLE D ATTENTE/bg-btn-consultation</values>
+  <values>CommonGUI/img/SALLE D ATTENTE/bg-nom-age</values>
+  <values>CommonGUI/img/SALLE D ATTENTE/bg-tooltip-information-reversed</values>
+  <values>CommonGUI/img/SALLE D ATTENTE/bg-tooltip-information</values>
+  <values>CommonGUI/img/SALLE D ATTENTE/cercle-medaillon-avatar-salle-d-attente-masque</values>
+  <values>CommonGUI/img/SALLE D ATTENTE/disque-medaillon-avatar-salle-d-attente-masque</values>
+  <values>CommonGUI/img/SALLE D ATTENTE/ico-information-masque</values>
+  <values>CommonGUI/img/SALLE D ATTENTE/medaillon-avatar-salle-d-attente</values>
+  <values>CommonGUI/img/SALLE D ATTENTE/spacer-noir-alpha40</values>
+  <values>CommonGUI/img/SALLE D ATTENTE/spacer-vert-alpha90</values>
+  <values>CommonGUI/img/SECTION/bg-bloc-contenu</values>
+  <values>CommonGUI/img/SECTION/bg-section-down</values>
+  <values>CommonGUI/img/SECTION/bg-section-up</values>
+  <values>CommonGUI/img/SECTION/bg-section</values>
+  <values>CommonGUI/img/SECTION/btn-valider</values>
+  <values>CommonGUI/img/SECTION/check-off-white</values>
+  <values>CommonGUI/img/SECTION/check-off</values>
+  <values>CommonGUI/img/SECTION/check-on-white</values>
+  <values>CommonGUI/img/SECTION/check-on</values>
+  <values>CommonGUI/img/SECTION/ico-checked</values>
+  <values>CommonGUI/img/SECTION/section-ico-diagnostic</values>
+  <values>CommonGUI/img/SECTION/section-ico-exa-clinique</values>
+  <values>CommonGUI/img/SECTION/section-ico-exa-complementaires</values>
+  <values>CommonGUI/img/SECTION/section-ico-injections</values>
+  <values>CommonGUI/img/SECTION/section-ico-inter-patient</values>
+  <values>CommonGUI/img/SECTION/section-ico-ordo-documents</values>
+  <values>CommonGUI/img/SECTION/section-ico-proto-reco-patient</values>
+  <values>CommonGUI/img/SECTION/section-ico-proto-surveillance</values>
+  <values>CommonGUI/img/SECTION/section-ico-traitements</values>
+  <values>CommonGUI/img/SYNTHESE/bg-check</values>
+  <values>CommonGUI/img/SYNTHESE/bg-pie</values>
+  <values>CommonGUI/img/SYNTHESE/btn-close-synthese</values>
+  <values>CommonGUI/img/SYNTHESE/cercle-pourcentage</values>
+  <values>CommonGUI/img/SYNTHESE/check</values>
+  <values>CommonGUI/img/SYNTHESE/disque-centre-check</values>
+  <values>CommonGUI/img/SYNTHESE/disque-couleur-check</values>
+  <values>CommonGUI/img/SYNTHESE/fleche-repere</values>
+  <values>CommonGUI/img/SYNTHESE/picto-synthese-autre</values>
+  <values>CommonGUI/img/SYNTHESE/picto-synthese-default</values>
+  <values>CommonGUI/img/SYNTHESE/picto-synthese-diagnostic</values>
+  <values>CommonGUI/img/SYNTHESE/picto-synthese-examen-clinique</values>
+  <values>CommonGUI/img/SYNTHESE/picto-synthese-examen-complementaires</values>
+  <values>CommonGUI/img/SYNTHESE/picto-synthese-injections</values>
+  <values>CommonGUI/img/SYNTHESE/picto-synthese-interrogatoire</values>
+  <values>CommonGUI/img/SYNTHESE/picto-synthese-ordonnances</values>
+  <values>CommonGUI/img/SYNTHESE/picto-synthese-protocole</values>
+  <values>CommonGUI/img/SYNTHESE/picto-synthese-recommandation</values>
+  <values>CommonGUI/img/SYNTHESE/picto-synthese-traitement</values>
+  <values>CommonGUI/img/SYNTHESE/synthese-ico</values>
+  <values>CommonGUI/img/SYNTHESE/DIALOGUE/box-commentaire</values>
+  <values>CommonGUI/img/SYNTHESE/DIALOGUE/bulle-medecin-commentaire</values>
+  <values>CommonGUI/img/SYNTHESE/DIALOGUE/bulle-medecin</values>
+  <values>CommonGUI/img/SYNTHESE/DIALOGUE/bulle-patient</values>
+  <values>CommonGUI/img/SYNTHESE/DIALOGUE/cercle-picto-bulle</values>
+  <values>CommonGUI/img/SYNTHESE/DIALOGUE/picto-medecin</values>
+  <values>CommonGUI/img/SYNTHESE/DIALOGUE/picto-patient</values>
+  <values>CommonGUI/img/SYNTHESE/OBSERVANCE/avatar-commentaire-expert</values>
+  <values>CommonGUI/img/SYNTHESE/OBSERVANCE/bg-jauge-observance-bottom</values>
+  <values>CommonGUI/img/SYNTHESE/OBSERVANCE/bg-jauge-observance-top</values>
+  <values>CommonGUI/img/SYNTHESE/OBSERVANCE/bg-jauge-observance</values>
+  <values>CommonGUI/img/SYNTHESE/OBSERVANCE/bg-jauge</values>
+  <values>CommonGUI/img/SYNTHESE/OBSERVANCE/box-commentaire-expert</values>
+  <values>CommonGUI/img/SYNTHESE/OBSERVANCE/couleur-jauge-observance-bottom</values>
+  <values>CommonGUI/img/SYNTHESE/OBSERVANCE/couleur-jauge-observance-top</values>
+  <values>CommonGUI/img/SYNTHESE/OBSERVANCE/guillemet-close</values>
+  <values>CommonGUI/img/SYNTHESE/OBSERVANCE/guillemet-open</values>
+  <values>CommonGUI/img/SYNTHESE/OBSERVANCE/ico-jauge1-synth</values>
+  <values>CommonGUI/img/SYNTHESE/OBSERVANCE/ico-jauge2-synth</values>
+  <values>CommonGUI/img/SYNTHESE/OBSERVANCE/ico-jauge3-synth</values>
+  <values>CommonGUI/img/SYNTHESE/OBSERVANCE/ico-jauge4-synth</values>
+  <values>CommonGUI/img/SYNTHESE/OBSERVANCE/moins</values>
+  <values>CommonGUI/img/SYNTHESE/OBSERVANCE/pastille-numero</values>
+  <values>CommonGUI/img/SYNTHESE/OBSERVANCE/plus</values>
+  <values>CommonGUI/img/TIMELINE/bg-txt-step-timeline</values>
+  <values>CommonGUI/img/TIMELINE/step-off-first-and-last</values>
+  <values>CommonGUI/img/TIMELINE/step-off-first-and-middle</values>
+  <values>CommonGUI/img/TIMELINE/step-off-middle-and-last</values>
+  <values>CommonGUI/img/TIMELINE/step-off-middle-and-middle</values>
+  <values>CommonGUI/img/TIMELINE/step-on-and-first</values>
+  <values>CommonGUI/img/TIMELINE/step-on-and-last</values>
+  <values>CommonGUI/img/TIMELINE/step-on-and-middle</values>
+  <values>CommonGUI/img/TIMELINE/time-line-bg2</values>
+  <values>CommonGUI/img/TIMELINE/time-line-bg3</values>
+  <values>CommonGUI/img/TIMELINE/time-line-bg4</values>
+  <values>CommonGUI/img/TIMELINE/time-line-bg5</values>
+  <values>CommonGUI/img/TIMELINE/time-line-bg6</values>
+  <values>CommonGUI/img/TIMELINE/time-line-effet2</values>
+  <values>CommonGUI/img/TIMELINE/time-line-effet3</values>
+  <values>CommonGUI/img/TIMELINE/time-line-effet4</values>
+  <values>CommonGUI/img/TIMELINE/time-line-effet5</values>
+  <values>CommonGUI/img/TIMELINE/time-line-effet6</values>
+  <values>CommonGUI/img/TIMELINE/time-line-masque1</values>
+  <values>CommonGUI/img/TIMELINE/time-line-masque2</values>
+  <values>CommonGUI/img/TIMELINE/time-line-masque3</values>
+  <values>CommonGUI/img/TIMELINE/time-line-masque4-test</values>
+  <values>CommonGUI/img/TIMELINE/time-line-masque4</values>
+  <values>CommonGUI/img/TIMELINE/time-line-masque5</values>
+  <values>CommonGUI/img/TIMELINE/time-line-masque6</values>
+  <values>CommonGUI/interrogatoire/InterrogationQuestionButton</values>
+  <values>CommonGUI/interrogatoire/InterrogationSentencePatient</values>
+  <values>CommonGUI/interrogatoire/InterrogationThemeButton</values>
+  <values>CommonGUI/interrogatoire/InterrogationThemeButtonSelected</values>
+  <values>CommonGUI/interrogatoire/InterrogationUI</values>
+  <values>CommonGUI/interrogatoire/InterrogationUIMinimized</values>
+  <values>CommonGUI/logger/Logger</values>
+  <values>CommonGUI/mainMenu/MainMenu</values>
+  <values>CommonGUI/mainMenu/MainMenuButton</values>
+  <values>CommonGUI/mainMenu/MainMenuOpenButton</values>
+  <values>CommonGUI/mainMenu/MainMenuSideIcon</values>
+  <values>CommonGUI/medicalRecord/CurrentTreatmentHeader</values>
+  <values>CommonGUI/medicalRecord/CurrentTreatmentItem</values>
+  <values>CommonGUI/medicalRecord/ExaminationDetailsCurrent</values>
+  <values>CommonGUI/medicalRecord/ExaminationDetailsPrevious</values>
+  <values>CommonGUI/medicalRecord/MedicalRecord</values>
+  <values>CommonGUI/medicalRecord/MedicalRecordCurrentExamSpot</values>
+  <values>CommonGUI/medicalRecord/MedicalRecordFormerExamSpot</values>
+  <values>CommonGUI/medicalRecord/MedicalRecordHomeItemBG</values>
+  <values>CommonGUI/medicalRecord/MedicalRecordSubSection</values>
+  <values>CommonGUI/medicalRecord/MedicalRecordTheme</values>
+  <values>CommonGUI/medicalRecord/PatientProfileCurrent</values>
+  <values>CommonGUI/medicalRecord/PatientProfileExamination</values>
+  <values>CommonGUI/network/NetworkOpenButton</values>
+  <values>CommonGUI/network/NetworkPanel</values>
+  <values>CommonGUI/police/ROBOTO-BLACK</values>
+  <values>CommonGUI/police/ROBOTO-BLACKITALIC</values>
+  <values>CommonGUI/police/ROBOTO-BOLD</values>
+  <values>CommonGUI/police/ROBOTO-BOLDITALIC</values>
+  <values>CommonGUI/police/ROBOTO-ITALIC</values>
+  <values>CommonGUI/police/ROBOTO-LIGHT</values>
+  <values>CommonGUI/police/ROBOTO-LIGHTITALIC</values>
+  <values>CommonGUI/police/ROBOTO-MEDIUM</values>
+  <values>CommonGUI/police/ROBOTO-MEDIUMITALIC</values>
+  <values>CommonGUI/police/ROBOTO-REGULAR</values>
+  <values>CommonGUI/police/ROBOTO-THIN</values>
+  <values>CommonGUI/police/ROBOTO-THINITALIC</values>
+  <values>CommonGUI/starter/image-bg-login</values>
+  <values>CommonGUI/starter/LoginBackground</values>
+  <values>CommonGUI/starter/LoginPopin</values>
+  <values>CommonGUI/starter/LogoIH</values>
+  <values>CommonGUI/starter/ProgressBar</values>
+  <values>CommonGUI/starter/StartStraightPopin</values>
+  <values>CommonGUI/synthese/dialogue/DialAnswerItem</values>
+  <values>CommonGUI/synthese/dialogue/DialogsStats</values>
+  <values>CommonGUI/synthese/dialogue/DialQuestionLabel</values>
+  <values>CommonGUI/synthese/dialogue/DialStatsDetails</values>
+  <values>CommonGUI/synthese/dialogue/DialStatsHome</values>
+  <values>CommonGUI/synthese/dialogue/DialSynthesisItem</values>
+  <values>CommonGUI/synthese/dialogue/DoctorSentence</values>
+  <values>CommonGUI/synthese/dialogue/PatientSentence</values>
+  <values>CommonGUI/synthese/gauges/GaugesStats</values>
+  <values>CommonGUI/synthese/gauges/GaugeStatsElt</values>
+  <values>CommonGUI/synthese/quiz/QuizAnswerItem</values>
+  <values>CommonGUI/synthese/quiz/QuizQuestionLabel</values>
+  <values>CommonGUI/synthese/quiz/QuizStatsDetails</values>
+  <values>CommonGUI/synthese/quiz/QuizStatsHome</values>
+  <values>CommonGUI/synthese/quiz/QuizSynthesisItem</values>
+  <values>CommonGUI/timeline/Timeline</values>
+  <values>CommonGUI/timeline/TimelineBG2</values>
+  <values>CommonGUI/timeline/TimelineBG3</values>
+  <values>CommonGUI/timeline/TimelineBG4</values>
+  <values>CommonGUI/timeline/TimelineBG5</values>
+  <values>CommonGUI/timeline/TimelineBG6</values>
+  <values>CommonGUI/timeline/TimelineEffect2</values>
+  <values>CommonGUI/timeline/TimelineEffect3</values>
+  <values>CommonGUI/timeline/TimelineEffect4</values>
+  <values>CommonGUI/timeline/TimelineEffect5</values>
+  <values>CommonGUI/timeline/TimelineEffect6</values>
+  <values>CommonGUI/timeline/TimelineMask1</values>
+  <values>CommonGUI/timeline/TimelineMask2</values>
+  <values>CommonGUI/timeline/TimelineMask3</values>
+  <values>CommonGUI/timeline/TimelineMask4</values>
+  <values>CommonGUI/timeline/TimelineMask5</values>
+  <values>CommonGUI/timeline/TimelineMask6</values>
+  <values>CommonGUI/waitingRoom/CaseDescriptionPanel</values>
+  <values>CommonGUI/waitingRoom/CaseDescriptionPanelNoExamination</values>
+  <values>CommonGUI/waitingRoom/GotoExaminationButton</values>
+  <values>CommonGUI/waitingRoom/InfoToolTip</values>
+</DummySerializableDictionary>

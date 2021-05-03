@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root><!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+	<data name="BlinkScreen.MainText" xml:space="preserve">
+		<value>Félicitations!
+
+Vous avez terminé avec succès! Le chirurgien prendra le relais pour réaliser l'implantation du stent.
+
+Merci!</value>
+	</data>
+	<data name="ControlScreen.PressDeep" xml:space="preserve">
+		<value>sur le pad pour l'anesthésie en profondeur</value>
+	</data>
+	<data name="ControlScreen.PressSkin" xml:space="preserve">
+		<value>sur le pad pour l'anesthésie en surface</value>
+	</data>
+	<data name="ControlScreen.SwipeBackText" xml:space="preserve">
+		<value>vers l'arrière pour sortir de la peau</value>
+	</data>
+	<data name="ControlScreen.SwipeText" xml:space="preserve">
+		<value>vers l'avant pour entrer dans la peau</value>
+	</data>
+	<data name="ControlScreen.TitlePress" xml:space="preserve">
+		<value>APPUYER</value>
+	</data>
+	<data name="ControlScreen.TitleSwipe" xml:space="preserve">
+		<value>GLISSER</value>
+	</data>
+	<data name="MainMenu.Close" xml:space="preserve">
+		<value>Fermer</value>
+	</data>
+	<data name="MainMenu.Controls.MainText" xml:space="preserve">
+		<value>Tout au long de la simulation, voici les boutons de vos contrôleurs qui serviront à attraper et à utiliser les objets virtuels.</value>
+	</data>
+	<data name="MainMenu.Controls.Menu" xml:space="preserve">
+		<value>Afficher/Cacher le menu</value>
+	</data>
+	<data name="MainMenu.Controls.QuitButton" xml:space="preserve">
+		<value>Quitter</value>
+	</data>
+	<data name="MainMenu.Controls.Restart" xml:space="preserve">
+		<value>Redémarrer</value>
+	</data>
+	<data name="MainMenu.Controls.StartButton" xml:space="preserve">
+		<value>Démarrer</value>
+	</data>
+	<data name="MainMenu.Controls.Title" xml:space="preserve">
+		<value>CONTROLES</value>
+	</data>
+	<data name="MainMenu.Controls.Touchpad" xml:space="preserve">
+		<value>Utiliser les objets
+Glisser pour bouger les objets avec précision</value>
+	</data>
+	<data name="MainMenu.Controls.Trigger" xml:space="preserve">
+		<value>Attraper les objets</value>
+	</data>
+	<data name="MainMenu.Info.ContinueButton" xml:space="preserve">
+		<value>Continuer</value>
+	</data>
+	<data name="MainMenu.Info.Controls" xml:space="preserve">
+		<value>Contrôles</value>
+	</data>
+	<data name="MainMenu.Info.MainText" xml:space="preserve">
+		<value>Avec votre casque VR, vous allez entrer dans une formation médicale en réalité virtuelle.
+
+Il s'agit de la troisième étape du cas clinique de réparation d'un anévrisme aortique abdominal, réalisé avec le departement de chirurgie vasculaire et endovasculaire de Stanford Medicine. Il est recommandé d'avoir terminé les deux premières consultations avant d'entammer celle-ci. N'oubliez pas, ensuite, d'effectuer la dernière étape pour terminer la formation.
+
+Lors de cette étape, vous allez incarner un médecin pour réaliser la préparation échoguidée à l'implantation d'un stent par voie fémorale.</value>
+	</data>
+	<data name="MainMenu.Info.QuitButton" xml:space="preserve">
+		<value>Quitter</value>
+	</data>
+	<data name="MainMenu.Info.Title" xml:space="preserve">
+		<value>INFORMATIONS</value>
+	</data>
+	<data name="MainMenu.Language.English" xml:space="preserve">
+		<value>Anglais</value>
+	</data>
+	<data name="MainMenu.Language.French" xml:space="preserve">
+		<value>Français</value>
+	</data>
+	<data name="MainMenu.Language.Title" xml:space="preserve">
+		<value>Langue</value>
+	</data>
+	<data name="StepUI.Step1" xml:space="preserve">
+		<value>Choisissez les instruments pour la préparation de l'implantatation du stent et posez les sur le champ stérile situé sur le patient. Attention, seuls les instruments nécessaires sont autorisés!</value>
+	</data>
+	<data name="StepUI.Step2" xml:space="preserve">
+		<value>Vous devez maintenant réaliser une anesthésie échoguidée. Mettez d'abord du gel sur la peau, puis attrapez la sonde en main gauche et la seringue en main droite.</value>
+	</data>
+	<data name="StepUI.Step3" xml:space="preserve">
+		<value>Vous devez maintenant faire la piqûre dans l'artère. De la même façon que lors de l'étape précédente, attrapez l'aiguille en main droite et la sonde en main gauche.</value>
+	</data>
+	<data name="StepUI.Step4" xml:space="preserve">
+		<value>Le sang sort de l'aiguille, vous êtes entré dans l'artère! Vous devez maintenant insérer le guide dans l'aiguille et élargir l'entrée dans la peau avec les instruments appropriés.</value>
+	</data>
+	<data name="StepUI.TitleStep" xml:space="preserve">
+		<value>ETAPE</value>
+	</data>
+	<data name="TooltipUI.AfterGel" xml:space="preserve">
+		<value>Prendre la seringue et la sonde</value>
+	</data>
+	<data name="TooltipUI.ClampGrab" xml:space="preserve">
+		<value>Elargir la peau avec la pince</value>
+	</data>
+	<data name="TooltipUI.ClampUse" xml:space="preserve">
+		<value>Appuyer sur le pad pour élargir</value>
+	</data>
+	<data name="TooltipUI.Escargot" xml:space="preserve">
+		<value>Enlever le guide</value>
+	</data>
+	<data name="TooltipUI.Guide" xml:space="preserve">
+		<value>Attraper et glisser vers l'avant</value>
+	</data>
+	<data name="TooltipUI.NeedleEnter" xml:space="preserve">
+		<value>Attraper et regarder les écrans</value>
+	</data>
+	<data name="TooltipUI.NeedleExit" xml:space="preserve">
+		<value>Attraper et glisser vers l'arrière</value>
+	</data>
+	<data name="TooltipUI.NeedleInBox" xml:space="preserve">
+		<value>Mettre dans la boîte à aiguilles</value>
+	</data>
+	<data name="TooltipUI.Scalpel" xml:space="preserve">
+		<value>Réaliser une incision</value>
+	</data>
+	<data name="TooltipUI.SheathEnter" xml:space="preserve">
+		<value>Mettre le catheter</value>
+	</data>
+	<data name="TooltipUI.SheathInside" xml:space="preserve">
+		<value>Attraper et glisser vers l'avant</value>
+	</data>
+	<data name="TooltipUI.SyringeEnter" xml:space="preserve">
+		<value>Attraper et regarder les écrans</value>
+	</data>
+	<data name="TooltipUI.SyringeExit" xml:space="preserve">
+		<value>Mettre dans la boîte à aiguilles</value>
+	</data>
+</root>
