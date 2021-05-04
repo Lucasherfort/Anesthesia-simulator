@@ -7390,6 +7390,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2059493006, guid: 49c4396aea71004469f0ff3f89ed15d4, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4172283552943615930, guid: 49c4396aea71004469f0ff3f89ed15d4,
         type: 3}
       propertyPath: m_Name
@@ -7448,61 +7452,6 @@ PrefabInstance:
     - target: {fileID: 4172283553128165367, guid: 49c4396aea71004469f0ff3f89ed15d4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4172283553128165367, guid: 49c4396aea71004469f0ff3f89ed15d4,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.00905177
-      objectReference: {fileID: 0}
-    - target: {fileID: 4172283553128165367, guid: 49c4396aea71004469f0ff3f89ed15d4,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.00905177
-      objectReference: {fileID: 0}
-    - target: {fileID: 4172283553128165367, guid: 49c4396aea71004469f0ff3f89ed15d4,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.00905177
-      objectReference: {fileID: 0}
-    - target: {fileID: 4172283553933471268, guid: 49c4396aea71004469f0ff3f89ed15d4,
-        type: 3}
-      propertyPath: m_TargetEye
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4172283553933471268, guid: 49c4396aea71004469f0ff3f89ed15d4,
-        type: 3}
-      propertyPath: orthographic size
-      value: 0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 4172283553933471271, guid: 49c4396aea71004469f0ff3f89ed15d4,
-        type: 3}
-      propertyPath: m_TargetEye
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4172283553933471271, guid: 49c4396aea71004469f0ff3f89ed15d4,
-        type: 3}
-      propertyPath: orthographic size
-      value: 0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 4172283553933471273, guid: 49c4396aea71004469f0ff3f89ed15d4,
-        type: 3}
-      propertyPath: m_TargetEye
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4172283553933471273, guid: 49c4396aea71004469f0ff3f89ed15d4,
-        type: 3}
-      propertyPath: orthographic size
-      value: 0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 4172283748582731440, guid: 49c4396aea71004469f0ff3f89ed15d4,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4172283748582731454, guid: 49c4396aea71004469f0ff3f89ed15d4,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -32680,7 +32629,7 @@ Transform:
   m_Children:
   - {fileID: 565578612}
   m_Father: {fileID: 931484346}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.00001}
 --- !u!114 &1062481475
 MonoBehaviour:
@@ -38417,7 +38366,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fa99737f26f648ba89286bbb8e3b9285, type: 2}
+  - {fileID: 2100000, guid: c1c23d210aa8503428a6bc27b8cb3cfd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
