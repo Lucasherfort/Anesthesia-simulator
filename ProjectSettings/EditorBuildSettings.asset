@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Operating room/Teleportation.unity
-    guid: d06be43e92b40b94e85dd728cfeb4444
+    path: Assets/Scenes/Master.unity
+    guid: 3734f79b63692c1449c1302f7518d1dd
   m_configObjects: {}
