@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Touchable
   layers:
   - Default
   - TransparentFX
@@ -13,13 +14,13 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - CrossSection1
+  - NormalView
+  - CompositeView
+  - CrossSection2
+  - NeedleCrossSection
+  - Noise
+  - Triggers
   - 
   - 
   - 
