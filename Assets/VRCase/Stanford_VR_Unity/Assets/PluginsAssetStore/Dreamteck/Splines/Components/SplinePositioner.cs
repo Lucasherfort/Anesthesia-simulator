@@ -110,7 +110,7 @@ namespace Dreamteck.Splines
         private Spline.Direction _direction = Spline.Direction.Forward;
         [SerializeField]
         [HideInInspector]
-        private SplineResult _positionResult;
+        private SplineResult _positionResult = null;
 
 
         [System.Obsolete("Deprecated in version 1.0.7. Use motion.applyPosition instead")]

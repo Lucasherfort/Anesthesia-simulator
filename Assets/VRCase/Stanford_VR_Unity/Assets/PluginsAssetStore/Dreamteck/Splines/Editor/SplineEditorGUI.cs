@@ -212,7 +212,7 @@ namespace Dreamteck.Splines
                             if (dragged_object is GameObject)
                             {
                                 GameObject gameObject = (GameObject)dragged_object;
-                                if (PrefabUtility.GetPrefabType(gameObject) == PrefabType.None)
+                                if (PrefabUtility.GetPrefabAssetType(gameObject) == PrefabAssetType.MissingAsset)
                                 {
                                     if(gameObject.GetComponent<T>() != null) contentList.Add(gameObject.GetComponent<T>());
                                 }

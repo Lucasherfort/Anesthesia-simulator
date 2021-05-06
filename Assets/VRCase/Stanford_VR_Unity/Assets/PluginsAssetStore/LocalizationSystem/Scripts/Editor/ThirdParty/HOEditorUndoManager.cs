@@ -233,7 +233,7 @@ public class HOEditorUndoManager
  
 	private bool CheckTargetIsPrefabInstance( Object p_target )
 	{
-		return ( PrefabUtility.GetPrefabType( p_target ) == PrefabType.PrefabInstance );
+		return (PrefabUtility.GetPrefabInstanceStatus( p_target ) != PrefabInstanceStatus.NotAPrefab);
 	}
 }
 } //namespace SmartLocalization.Editor

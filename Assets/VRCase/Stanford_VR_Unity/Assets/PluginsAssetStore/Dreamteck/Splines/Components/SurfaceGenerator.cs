@@ -132,7 +132,7 @@ namespace Dreamteck.Splines
         private SplineComputer _extrudeComputer;
         [SerializeField]
         [HideInInspector]
-        private SplineResult[] extrudeResults;
+        private SplineResult[] extrudeResults = null;
         [SerializeField]
         [HideInInspector]
         private Vector3[] identityVertices = new Vector3[0];

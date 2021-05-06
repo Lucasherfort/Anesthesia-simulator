@@ -20,8 +20,8 @@ public class HapticMouse : MonoBehaviour {
 
 
 	private	HapticPlugin Haptic = null;
-	public Camera camera = null;
-	public Image cursor = null;
+    public new Camera camera = null;
+    public Image cursor = null;
 
 	// Use this for initialization
 	void Start () 

@@ -108,13 +108,13 @@ namespace Dreamteck.Splines {
         void OnFocus()
         {
             GetAvailable();
-            SceneView.onSceneGUIDelegate -= this.OnSceneGUI;
-            SceneView.onSceneGUIDelegate += this.OnSceneGUI;
+            SceneView.duringSceneGui -= this.OnSceneGUI;
+            SceneView.duringSceneGui += this.OnSceneGUI;
         }
 
         void OnDestroy()
         {
-            SceneView.onSceneGUIDelegate -= this.OnSceneGUI;
+            SceneView.duringSceneGui -= this.OnSceneGUI;
         }
 
         void OnSceneGUI(SceneView sceneView)

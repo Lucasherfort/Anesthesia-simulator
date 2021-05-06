@@ -22,7 +22,7 @@ namespace Dreamteck.Splines
 
         string savePath = "";
 
-        DirectoryInfo dirInfo;
+        DirectoryInfo dirInfo = null;
 
         Vector2 scroll1, scroll2;
 

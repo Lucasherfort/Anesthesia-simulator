@@ -22,9 +22,9 @@ namespace Dreamteck.Splines {
 
         static SplineDrawer()
         {
-            SceneView.onSceneGUIDelegate += AutoDrawComputers;
+            SceneView.duringSceneGui += AutoDrawComputers;
             FindComputers();
-            EditorApplication.hierarchyWindowChanged += HerarchyWindowChanged; 
+            EditorApplication.hierarchyChanged += HerarchyWindowChanged; 
         }
 
         static void HerarchyWindowChanged()

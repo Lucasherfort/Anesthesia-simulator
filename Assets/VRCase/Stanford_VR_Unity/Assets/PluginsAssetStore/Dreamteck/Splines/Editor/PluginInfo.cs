@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEditor;
 using System.IO;
 using System.Text.RegularExpressions;
+using UnityEngine.Networking;
 
 namespace Dreamteck.Splines
 {
@@ -328,7 +329,7 @@ namespace Dreamteck.Splines
             else if (message.Length <= 10) mailError = "ERROR: Message is too short. Please enter a valid message.";
             else if (Regex.IsMatch(email, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
             {
-                string url = "http://dreamteck-hq.com/team/contact.php?support_message=1&n=" + WWW.EscapeURL(senderName) + "&s=" + WWW.EscapeURL(subject) + "&e=" + WWW.EscapeURL(email) + "&m=" + WWW.EscapeURL(message);
+                string url = "http://dreamteck-hq.com/team/contact.php?support_message=1&n=" + UnityWebRequest.EscapeURL(senderName) + "&s=" + UnityWebRequest.EscapeURL(subject) + "&e=" + UnityWebRequest.EscapeURL(email) + "&m=" + UnityWebRequest.EscapeURL(message);
                 Application.OpenURL(url);
                 mailError = "";
                 message = subject = "";
