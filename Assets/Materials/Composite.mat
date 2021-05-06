@@ -47,6 +47,10 @@ Material:
         m_Texture: {fileID: 8400000, guid: 94da4858139e41d8b9432e7144e6df5c, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Needle:
+        m_Texture: {fileID: 8400000, guid: 1a25291fbeb94693a7aee30462e575f0, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Noise:
         m_Texture: {fileID: 8400000, guid: 94da4858139e41d8b9432e7144e6df5c, type: 2}
         m_Scale: {x: 1, y: 1}

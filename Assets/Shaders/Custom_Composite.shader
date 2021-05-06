@@ -5,6 +5,7 @@ Shader "Custon/Composite"
 	{
 		_Crossection1("Crossection 1 (layer1)", 2D) = "white" {}
 		_Crossection2("Crossection 2 (layer2)", 2D) = "white" {}
+		_Needle("Needle (layer3)", 2D) = "white" {}
 		_Noise("Noise", 2D) = "white" {}
 	}
 	SubShader
@@ -32,6 +33,7 @@ Shader "Custon/Composite"
 
 			sampler2D _Crossection1;
 			sampler2D _Crossection2;
+			sampler2D _Needle;
 			sampler2D _Noise;
 
 			float4 u_xlat0;
@@ -49,18 +51,21 @@ Shader "Custon/Composite"
 
 			float4 PixelColorTexture1;
 			float4 PixelColorTexture2;
+			float4 NeedleTexture;
+
+			float4 AddTextureResult;
+			float4 NoiseTextureResult;
 
 			float4 fragmentFunc(v2f IN) : SV_Target
 			{
 				float4 OUT;
 				PixelColorTexture1 = tex2D(_Crossection1, IN.uv.xy);
 				PixelColorTexture2 = tex2D(_Crossection2, IN.uv.xy);
-				PixelColorTexture1 = (PixelColorTexture1 + PixelColorTexture2);
-				//u_xlat1_d = tex2D(_MainTex3, in_f.texcoord.xy);
-				//PixelColorTexture1 = (PixelColorTexture1 + u_xlat1_d);
-				PixelColorTexture2 = tex2D(_Noise, IN.uv.xy);
+				NeedleTexture = tex2D(_Needle, IN.uv.xy); 
+				AddTextureResult = PixelColorTexture1 + PixelColorTexture2 + NeedleTexture;
+				NoiseTextureResult = tex2D(_Noise, IN.uv.xy);
 
-				OUT = (PixelColorTexture1 * PixelColorTexture2);
+				OUT = (AddTextureResult * NoiseTextureResult);
 
 				return OUT;
 			}
