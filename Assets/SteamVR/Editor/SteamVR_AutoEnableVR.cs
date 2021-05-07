@@ -49,9 +49,9 @@ namespace Valve.VR
             {
                 bool enabledVR = false;
 
-                if (UnityEditor.PlayerSettings.virtualRealitySupported == false)
+                if (UnityEngine.XR.XRSettings.enabled == false)
                 {
-                    UnityEditor.PlayerSettings.virtualRealitySupported = true;
+                    UnityEngine.XR.XRSettings.enabled = true;
                     enabledVR = true;
                     Debug.Log("<b>[SteamVR Setup]</b> Enabled virtual reality support in Player Settings. (you can disable this by unchecking Assets/SteamVR/SteamVR_Settings.autoEnableVR)");
                 }

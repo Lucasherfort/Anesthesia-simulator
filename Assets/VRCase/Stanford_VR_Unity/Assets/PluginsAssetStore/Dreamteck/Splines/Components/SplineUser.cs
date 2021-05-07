@@ -430,7 +430,7 @@ namespace Dreamteck.Splines {
                 GetClippedSamples();
             }
 #if UNITY_EDITOR
-            if (PrefabUtility.GetPrefabType(this.gameObject) == PrefabType.Prefab) return;
+            if (PrefabUtility.IsPartOfPrefabAsset(this.gameObject)) return;
 #endif
             if (threadWork) {
 #if !UNITY_WSA

@@ -64,33 +64,33 @@ Shader "Custom/ColorFilter"
       float4 frag(v2f IN) : SV_Target
       {
 
-          float4 OUT;
+        float4 OUT;
 	  
-		  PixelColorTexture1 = tex2D(_MainTex, IN.texcoord.xy);
+		    PixelColorTexture1 = tex2D(_MainTex, IN.texcoord.xy);
 
-		  if (PixelColorTexture1.r > 0.5)
-		  {
-			  PixelColorTexture1 = _OutputColor1;
-		  }
-		  else
-		  {
-			  PixelColorTexture1 = float4(0, 0, 0, 0);
-		  }
+		    if (PixelColorTexture1.r > 0.5)
+		    {
+			    PixelColorTexture1 = _OutputColor1;
+		    }
+		    else
+		    {
+			   PixelColorTexture1 = float4(0, 0, 0, 0);
+		    }
 
-		  PixelColorTexture2 = tex2D(_MainTex, IN.texcoord.xy);
+		    PixelColorTexture2 = tex2D(_MainTex, IN.texcoord.xy);
 
-		  if (PixelColorTexture2.g > 0.5)
-		  {
-			  PixelColorTexture2 = _OutputColor2;
-		  }
-		  else
-		  {
-			  PixelColorTexture2 = float4(0, 0, 0, 0);
-		  }
+		    if (PixelColorTexture2.g > 0.5)
+		    {
+			    PixelColorTexture2 = _OutputColor2;
+		    }
+		    else
+		    {
+			    PixelColorTexture2 = float4(0, 0, 0, 0);
+		    }
 
-		  OUT = PixelColorTexture1 + PixelColorTexture2;
+		    OUT = PixelColorTexture1 + PixelColorTexture2;
 		  
-          return OUT;
+        return OUT;
       }   
       ENDCG     
     } 

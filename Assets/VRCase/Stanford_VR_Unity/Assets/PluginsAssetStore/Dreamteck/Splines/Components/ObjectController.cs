@@ -364,7 +364,7 @@ namespace Dreamteck.Splines
         private void Remove()
         {
 #if UNITY_EDITOR
-            if (PrefabUtility.GetPrefabType(this.gameObject) == PrefabType.Prefab) return;
+            if (PrefabUtility.IsPartOfPrefabAsset(this.gameObject)) return;
 #endif
             if (_spawnCount >= spawned.Length) return;
             for (int i = spawned.Length - 1; i >= _spawnCount; i--)
@@ -418,7 +418,7 @@ namespace Dreamteck.Splines
         public void Spawn()
         {
 #if UNITY_EDITOR
-            if (PrefabUtility.GetPrefabType(this.gameObject) == PrefabType.Prefab) return;
+            if (PrefabUtility.IsPartOfPrefabAsset(this.gameObject)) return;
 #endif
             if (_objectMethod == ObjectMethod.Instantiate)
             {

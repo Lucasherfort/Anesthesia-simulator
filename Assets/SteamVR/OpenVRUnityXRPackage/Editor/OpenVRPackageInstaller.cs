@@ -55,7 +55,7 @@ namespace Unity.XR.OpenVR
             }
         }
 
-        private static bool forced = false;
+        //private static bool forced = false;
 
         public static void Start(bool force = false)
         {

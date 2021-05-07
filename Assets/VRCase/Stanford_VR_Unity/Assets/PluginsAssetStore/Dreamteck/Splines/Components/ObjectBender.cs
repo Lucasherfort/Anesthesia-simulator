@@ -273,7 +273,7 @@ namespace Dreamteck.Splines
         public void UpdateReferences()
         {
 #if UNITY_EDITOR
-            if (PrefabUtility.GetPrefabType(this.gameObject) == PrefabType.Prefab) return;
+            if (PrefabUtility.IsPartOfPrefabAsset(this.gameObject)) return;
 #endif
             if (_bend)
             {

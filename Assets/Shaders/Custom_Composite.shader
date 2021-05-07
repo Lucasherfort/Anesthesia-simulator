@@ -1,6 +1,5 @@
 Shader "Custon/Composite"
 {
-	// Paramètres dans l'inspecteur
 	Properties
 	{
 		_Crossection1("Crossection 1 (layer1)", 2D) = "white" {}
