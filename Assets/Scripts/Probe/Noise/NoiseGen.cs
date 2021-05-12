@@ -42,12 +42,12 @@ public class NoiseGen : MonoBehaviour
 		Vector3 position = offsetObject.transform.position;
 		if (x != position.x)
 		{
-			offsetX = UnityEngine.Random.Range(0f, 10000f);
+			offsetX = Random.Range(0f, 10000f);
 			float y = curPos.y;
 			Vector3 position2 = offsetObject.transform.position;
 			if (y != position2.y)
 			{
-				offsetY = UnityEngine.Random.Range(0f, 10000f);
+				offsetY = Random.Range(0f, 10000f);
 			}
 			Renderer component = GetComponent<Renderer>();
 			component.material.mainTexture = GenerateTexture();
