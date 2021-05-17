@@ -1,14 +1,14 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(TextureCreator))]
+[CustomEditor(typeof(NoiseGenerator))]
 public class TextureCreatorInspector : Editor
 {
-    private TextureCreator creator;
+    private NoiseGenerator creator;
 
     private void OnEnable()
     {
-        creator = target as TextureCreator;
+        creator = target as NoiseGenerator;
         Undo.undoRedoPerformed += RefreshCreator;
     }
 
@@ -22,6 +22,7 @@ public class TextureCreatorInspector : Editor
         if (Application.isPlaying)
         {
             creator.FillTexture();
+            creator.BlurImage();
         }
     }
 
