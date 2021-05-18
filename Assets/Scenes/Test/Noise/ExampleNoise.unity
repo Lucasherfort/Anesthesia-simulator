@@ -407,7 +407,7 @@ MonoBehaviour:
   mipmap: 1
   filterMode: 2
   anisoLevel: 9
-  frequency: 10
+  frequency: 40
   dimensions: 2
   type: 1
   octaves: 5
@@ -442,10 +442,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  avgR: 0
-  avgG: 0
-  avgB: 0
-  avgA: 0
-  blurPixelCount: 0
-  radius: 2
+  radius: 10
   iterations: 2
+  orientation: 0

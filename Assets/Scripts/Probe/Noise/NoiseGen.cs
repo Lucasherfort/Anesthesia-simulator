@@ -2,23 +2,33 @@ using UnityEngine;
 
 public class NoiseGen : MonoBehaviour
 {
-	public int texWidth = 256;
+    [Header("NoiseConfig")]
+    [SerializeField]
+    private NoiseConfig NoiseConfig;
 
-	public int texHeight = 256;
+    private int resolutionX = 256;
+    private int resolutionY = 256;
+	private float frequency = 200f;
 
-	public float scale = 20f;
+	private float offsetX;
 
-	public float offsetX;
+	private float offsetY;
 
-	public float offsetY;
+    [Header("ReferenceOffset")]
+    public GameObject offsetObject;
 
-	public GameObject offsetObject;
+    private Gradient coloring;
 
 	private Vector3 curPos;
 
 	private void Start()
 	{
-		Vector3 position = offsetObject.transform.position;
+        resolutionX = NoiseConfig.resolutionX;
+        resolutionY = NoiseConfig.resolutionY;
+        frequency = NoiseConfig.frequency;
+        coloring = NoiseConfig.coloring;
+
+        Vector3 position = offsetObject.transform.position;
 		float x = position.x;
 		Vector3 position2 = offsetObject.transform.position;
 		float y = position2.y;
@@ -32,7 +42,11 @@ public class NoiseGen : MonoBehaviour
 
 	private void Update()
 	{
-		RegenerateTexture();
+        resolutionX = NoiseConfig.resolutionX;
+        resolutionY = NoiseConfig.resolutionY;
+        frequency = NoiseConfig.frequency;
+        coloring = NoiseConfig.coloring;
+        RegenerateTexture();
 	}
 
 	private void RegenerateTexture()
@@ -52,34 +66,32 @@ public class NoiseGen : MonoBehaviour
 			Renderer component = GetComponent<Renderer>();
 			component.material.mainTexture = GenerateTexture();
 		}
-		Vector3 position3 = offsetObject.transform.position;
-		float x2 = position3.x;
-		Vector3 position4 = offsetObject.transform.position;
-		float y2 = position4.y;
-		Vector3 position5 = offsetObject.transform.position;
-		curPos = new Vector3(x2, y2, position5.z);
+		float x2 = offsetObject.transform.position.x;
+		float y2 = offsetObject.transform.position.y;
+        float z2 = offsetObject.transform.position.z;
+		curPos = new Vector3(x2, y2, z2);
 	}
 
 	private Texture2D GenerateTexture()
 	{
-		Texture2D texture2D = new Texture2D(texWidth, texHeight);
-		for (int i = 0; i < texWidth; i++)
+		Texture2D texture2D = new Texture2D(resolutionX, resolutionY);
+		for (int i = 0; i < resolutionX; i++)
 		{
-			for (int j = 0; j < texHeight; j++)
+			for (int j = 0; j < resolutionY; j++)
 			{
-				Color color = CalculateColor(i, j);
-				texture2D.SetPixel(i, j, color);
-			}
+                float sample = CalculateSample(i, j);
+                texture2D.SetPixel(i, j, coloring.Evaluate(sample));
+            }
 		}
 		texture2D.Apply();
 		return texture2D;
 	}
 
-	private Color CalculateColor(int x, int y)
-	{
-		float x2 = (float)x / (float)texWidth * 0.3f * scale + offsetX;
-		float y2 = (float)y / (float)texHeight * scale + offsetY;
-		float num = Mathf.PerlinNoise(x2, y2);
-		return new Color(num, num, num);
-	}
+    private float CalculateSample(int x, int y)
+    {
+        float x2 = (float)x / (float)resolutionX * 0.3f + offsetX;
+        float y2 = (float)y / (float)resolutionY + offsetY;
+        float num = Mathf.PerlinNoise(x2 * frequency, y2 * frequency);
+        return num;
+    }
 }

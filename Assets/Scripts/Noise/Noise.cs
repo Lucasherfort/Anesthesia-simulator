@@ -261,10 +261,8 @@ public static class Noise
 
         float tx = Smooth(tx0);
         float ty = Smooth(ty0);
-        return Mathf.Lerp(
-            Mathf.Lerp(v00, v10, tx),
-            Mathf.Lerp(v01, v11, tx),
-            ty) * sqr2;
+
+        return Mathf.Lerp(Mathf.Lerp(v00, v10, tx),Mathf.Lerp(v01, v11, tx),ty) * sqr2;
     }
 
     public static float Perlin3D(Vector3 point, float frequency)
@@ -313,9 +311,7 @@ public static class Noise
         float tx = Smooth(tx0);
         float ty = Smooth(ty0);
         float tz = Smooth(tz0);
-        return Mathf.Lerp(
-            Mathf.Lerp(Mathf.Lerp(v000, v100, tx), Mathf.Lerp(v010, v110, tx), ty),
-            Mathf.Lerp(Mathf.Lerp(v001, v101, tx), Mathf.Lerp(v011, v111, tx), ty),
-            tz);
+
+        return Mathf.Lerp(Mathf.Lerp(Mathf.Lerp(v000, v100, tx), Mathf.Lerp(v010, v110, tx), ty),Mathf.Lerp(Mathf.Lerp(v001, v101, tx), Mathf.Lerp(v011, v111, tx), ty),tz);
     }
 }
