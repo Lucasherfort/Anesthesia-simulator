@@ -60,13 +60,10 @@ public class NoiseGenerator : MonoBehaviour
 
     public int radius = 2;
     public int iterations = 2;
-
     public Orienttion orientation;
-
     private Texture2D texture;
-
-    private float offsetX;
-    private float offsetY;
+    private float offsetX = 0;
+    private float offsetY = 0;
 
     private void OnEnable()
     {

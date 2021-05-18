@@ -14,10 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolutionX: 256
   resolutionY: 256
+  mipChain: 0
+  filterMode: 0
+  anisoLevel: 16
   frequency: 200
+  amplitude: 1.5
   coloring:
     serializedVersion: 2
-    key0: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 1}
+    key0: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 1}
     key1: {r: 1, g: 1, b: 1, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
