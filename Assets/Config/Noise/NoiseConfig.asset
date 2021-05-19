@@ -12,13 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f2eb785dcdc724d87c55dbcf43039a, type: 3}
   m_Name: NoiseConfig
   m_EditorClassIdentifier: 
+  textureFormat: 3
   resolutionX: 256
   resolutionY: 256
   mipChain: 0
+  wrapMode: 0
   filterMode: 0
+  scaleX: 0.3
+  scaleY: 1
   anisoLevel: 16
-  frequency: 200
-  amplitude: 1.5
+  frequency: 80
+  amplitude: 1.2
+  enabledReferenceOffset: 0
   coloring:
     serializedVersion: 2
     key0: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 1}

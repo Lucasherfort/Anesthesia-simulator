@@ -11,7 +11,7 @@ public enum Orienttion
     Vertical
 }
 
-public class NoiseGenerator : MonoBehaviour
+public class OldNoiseGenerator : MonoBehaviour
 {
     [Header("General")]
     [SerializeField]
@@ -53,7 +53,7 @@ public class NoiseGenerator : MonoBehaviour
     private float avgR = 0;
     private float avgG = 0;
     private float avgB = 0;
-    private float avgA = 0;
+    //private float avgA = 0;
     private float blurPixelCount = 0;
 
     [Header("Gaussian blur parameters")]
@@ -62,8 +62,6 @@ public class NoiseGenerator : MonoBehaviour
     public int iterations = 2;
     public Orienttion orientation;
     private Texture2D texture;
-    private float offsetX = 0;
-    private float offsetY = 0;
 
     private void OnEnable()
     {
@@ -112,7 +110,7 @@ public class NoiseGenerator : MonoBehaviour
 
             for (int x = 0; x < resolution; x++)
             {
-                Vector3 point = Vector3.Lerp(point0, point1, (x + offsetX) * stepSize);
+                Vector3 point = Vector3.Lerp(point0, point1, (x + 0.5f) * stepSize);
 
                 float sample = Noise.Sum(method, point, frequency, octaves, lacunarity, persistence);
                 if (type != NoiseMethodType.Value)

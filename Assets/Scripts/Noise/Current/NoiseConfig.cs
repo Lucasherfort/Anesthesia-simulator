@@ -5,18 +5,29 @@
 public class NoiseConfig : ScriptableObject
 {
     [Header("General")]
+    public TextureFormat textureFormat = TextureFormat.RGB24;
     [Range(2, 256)]
     public int resolutionX = 256;
     [Range(2, 256)]
     public int resolutionY = 256;
     public bool mipChain = false;
+    public TextureWrapMode wrapMode = TextureWrapMode.Clamp;
     public FilterMode filterMode = FilterMode.Point;
 
     [Header("Noise parameters")]
+    public float scaleX = 0.3f;
+    public float scaleY = 1.0f;
+
     [Range(1, 16)]
     public int anisoLevel = 9;
     public float frequency = 20f;
     public float amplitude = 1f;
+
+    [Range(1,8)]
+    public int octaves = 1;
+
+    [Header("ReferenceOffset")]
+    public bool enabledReferenceOffset = false;
 
     [Header("Gradient")]
     public Gradient coloring;

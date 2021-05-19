@@ -1,14 +1,14 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(NoiseGenerator))]
+[CustomEditor(typeof(OldNoiseGenerator))]
 public class TextureCreatorInspector : Editor
 {
-    private NoiseGenerator creator;
+    private OldNoiseGenerator creator;
 
     private void OnEnable()
     {
-        creator = target as NoiseGenerator;
+        creator = target as OldNoiseGenerator;
         Undo.undoRedoPerformed += RefreshCreator;
     }
 
