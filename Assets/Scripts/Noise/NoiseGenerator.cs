@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 /*
+ * Les ressources utilisées pour réaliser le code :
  * https://www.youtube.com/watch?v=WP-Bm65Q-1Y&list=PLFt_AvWsXl0eBW2EiBtl_sxmDtSgZBxB3&index=2
  * https://www.youtube.com/watch?v=MRNFcywkUSA&list=PLFt_AvWsXl0eBW2EiBtl_sxmDtSgZBxB3&index=3
  * https://catlikecoding.com/unity/tutorials/noise/
@@ -19,6 +20,7 @@ public class NoiseGenerator : MonoBehaviour
     [Header("ReferenceOffset")]
     [SerializeField]
     private bool enabledReferenceOffset = false;
+
     [SerializeField]
     private GameObject offsetObject = null;
 
@@ -83,13 +85,12 @@ public class NoiseGenerator : MonoBehaviour
         lacunarity = NoiseConfig.lacunarity;
         seed = NoiseConfig.seed;
         offsetDynamic = NoiseConfig.offsetDynamic;
+        coloring = NoiseConfig.coloring;
 
-        if(!offsetDynamic)
+        if (!offsetDynamic)
         {
             offset = NoiseConfig.offset;
         }
-
-        coloring = NoiseConfig.coloring;
     }
 
     private void GenerateNoise()
@@ -111,18 +112,17 @@ public class NoiseGenerator : MonoBehaviour
                     offset.y = Random.Range(0f, 10000f);
                 }
             }
+            float x2 = offsetObject.transform.position.x;
+            float y2 = offsetObject.transform.position.y;
+            float z2 = offsetObject.transform.position.z;
+            curPos = new Vector3(x2, y2, z2);
+
         }
-        else
+        else if(offsetDynamic)
         {
             offset.x = Random.Range(0f, 10000f);
             offset.y = Random.Range(0f, 10000f);
         }
-
-        float x2 = offsetObject.transform.position.x;
-        float y2 = offsetObject.transform.position.y;
-        float z2 = offsetObject.transform.position.z;
-        curPos = new Vector3(x2, y2, z2);
-
 
         for (int i = 0; i < octaves; i++)
         {

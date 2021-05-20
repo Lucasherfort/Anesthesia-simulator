@@ -17,7 +17,7 @@ MonoBehaviour:
   resolutionY: 256
   mipChain: 0
   wrapMode: 1
-  filterMode: 0
+  filterMode: 1
   anisoLevel: 9
   scale: 1.4
   frequency: 1

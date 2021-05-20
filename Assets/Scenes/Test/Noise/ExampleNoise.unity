@@ -541,12 +541,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1274043558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5acd63344bce74ecd22b78c4dc28851, type: 3}
+  m_Script: {fileID: 11500000, guid: a2513306f21003d4eacc671e695a2ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  texWidth: 256
-  texHeight: 256
-  scale: 200
-  offsetX: 0
-  offsetY: 0
+  NoiseConfig: {fileID: 11400000, guid: 763c1fcd2bf647c4aae01148545afe97, type: 2}
+  textureRender: {fileID: 1274043560}
+  enabledReferenceOffset: 0
   offsetObject: {fileID: 0}
