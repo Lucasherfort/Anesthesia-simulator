@@ -1,34 +1,63 @@
 ﻿using UnityEngine;
-using System.Collections;
+
+/*
+ * https://www.youtube.com/watch?v=WP-Bm65Q-1Y&list=PLFt_AvWsXl0eBW2EiBtl_sxmDtSgZBxB3&index=2
+ * https://www.youtube.com/watch?v=MRNFcywkUSA&list=PLFt_AvWsXl0eBW2EiBtl_sxmDtSgZBxB3&index=3
+ * https://catlikecoding.com/unity/tutorials/noise/
+ */
 
 public class NoiseGenerator : MonoBehaviour
 {
     [Header("NoiseConfig")]
     [SerializeField]
     private NoiseConfig NoiseConfig = null;
+
     [Header("Rendering")]
-    public Renderer textureRender;
+    [SerializeField]
+    private Renderer textureRender;
+
+    [Header("ReferenceOffset")]
+    [SerializeField]
+    private bool enabledReferenceOffset = false;
+    [SerializeField]
+    private GameObject offsetObject = null;
 
     ////////////////////////////////////////////////////////
     private TextureFormat textureFormat = TextureFormat.RGB24;
+
     private int resolutionX;
+
     private int resolutionY;
+
     private bool mipChain = false; 
+
     private TextureWrapMode wrapMode = TextureWrapMode.Clamp;
+
     private FilterMode filterMode = FilterMode.Point;
-    [Range(1, 16)]
-    public int anisoLevel = 9;
-    private float scaleX;
-    private float scaleY;
+
+    private int anisoLevel = 9;
+
+    private float scale;
+
     private float frequency;
+
     private float amplitude;
-    public int octaves;
-    [Range(0, 1)]
-    public float persistance;
-    public float lacunarity;
-    public int seed;
-    public Vector2 offset;
-    public Gradient coloring;
+
+    private int octaves;
+
+    private float persistance;
+
+    private float lacunarity;
+
+    private int seed;
+
+    private bool offsetDynamic;
+
+    private Vector2 offset;
+
+    private Gradient coloring;
+
+    private Vector3 curPos;
 
     private void Update()
     {
@@ -46,15 +75,19 @@ public class NoiseGenerator : MonoBehaviour
         filterMode = NoiseConfig.filterMode;
         anisoLevel = NoiseConfig.anisoLevel;
 
-        scaleX = NoiseConfig.scaleX;
-        scaleY = NoiseConfig.scaleY;
-        //frequency = NoiseConfig.frequency; 
-        //amplitude = NoiseConfig.amplitude;
+        scale = NoiseConfig.scale;
+        frequency = NoiseConfig.frequency; 
+        amplitude = NoiseConfig.amplitude;
         octaves = NoiseConfig.octaves;
         persistance = NoiseConfig.persistance;
         lacunarity = NoiseConfig.lacunarity;
         seed = NoiseConfig.seed;
-        offset = NoiseConfig.offset;
+        offsetDynamic = NoiseConfig.offsetDynamic;
+
+        if(!offsetDynamic)
+        {
+            offset = NoiseConfig.offset;
+        }
 
         coloring = NoiseConfig.coloring;
     }
@@ -65,7 +98,33 @@ public class NoiseGenerator : MonoBehaviour
 
         System.Random prng = new System.Random(seed);
         Vector2[] octaveOffsets = new Vector2[octaves];
-        for(int i = 0; i < octaves; i++)
+
+        if (enabledReferenceOffset)
+        {
+            if (curPos.x != offsetObject.transform.position.x)
+            {            
+                offset.x = Random.Range(0f, 10000f);
+                float y = curPos.y;
+                Vector3 position2 = offsetObject.transform.position;
+                if (y != position2.y)
+                {
+                    offset.y = Random.Range(0f, 10000f);
+                }
+            }
+        }
+        else
+        {
+            offset.x = Random.Range(0f, 10000f);
+            offset.y = Random.Range(0f, 10000f);
+        }
+
+        float x2 = offsetObject.transform.position.x;
+        float y2 = offsetObject.transform.position.y;
+        float z2 = offsetObject.transform.position.z;
+        curPos = new Vector3(x2, y2, z2);
+
+
+        for (int i = 0; i < octaves; i++)
         {
             float offsetX = prng.Next(-100000,100000) + offset.x;
             float offsetY = prng.Next(-100000, 100000) + offset.y;
@@ -83,20 +142,20 @@ public class NoiseGenerator : MonoBehaviour
         {
             for(int x = 0; x < resolutionX; x++)
             {
-                float tempFrequency = 1;
-                float amplitude = 1;
+                float frequency2 = frequency;
+                float amplitude2 = amplitude;
                 float noiseHeight = 0;
 
                 for(int i = 0; i < octaves; i++)
                 {
-                    float sampleX = (x-halfWidth) / scaleX * tempFrequency + octaveOffsets[i].x;
-                    float sampleY = (y-halfHeight) / scaleY * tempFrequency + octaveOffsets[i].y;
+                    float sampleX = (x-halfWidth) / scale * 0.3f * frequency2 + octaveOffsets[i].x;
+                    float sampleY = (y-halfHeight) / scale * frequency2 + octaveOffsets[i].y;
 
                     float perlinValue = Mathf.PerlinNoise(sampleX, sampleY) * 2 - 1;
-                    noiseHeight += perlinValue * amplitude;
+                    noiseHeight += perlinValue * amplitude2;
 
-                    amplitude *= persistance;
-                    tempFrequency *= lacunarity;
+                    amplitude2 *= persistance;
+                    frequency2 *= lacunarity;
                 }
 
                 if(noiseHeight > maxNoiseHeight)

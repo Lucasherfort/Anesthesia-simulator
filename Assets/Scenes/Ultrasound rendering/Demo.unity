@@ -60,7 +60,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276813, g: 0.21589187, b: 0.29782563, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &9999993
 LightmapSettings:
@@ -2376,6 +2376,7 @@ GameObject:
   - component: {fileID: 7568529522613449385}
   - component: {fileID: 7568529523049657028}
   - component: {fileID: 7568529795025105467}
+  - component: {fileID: 7568529522076578572}
   m_Layer: 13
   m_Name: Plane
   m_TagString: 
@@ -2383,6 +2384,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7568529522076578572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7568529522076578571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2513306f21003d4eacc671e695a2ec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NoiseConfig: {fileID: 11400000, guid: 8a94b36e139fbe74183506c3261c5f59, type: 2}
+  textureRender: {fileID: 7568529523049657028}
+  enabledReferenceOffset: 1
+  offsetObject: {fileID: 3729694057497597192}
 --- !u!1 &7568529522076578579
 GameObject:
   m_ObjectHideFlags: 0
@@ -2762,12 +2779,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7568529522076578571}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5acd63344bce74ecd22b78c4dc28851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NoiseConfig: {fileID: 11400000, guid: 763c1fcd2bf647c4aae01148545afe97, type: 2}
+  texWidth: 256
+  texHeight: 256
+  scale: 200
+  offsetX: 0
+  offsetY: 0
   offsetObject: {fileID: 3729694057497597192}
 --- !u!114 &7568529795025105502
 MonoBehaviour:

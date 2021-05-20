@@ -2,118 +2,84 @@ using UnityEngine;
 
 public class NoiseGen : MonoBehaviour
 {
-    [Header("NoiseConfig")]
-    [SerializeField]
-    private NoiseConfig NoiseConfig = null;
-    private TextureFormat textureFormat;
-    private int resolutionX = 256;
-    private int resolutionY = 256;
-	private float frequency = 1f;
-	private float amplitude = 1f;
-    private bool mipChain = false;
-    private TextureWrapMode wrapMode;
-    private FilterMode filterMode;
-    private int anisoLevel;
-    private int octaves;
+    public int texWidth = 256;
 
-    private float scaleX = 0f;
-    private float scaleY = 0f;
+    public int texHeight = 256;
 
-    [Header("ReferenceOffset")]
+    public float scale = 20f;
+
+    public float offsetX;
+
+    public float offsetY;
+
     public GameObject offsetObject;
-    private Gradient coloring = null;
-	private float offsetX;
-	private float offsetY;
-	private Vector3 curPos;
-	private Texture2D texture;
-    private bool enabledReferenceOffset = false;
+
+    private Vector3 curPos;
 
     private void Start()
-	{
-        if (offsetObject == null)
-        {
-            float x = offsetObject.transform.position.x;
-            float y = offsetObject.transform.position.y;
-            float z = offsetObject.transform.position.z;
-            curPos = new Vector3(x, y, z);
-        }
-
-        offsetX = Random.Range(0f, 10000f);
-		offsetY = Random.Range(0f, 10000f);
-
-		texture = new Texture2D(resolutionX, resolutionY, textureFormat, mipChain);
-
-        GetComponent<Renderer>().material.mainTexture = texture;
-		GenerateTexture();
-	}
-
-	private void Update()
-	{
-        RegenerateTexture();
-	}
-
-	private void RegenerateTexture()
-	{
-		Resources.UnloadUnusedAssets();
-
-        if(enabledReferenceOffset)
-        {
-            if(offsetObject == null)
-            {
-                float x = offsetObject.transform.position.x;
-                float y = offsetObject.transform.position.y;
-                float z = offsetObject.transform.position.z;
-                curPos = new Vector3(x, y, z);
-            }
-
-            if (curPos.x != offsetObject.transform.position.x)
-            {
-                offsetX = Random.Range(0f, 10000f);
-                float y = curPos.y;
-                Vector3 position2 = offsetObject.transform.position;
-                if (y != position2.y)
-                {
-                    offsetY = Random.Range(0f, 10000f);
-                }
-
-                GenerateTexture();
-            }
-        }
-        else
-        {
-            offsetX = Random.Range(0f, 10000f);
-            offsetY = Random.Range(0f, 10000f);
-            GenerateTexture();
-        }
-
-		float x2 = offsetObject.transform.position.x;
-		float y2 = offsetObject.transform.position.y;
-        float z2 = offsetObject.transform.position.z;
-		curPos = new Vector3(x2, y2, z2);
-	}
-
-	private void GenerateTexture()
-	{
-		for (int i = 0; i < resolutionX; i++)
-		{
-			for (int j = 0; j < resolutionY; j++)
-			{
-                float sample = CalculateNoise(i, j);
-                texture.SetPixel(i, j, coloring.Evaluate(sample));
-
-				// TODO
-            }
-		}
-		texture.Apply();
-	}
-
-    private float CalculateNoise(int x, int y)
     {
-        float xCoord = (float)x / (float)resolutionX * scaleX + offsetX;
-        float yCoord = (float)y / (float)resolutionY * scaleY + offsetY;
+        Vector3 position = offsetObject.transform.position;
+        float x = position.x;
+        Vector3 position2 = offsetObject.transform.position;
+        float y = position2.y;
+        Vector3 position3 = offsetObject.transform.position;
+        curPos = new Vector3(x, y, position3.z);
+        offsetX = UnityEngine.Random.Range(0f, 10000f);
+        offsetY = UnityEngine.Random.Range(0f, 10000f);
+        Renderer component = GetComponent<Renderer>();
+        component.material.mainTexture = GenerateTexture();
+    }
 
-        float sum = Mathf.PerlinNoise(xCoord * frequency, yCoord * frequency) * amplitude;
+    private void Update()
+    {
+        RegenerateTexture();
+    }
 
-        return sum;
+    private void RegenerateTexture()
+    {
+        Resources.UnloadUnusedAssets();
+        float x = curPos.x;
+        Vector3 position = offsetObject.transform.position;
+        if (x != position.x)
+        {
+            offsetX = UnityEngine.Random.Range(0f, 10000f);
+            float y = curPos.y;
+            Vector3 position2 = offsetObject.transform.position;
+            if (y != position2.y)
+            {
+                offsetY = UnityEngine.Random.Range(0f, 10000f);
+            }
+            Renderer component = GetComponent<Renderer>();
+            component.material.mainTexture = GenerateTexture();
+        }
+        Vector3 position3 = offsetObject.transform.position;
+        float x2 = position3.x;
+        Vector3 position4 = offsetObject.transform.position;
+        float y2 = position4.y;
+        Vector3 position5 = offsetObject.transform.position;
+        curPos = new Vector3(x2, y2, position5.z);
+    }
+
+    private Texture2D GenerateTexture()
+    {
+        Texture2D texture2D = new Texture2D(texWidth, texHeight);
+        for (int i = 0; i < texWidth; i++)
+        {
+            for (int j = 0; j < texHeight; j++)
+            {
+                Color color = CalculateColor(i, j);
+                texture2D.SetPixel(i, j, color);
+            }
+        }
+        texture2D.Apply();
+        return texture2D;
+    }
+
+    private Color CalculateColor(int x, int y)
+    {
+        float x2 = (float)x / (float)texWidth * 0.3f * scale + offsetX;
+        float y2 = (float)y / (float)texHeight * scale + offsetY;
+        float num = Mathf.PerlinNoise(x2, y2);
+        return new Color(num, num, num);
     }
 }

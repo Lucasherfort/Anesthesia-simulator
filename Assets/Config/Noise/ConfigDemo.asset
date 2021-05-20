@@ -10,25 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71f2eb785dcdc724d87c55dbcf43039a, type: 3}
-  m_Name: NoiseConfig
+  m_Name: ConfigDemo
   m_EditorClassIdentifier: 
   textureFormat: 3
-  resolutionX: 100
-  resolutionY: 100
+  resolutionX: 256
+  resolutionY: 256
   mipChain: 0
   wrapMode: 1
-  filterMode: 1
-  anisoLevel: 1
-  scaleX: 27.6
-  scaleY: 27.6
+  filterMode: 0
+  anisoLevel: 9
+  scale: 1.4
   frequency: 1
-  persistance: 0.5
-  lacunarity: 2
-  amplitude: 0
-  octaves: 4
-  seed: 21
+  persistance: 1
+  lacunarity: 1
+  amplitude: 1
+  octaves: 1
+  seed: 1
+  offsetDynamic: 1
   offset: {x: 0, y: 0}
-  enabledReferenceOffset: 0
   coloring:
     serializedVersion: 2
     key0: {r: 0, g: 0, b: 0, a: 1}
