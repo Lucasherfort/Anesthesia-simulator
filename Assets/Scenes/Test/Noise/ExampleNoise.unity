@@ -338,10 +338,7 @@ GameObject:
   - component: {fileID: 1274043561}
   - component: {fileID: 1274043560}
   - component: {fileID: 1274043559}
-  - component: {fileID: 1274043563}
-  - component: {fileID: 1274043564}
-  - component: {fileID: 1274043565}
-  - component: {fileID: 1274043566}
+  - component: {fileID: 1274043567}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -424,28 +421,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1274043563
+--- !u!114 &1274043567
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1274043558}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89794aed5695d9146a924d59e533ef9d, type: 3}
+  m_Script: {fileID: 11500000, guid: a2513306f21003d4eacc671e695a2ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolution: 256
-  mipmap: 1
-  filterMode: 2
-  anisoLevel: 9
-  frequency: 40
-  dimensions: 2
-  type: 1
-  octaves: 5
+  NoiseConfig: {fileID: 11400000, guid: 763c1fcd2bf647c4aae01148545afe97, type: 2}
+  textureRender: {fileID: 1274043560}
+  noiseScaleX: 27.6
+  noiseScaleY: 27.6
+  octaves: 4
+  persistance: 0.5
   lacunarity: 2
-  persistence: 0.5
+  seed: 21
+  offset: {x: 0, y: 0}
   coloring:
     serializedVersion: 2
     key0: {r: 0, g: 0, b: 0, a: 1}
@@ -475,53 +471,3 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  radius: 10
-  iterations: 2
-  orientation: 0
---- !u!114 &1274043564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1274043558}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5acd63344bce74ecd22b78c4dc28851, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NoiseConfig: {fileID: 11400000, guid: 763c1fcd2bf647c4aae01148545afe97, type: 2}
-  offsetObject: {fileID: 917391956}
---- !u!114 &1274043565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1274043558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57a824aa5f906f54d9dff7e2d3f8dff3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapWidth: 100
-  mapHeight: 100
-  noiseScale: 27.6
-  octaves: 4
-  persistance: 0.5
-  lacunarity: 2
-  seed: 21
-  offset: {x: 0, y: 0}
---- !u!114 &1274043566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1274043558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9129ea05f536fd84eaf0e7d7bbdfcd16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textureRender: {fileID: 1274043560}

@@ -13,20 +13,25 @@ MonoBehaviour:
   m_Name: NoiseConfig
   m_EditorClassIdentifier: 
   textureFormat: 3
-  resolutionX: 256
-  resolutionY: 256
+  resolutionX: 100
+  resolutionY: 100
   mipChain: 0
-  wrapMode: 0
-  filterMode: 0
-  scaleX: 0.3
-  scaleY: 1
-  anisoLevel: 16
-  frequency: 80
-  amplitude: 1.2
+  wrapMode: 1
+  filterMode: 1
+  anisoLevel: 1
+  scaleX: 27.6
+  scaleY: 27.6
+  frequency: 1
+  persistance: 0.5
+  lacunarity: 2
+  amplitude: 0
+  octaves: 4
+  seed: 21
+  offset: {x: 0, y: 0}
   enabledReferenceOffset: 0
   coloring:
     serializedVersion: 2
-    key0: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 1}
+    key0: {r: 0, g: 0, b: 0, a: 1}
     key1: {r: 1, g: 1, b: 1, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}

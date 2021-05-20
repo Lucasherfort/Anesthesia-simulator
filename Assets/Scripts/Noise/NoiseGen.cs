@@ -5,11 +5,10 @@ public class NoiseGen : MonoBehaviour
     [Header("NoiseConfig")]
     [SerializeField]
     private NoiseConfig NoiseConfig = null;
-
     private TextureFormat textureFormat;
     private int resolutionX = 256;
     private int resolutionY = 256;
-	private float frequency = 200f;
+	private float frequency = 1f;
 	private float amplitude = 1f;
     private bool mipChain = false;
     private TextureWrapMode wrapMode;
@@ -22,8 +21,7 @@ public class NoiseGen : MonoBehaviour
 
     [Header("ReferenceOffset")]
     public GameObject offsetObject;
-
-    private Gradient coloring;
+    private Gradient coloring = null;
 	private float offsetX;
 	private float offsetY;
 	private Vector3 curPos;
@@ -32,8 +30,6 @@ public class NoiseGen : MonoBehaviour
 
     private void Start()
 	{
-        SetupNoiseConfig();
-
         if (offsetObject == null)
         {
             float x = offsetObject.transform.position.x;
@@ -53,36 +49,7 @@ public class NoiseGen : MonoBehaviour
 
 	private void Update()
 	{
-		SetupNoiseConfig();
         RegenerateTexture();
-	}
-
-	private void SetupNoiseConfig()
-	{
-        textureFormat = NoiseConfig.textureFormat;
-        resolutionX = NoiseConfig.resolutionX;
-        resolutionY = NoiseConfig.resolutionY;
-        octaves = NoiseConfig.octaves;
-        scaleX = NoiseConfig.scaleX;
-        scaleY = NoiseConfig.scaleY;
-
-        frequency = NoiseConfig.frequency;
-		amplitude = NoiseConfig.amplitude;
-        coloring = NoiseConfig.coloring;
-		mipChain = NoiseConfig.mipChain;
-
-        wrapMode = NoiseConfig.wrapMode;
-        filterMode = NoiseConfig.filterMode;
-		anisoLevel = NoiseConfig.anisoLevel;
-
-        enabledReferenceOffset = NoiseConfig.enabledReferenceOffset;
-
-        if(texture != null)
-        {
-            texture.wrapMode = wrapMode;
-            texture.filterMode = filterMode;
-            texture.anisoLevel = anisoLevel;
-        }
 	}
 
 	private void RegenerateTexture()
