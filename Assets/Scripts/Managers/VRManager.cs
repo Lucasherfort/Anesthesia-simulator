@@ -5,9 +5,9 @@ using UnityEngine;
 public class VRManager : MonoBehaviour
 {
     [SerializeField]
-    private bool EnabledVR = true;
+    private bool EnabledVR = false;
 
-    private void Start()
+    private void Update()
     {
         UnityEngine.XR.XRSettings.enabled = EnabledVR;
     }

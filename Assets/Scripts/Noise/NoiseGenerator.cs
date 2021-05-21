@@ -15,7 +15,7 @@ public class NoiseGenerator : MonoBehaviour
 
     [Header("Rendering")]
     [SerializeField]
-    private Renderer textureRender;
+    private Renderer textureRender = null;
 
     [Header("ReferenceOffset")]
     [SerializeField]
