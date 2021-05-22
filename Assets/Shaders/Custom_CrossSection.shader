@@ -1,5 +1,5 @@
 /* NOTE : 
-This script come from the AssetStore :
+Source :
 https://assetstore.unity.com/packages/vfx/shaders/cross-section-66300
 https://github.com/Dandarawy/Unity3DCrossSectionShader
 OnePlaneBSP.shader
