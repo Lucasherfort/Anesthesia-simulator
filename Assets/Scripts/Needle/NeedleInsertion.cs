@@ -7,9 +7,9 @@ public class NeedleInsertion : MonoBehaviour
     private HapticPlugin needleDevice;
 
     [SerializeField]
-    GameObject NeedlePointer;
+    GameObject NeedlePointer = null;
     [SerializeField]
-    GameObject echoPointer;
+    GameObject echoPointer = null;
 
     private void Start()
     {

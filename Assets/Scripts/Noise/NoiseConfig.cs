@@ -13,6 +13,8 @@ public class NoiseConfig : ScriptableObject
 
     public bool mipChain = false;
 
+    public bool linear = false;
+
     public TextureWrapMode wrapMode = TextureWrapMode.Clamp;
 
     public FilterMode filterMode = FilterMode.Point;

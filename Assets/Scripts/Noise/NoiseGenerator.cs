@@ -26,41 +26,24 @@ public class NoiseGenerator : MonoBehaviour
 
     ////////////////////////////////////////////////////////
     private TextureFormat textureFormat = TextureFormat.RGB24;
-
     private int resolutionX;
-
     private int resolutionY;
-
     private bool mipChain = false; 
-
+    private bool linear = false;
     private TextureWrapMode wrapMode = TextureWrapMode.Clamp;
-
     private FilterMode filterMode = FilterMode.Point;
-
     private int anisoLevel = 9;
-
     private float scale;
-
     private float frequency;
-
     private float amplitude;
-
     private int octaves;
-
     private float persistance;
-
     private float lacunarity;
-
     private int seed;
-
     private bool offsetDynamic;
-
     private Vector2 offset;
-
     private Gradient coloring;
-
     private Vector3 curPos;
-
     private void Update()
     {
         SetupNoiseConfig();
@@ -73,6 +56,7 @@ public class NoiseGenerator : MonoBehaviour
         resolutionX = NoiseConfig.resolutionX;
         resolutionY = NoiseConfig.resolutionY;
         mipChain = NoiseConfig.mipChain;
+        linear = NoiseConfig.linear;
         wrapMode = NoiseConfig.wrapMode;
         filterMode = NoiseConfig.filterMode;
         anisoLevel = NoiseConfig.anisoLevel;
@@ -182,7 +166,7 @@ public class NoiseGenerator : MonoBehaviour
         int width = noise.GetLength(0);
         int height = noise.GetLength(1);
 
-        Texture2D texture = new Texture2D(width, height, textureFormat,mipChain);
+        Texture2D texture = new Texture2D(width, height, textureFormat,mipChain, linear);
         texture.wrapMode = wrapMode;
         texture.filterMode = filterMode;
         texture.anisoLevel = NoiseConfig.anisoLevel;

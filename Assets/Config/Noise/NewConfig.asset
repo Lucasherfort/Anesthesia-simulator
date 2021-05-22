@@ -16,6 +16,7 @@ MonoBehaviour:
   resolutionX: 100
   resolutionY: 100
   mipChain: 0
+  linear: 0
   wrapMode: 1
   filterMode: 1
   anisoLevel: 1
