@@ -3,13 +3,13 @@
 public class NeedleInsertion : MonoBehaviour
 {
     private HapticPlugin[] devices;
-    private HapticPlugin sondeDevice;
+    private HapticPlugin probeDevice;
     private HapticPlugin needleDevice;
 
     [SerializeField]
     GameObject NeedlePointer = null;
     [SerializeField]
-    GameObject echoPointer = null;
+    GameObject probePointer = null;
 
     private void Start()
     {
@@ -21,13 +21,13 @@ public class NeedleInsertion : MonoBehaviour
             {
                 needleDevice = devices[i];         
             }
-            else if (devices[i].hapticManipulator == echoPointer)
+            else if (devices[i].hapticManipulator == probePointer)
             {
-                sondeDevice = devices[i];
+                probeDevice = devices[i];
 
             }
         }
-        sondeDevice.shapesEnabled = true;
+        probeDevice.shapesEnabled = true;
         needleDevice.shapesEnabled = true;
     }
 }

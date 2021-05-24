@@ -958,6 +958,7 @@ GameObject:
   - component: {fileID: 2479494591797797542}
   - component: {fileID: 2479494592150119167}
   - component: {fileID: 2479494592049455747}
+  - component: {fileID: 2479494591613248353}
   m_Layer: 9
   m_Name: OuterSkin
   m_TagString: 
@@ -965,6 +966,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2479494591613248353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2479494591613248352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afcc2d8f9fe29ee48aa436b31061387e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NeedlePointer: {fileID: 1657863244}
+  probePointer: {fileID: 449007191}
 --- !u!1 &2479494591613248357
 GameObject:
   m_ObjectHideFlags: 0
