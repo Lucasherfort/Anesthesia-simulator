@@ -595,8 +595,7 @@ PrefabInstance:
         type: 3}
       propertyPath: hapticManipulator
       value: 
-      objectReference: {fileID: 782822239832769878, guid: 7214f73130c5ca74d980ba6d82fcb193,
-        type: 3}
+      objectReference: {fileID: 853947436}
     - target: {fileID: 114312932697678990, guid: 7cdb4dbd1f8f22a4a9a363f1a23b8217,
         type: 3}
       propertyPath: configName
@@ -612,6 +611,12 @@ PrefabInstance:
 --- !u!4 &659123931 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4583424822498384, guid: 7cdb4dbd1f8f22a4a9a363f1a23b8217,
+    type: 3}
+  m_PrefabInstance: {fileID: 659123930}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &853947436 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1809148995924868, guid: 7cdb4dbd1f8f22a4a9a363f1a23b8217,
     type: 3}
   m_PrefabInstance: {fileID: 659123930}
   m_PrefabAsset: {fileID: 0}

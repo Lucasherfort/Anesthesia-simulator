@@ -458,6 +458,12 @@ PrefabInstance:
       objectReference: {fileID: 2098358237}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+--- !u!4 &512483860 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 429506, guid: dc06161b6d97feb419f45f03b62e14b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 512483859}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &561702304
 GameObject:
   m_ObjectHideFlags: 0
@@ -2536,7 +2542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnSmoothness: 5
   head:
-    vrTarget: {fileID: 0}
+    vrTarget: {fileID: 512483860}
     rigTarget: {fileID: 816389554}
     trackingPositionOffset: {x: 0, y: 0, z: 0}
     trackingRotationOffset: {x: 0, y: 0, z: 0}
