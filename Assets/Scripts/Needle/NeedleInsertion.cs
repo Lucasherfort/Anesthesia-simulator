@@ -53,11 +53,13 @@ public class NeedleInsertion : MonoBehaviour
                 Debug.LogException(e, this);
             }
         }
-
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-
+        if (other.gameObject.transform.tag == "Probe")
+        {
+            Debug.Log("OK");
+        }
     }
 
     private void OnCollisionStay(Collision collision)

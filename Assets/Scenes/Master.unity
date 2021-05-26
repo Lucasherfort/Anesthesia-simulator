@@ -1060,8 +1060,7 @@ MeshRenderer:
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 743882e8fe17ffb48aeb14c52daf37fa, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1146,8 +1145,7 @@ MeshRenderer:
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 743882e8fe17ffb48aeb14c52daf37fa, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7783,6 +7781,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216630134}
   m_Mesh: {fileID: 4300014, guid: 4ee247f1924b5da4a9b935c58a34d22e, type: 3}
+--- !u!1 &219110657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2461311669656115908, guid: 128408b3a537edc4cbe4628573d54d05,
+    type: 3}
+  m_PrefabInstance: {fileID: 1804456651}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &220393024
 GameObject:
   m_ObjectHideFlags: 0
@@ -11003,6 +11007,12 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &306519616 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2461311669656115892, guid: 128408b3a537edc4cbe4628573d54d05,
+    type: 3}
+  m_PrefabInstance: {fileID: 1804456651}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &307964915
 GameObject:
   m_ObjectHideFlags: 0
@@ -13707,8 +13717,7 @@ MeshRenderer:
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 86002d29b4a6d3a43be7c704b96a321b, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -31049,8 +31058,7 @@ MeshRenderer:
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: c1c23d210aa8503428a6bc27b8cb3cfd, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -38635,8 +38643,7 @@ MeshRenderer:
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: c1c23d210aa8503428a6bc27b8cb3cfd, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -39102,8 +39109,7 @@ MeshRenderer:
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: f7ce12260c0ff174fa0aa56f75206534, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -45761,7 +45767,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 0b76c32276a18d94eb0337b355b6d8e8, type: 2}
-  - {fileID: 2100000, guid: 53108a2451cb7694794dbeb39a8ee55c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -47721,7 +47726,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fa99737f26f648ba89286bbb8e3b9285, type: 2}
+  - {fileID: 2100000, guid: 12240c8414018424593e1ab4ea4ca0c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -52464,6 +52469,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683924464}
   m_CullTransparentMesh: 0
+--- !u!1 &1684966107 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2461311669656115878, guid: 128408b3a537edc4cbe4628573d54d05,
+    type: 3}
+  m_PrefabInstance: {fileID: 1804456651}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1686024495
 GameObject:
   m_ObjectHideFlags: 0
@@ -55388,11 +55399,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'HapticalProbe '
       objectReference: {fileID: 0}
-    - target: {fileID: 2461311564647521247, guid: 128408b3a537edc4cbe4628573d54d05,
+    - target: {fileID: 6855431937161961170, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: CamSkin
+      value: 
+      objectReference: {fileID: 306519616}
+    - target: {fileID: 6855431937161961170, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: CamFilter
+      value: 
+      objectReference: {fileID: 219110657}
+    - target: {fileID: 6855431937161961170, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: CamNeedle
+      value: 
+      objectReference: {fileID: 1684966107}
+    - target: {fileID: 6855431937161961170, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: Screenrenderer
+      value: 
+      objectReference: {fileID: 1576726948}
+    - target: {fileID: 6855431937161961170, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: composite
+      value: 
+      objectReference: {fileID: 2100000, guid: fa99737f26f648ba89286bbb8e3b9285, type: 2}
+    - target: {fileID: 6855431937161961170, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: black
+      value: 
+      objectReference: {fileID: 2100000, guid: 12240c8414018424593e1ab4ea4ca0c3, type: 2}
+    - target: {fileID: 6855431937161961170, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: ScreenPlaceHolder
+      value: 
+      objectReference: {fileID: 2100000, guid: 12240c8414018424593e1ab4ea4ca0c3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 128408b3a537edc4cbe4628573d54d05, type: 3}
 --- !u!1 &1804456652 stripped
@@ -70778,7 +70819,7 @@ GameObject:
   - component: {fileID: 2479494591933763125}
   m_Layer: 9
   m_Name: OuterSkin
-  m_TagString: Touchable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70850,7 +70891,7 @@ GameObject:
   - component: {fileID: 2479494590876798898}
   m_Layer: 9
   m_Name: InnerSkin
-  m_TagString: 
+  m_TagString: Skin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
