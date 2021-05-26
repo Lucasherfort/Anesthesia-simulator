@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1291087304260003818}
   - component: {fileID: 1291087304260003605}
+  - component: {fileID: 1804456656}
+  - component: {fileID: 6855431937161961170}
   m_Layer: 0
   m_Name: HapticalProbe
   m_TagString: Untagged
@@ -48,6 +50,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!65 &1804456656
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291087304260003819}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.484991, y: 7.368048, z: 50.690136}
+  m_Center: {x: -0.044070184, y: -0.05171034, z: 24.611666}
+--- !u!114 &6855431937161961170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291087304260003819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23204d31051a6a04f86765dbb95ae421, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2461311669656115846
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +163,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2461311669706447696}
-  - component: {fileID: 2461311564647521200}
   m_Layer: 0
   m_Name: ProbeRotate
   m_TagString: 
@@ -159,19 +185,6 @@ Transform:
   m_Father: {fileID: 2461311669706447719}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2461311564647521200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2461311669656115847}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d40884f5a5913ce5592030770481958, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: 5
 --- !u!1 &2461311669656115858
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +279,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2461311669706447724}
-  - component: {fileID: 2461311564647521228}
   m_Layer: 0
   m_Name: ProbeAlign
   m_TagString: 
@@ -289,21 +301,6 @@ Transform:
   m_Father: {fileID: 2461311669706447499}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2461311564647521228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2461311669656115869}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8fb1a98de988cf483d5c8ef6f92d641, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  theProbe: {fileID: 2461311669706447724}
-  gameCamera: {fileID: 0}
-  maxDist: 200
 --- !u!1 &2461311669656115878
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +392,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2461311669656115878}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6eed0cc27e79a799d7326b6dddd75178, type: 3}
   m_Name: 
@@ -504,7 +501,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2461311669706447719}
-  - component: {fileID: 2461311564647521218}
   m_Layer: 0
   m_Name: ProbeOrient
   m_TagString: 
@@ -527,19 +523,6 @@ Transform:
   m_Father: {fileID: 2461311669706447724}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2461311564647521218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2461311669656115886}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2d5dfdeee923b52045975c6aa671c47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  refObject: {fileID: 0}
 --- !u!1 &2461311669656115892
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +629,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2461311669706447728}
-  - component: {fileID: 2461311564647521260}
   m_Layer: 0
   m_Name: ProbeTilt
   m_TagString: 
@@ -669,19 +651,6 @@ Transform:
   m_Father: {fileID: 2461311669706447696}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2461311564647521260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2461311669656115893}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03fa3fcf30d14310d7907e3d6b57cb17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tiltSpeed: 1
 --- !u!1 &2461311669656115908
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,7 +757,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2461311669706447499}
-  - component: {fileID: 2461311669656115905}
   m_Layer: 0
   m_Name: ProbeEcho
   m_TagString: 
@@ -811,19 +779,6 @@ Transform:
   m_Father: {fileID: 1291087304260003818}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 180}
---- !u!65 &2461311669656115905
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2461311669656115910}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 9.484991, y: 32.645546, z: 4.763753}
-  m_Center: {x: -0.044070244, y: 28.515816, z: 0.031896114}
 --- !u!1 &2461311669656115914
 GameObject:
   m_ObjectHideFlags: 0

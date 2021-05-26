@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Composite
+  m_Name: ProbeRender
   m_Shader: {fileID: 4800000, guid: 761b87fd2456423c8be213064d0e5165, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
