@@ -8767,37 +8767,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 255358625}
   m_CullTransparentMesh: 0
---- !u!1 &263002930
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 263002931}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &263002931
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 263002930}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.332, y: 0.963, z: 1.722}
-  m_LocalScale: {x: 0.009, y: 0.009, z: 0.009}
-  m_Children:
-  - {fileID: 6071586781880454735}
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &265476000
 Transform:
   m_ObjectHideFlags: 0
@@ -70678,7 +70647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &2479494591933763080
 GameObject:
   m_ObjectHideFlags: 0
@@ -70718,7 +70687,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2479494591933763082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70777,7 +70746,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &2479494591933763095
 GameObject:
   m_ObjectHideFlags: 0
@@ -70809,7 +70778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &2479494591933763111
 GameObject:
   m_ObjectHideFlags: 0
@@ -70828,7 +70797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &2479494591933763113
 GameObject:
   m_ObjectHideFlags: 0
@@ -70847,7 +70816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &2479494591933763117
 GameObject:
   m_ObjectHideFlags: 0
@@ -70865,7 +70834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &2479494591933763123
 GameObject:
   m_ObjectHideFlags: 0
@@ -70938,7 +70907,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &2479494591933763129
 GameObject:
   m_ObjectHideFlags: 0
@@ -70990,7 +70959,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &2479494591933763135
 GameObject:
   m_ObjectHideFlags: 0
@@ -71006,7 +70975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &2479494591933763155
 GameObject:
   m_ObjectHideFlags: 0
@@ -71024,7 +70993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2479494592017649180
 Transform:
   m_ObjectHideFlags: 0
@@ -71265,11 +71234,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6071586781880454834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.332, y: 0.963, z: 1.722}
+  m_LocalScale: {x: 0.009, y: 0.009, z: 0.009}
   m_Children: []
-  m_Father: {fileID: 263002931}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &6071586781880454832
 MeshCollider:
@@ -71345,7 +71314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &6071586781880454835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71359,7 +71328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   springForce: 100
-  damping: 10
+  damping: 15
 --- !u!114 &6071586781880454836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71372,8 +71341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be607a3050f124b7aa040210bfa97c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 10
-  forceOffset: 0.1
+  force: 5
+  forceOffset: 0.05
 --- !u!114 &6071586781880454837
 MonoBehaviour:
   m_ObjectHideFlags: 0
