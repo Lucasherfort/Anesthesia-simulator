@@ -1,17 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEditor;
 using UnityEngine;
 
 #if UNITY_EDITOR
-using UnityEditor;
 #endif
 
 
 //! This MonoBehavior can be applied to any GameObject with a MeshCollider or MeshFilter.
 //! It allows for the easy customization of the haptic properties of a "touchable" object.
-public class HapticSurface : MonoBehaviour {
-
-
+public class HapticSurface : MonoBehaviour
+{
 	public enum HLTOUCH_MODEL { HL_CONTACT, HL_CONSTRAINT };
 	public HLTOUCH_MODEL hlTouchModel = HLTOUCH_MODEL.HL_CONTACT;  //!< HL_CONTACT is a normal object, HL_CONSTRAINT will force the stylus to stick to the surface of the mesh.
 
@@ -38,10 +35,9 @@ public class HapticSurface : MonoBehaviour {
 	private HLTOUCH_MODEL oldTouchModel = HLTOUCH_MODEL.HL_CONTACT;
 	private HLFACING oldFacing = HLFACING.HL_FRONT;
 
-
-
 	//! Used automatically for initialization
-	void Start () {
+	private void Start ()
+    {
 		if (GetComponent<MeshCollider>() == null && GetComponent<MeshFilter>() == null)
 		{
 			Debug.LogError("HapticSurface has been assigned to object without mesh.");
@@ -53,7 +49,7 @@ public class HapticSurface : MonoBehaviour {
 	}
 	
 	//! Update is called once per frame and updates OpenHaptics with the current suface materials. 
-	void Update () 
+	private void Update () 
 	{
 		bool needUpdate = false;
 
@@ -92,23 +88,16 @@ public class HapticSurface : MonoBehaviour {
 			oldPopThrough = hlPopThrough;
 			oldFlipNormals = Flip_Normals;
 			oldFacing = hlTouchable;
-
 		}
-		
 	}
 
-	void OnDestroy()
+	private void OnDestroy()
 	{
 		HapticPlugin.shape_remove(gameObject.GetInstanceID());
 	}
-
-
-
 }		
 	
-
 #if UNITY_EDITOR
-
 
 [CustomEditor(typeof(HapticSurface))]
 public class HapticSurfaceEditor : Editor
@@ -123,7 +112,8 @@ public class HapticSurfaceEditor : Editor
 			EditorGUILayout.LabelField("   Haptic Surface must be assigned to an object with a mesh.");
 			EditorGUILayout.LabelField("*********************************************************");
 
-		} else
+		}
+        else
 		{
 			HS.hlTouchModel = (HapticSurface.HLTOUCH_MODEL)EditorGUILayout.EnumPopup("HL_Touch_Model", HS.hlTouchModel);
 			HS.hlTouchable = (HapticSurface.HLFACING)EditorGUILayout.EnumPopup("HL_Facing", HS.hlTouchable);
@@ -142,7 +132,6 @@ public class HapticSurfaceEditor : Editor
 				break;
 			}
 		}
-
 	}
 }
 #endif
