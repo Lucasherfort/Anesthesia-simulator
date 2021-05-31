@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class HapticProbe : MonoBehaviour
+public class DisplayScreenProbe : MonoBehaviour
 {
     [SerializeField]
     private Material composite = null;
