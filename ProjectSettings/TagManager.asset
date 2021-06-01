@@ -12,6 +12,8 @@ TagManager:
   - DropArea
   - GuideEntry
   - SondeArea
+  - Probe
+  - Needle
   layers:
   - Default
   - TransparentFX
