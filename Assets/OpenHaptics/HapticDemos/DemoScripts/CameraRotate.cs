@@ -64,15 +64,15 @@ public class CameraRotate : MonoBehaviour {
 			GameObject hapticDevice = hapticDevices [ii];
 			if (hapticDevice == null)
 				continue;
-			if (hapticDevice.GetComponent<HapticPlugin>() == null)
+			if (hapticDevice.GetComponent<CustomHapticPlugin>() == null)
 			{
-				Assert.IsNotNull(hapticDevice.GetComponent<HapticPlugin>());
+				Assert.IsNotNull(hapticDevice.GetComponent<CustomHapticPlugin>());
 				continue;
 			}
 
 			// Don't rotate if we're picking something up.  
 			// (This seems like it might be useful, but in practice, it's just confusing.)
-			HapticGrabber grabber = hapticDevice.GetComponent<HapticPlugin>().hapticManipulator.GetComponent<HapticGrabber>();
+			HapticGrabber grabber = hapticDevice.GetComponent<CustomHapticPlugin>().hapticManipulator.GetComponent<HapticGrabber>();
 			if (grabber != null && grabber.isGrabbing())
 			{
 				isDisabled = true;
@@ -81,7 +81,7 @@ public class CameraRotate : MonoBehaviour {
 
 			// Determine the X value, relative to the screen...
 			float x = 0.0f;
-			x = cam.GetComponent<Camera>().WorldToScreenPoint(hapticDevice.GetComponent<HapticPlugin>().stylusPositionWorld).x;
+			x = cam.GetComponent<Camera>().WorldToScreenPoint(hapticDevice.GetComponent<CustomHapticPlugin>().stylusPositionWorld).x;
 			x -= (Screen.width / 2.0f);
 
 			// Determine the threshhold, relative to the screen.

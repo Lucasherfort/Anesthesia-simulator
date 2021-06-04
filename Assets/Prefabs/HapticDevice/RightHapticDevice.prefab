@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3170562999154329897}
   - component: {fileID: 3170562999154329896}
-  - component: {fileID: 3170562999154329911}
+  - component: {fileID: 7154484862475330061}
   m_Layer: 0
   m_Name: RightHapticDevice
-  m_TagString: Untagged
+  m_TagString: Needle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3170562999154329910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.332, y: 0.963, z: 1.722}
-  m_LocalScale: {x: 0.009, y: 0.009, z: 0.009}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   margin: 0.26
   Greeting: {fileID: 0}
   greetingTime: 5
---- !u!114 &3170562999154329911
+--- !u!114 &7154484862475330061
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3170562999154329910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2307560af17f8c64dba01b84045f565f, type: 3}
+  m_Script: {fileID: 11500000, guid: e8477d3e0009d9b42b9ae4c2b53b1286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   configName: Right Device

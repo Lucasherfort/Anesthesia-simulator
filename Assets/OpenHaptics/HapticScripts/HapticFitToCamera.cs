@@ -43,7 +43,7 @@ public class HapticFitToCamera : MonoBehaviour
 		}
 
 
-		HapticPlugin plugin = (HapticPlugin)gameObject.GetComponent(typeof(HapticPlugin));
+		CustomHapticPlugin plugin = (CustomHapticPlugin)gameObject.GetComponent(typeof(CustomHapticPlugin));
 
 		if (plugin == null)
 		{

@@ -7,7 +7,7 @@ public class HapticPluginSafetyScript : MonoBehaviour {
 	public bool SafeOnMovedReferenceFrame = true;
 	public float SafeOnFrameratesBelow = 15.0f;
 
-	private	HapticPlugin Haptic = null;
+	private	CustomHapticPlugin Haptic = null;
 
 
 	private float DOWNTIME = 0.5f; // Seconds before you turn the thing back on
@@ -17,7 +17,7 @@ public class HapticPluginSafetyScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		Haptic = gameObject.GetComponent(typeof(HapticPlugin)) as HapticPlugin;
+		Haptic = gameObject.GetComponent(typeof(CustomHapticPlugin)) as CustomHapticPlugin;
 		if (Haptic == null)
 			Debug.LogError("HapticPluginSafetyScript must be attached to the same object as the HapticPlugin script.");
 	}

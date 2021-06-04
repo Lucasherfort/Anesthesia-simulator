@@ -131,17 +131,17 @@ PrefabInstance:
     - target: {fileID: 1291087304260003818, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.305
+      value: 0.10119027
       objectReference: {fileID: 0}
     - target: {fileID: 1291087304260003818, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.181
+      value: -1.5507622
       objectReference: {fileID: 0}
     - target: {fileID: 1291087304260003818, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.779
+      value: -7.6069183
       objectReference: {fileID: 0}
     - target: {fileID: 1291087304260003818, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
@@ -259,7 +259,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5725100415686960896, guid: caa66aaea7ddda2498f4952e633da2b7,
+    - target: {fileID: 4075562731604716731, guid: caa66aaea7ddda2498f4952e633da2b7,
         type: 3}
       propertyPath: hapticManipulator
       value: 
@@ -268,11 +268,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LeftHapticDevice
-      objectReference: {fileID: 0}
-    - target: {fileID: 5725100415686960898, guid: caa66aaea7ddda2498f4952e633da2b7,
-        type: 3}
-      propertyPath: m_TagString
-      value: Probe
       objectReference: {fileID: 0}
     - target: {fileID: 5725100415686960899, guid: caa66aaea7ddda2498f4952e633da2b7,
         type: 3}
@@ -328,21 +323,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5725100415686960899, guid: caa66aaea7ddda2498f4952e633da2b7,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5725100415686960899, guid: caa66aaea7ddda2498f4952e633da2b7,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5725100415686960899, guid: caa66aaea7ddda2498f4952e633da2b7,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caa66aaea7ddda2498f4952e633da2b7, type: 3}
@@ -408,32 +388,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3170562999154329897, guid: 86de6c1679338044cb7b02d87f659d6a,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3170562999154329897, guid: 86de6c1679338044cb7b02d87f659d6a,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3170562999154329897, guid: 86de6c1679338044cb7b02d87f659d6a,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3170562999154329910, guid: 86de6c1679338044cb7b02d87f659d6a,
         type: 3}
       propertyPath: m_Name
       value: RightHapticDevice
       objectReference: {fileID: 0}
-    - target: {fileID: 3170562999154329910, guid: 86de6c1679338044cb7b02d87f659d6a,
-        type: 3}
-      propertyPath: m_TagString
-      value: Needle
-      objectReference: {fileID: 0}
-    - target: {fileID: 3170562999154329911, guid: 86de6c1679338044cb7b02d87f659d6a,
+    - target: {fileID: 7154484862475330061, guid: 86de6c1679338044cb7b02d87f659d6a,
         type: 3}
       propertyPath: hapticManipulator
       value: 
@@ -534,22 +494,22 @@ PrefabInstance:
     - target: {fileID: 4062997844672009318, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -8.2
       objectReference: {fileID: 0}
     - target: {fileID: 4062997844672009318, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4062997844672009318, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4062997844672009318, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4062997844672009318, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
         type: 3}
@@ -576,35 +536,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4062997844672009318, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4062997844672009318, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4062997844672009318, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4062997844672009320, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
         type: 3}
       propertyPath: m_Name
       value: HapticalNeedle
-      objectReference: {fileID: 0}
-    - target: {fileID: 4062997844672009320, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 8219467860679627045, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
-        type: 3}
-      propertyPath: m_TagString
-      value: Needle
       objectReference: {fileID: 0}
     - target: {fileID: 8219467866870419983, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
         type: 3}
@@ -978,7 +913,7 @@ GameObject:
   - component: {fileID: 2479494592150119167}
   - component: {fileID: 2479494592049455747}
   - component: {fileID: 2479494591613248355}
-  - component: {fileID: 2479494591613248354}
+  - component: {fileID: 2479494591613248353}
   m_Layer: 9
   m_Name: OuterSkin
   m_TagString: Touchable
@@ -986,7 +921,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2479494591613248354
+--- !u!114 &2479494591613248353
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1064,7 +999,7 @@ GameObject:
   - component: {fileID: 2479494592670212833}
   m_Layer: 9
   m_Name: InnerSkin
-  m_TagString: 
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1212,7 +1147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2479494591613248364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -7.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2479494591797797555}
@@ -1316,7 +1251,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2479494591613248375}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -8.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2479494591797797526}

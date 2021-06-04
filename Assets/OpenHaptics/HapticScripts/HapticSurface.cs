@@ -65,19 +65,19 @@ public class HapticSurface : MonoBehaviour
 
 		if (needUpdate)
 		{
-			HapticPlugin.shape_settings(gameObject.GetInstanceID(), hlStiffness, hlDamping, hlStaticFriction, hlDynamicFriction, hlPopThrough);
+			CustomHapticPlugin.shape_settings(gameObject.GetInstanceID(), hlStiffness, hlDamping, hlStaticFriction, hlDynamicFriction, hlPopThrough);
 
 			int M = 0;
 			if (hlTouchModel == HLTOUCH_MODEL.HL_CONSTRAINT)
 				M = 1;
 			
-			HapticPlugin.shape_constraintSettings(gameObject.GetInstanceID(), M, snapDistance);
-			HapticPlugin.shape_flipNormals(gameObject.GetInstanceID(), Flip_Normals);
+			CustomHapticPlugin.shape_constraintSettings(gameObject.GetInstanceID(), M, snapDistance);
+			CustomHapticPlugin.shape_flipNormals(gameObject.GetInstanceID(), Flip_Normals);
 
 			int T = 1;
 			if (hlTouchable == HLFACING.HL_BACK) T = 2;
 			if (hlTouchable == HLFACING.HL_FRONT_AND_BACK) T = 3;
-			HapticPlugin.shape_facing(gameObject.GetInstanceID(), T);
+			CustomHapticPlugin.shape_facing(gameObject.GetInstanceID(), T);
 
 			oldStiffness = hlStiffness;
 			oldDamping = hlDamping;
@@ -93,7 +93,7 @@ public class HapticSurface : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		HapticPlugin.shape_remove(gameObject.GetInstanceID());
+		CustomHapticPlugin.shape_remove(gameObject.GetInstanceID());
 	}
 }		
 	
