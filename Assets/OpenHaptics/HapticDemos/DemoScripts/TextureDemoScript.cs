@@ -9,7 +9,7 @@ public class TextureDemoScript : MonoBehaviour
 	public Texture2D FrictionTexture = null;
 
 	// Keep track of the Haptic Devices
-	HapticPlugin device = null;
+	CustomHapticPlugin device = null;
 	float luminocity = 0.5f;
 
 	[Header("White Surface")]
@@ -30,7 +30,7 @@ public class TextureDemoScript : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		device = (HapticPlugin) Object.FindObjectOfType(typeof(HapticPlugin));
+		device = (CustomHapticPlugin) Object.FindObjectOfType(typeof(CustomHapticPlugin));
 	}
 	
 	// Update is called once per frame
@@ -91,7 +91,7 @@ public class TextureDemoScript : MonoBehaviour
 			float Value = luminocity;
 			float inVal = 1.0f-Value;
 
-			HapticPlugin.shape_settings(gameObject.GetInstanceID(),
+			CustomHapticPlugin.shape_settings(gameObject.GetInstanceID(),
 				hlStiffness * Value + hlStiffness2 * inVal,
 				hlDamping * Value + hlDamping2 * inVal,
 				hlStaticFriction * Value + hlStaticFriction2 * inVal,

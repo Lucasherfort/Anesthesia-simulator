@@ -3,14 +3,14 @@
 [CreateAssetMenu(fileName = "HapticConfig", menuName = "Haptic/HapticConfig", order = 1)]
 public class HapticConfig : ScriptableObject
 {
+    /// <summary>
+    /// //////////////////// PROBE /////////////////////////////
+    /// </summary>
+
+    public string ProbeTagName;
 
     public enum HLTOUCH_MODEL { HL_CONTACT, HL_CONSTRAINT };
     public enum HLFACING { HL_FRONT, HL_BACK, HL_FRONT_AND_BACK };
-    public enum EFFECT_TYPE { CONSTANT, VISCOUS, SPRING, FRICTION, VIBRATE };
-
-    /// <summary>
-    /// ///////////////////////////// HAPTIC PROBE //////////////////////////////////////
-    /// </summary>
 
     public HLTOUCH_MODEL hlTouchModel = HLTOUCH_MODEL.HL_CONTACT;  
 
@@ -34,21 +34,10 @@ public class HapticConfig : ScriptableObject
     public float snapDistance = 1.0f;
 
     /// <summary>
-    /// ///////////////////////////// HAPTIC NEEDLE //////////////////////////////////////
+    /// //////////////////// NEEDLE /////////////////////////////
     /// </summary>
 
-    public EFFECT_TYPE effectType = EFFECT_TYPE.VISCOUS;
+    public string NeedleTagProbe;
 
-    [Range(0.0f, 1.0f)]
-    public double Gain = 0.333f;
-
-    [Range(0.0f, 1.0f)]
-    public double Magnitude = 0.333f;
-
-    [Range(1.0f, 1000.0f)]
-    public double Frequency = 200.0f;
-
-    public Vector3 Position = Vector3.zero;
-
-    public Vector3 Direction = Vector3.up;
+    public float resistance = 1;
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MetersDemo : MonoBehaviour {
 
-	public HapticPlugin HapticDevice = null;
+	public CustomHapticPlugin HapticDevice = null;
 	public GameObject Bunny = null;
 	public Image depthMeter = null;
 	public Image speedMeter = null;
@@ -72,7 +72,7 @@ public class MetersDemo : MonoBehaviour {
 	void Start () 
 	{
 		if (HapticDevice == null)
-			HapticDevice = (HapticPlugin)FindObjectOfType(typeof(HapticPlugin));
+			HapticDevice = (CustomHapticPlugin)FindObjectOfType(typeof(CustomHapticPlugin));
 
 		if( HapticDevice /* STILL */ == null )
 			Debug.LogError("This script requires that Haptic Device be assigned.");
