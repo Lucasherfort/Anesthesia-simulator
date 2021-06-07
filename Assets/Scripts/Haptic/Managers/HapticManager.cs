@@ -10,6 +10,10 @@ public class HapticManager : MonoBehaviour
     [SerializeField]
     private HapticConfig hapticConfig = null;
 
+    static public HapticManager Instance { get; private set; }
+
+
+
     /// <summary>
     /// //////////////////// PROBE /////////////////////////////
     /// </summary>
@@ -49,13 +53,25 @@ public class HapticManager : MonoBehaviour
     /// </summary>
 
     private string NeedleTagName;
-    private CustomHapticPlugin[] devices;
-    private CustomHapticPlugin probeDevice;
-    private CustomHapticPlugin needleDevice;
+    private ProbeHapticPlugin probeDevice;
+    private NeedleHapticPlugin needleDevice;
     private Vector3 position;
-    private bool inContactwithNeedle = false;
+
+    [HideInInspector]
+    public bool NeedleTouchSkin = false;
 
     private float resistance = 0;
+
+    private void Awake()
+    {
+        if (Instance)
+        {
+            Destroy(this);
+            return;
+        }
+
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -69,23 +85,14 @@ public class HapticManager : MonoBehaviour
         if (gameObject.tag == "Untagged")
             gameObject.tag = "Touchable";
 
-        devices = (CustomHapticPlugin[])FindObjectsOfType(typeof(CustomHapticPlugin));
+        probeDevice = (ProbeHapticPlugin)FindObjectOfType(typeof(ProbeHapticPlugin));
+        needleDevice = (NeedleHapticPlugin)FindObjectOfType(typeof(NeedleHapticPlugin));
 
-        for (int i = 0; i < devices.Length; i++)
-        {
-            if (devices[i].tag == ProbeTagName)
-            {
-                probeDevice = devices[i];
-            }
-            else if (devices[i].tag == NeedleTagName)
-            {
-                needleDevice = devices[i];
-            }
-            else
-            {
-                Debug.LogWarning("The GameObject " + devices[i].name + " doesn't have a correct tag");
-            }
-        }
+        if (probeDevice == null)
+            Debug.LogError("probeDevice is missing !");
+
+        if (needleDevice == null)
+            Debug.LogError("needleDevice is missing !");
 
         probeDevice.shapesEnabled = true;
         needleDevice.shapesEnabled = true;
@@ -126,19 +133,19 @@ public class HapticManager : MonoBehaviour
 
         if (needUpdate)
         {
-            CustomHapticPlugin.shape_settings(gameObject.GetInstanceID(), hlStiffness, hlDamping, hlStaticFriction, hlDynamicFriction, hlPopThrough);
+            ProbeHapticPlugin.shape_settings(gameObject.GetInstanceID(), hlStiffness, hlDamping, hlStaticFriction, hlDynamicFriction, hlPopThrough);
 
             int M = 0;
             if (hlTouchModel == HapticConfig.HLTOUCH_MODEL.HL_CONSTRAINT)
                 M = 1;
 
-            CustomHapticPlugin.shape_constraintSettings(gameObject.GetInstanceID(), M, snapDistance);
-            CustomHapticPlugin.shape_flipNormals(gameObject.GetInstanceID(), Flip_Normals);
+            ProbeHapticPlugin.shape_constraintSettings(gameObject.GetInstanceID(), M, snapDistance);
+            ProbeHapticPlugin.shape_flipNormals(gameObject.GetInstanceID(), Flip_Normals);
 
             int T = 1;
             if (hlTouchable == HapticConfig.HLFACING.HL_BACK) T = 2;
             if (hlTouchable == HapticConfig.HLFACING.HL_FRONT_AND_BACK) T = 3;
-            CustomHapticPlugin.shape_facing(gameObject.GetInstanceID(), T);
+            ProbeHapticPlugin.shape_facing(gameObject.GetInstanceID(), T);
 
             oldStiffness = hlStiffness;
             oldDamping = hlDamping;
@@ -151,12 +158,29 @@ public class HapticManager : MonoBehaviour
             oldFacing = hlTouchable;
         }
 
-        if (inContactwithNeedle)
+        if (NeedleTouchSkin)
         {
             if (probeDevice != null)
             {
                 probeDevice.shapesEnabled = false;
             }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag(NeedleTagName))
+        {
+            // Setup Parent
+
+            // TODO
+
+            needleDevice.PivotManipulator.transform.position = collision.transform.position;
+            needleDevice.PivotManipulator.transform.rotation = collision.transform.rotation;
+
+            needleDevice.hapticManipulator.transform.parent = null;
+            needleDevice.hapticManipulator.transform.SetParent(needleDevice.PivotManipulator.transform);
+
         }
     }
 
@@ -170,15 +194,14 @@ public class HapticManager : MonoBehaviour
             {
                 if (probeDevice.touchingDepth > resistance)
                 {
-                    inContactwithNeedle = true;
-                }
-               
+                    NeedleTouchSkin = true;
+                }               
             }
             else
             {
                 if (needleDevice.touchingDepth > resistance)
                 {
-                    inContactwithNeedle = true;
+                    NeedleTouchSkin = true;
                 }
             }
         }
@@ -188,7 +211,13 @@ public class HapticManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(NeedleTagName))
         {
-            inContactwithNeedle = false;
+            // Setup Parent
+            needleDevice.hapticManipulator.transform.parent = null;
+            needleDevice.hapticManipulator.transform.SetParent(needleDevice.PivotManipulator.transform.parent);
+
+            // TODO
+
+            NeedleTouchSkin = false;
             if (probeDevice != null)
             {
                 probeDevice.shapesEnabled = true;
@@ -198,6 +227,7 @@ public class HapticManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        CustomHapticPlugin.shape_remove(gameObject.GetInstanceID());
+        if (Instance == this) Instance = null;
+        ProbeHapticPlugin.shape_remove(gameObject.GetInstanceID());
     }
 }

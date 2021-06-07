@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using System.Runtime.InteropServices;
@@ -12,10 +11,8 @@ using UnityEditor;
 //! This MonoBehavior should be attached to a GameObject and will represent the Haptic Device itself.
 //! One of these objects should be added to the scene corrisponding to each Haptic Device you intend the scene to connect to. 
 //! Additionally this object contains static declarations of the functions in the OHToUnityBridge dll, required for this asset to function.
-public class CustomHapticPlugin : MonoBehaviour
+public class ProbeHapticPlugin : MonoBehaviour
 {
-
-
     [Header("Configuration Attributes")]
 
     public string configName = "Default Device";  //!< Filename of the Haptic Device Configuration. (Typically "Default Device")
@@ -871,7 +868,7 @@ public class CustomHapticPlugin : MonoBehaviour
             Application.Quit();
             showNoDevicePopup = false;
 #if UNITY_EDITOR
-			UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
 #endif
         }
         y += 30;
@@ -895,7 +892,7 @@ public class CustomHapticPlugin : MonoBehaviour
             Application.Quit();
             showNoDevicePopup = false;
 #if UNITY_EDITOR
-			UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
 #endif
         }
         y += 30;
@@ -905,80 +902,81 @@ public class CustomHapticPlugin : MonoBehaviour
 
 
 #if UNITY_EDITOR
-	// In editor Gizmos
-	void OnDrawGizmos()
-	{
-		if (hHD >= 0)
-		{
-			// Draw Extants
-			{
-				const int minX = 0;
-				const int minY = 1;
-				const int minZ = 2;
-				const int maxX = 3;
-				const int maxY = 4;
-				const int maxZ = 5;
+    // In editor Gizmos
+    void OnDrawGizmos()
+    {
+        if (hHD >= 0)
+        {
+            // Draw Extants
+            {
+                const int minX = 0;
+                const int minY = 1;
+                const int minZ = 2;
+                const int maxX = 3;
+                const int maxY = 4;
+                const int maxZ = 5;
 
-				Vector3 usableBox = new Vector3 (
-					                    (float)(usable_extents [maxX] - usable_extents [minX]),
-					                    (float)(usable_extents [maxY] - usable_extents [minY]),
-					                    (float)(usable_extents [maxZ] - usable_extents [minZ]));
-				Vector3 usableCenter = new Vector3 (
-					                       0.5f * (float)(usable_extents [maxX] + usable_extents [minX]),
-					                       0.5f * (float)(usable_extents [maxY] + usable_extents [minY]),
-					                       0.5f * (float)(usable_extents [maxZ] + usable_extents [minZ]));
-			
-				Gizmos.color = Color.green;
-				Gizmos.matrix = gameObject.transform.localToWorldMatrix;
-				Gizmos.DrawWireCube(usableCenter, usableBox); 
+                Vector3 usableBox = new Vector3(
+                                        (float)(usable_extents[maxX] - usable_extents[minX]),
+                                        (float)(usable_extents[maxY] - usable_extents[minY]),
+                                        (float)(usable_extents[maxZ] - usable_extents[minZ]));
+                Vector3 usableCenter = new Vector3(
+                                           0.5f * (float)(usable_extents[maxX] + usable_extents[minX]),
+                                           0.5f * (float)(usable_extents[maxY] + usable_extents[minY]),
+                                           0.5f * (float)(usable_extents[maxZ] + usable_extents[minZ]));
 
-				Vector3 maxBox = new Vector3 (
-					                 (float)(max_extents [maxX] - max_extents [minX]),
-					                 (float)(max_extents [maxY] - max_extents [minY]),
-					                 (float)(max_extents [maxZ] - max_extents [minZ]));
-				Vector3 maxCenter = new Vector3 (
-					                    0.5f * (float)(max_extents [maxX] + max_extents [minX]),
-					                    0.5f * (float)(max_extents [maxY] + max_extents [minY]),
-					                    0.5f * (float)(max_extents [maxZ] + max_extents [minZ]));
+                Gizmos.color = Color.green;
+                Gizmos.matrix = gameObject.transform.localToWorldMatrix;
+                Gizmos.DrawWireCube(usableCenter, usableBox);
 
-
-				Gizmos.color = Color.yellow;
-				Gizmos.matrix = gameObject.transform.localToWorldMatrix;
-				Gizmos.DrawWireCube(maxCenter, maxBox); 
-			}
-
-			// Draw Stylus!
-			Gizmos.color = Color.white;
-			Gizmos.matrix = gameObject.transform.localToWorldMatrix * stylusTransformRaw;
-			Gizmos.DrawWireSphere(Vector3.zero, 10);
-			Gizmos.DrawWireCube(new Vector3 (0, 0, 20), new Vector3 (5, 5, 40));
-
-			// Draw Buttons
-
-			if (Buttons [0] == 1)
-				Gizmos.color = Color.green;
-			else
-				Gizmos.color = Color.gray;
-			Gizmos.DrawWireSphere(new Vector3 (0, 0, 5), 2f);
-			if (Buttons [1] >= 0)
-			{
-				if (Buttons [1] == 1)
-					Gizmos.color = Color.green;
-				else
-					Gizmos.color = Color.gray;
-				Gizmos.DrawWireSphere(new Vector3 (0, 0, 10), 2f);
-			}
-		} else
-		{
-			// Else no connection.
-			Vector3 OmniBox = new Vector3(160,120,70);
-			Gizmos.color = Color.grey;
-			Gizmos.matrix = gameObject.transform.localToWorldMatrix;
-			Gizmos.DrawWireCube (Vector3.zero, OmniBox);
+                Vector3 maxBox = new Vector3(
+                                     (float)(max_extents[maxX] - max_extents[minX]),
+                                     (float)(max_extents[maxY] - max_extents[minY]),
+                                     (float)(max_extents[maxZ] - max_extents[minZ]));
+                Vector3 maxCenter = new Vector3(
+                                        0.5f * (float)(max_extents[maxX] + max_extents[minX]),
+                                        0.5f * (float)(max_extents[maxY] + max_extents[minY]),
+                                        0.5f * (float)(max_extents[maxZ] + max_extents[minZ]));
 
 
-		}
-	} //OnDrawGizmos()
+                Gizmos.color = Color.yellow;
+                Gizmos.matrix = gameObject.transform.localToWorldMatrix;
+                Gizmos.DrawWireCube(maxCenter, maxBox);
+            }
+
+            // Draw Stylus!
+            Gizmos.color = Color.white;
+            Gizmos.matrix = gameObject.transform.localToWorldMatrix * stylusTransformRaw;
+            Gizmos.DrawWireSphere(Vector3.zero, 10);
+            Gizmos.DrawWireCube(new Vector3(0, 0, 20), new Vector3(5, 5, 40));
+
+            // Draw Buttons
+
+            if (Buttons[0] == 1)
+                Gizmos.color = Color.green;
+            else
+                Gizmos.color = Color.gray;
+            Gizmos.DrawWireSphere(new Vector3(0, 0, 5), 2f);
+            if (Buttons[1] >= 0)
+            {
+                if (Buttons[1] == 1)
+                    Gizmos.color = Color.green;
+                else
+                    Gizmos.color = Color.gray;
+                Gizmos.DrawWireSphere(new Vector3(0, 0, 10), 2f);
+            }
+        }
+        else
+        {
+            // Else no connection.
+            Vector3 OmniBox = new Vector3(160, 120, 70);
+            Gizmos.color = Color.grey;
+            Gizmos.matrix = gameObject.transform.localToWorldMatrix;
+            Gizmos.DrawWireCube(Vector3.zero, OmniBox);
+
+
+        }
+    } //OnDrawGizmos()
 #endif
 
 } //class HapticPlugin
@@ -987,7 +985,7 @@ public class CustomHapticPlugin : MonoBehaviour
 
 
 
-public class DisplayOnlyAttribute2 : PropertyAttribute
+public class ProbeDisplayOnlyAttribute : PropertyAttribute
 {
 
 }
@@ -995,24 +993,25 @@ public class DisplayOnlyAttribute2 : PropertyAttribute
 
 #if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(DisplayOnlyAttribute))]
-public class ReadOnlyDrawer2 : PropertyDrawer
+public class ProbeReadOnlyDrawer : PropertyDrawer
 {
-	public override float GetPropertyHeight(SerializedProperty property,
-		GUIContent label)
-	{
-		return EditorGUI.GetPropertyHeight(property, label, true);
-	}
+    public override float GetPropertyHeight(SerializedProperty property,
+        GUIContent label)
+    {
+        return EditorGUI.GetPropertyHeight(property, label, true);
+    }
 
-	public override void OnGUI(Rect position,
-		SerializedProperty property,
-		GUIContent label)
-	{
-		GUI.enabled = false;
-		EditorGUI.PropertyField(position, property, label, true);
-		GUI.enabled = true;
-	}
+    public override void OnGUI(Rect position,
+        SerializedProperty property,
+        GUIContent label)
+    {
+        GUI.enabled = false;
+        EditorGUI.PropertyField(position, property, label, true);
+        GUI.enabled = true;
+    }
 }
 #endif
+
 
 
 

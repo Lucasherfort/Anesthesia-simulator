@@ -1,7 +1,4 @@
-﻿using System.Timers;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -27,7 +24,7 @@ public class HapticEffect : MonoBehaviour {
 
 
 	// Keep track of the Haptic Devices
-	CustomHapticPlugin[] devices;
+	HapticPlugin[] devices;
 	bool[] inTheZone;  		//Is the stylus in the effect zone?
 	Vector3[] devicePoint;	// Current location of stylus
 	float[] delta;			// Distance from stylus to zone collider.
@@ -46,7 +43,7 @@ public class HapticEffect : MonoBehaviour {
 	void Start () 
 	{
 		//Initialize the list of haptic devices.
-		devices = (CustomHapticPlugin[]) Object.FindObjectsOfType(typeof(CustomHapticPlugin));
+		devices = (HapticPlugin[])FindObjectsOfType(typeof(HapticPlugin));
 		inTheZone = new bool[devices.Length];
 		devicePoint = new Vector3[devices.Length];
 		delta = new float[devices.Length];
@@ -58,7 +55,7 @@ public class HapticEffect : MonoBehaviour {
 			inTheZone [ii] = false;
 			devicePoint [ii] = Vector3.zero;
 			delta [ii] = 0.0f;
-			FXID [ii] = CustomHapticPlugin.effects_assignEffect(devices [ii].configName);
+			FXID [ii] = HapticPlugin.effects_assignEffect(devices [ii].configName);
 		}
 	}
 	
@@ -86,14 +83,14 @@ public class HapticEffect : MonoBehaviour {
 		// Update the effect seperately for each haptic device.
 		for( int ii = 0; ii < devices.Length; ii++ )
 		{
-			CustomHapticPlugin device = devices [ii];
+            HapticPlugin device = devices [ii];
 			bool oldInTheZone = inTheZone[ii];
 			int ID = FXID [ii];
 
 			// If a haptic effect has not been assigned through Open Haptics, assign one now.
 			if (ID == -1)
 			{
-				FXID [ii] = CustomHapticPlugin.effects_assignEffect(devices [ii].configName);
+				FXID [ii] = HapticPlugin.effects_assignEffect(devices [ii].configName);
 				ID = FXID [ii];
 			
 				if (ID == -1) // Still broken?
@@ -125,8 +122,8 @@ public class HapticEffect : MonoBehaviour {
 				if (device.isInSafetyMode())
 					Mag = 0;
 
-				// Send the current effect settings to OpenHaptics.
-				CustomHapticPlugin.effects_settings(
+                // Send the current effect settings to OpenHaptics.
+                HapticPlugin.effects_settings(
 					device.configName,
 					ID,
 					Gain,
@@ -134,7 +131,7 @@ public class HapticEffect : MonoBehaviour {
 					Frequency,
 					pos,
 					dir);
-				CustomHapticPlugin.effects_type(
+                HapticPlugin.effects_type(
 					device.configName,
 					ID,
 					(int)effectType);
@@ -151,10 +148,10 @@ public class HapticEffect : MonoBehaviour {
 			{
 				if (inTheZone [ii])
 				{
-					CustomHapticPlugin.effects_startEffect(device.configName, ID );
+                    HapticPlugin.effects_startEffect(device.configName, ID );
 				} else
 				{
-					CustomHapticPlugin.effects_stopEffect(device.configName, ID);
+                    HapticPlugin.effects_stopEffect(device.configName, ID);
 				}
 			}
 
@@ -166,11 +163,11 @@ public class HapticEffect : MonoBehaviour {
 		//For every haptic device, send a Stop event to OpenHaptics
 		for (int ii = 0; ii < devices.Length; ii++)
 		{
-			CustomHapticPlugin device = devices [ii];
+            HapticPlugin device = devices [ii];
 			if (device == null)
 				continue;
 			int ID = FXID [ii];
-			CustomHapticPlugin.effects_stopEffect(device.configName, ID);
+            HapticPlugin.effects_stopEffect(device.configName, ID);
 		}
 	}
 	void OnDisable()
@@ -178,11 +175,11 @@ public class HapticEffect : MonoBehaviour {
 		//For every haptic device, send a Stop event to OpenHaptics
 		for (int ii = 0; ii < devices.Length; ii++)
 		{
-			CustomHapticPlugin device = devices [ii];
+            HapticPlugin device = devices [ii];
 			if (device == null)
 				continue;
 			int ID = FXID [ii];
-			CustomHapticPlugin.effects_stopEffect(device.configName, ID);
+            HapticPlugin.effects_stopEffect(device.configName, ID);
 			inTheZone [ii] = false;
 		}
 	}
@@ -194,7 +191,7 @@ public class HapticEffect : MonoBehaviour {
 	void OnDrawGizmos()
 	{
 		Gizmos.matrix = Matrix4x4.identity;
-		Gizmos.matrix = this.transform.localToWorldMatrix;
+		Gizmos.matrix = transform.localToWorldMatrix;
 
 		Gizmos.color = Color.white;
 
@@ -231,10 +228,7 @@ public class HapticEffect : MonoBehaviour {
 					Gizmos.DrawLine(focusPointWorld, devicePoint [ii]);
 			}
 		}
-
 	}
-
-
 }
 
 #if UNITY_EDITOR

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VibrationDemoScript : MonoBehaviour {
 
-	public CustomHapticPlugin HapticDevice = null;
+	public HapticPlugin HapticDevice = null;
 	private bool vibrationOn;
 	private int FXID = -1;
 
@@ -12,7 +12,7 @@ public class VibrationDemoScript : MonoBehaviour {
 	{
 		vibrationOn = false;
 		if (HapticDevice == null)
-			HapticDevice = (CustomHapticPlugin)FindObjectOfType(typeof(CustomHapticPlugin));
+			HapticDevice = (HapticPlugin)FindObjectOfType(typeof(HapticPlugin));
 		
 		if( HapticDevice /* STILL */ == null )
 			Debug.LogError("This script requires that Haptic Device be assigned.");
@@ -25,7 +25,7 @@ public class VibrationDemoScript : MonoBehaviour {
 		// If a haptic effect has not been assigned through Open Haptics, assign one now.
 		if (FXID == -1)
 		{
-			FXID = CustomHapticPlugin.effects_assignEffect(HapticDevice.configName);
+			FXID = HapticPlugin.effects_assignEffect(HapticDevice.configName);
 
 			if (FXID == -1) // Still broken?
 			{
@@ -38,7 +38,7 @@ public class VibrationDemoScript : MonoBehaviour {
 		double[] pos = {0.0, 0.0, 0.0}; // Position (not used for vibration)
 		double[] dir = {0.0, 1.0, 0.0}; // Direction of vibration
 
-		CustomHapticPlugin.effects_settings(
+		HapticPlugin.effects_settings(
 			HapticDevice.configName,
 			FXID,
 			0.33, // Gain
@@ -47,9 +47,9 @@ public class VibrationDemoScript : MonoBehaviour {
 			pos,  // Position (not used for vibration)
 			dir); //Direction.
 		
-		CustomHapticPlugin.effects_type( HapticDevice.configName,	FXID,4 ); // Vibration effect == 4
+		HapticPlugin.effects_type( HapticDevice.configName,	FXID,4 ); // Vibration effect == 4
 
-		CustomHapticPlugin.effects_startEffect(HapticDevice.configName, FXID );
+		HapticPlugin.effects_startEffect(HapticDevice.configName, FXID );
 	}
 
 	void TurnEffectOff()
@@ -57,7 +57,7 @@ public class VibrationDemoScript : MonoBehaviour {
 		if (HapticDevice == null) return; 		//If there is no device, bail out early.
 		if (FXID == -1)	return;  				//If there is no effect, bail out early.
 
-		CustomHapticPlugin.effects_stopEffect(HapticDevice.configName, FXID );
+		HapticPlugin.effects_stopEffect(HapticDevice.configName, FXID );
 	}
 
 

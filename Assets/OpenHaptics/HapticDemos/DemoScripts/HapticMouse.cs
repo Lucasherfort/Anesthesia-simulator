@@ -19,7 +19,7 @@ public class HapticMouse : MonoBehaviour {
 	 */
 
 
-	private	CustomHapticPlugin Haptic = null;
+	private	HapticPlugin Haptic = null;
     public new Camera camera = null;
     public Image cursor = null;
 
@@ -27,7 +27,7 @@ public class HapticMouse : MonoBehaviour {
 	void Start () 
 	{
 		// find the Haptic Device
-		Haptic = gameObject.GetComponent(typeof(CustomHapticPlugin)) as CustomHapticPlugin;
+		Haptic = gameObject.GetComponent(typeof(HapticPlugin)) as HapticPlugin;
 		if (Haptic == null)
 			Debug.LogError("HapticMouse script must be attached to the same object as the HapticPlugin script.");
 

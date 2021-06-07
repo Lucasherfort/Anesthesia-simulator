@@ -9,8 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3170562999154329897}
-  - component: {fileID: 3170562999154329896}
-  - component: {fileID: 7154484862475330061}
+  - component: {fileID: 103808541}
   m_Layer: 0
   m_Name: RightHapticDevice
   m_TagString: Needle
@@ -32,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3170562999154329896
+--- !u!114 &103808541
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,26 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3170562999154329910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c77d2e6ccd92c4499b09a15ddb2e3e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  masterCamera: {fileID: 0}
-  FitToWorkspace: 0
-  constraint: 0
-  MinimumDepth: 0.25
-  margin: 0.26
-  Greeting: {fileID: 0}
-  greetingTime: 5
---- !u!114 &7154484862475330061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3170562999154329910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8477d3e0009d9b42b9ae4c2b53b1286, type: 3}
+  m_Script: {fileID: 11500000, guid: e3329c3e07e580242b505fe810bed08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   configName: Right Device

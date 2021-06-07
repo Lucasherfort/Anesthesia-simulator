@@ -29,8 +29,8 @@ public class HapticGrabber : MonoBehaviour
 		if (hapticDevice == null)
 		{
 
-			CustomHapticPlugin[] HPs = (CustomHapticPlugin[])Object.FindObjectsOfType(typeof(CustomHapticPlugin));
-			foreach (CustomHapticPlugin HP in HPs)
+			HapticPlugin[] HPs = (HapticPlugin[])Object.FindObjectsOfType(typeof(HapticPlugin));
+			foreach (HapticPlugin HP in HPs)
 			{
 				if (HP.hapticManipulator == this.gameObject)
 				{
@@ -41,7 +41,7 @@ public class HapticGrabber : MonoBehaviour
 		}
 
 		if ( physicsToggleStyle != PhysicsToggleStyle.none)
-			hapticDevice.GetComponent<CustomHapticPlugin>().PhysicsManipulationEnabled = false;
+			hapticDevice.GetComponent<HapticPlugin>().PhysicsManipulationEnabled = false;
 
 		if (DisableUnityCollisionsWithTouchableObjects)
 			disableUnityCollisions();
@@ -78,7 +78,7 @@ public class HapticGrabber : MonoBehaviour
 	//! Update is called once per frame
 	void FixedUpdate () 
 	{
-		bool newButtonStatus = hapticDevice.GetComponent<CustomHapticPlugin>().Buttons [buttonID] == 1;
+		bool newButtonStatus = hapticDevice.GetComponent<HapticPlugin>().Buttons [buttonID] == 1;
 		bool oldButtonStatus = buttonStatus;
 		buttonStatus = newButtonStatus;
 
@@ -109,9 +109,9 @@ public class HapticGrabber : MonoBehaviour
 
 		// Make sure haptics is ON if we're grabbing
 		if( grabbing && physicsToggleStyle != PhysicsToggleStyle.none)
-			hapticDevice.GetComponent<CustomHapticPlugin>().PhysicsManipulationEnabled = true;
+			hapticDevice.GetComponent<HapticPlugin>().PhysicsManipulationEnabled = true;
 		if (!grabbing && physicsToggleStyle == PhysicsToggleStyle.onGrab)
-			hapticDevice.GetComponent<CustomHapticPlugin>().PhysicsManipulationEnabled = false;
+			hapticDevice.GetComponent<HapticPlugin>().PhysicsManipulationEnabled = false;
 
 		/*
 		if (grabbing)
@@ -127,14 +127,14 @@ public class HapticGrabber : MonoBehaviour
 		if (physicsToggleStyle == PhysicsToggleStyle.onGrab)
 		{
 			if (isTouch)
-				hapticDevice.GetComponent<CustomHapticPlugin>().PhysicsManipulationEnabled = true;
+				hapticDevice.GetComponent<HapticPlugin>().PhysicsManipulationEnabled = true;
 			else			
 				return; // Don't release haptics while we're holding something.
 		}
 			
 		if( physicsToggleStyle == PhysicsToggleStyle.onTouch )
 		{
-			hapticDevice.GetComponent<CustomHapticPlugin>().PhysicsManipulationEnabled = isTouch;
+			hapticDevice.GetComponent<HapticPlugin>().PhysicsManipulationEnabled = isTouch;
 			GetComponentInParent<Rigidbody>().velocity = Vector3.zero;
 			GetComponentInParent<Rigidbody>().angularVelocity = Vector3.zero;
 
@@ -201,7 +201,7 @@ public class HapticGrabber : MonoBehaviour
 		if (touchedObject == null) // No Unity Collision? 
 		{
 			// Maybe there's a Haptic Collision
-			touchedObject = hapticDevice.GetComponent<CustomHapticPlugin>().touching;
+			touchedObject = hapticDevice.GetComponent<HapticPlugin>().touching;
 		}
 
 		if (grabbing != null) // Already grabbing
@@ -268,7 +268,7 @@ public class HapticGrabber : MonoBehaviour
 		grabbing = null;
 
 		if (physicsToggleStyle != PhysicsToggleStyle.none)
-			hapticDevice.GetComponent<CustomHapticPlugin>().PhysicsManipulationEnabled = false;
+			hapticDevice.GetComponent<HapticPlugin>().PhysicsManipulationEnabled = false;
 			
 	}
 
