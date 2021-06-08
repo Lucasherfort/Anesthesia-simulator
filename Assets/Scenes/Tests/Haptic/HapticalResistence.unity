@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2307560af17f8c64dba01b84045f565f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  configName: Default Device
+  configName: Left Device
   connect_On_Start: 1
   PhysicsForceStrength: 0.333
   PhysicsForceDamping: 0

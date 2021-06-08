@@ -18,8 +18,6 @@ public class HapticManager : MonoBehaviour
     /// //////////////////// PROBE /////////////////////////////
     /// </summary>
 
-    private string ProbeTagName;
-
     private HapticConfig.HLTOUCH_MODEL hlTouchModel = HapticConfig.HLTOUCH_MODEL.HL_CONTACT; 
     private HapticConfig.HLFACING hlTouchable = HapticConfig.HLFACING.HL_FRONT; 
 
@@ -52,7 +50,6 @@ public class HapticManager : MonoBehaviour
     /// //////////////////// NEEDLE /////////////////////////////
     /// </summary>
 
-    private string NeedleTagName;
     private ProbeHapticPlugin probeDevice;
     private NeedleHapticPlugin needleDevice;
     private Vector3 position;
@@ -82,8 +79,10 @@ public class HapticManager : MonoBehaviour
             Debug.LogError("HapticSurface has been assigned to object without mesh.");
         }
 
-        if (gameObject.tag == "Untagged")
-            gameObject.tag = "Touchable";
+        if (gameObject.tag != "Touchable")
+        {
+            Debug.LogError(transform.name+" doesn't have the tag Touchable !");
+        }
 
         probeDevice = (ProbeHapticPlugin)FindObjectOfType(typeof(ProbeHapticPlugin));
         needleDevice = (NeedleHapticPlugin)FindObjectOfType(typeof(NeedleHapticPlugin));
@@ -100,9 +99,6 @@ public class HapticManager : MonoBehaviour
 
     private void SetupHapticConfig()
     {
-        ProbeTagName = hapticConfig.ProbeTagName;
-        NeedleTagName = hapticConfig.NeedleTagProbe;
-
         hlTouchModel = hapticConfig.hlTouchModel;
         hlTouchable = hapticConfig.hlTouchable;
         hlStiffness = hapticConfig.hlStiffness;
@@ -169,7 +165,7 @@ public class HapticManager : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag(NeedleTagName))
+        if (collision.gameObject.CompareTag("Needle"))
         {
             // Setup Parent
 
@@ -186,7 +182,7 @@ public class HapticManager : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag(NeedleTagName))
+        if (collision.gameObject.CompareTag("Needle"))
         {
             position = collision.gameObject.transform.position;
 
@@ -209,13 +205,11 @@ public class HapticManager : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag(NeedleTagName))
+        if (collision.gameObject.CompareTag("Needle"))
         {
             // Setup Parent
             needleDevice.hapticManipulator.transform.parent = null;
             needleDevice.hapticManipulator.transform.SetParent(needleDevice.PivotManipulator.transform.parent);
-
-            // TODO
 
             NeedleTouchSkin = false;
             if (probeDevice != null)

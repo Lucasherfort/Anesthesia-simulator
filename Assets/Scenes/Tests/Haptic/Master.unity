@@ -263,6 +263,14 @@ PrefabInstance:
       propertyPath: hapticManipulator
       value: 
       objectReference: {fileID: 449007191}
+    - target: {fileID: 430464361, guid: caa66aaea7ddda2498f4952e633da2b7, type: 3}
+      propertyPath: PhysicsManipulationEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 430464361, guid: caa66aaea7ddda2498f4952e633da2b7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5725100415686960898, guid: caa66aaea7ddda2498f4952e633da2b7,
         type: 3}
       propertyPath: m_Name
@@ -340,6 +348,14 @@ PrefabInstance:
       propertyPath: PivotManipulator
       value: 
       objectReference: {fileID: 1718311272}
+    - target: {fileID: 103808541, guid: 86de6c1679338044cb7b02d87f659d6a, type: 3}
+      propertyPath: PhysicsManipulationEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 103808541, guid: 86de6c1679338044cb7b02d87f659d6a, type: 3}
+      propertyPath: Stylus
+      value: 
+      objectReference: {fileID: 1820484953}
     - target: {fileID: 3170562999154329897, guid: 86de6c1679338044cb7b02d87f659d6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -399,6 +415,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RightHapticDevice
+      objectReference: {fileID: 0}
+    - target: {fileID: 3170562999154329910, guid: 86de6c1679338044cb7b02d87f659d6a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86de6c1679338044cb7b02d87f659d6a, type: 3}
@@ -548,6 +569,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HapticalNeedle
       objectReference: {fileID: 0}
+    - target: {fileID: 4062997844672009320, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8219467866870419983, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
         type: 3}
       propertyPath: cutPlane
@@ -650,6 +676,36 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1657863243}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1820484953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1820484954}
+  m_Layer: 0
+  m_Name: Stylus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1820484954
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820484953}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.028825104, y: 0, z: 19.67617}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1790472633536049871
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,7 +985,7 @@ GameObject:
   - component: {fileID: 2479494591613248353}
   m_Layer: 9
   m_Name: OuterSkin
-  m_TagString: Untagged
+  m_TagString: Touchable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

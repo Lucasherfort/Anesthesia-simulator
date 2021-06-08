@@ -27,6 +27,7 @@ public class NeedleHapticPlugin : MonoBehaviour
 
     public GameObject hapticManipulator = null; //!< Reference to unity gameobject representing the haptic stylus.
     public GameObject PivotManipulator = null;
+    public GameObject Stylus = null;
 
     public bool PhysicsManipulationEnabled = true;  //!< Should the haptic forces interact with the Unity physics simulation?
 
@@ -281,14 +282,12 @@ public class NeedleHapticPlugin : MonoBehaviour
     {
         if (isIncorrectVersion) return;
 
-        Debug.Log("Disconnecting from Haptic");
         disconnectAllDevices();
     }
     void OnDisable()
     {
         if (isIncorrectVersion) return;
 
-        Debug.Log("OnDisable");
         double[] zero = { 0.0, 0.0, 0.0 };
         setSpringStiffness(configName, 0.0, 0.0);
         setForce(configName, zero, zero);
@@ -379,11 +378,11 @@ public class NeedleHapticPlugin : MonoBehaviour
             {
                 if (touching == null || touching.GetInstanceID() != shapeID)
                 {
-                    for (int ii = 0; ii < touchableObjects.Length; ii++)
+                    for (int i = 0; i < touchableObjects.Length; i++)
                     {
-                        if (shapeID == touchableObjects[ii].GetInstanceID())
+                        if (shapeID == touchableObjects[i].GetInstanceID())
                         {
-                            touching = touchableObjects[ii];
+                            touching = touchableObjects[i];
                             break;
                         }
                     }
@@ -558,6 +557,9 @@ public class NeedleHapticPlugin : MonoBehaviour
 
     private void updateManipulator()
     {
+        Stylus.transform.position = stylusPositionWorld;
+        Stylus.transform.rotation = stylusRotationWorld;
+
         if (hapticManipulator == null)
         {
             double[] zero = { 0.0, 0.0, 0.0 };
@@ -569,9 +571,22 @@ public class NeedleHapticPlugin : MonoBehaviour
         { 
             if(HapticManager.Instance.NeedleTouchSkin)
             {
+                PivotManipulator.transform.rotation = stylusRotationWorld;
 
+                //hapticManipulator.transform.position = stylusPositionWorld;
+
+                /*
+                var temp = hapticManipulator.transform.localPosition;
+                temp.z = -stylusPositionWorld.z;
+                hapticManipulator.transform.localPosition = temp;
+                */
+
+                /*
                 hapticManipulator.transform.rotation = stylusRotationWorld;
                 hapticManipulator.transform.position = stylusPositionWorld;
+                */
+
+
                 setSpringStiffness(configName, 0.0, 0.0);
                 previousManipulator = hapticManipulator;
                 return;

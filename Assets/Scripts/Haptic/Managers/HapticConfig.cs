@@ -7,8 +7,6 @@ public class HapticConfig : ScriptableObject
     /// //////////////////// PROBE /////////////////////////////
     /// </summary>
 
-    public string ProbeTagName;
-
     public enum HLTOUCH_MODEL { HL_CONTACT, HL_CONSTRAINT };
     public enum HLFACING { HL_FRONT, HL_BACK, HL_FRONT_AND_BACK };
 
@@ -36,8 +34,6 @@ public class HapticConfig : ScriptableObject
     /// <summary>
     /// //////////////////// NEEDLE /////////////////////////////
     /// </summary>
-
-    public string NeedleTagProbe;
 
     public float resistance = 1;
 }

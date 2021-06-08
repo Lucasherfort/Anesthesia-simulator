@@ -282,14 +282,12 @@ public class ProbeHapticPlugin : MonoBehaviour
     {
         if (isIncorrectVersion) return;
 
-        Debug.Log("Disconnecting from Haptic");
         disconnectAllDevices();
     }
     void OnDisable()
     {
         if (isIncorrectVersion) return;
 
-        Debug.Log("OnDisable");
         double[] zero = { 0.0, 0.0, 0.0 };
         setSpringStiffness(configName, 0.0, 0.0);
         setForce(configName, zero, zero);

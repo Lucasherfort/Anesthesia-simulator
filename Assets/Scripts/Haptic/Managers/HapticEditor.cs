@@ -13,7 +13,6 @@ public class HapticEditor : Editor
 
         EditorGUILayout.LabelField("HAPTICAL PROBE", EditorStyles.boldLabel);
         EditorGUILayout.Space(5);
-        hapticConfig.ProbeTagName = EditorGUILayout.TagField("Probe Tag Name", hapticConfig.ProbeTagName);
         hapticConfig.hlTouchModel = (HapticConfig.HLTOUCH_MODEL)EditorGUILayout.EnumPopup("HL_Touch_Model", hapticConfig.hlTouchModel);
         hapticConfig.hlTouchable = (HapticConfig.HLFACING)EditorGUILayout.EnumPopup("HL_Facing", hapticConfig.hlTouchable);
 
@@ -34,7 +33,6 @@ public class HapticEditor : Editor
         EditorGUILayout.Space(20);
         EditorGUILayout.LabelField("HAPTIC NEEDLE", EditorStyles.boldLabel);
         EditorGUILayout.Space(5);
-        hapticConfig.NeedleTagProbe = EditorGUILayout.TagField("Needle Tag Name", hapticConfig.NeedleTagProbe);
         hapticConfig.resistance = EditorGUILayout.FloatField("Skin resistance", hapticConfig.resistance);
     }
 }
