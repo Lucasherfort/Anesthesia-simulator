@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using System.Runtime.InteropServices;
@@ -11,8 +12,10 @@ using UnityEditor;
 //! This MonoBehavior should be attached to a GameObject and will represent the Haptic Device itself.
 //! One of these objects should be added to the scene corrisponding to each Haptic Device you intend the scene to connect to. 
 //! Additionally this object contains static declarations of the functions in the OHToUnityBridge dll, required for this asset to function.
-public class NeedleHapticPlugin : MonoBehaviour
+public class HapticNeedleTest : MonoBehaviour
 {
+
+
     [Header("Configuration Attributes")]
 
     public string configName = "Default Device";  //!< Filename of the Haptic Device Configuration. (Typically "Default Device")
@@ -26,9 +29,6 @@ public class NeedleHapticPlugin : MonoBehaviour
     public bool shapesEnabled = true; //TODO FIXME Doesn't work yet.
 
     public GameObject hapticManipulator = null; //!< Reference to unity gameobject representing the haptic stylus.
-    public GameObject PivotManipulator = null;
-    public GameObject Stylus = null;
-
     public bool PhysicsManipulationEnabled = true;  //!< Should the haptic forces interact with the Unity physics simulation?
 
 
@@ -197,6 +197,9 @@ public class NeedleHapticPlugin : MonoBehaviour
     [DllImport("OHToUnityBridge")]
     public static extern void effects_type(string configName, int ID, int type);
 
+
+
+
     //Cleanup functions
     //! Disconnects from all devices.
     //! In the process all **shapes** and all **effects** are also cleared.
@@ -229,7 +232,7 @@ public class NeedleHapticPlugin : MonoBehaviour
     Vector3 stylusVelocityWorld;
     public Quaternion stylusRotationWorld;
 
-    private GameObject[] touchableObjects;
+    public GameObject[] touchableObjects;
 
 
     private bool safetyMode = false;
@@ -263,7 +266,7 @@ public class NeedleHapticPlugin : MonoBehaviour
             }
         }
 
-        touchableObjects = GameObject.FindGameObjectsWithTag("Touchable") as GameObject[];  //FIXME  Does this fail gracefully?
+        touchableObjects = GameObject.FindGameObjectsWithTag("Touchable22") as GameObject[];  //FIXME  Does this fail gracefully?
 
         hapticErrorQueue = new Queue();
 
@@ -274,7 +277,7 @@ public class NeedleHapticPlugin : MonoBehaviour
 
 
         startSchedulers();
-        if (shapesEnabled) setupShapes();
+        if (this.shapesEnabled) setupShapes();
 
     }
 
@@ -282,12 +285,14 @@ public class NeedleHapticPlugin : MonoBehaviour
     {
         if (isIncorrectVersion) return;
 
+        Debug.Log("Disconnecting from Haptic");
         disconnectAllDevices();
     }
     void OnDisable()
     {
         if (isIncorrectVersion) return;
 
+        Debug.Log("OnDisable");
         double[] zero = { 0.0, 0.0, 0.0 };
         setSpringStiffness(configName, 0.0, 0.0);
         setForce(configName, zero, zero);
@@ -330,7 +335,9 @@ public class NeedleHapticPlugin : MonoBehaviour
                 showOldVersionPopup = true;
                 isIncorrectVersion = true;
                 hapticErrorQueue.Enqueue(System.DateTime.Now.ToLongTimeString() + " - " + "Incorrect Open Haptic Version.");
-            }      
+            }
+
+
         }
         else
         {
@@ -364,7 +371,7 @@ public class NeedleHapticPlugin : MonoBehaviour
         if (hHD < 0)
             return;
 
-        double[] M16 = MatrixToDoubleArray(transform.worldToLocalMatrix);
+        double[] M16 = MatrixToDoubleArray(this.transform.worldToLocalMatrix);
         shape_render(configName, M16);
 
         if (shapesEnabled)
@@ -378,15 +385,17 @@ public class NeedleHapticPlugin : MonoBehaviour
             {
                 if (touching == null || touching.GetInstanceID() != shapeID)
                 {
-                    for (int i = 0; i < touchableObjects.Length; i++)
+                    for (int ii = 0; ii < touchableObjects.Length; ii++)
                     {
-                        if (shapeID == touchableObjects[i].GetInstanceID())
+                        if (shapeID == touchableObjects[ii].GetInstanceID())
                         {
-                            touching = touchableObjects[i];
+                            touching = touchableObjects[ii];
                             break;
                         }
                     }
+
                 }
+
             }
             else
                 touching = null;
@@ -431,6 +440,8 @@ public class NeedleHapticPlugin : MonoBehaviour
     {
         return Quaternion.LookRotation(m.GetColumn(2), m.GetColumn(1));
     }
+
+
 
     private void checkErrors()
     {
@@ -535,7 +546,7 @@ public class NeedleHapticPlugin : MonoBehaviour
 
 
         // Cook the raw values.
-        if (shapesEnabled)
+        if (this.shapesEnabled)
         {
             stylusMatrixWorld = gameObject.transform.localToWorldMatrix * proxyTransformRaw;
             shape_enableShapeRendering();
@@ -557,10 +568,7 @@ public class NeedleHapticPlugin : MonoBehaviour
 
     private void updateManipulator()
     {
-        Stylus.transform.position = stylusPositionWorld;
-        Stylus.transform.rotation = stylusRotationWorld;
-
-        if (hapticManipulator == null)
+        if (this.hapticManipulator == null)
         {
             double[] zero = { 0.0, 0.0, 0.0 };
             setSpringStiffness(configName, 0.0, 0.0);
@@ -568,48 +576,16 @@ public class NeedleHapticPlugin : MonoBehaviour
         }
 
         if (PhysicsManipulationEnabled == false || hapticManipulator != previousManipulator)
-        { 
-            if(HapticManager.Instance.NeedleTouchSkin)
-            {
-
-
-                //PivotManipulator.transform.rotation = stylusRotationWorld;
-
-                //hapticManipulator.transform.position = Vector3.MoveTowards(hapticManipulator.transform.position, Stylus.transform.position, 0.03f);
-
-                //hapticManipulator.transform.position = Stylus.transform.position;
-
-                //Debug.Log(PivotManipulator.transform.position - Stylus.transform.position);
-
-                /*
-                var temp = hapticManipulator.transform.localPosition;
-                temp.z = -stylusPositionWorld.z;
-                hapticManipulator.transform.localPosition = temp;
-                */
-
-               
-                //hapticManipulator.transform.rotation = stylusRotationWorld;
-                //hapticManipulator.transform.position = stylusPositionWorld;
-
-                var temp = hapticManipulator.transform.position;
-                temp.y = stylusPositionWorld.y;
-                hapticManipulator.transform.position = temp;
-
-                setSpringStiffness(configName, 0.0, 0.0);
-                previousManipulator = hapticManipulator;
-                return;
-            }
-            else
-            {
-                hapticManipulator.transform.rotation = stylusRotationWorld;
-                hapticManipulator.transform.position = stylusPositionWorld;
-                setSpringStiffness(configName, 0.0, 0.0);
-                previousManipulator = hapticManipulator;
-                return;
-            }
+        { // No physics, just move it.
+            hapticManipulator.transform.rotation = stylusRotationWorld;
+            hapticManipulator.transform.position = stylusPositionWorld;
+            setSpringStiffness(configName, 0.0, 0.0);
+            previousManipulator = hapticManipulator;
+            return;
         }
         previousManipulator = hapticManipulator;
 
+        //ConfigurableJoint joint = hapticManipulator.GetComponent<ConfigurableJoint>();
         Rigidbody body = hapticManipulator.GetComponent<Rigidbody>();
 
         // FIXME! Why 10? Determine this from bounding sphere.
@@ -619,7 +595,7 @@ public class NeedleHapticPlugin : MonoBehaviour
             body.velocity = stylusVelocityWorld;
             body.rotation = stylusRotationWorld;
         }
-        Vector3 springPos = gameObject.transform.InverseTransformPoint(hapticManipulator.transform.position);
+        Vector3 springPos = gameObject.transform.InverseTransformPoint(this.hapticManipulator.transform.position);
         double[] springPosOut = new double[3];
         springPosOut[0] = springPos.x;
         springPosOut[1] = springPos.y;
@@ -631,7 +607,7 @@ public class NeedleHapticPlugin : MonoBehaviour
         springVelOut[1] = springVel.y;
         springVelOut[2] = springVel.z;
         setSpringAnchorPosition(configName, springPosOut, springVelOut);
-        setSpringStiffness(configName, PhysicsForceStrength, 0);
+        setSpringStiffness(configName, this.PhysicsForceStrength, 0);
 
 
         {
@@ -647,7 +623,8 @@ public class NeedleHapticPlugin : MonoBehaviour
             V = (body.velocity);
             V *= V.magnitude;
 
-            force -= (body.mass * V * PhysicsForceDamping);
+            force -= (body.mass * V * this.PhysicsForceDamping);
+
 
             body.AddForce(force);
         }
@@ -691,7 +668,6 @@ public class NeedleHapticPlugin : MonoBehaviour
         Vector3 torque = ((MainRotation - CorrectiveRotation / 2) - body.angularVelocity);
         return torque;
     }
-
     private Vector3 RectifyAngleDifference(Vector3 angdiff)
     {
         if (angdiff.x > 180) angdiff.x -= 360;
@@ -700,10 +676,13 @@ public class NeedleHapticPlugin : MonoBehaviour
         return angdiff;
     }
 
+
     // Put the cursor on the device so it doesn't jump.
     public void safeUpdateManipulator()
     {
         if (isIncorrectVersion) return;
+
+        //Debug.unityLogger.Log("Safing the Manipulator.");
 
         if (hapticManipulator == null)
             return;
@@ -729,7 +708,7 @@ public class NeedleHapticPlugin : MonoBehaviour
     {
         if (isIncorrectVersion) return;
 
-        touchableObjects = GameObject.FindGameObjectsWithTag("Touchable") as GameObject[];
+        touchableObjects = GameObject.FindGameObjectsWithTag("Touchable22") as GameObject[];
 
         for (int ii = 0; ii < touchableObjects.Length; ii++)
         {
@@ -759,16 +738,20 @@ public class NeedleHapticPlugin : MonoBehaviour
                 double[] vertices = Vector3ArrayToDoubleArray(mesh.vertices);
                 int[] triangles = mesh.triangles;
 
-                shape_define(shapeID, name, vertices, triangles, vertices.Length, triangles.Length);
+                //shape_define(shapeID, name, vertices, triangles, vertices.Length, triangles.Length);
             }
-        }
+
+        } //for(ii)
+
+        // TODO Update the transforms of all shapes.
+
     }
 
     void updateShapes()
     {
         if (isIncorrectVersion) return;
 
-        GameObject[] myObjects = GameObject.FindGameObjectsWithTag("Touchable") as GameObject[];
+        GameObject[] myObjects = GameObject.FindGameObjectsWithTag("Touchable22") as GameObject[];
 
         for (int ii = 0; ii < myObjects.Length; ii++)
         {
@@ -776,7 +759,7 @@ public class NeedleHapticPlugin : MonoBehaviour
 
             Matrix4x4 M = myObjects[ii].transform.localToWorldMatrix;
 
-            M = transform.worldToLocalMatrix * M;
+            M = this.transform.worldToLocalMatrix * M;
 
             double[] M16 = MatrixToDoubleArray(M);
 
@@ -823,9 +806,30 @@ public class NeedleHapticPlugin : MonoBehaviour
         out16[13] = M.m13;
         out16[14] = M.m23;
         out16[15] = M.m33;
+        /*
+		out16 [0] = M.m00;
+		out16 [1] = M.m01;
+		out16 [2] = M.m02;
+		out16 [3] = M.m03;
+
+		out16 [4] = M.m10;
+		out16 [5] = M.m11;
+		out16 [6] = M.m12;
+		out16 [7] = M.m13;
+
+		out16 [8] = M.m20;
+		out16 [9] = M.m21;
+		out16 [10] =M.m22;
+		out16 [11] =M.m23;
+
+		out16 [12] =M.m30;
+		out16 [13] =M.m31;
+		out16 [14] =M.m32;
+		out16 [15] =M.m33;*/
 
         return out16;
     }
+
 
     public string[] retrieveErrorList()
     {
@@ -837,6 +841,7 @@ public class NeedleHapticPlugin : MonoBehaviour
     {
         hapticErrorQueue.Clear();
     }
+
 
     private Rect windowRect = new Rect(20, 20, 350, 125);
     void OnGUI()
@@ -865,8 +870,6 @@ public class NeedleHapticPlugin : MonoBehaviour
         {
             Application.Quit();
             showNoDevicePopup = false;
-
-
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #endif
@@ -892,7 +895,7 @@ public class NeedleHapticPlugin : MonoBehaviour
             Application.Quit();
             showNoDevicePopup = false;
 #if UNITY_EDITOR
-            EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
 #endif
         }
         y += 30;
@@ -973,14 +976,19 @@ public class NeedleHapticPlugin : MonoBehaviour
             Gizmos.color = Color.grey;
             Gizmos.matrix = gameObject.transform.localToWorldMatrix;
             Gizmos.DrawWireCube(Vector3.zero, OmniBox);
+
+
         }
-    } 
+    } //OnDrawGizmos()
 #endif
 
-} 
+} //class HapticPlugin
 
 
-public class NeedleDisplayOnlyAttribute : PropertyAttribute
+
+/*
+
+public class DisplayOnlyAttribute : PropertyAttribute
 {
 
 }
@@ -988,7 +996,7 @@ public class NeedleDisplayOnlyAttribute : PropertyAttribute
 
 #if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(DisplayOnlyAttribute))]
-public class NeedleReadOnlyDrawer : PropertyDrawer
+public class ReadOnlyDrawer : PropertyDrawer
 {
     public override float GetPropertyHeight(SerializedProperty property,
         GUIContent label)
@@ -1007,6 +1015,6 @@ public class NeedleReadOnlyDrawer : PropertyDrawer
 }
 #endif
 
-
+    */
 
 

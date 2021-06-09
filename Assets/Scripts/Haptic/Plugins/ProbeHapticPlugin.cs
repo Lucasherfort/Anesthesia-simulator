@@ -263,6 +263,7 @@ public class ProbeHapticPlugin : MonoBehaviour
             }
         }
 
+        //// FIXME
         touchableObjects = GameObject.FindGameObjectsWithTag("Touchable") as GameObject[];  //FIXME  Does this fail gracefully?
 
         hapticErrorQueue = new Queue();

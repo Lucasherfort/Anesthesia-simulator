@@ -207,9 +207,11 @@ public class HapticManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Needle"))
         {
+            
             // Setup Parent
             needleDevice.hapticManipulator.transform.parent = null;
             needleDevice.hapticManipulator.transform.SetParent(needleDevice.PivotManipulator.transform.parent);
+
 
             NeedleTouchSkin = false;
             if (probeDevice != null)

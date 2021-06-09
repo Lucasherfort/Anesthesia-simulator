@@ -607,7 +607,7 @@ public class HapticPlugin : MonoBehaviour
         springVelOut[1] = springVel.y;
         springVelOut[2] = springVel.z;
         setSpringAnchorPosition(configName, springPosOut, springVelOut);
-        setSpringStiffness(configName, this.PhysicsForceStrength, 0);
+        //setSpringStiffness(configName, this.PhysicsForceStrength, 0);
 
 
         {
