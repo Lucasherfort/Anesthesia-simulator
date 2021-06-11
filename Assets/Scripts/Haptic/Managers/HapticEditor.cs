@@ -1,5 +1,6 @@
 ﻿#if UNITY_EDITOR
 using UnityEditor;
+using UnityEngine;
 
 [CustomEditor(typeof(HapticConfig))]
 public class HapticEditor : Editor
@@ -34,6 +35,13 @@ public class HapticEditor : Editor
         EditorGUILayout.LabelField("HAPTIC NEEDLE", EditorStyles.boldLabel);
         EditorGUILayout.Space(5);
         hapticConfig.resistance = EditorGUILayout.FloatField("Skin resistance", hapticConfig.resistance);
+
+        EditorGUILayout.Space(20);
+
+        if (GUILayout.Button("SAVE HAPTIC DATA"))
+        {
+            // TODO pour les tests
+        }
     }
 }
 #endif

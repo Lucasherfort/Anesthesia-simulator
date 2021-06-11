@@ -571,17 +571,11 @@ public class NeedleHapticPlugin : MonoBehaviour
             {
                 PivotManipulator.transform.rotation = stylusRotationWorld;
 
-                var test = NeedleHandle.transform.localPosition;
-                test.x = 0;
-                NeedleHandle.transform.localPosition = test;
-
-                var test2 = NeedleHandle.transform.localPosition;
-                test2.y = 0;
-                NeedleHandle.transform.localPosition = test2;
-
-                var test3 = NeedleHandle.transform.localPosition;
-                test3.z = PivotManipulator.transform.InverseTransformPoint(stylusPositionWorld).z;
-                NeedleHandle.transform.localPosition = test3;
+                var constraintxis = NeedleHandle.transform.localPosition;
+                constraintxis.x = 0;
+                constraintxis.y = 0;
+                constraintxis.z = PivotManipulator.transform.InverseTransformPoint(stylusPositionWorld).z;
+                NeedleHandle.transform.localPosition = constraintxis;
 
                 setSpringStiffness(configName, 0.0, 0.0);
                 previousManipulator = hapticManipulator;

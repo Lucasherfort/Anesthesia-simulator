@@ -19,7 +19,7 @@ public class HapticManager : MonoBehaviour
     /// </summary>
 
     private HapticConfig.HLTOUCH_MODEL hlTouchModel = HapticConfig.HLTOUCH_MODEL.HL_CONTACT; 
-    private HapticConfig.HLFACING hlTouchable = HapticConfig.HLFACING.HL_FRONT; 
+    private HapticConfig.HLFACING hlTouchable = HapticConfig.HLFACING.HL_FRONT;
 
     private bool Flip_Normals = false;  
 
@@ -167,13 +167,34 @@ public class HapticManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Needle"))
         {
-            NeedleTouchSkin = true;
-
             needleDevice.PivotManipulator.transform.position = collision.transform.position;
             needleDevice.PivotManipulator.transform.rotation = collision.transform.rotation;
 
             needleDevice.hapticManipulator.transform.parent = null;
             needleDevice.hapticManipulator.transform.SetParent(needleDevice.NeedleHandle.transform);
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Needle"))
+        {
+            position = collision.gameObject.transform.position;
+
+            if (needleDevice.touchingDepth == 0)
+            {
+                if (probeDevice.touchingDepth > resistance)
+                {
+                    NeedleTouchSkin = true;
+                }
+            }
+            else
+            {
+                if (needleDevice.touchingDepth > resistance)
+                {
+                    NeedleTouchSkin = true;
+                }
+            }
         }
     }
 

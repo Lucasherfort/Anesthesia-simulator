@@ -372,6 +372,7 @@ public class ProbeHapticPlugin : MonoBehaviour
 
         if (shapesEnabled)
         {
+            
             updateShapes();
 
             int shapeID = -1;
@@ -379,6 +380,7 @@ public class ProbeHapticPlugin : MonoBehaviour
 
             if (shape_getTouched(configName, ref shapeID, ref depth))
             {
+                
                 if (touching == null || touching.GetInstanceID() != shapeID)
                 {
                     for (int ii = 0; ii < touchableObjects.Length; ii++)
@@ -389,14 +391,12 @@ public class ProbeHapticPlugin : MonoBehaviour
                             break;
                         }
                     }
-
                 }
-
             }
             else
                 touching = null;
 
-            touchingDepth = (float)depth;
+            touchingDepth = (float)depth;                 
         }
 
         if (safetyMode)
@@ -581,7 +581,6 @@ public class ProbeHapticPlugin : MonoBehaviour
         }
         previousManipulator = hapticManipulator;
 
-        //ConfigurableJoint joint = hapticManipulator.GetComponent<ConfigurableJoint>();
         Rigidbody body = hapticManipulator.GetComponent<Rigidbody>();
 
         // FIXME! Why 10? Determine this from bounding sphere.

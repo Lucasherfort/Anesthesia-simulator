@@ -48,7 +48,10 @@ MonoBehaviour:
   PhysicsForceStrength: 0.333
   PhysicsForceDamping: 0
   shapesEnabled: 1
+  HapticalNeedle: {fileID: 0}
   hapticManipulator: {fileID: 0}
+  PivotManipulator: {fileID: 0}
+  NeedleHandle: {fileID: 0}
   PhysicsManipulationEnabled: 0
   touching: {fileID: 0}
   touchingDepth: 0
