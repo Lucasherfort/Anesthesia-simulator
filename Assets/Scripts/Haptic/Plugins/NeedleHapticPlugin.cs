@@ -25,9 +25,10 @@ public class NeedleHapticPlugin : MonoBehaviour
 
     public bool shapesEnabled = true; //TODO FIXME Doesn't work yet.
 
-    public GameObject hapticManipulator = null; //!< Reference to unity gameobject representing the haptic stylus.
+    public GameObject HapticalNeedle = null;
+    public GameObject hapticManipulator = null;
     public GameObject PivotManipulator = null;
-    public GameObject Stylus = null;
+    public GameObject NeedleHandle = null;
 
     public bool PhysicsManipulationEnabled = true;  //!< Should the haptic forces interact with the Unity physics simulation?
 
@@ -557,9 +558,6 @@ public class NeedleHapticPlugin : MonoBehaviour
 
     private void updateManipulator()
     {
-        Stylus.transform.position = stylusPositionWorld;
-        Stylus.transform.rotation = stylusRotationWorld;
-
         if (hapticManipulator == null)
         {
             double[] zero = { 0.0, 0.0, 0.0 };
@@ -571,29 +569,19 @@ public class NeedleHapticPlugin : MonoBehaviour
         { 
             if(HapticManager.Instance.NeedleTouchSkin)
             {
+                PivotManipulator.transform.rotation = stylusRotationWorld;
 
+                var test = NeedleHandle.transform.localPosition;
+                test.x = 0;
+                NeedleHandle.transform.localPosition = test;
 
-                //PivotManipulator.transform.rotation = stylusRotationWorld;
+                var test2 = NeedleHandle.transform.localPosition;
+                test2.y = 0;
+                NeedleHandle.transform.localPosition = test2;
 
-                //hapticManipulator.transform.position = Vector3.MoveTowards(hapticManipulator.transform.position, Stylus.transform.position, 0.03f);
-
-                //hapticManipulator.transform.position = Stylus.transform.position;
-
-                //Debug.Log(PivotManipulator.transform.position - Stylus.transform.position);
-
-                /*
-                var temp = hapticManipulator.transform.localPosition;
-                temp.z = -stylusPositionWorld.z;
-                hapticManipulator.transform.localPosition = temp;
-                */
-
-               
-                //hapticManipulator.transform.rotation = stylusRotationWorld;
-                //hapticManipulator.transform.position = stylusPositionWorld;
-
-                var temp = hapticManipulator.transform.position;
-                temp.y = stylusPositionWorld.y;
-                hapticManipulator.transform.position = temp;
+                var test3 = NeedleHandle.transform.localPosition;
+                test3.z = PivotManipulator.transform.InverseTransformPoint(stylusPositionWorld).z;
+                NeedleHandle.transform.localPosition = test3;
 
                 setSpringStiffness(configName, 0.0, 0.0);
                 previousManipulator = hapticManipulator;
@@ -609,6 +597,7 @@ public class NeedleHapticPlugin : MonoBehaviour
             }
         }
         previousManipulator = hapticManipulator;
+ 
 
         Rigidbody body = hapticManipulator.GetComponent<Rigidbody>();
 

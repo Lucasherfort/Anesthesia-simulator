@@ -167,39 +167,13 @@ public class HapticManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Needle"))
         {
-            // Setup Parent
-
-            // TODO
+            NeedleTouchSkin = true;
 
             needleDevice.PivotManipulator.transform.position = collision.transform.position;
             needleDevice.PivotManipulator.transform.rotation = collision.transform.rotation;
 
             needleDevice.hapticManipulator.transform.parent = null;
-            needleDevice.hapticManipulator.transform.SetParent(needleDevice.PivotManipulator.transform);
-
-        }
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Needle"))
-        {
-            position = collision.gameObject.transform.position;
-
-            if (needleDevice.touchingDepth == 0)
-            {
-                if (probeDevice.touchingDepth > resistance)
-                {
-                    NeedleTouchSkin = true;
-                }               
-            }
-            else
-            {
-                if (needleDevice.touchingDepth > resistance)
-                {
-                    NeedleTouchSkin = true;
-                }
-            }
+            needleDevice.hapticManipulator.transform.SetParent(needleDevice.NeedleHandle.transform);
         }
     }
 
@@ -207,11 +181,10 @@ public class HapticManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Needle"))
         {
-            
-            // Setup Parent
             needleDevice.hapticManipulator.transform.parent = null;
-            needleDevice.hapticManipulator.transform.SetParent(needleDevice.PivotManipulator.transform.parent);
+            needleDevice.hapticManipulator.transform.SetParent(needleDevice.HapticalNeedle.transform);
 
+            needleDevice.NeedleHandle.transform.localPosition = Vector3.zero;
 
             NeedleTouchSkin = false;
             if (probeDevice != null)
