@@ -3,10 +3,6 @@
 [CreateAssetMenu(fileName = "HapticConfig", menuName = "Haptic/HapticConfig", order = 1)]
 public class HapticConfig : ScriptableObject
 {
-    /// <summary>
-    /// //////////////////// PROBE /////////////////////////////
-    /// </summary>
-
     public enum HLTOUCH_MODEL { HL_CONTACT, HL_CONSTRAINT };
     public enum HLFACING { HL_FRONT, HL_BACK, HL_FRONT_AND_BACK };
 
@@ -30,10 +26,6 @@ public class HapticConfig : ScriptableObject
     public float hlPopThrough = 0.0f;   
 
     public float snapDistance = 1.0f;
-
-    /// <summary>
-    /// //////////////////// NEEDLE /////////////////////////////
-    /// </summary>
 
     public float resistance = 1;
 }
