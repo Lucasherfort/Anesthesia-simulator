@@ -9,6 +9,8 @@ public class NoiseEditor : Editor
 
     public override void OnInspectorGUI()
     {
+        EditorGUI.BeginChangeCheck();
+
         noiseConfig = (NoiseConfig)target;
 
         EditorGUILayout.LabelField("TEXTURE PARAMETERS", EditorStyles.boldLabel);
@@ -34,7 +36,12 @@ public class NoiseEditor : Editor
         noiseConfig.seed =  EditorGUILayout.IntField("Seed :", noiseConfig.seed);
         noiseConfig.offsetDynamic = EditorGUILayout.Toggle("Offset Dynamic :", noiseConfig.offsetDynamic);
         noiseConfig.offset = EditorGUILayout.Vector2Field("Offset :", noiseConfig.offset);
-        noiseConfig.coloring = EditorGUILayout.GradientField("Coloring : ", noiseConfig.coloring);
+
+        SerializedObject serializedGradient = new SerializedObject(target);
+        SerializedProperty colorGradient = serializedGradient.FindProperty("coloring");
+        EditorGUILayout.PropertyField(colorGradient, true, null);
+        if (EditorGUI.EndChangeCheck())
+            serializedGradient.ApplyModifiedProperties();
 
         EditorGUILayout.Space(20);
         EditorGUILayout.LabelField("SAVE DATA", EditorStyles.boldLabel);
