@@ -41,6 +41,7 @@ public class NoiseGenerator : MonoBehaviour
     private float lacunarity;
     private int seed;
     private bool offsetDynamic;
+    private int speed;
     private Vector2 offset;
     private Gradient coloring;
     private Vector3 curPos;

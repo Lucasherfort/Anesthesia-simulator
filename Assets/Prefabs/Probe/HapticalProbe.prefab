@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1291087304260003818}
   - component: {fileID: 1291087304260003605}
   - component: {fileID: 1804456656}
-  - component: {fileID: 6855431937161961170}
+  - component: {fileID: 8606549164554889978}
   m_Layer: 0
   m_Name: HapticalProbe
   m_TagString: Probe
@@ -50,8 +50,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!65 &1804456656
-BoxCollider:
+--- !u!136 &1804456656
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -60,10 +60,11 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 9.484991, y: 7.368048, z: 50.690136}
-  m_Center: {x: -0.044070184, y: -0.05171034, z: 24.611666}
---- !u!114 &6855431937161961170
+  m_Radius: 4.927344
+  m_Height: 10.698385
+  m_Direction: 0
+  m_Center: {x: 0.056286655, y: 0, z: 1.463559}
+--- !u!114 &8606549164554889978
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,8 +76,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23204d31051a6a04f86765dbb95ae421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  composite: {fileID: 0}
-  ScreenPlaceHolder: {fileID: 0}
+  SkinTag: Skin
+  composite: {fileID: 2100000, guid: fa99737f26f648ba89286bbb8e3b9285, type: 2}
+  ScreenPlaceHolder: {fileID: 2100000, guid: 12240c8414018424593e1ab4ea4ca0c3, type: 2}
   Screenrenderer: {fileID: 0}
 --- !u!1 &2461311669656115846
 GameObject:

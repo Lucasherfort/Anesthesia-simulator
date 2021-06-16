@@ -7,88 +7,75 @@ using System.Runtime.InteropServices;
 using UnityEditor;
 #endif
 
-
-//! This MonoBehavior should be attached to a GameObject and will represent the Haptic Device itself.
-//! One of these objects should be added to the scene corrisponding to each Haptic Device you intend the scene to connect to. 
-//! Additionally this object contains static declarations of the functions in the OHToUnityBridge dll, required for this asset to function.
 public class ProbeHapticPlugin : MonoBehaviour
 {
     [Header("Configuration Attributes")]
 
-    public string configName = "Default Device";  //!< Filename of the Haptic Device Configuration. (Typically "Default Device")
-    public bool connect_On_Start = true;        //!< Should the script connect to haptic the moment it's created?
+    public string configName = "Default Device";
+    public string touchableTagName = "Touchable";
+    public bool connect_On_Start = true;       
 
     [Range(0.0f, 1.0f)]
-    public float PhysicsForceStrength = 0.333f; //!< Spring force coupling the haptic forces and the Unity Physics simualtion
+    public float PhysicsForceStrength = 0.333f; 
     [Range(0.0f, 1.0f)]
-    public float PhysicsForceDamping = 0.33f; //!< Damping force for the spring coupling the haptic forces and the Unity Physics simulation.
+    public float PhysicsForceDamping = 0.33f; 
 
-    public bool shapesEnabled = true; //TODO FIXME Doesn't work yet.
+    public bool shapesEnabled = true; 
 
-    public GameObject hapticManipulator = null; //!< Reference to unity gameobject representing the haptic stylus.
-    public bool PhysicsManipulationEnabled = true;  //!< Should the haptic forces interact with the Unity physics simulation?
+    public GameObject hapticManipulator = null; 
+    public bool PhysicsManipulationEnabled = true;  
 
 
     [Header("ReadOnly Attributes")]
 
-    [DisplayOnlyAttribute]
-    public GameObject touching = null;  //!< (Readonly) Reference to the touchable unity gameobject currently being touched
-    [DisplayOnlyAttribute]
-    public float touchingDepth = 0; //!< (Readonly) Depth (ie: pressure) the 'touching' object is being touched.
+    [DisplayOnly]
+    public GameObject touching = null; 
+    [DisplayOnly]
+    public float touchingDepth = 0; 
 
-
-
-    [DisplayOnlyAttribute]
+    [DisplayOnly]
     public int hHD = -1;
-    [DisplayOnlyAttribute]
-    public string device_SerialNumber = "-Not Connected-";  //!< (Readonly) Serial number of the haptic device.
-    [DisplayOnlyAttribute]
-    public string device_Model = "-Not Connected-"; //!< (Readonly) Model of the haptic device
+    [DisplayOnly]
+    public string device_SerialNumber = "-Not Connected-";  
+    [DisplayOnly]
+    public string device_Model = "-Not Connected-"; 
 
-    [DisplayOnlyAttribute]
-    public Vector3 stylusPositionRaw;   //!< (Readonly) Stylus position, in device coordinates.
-    [DisplayOnlyAttribute]
-    public Vector3 stylusVelocityRaw;   //!< (Readonly) Stylus velocity, in device coordinates.
-    [DisplayOnlyAttribute]
-    public Matrix4x4 stylusTransformRaw;    //!< (Readonly) Stylus transform, in device coordinates.
-    [DisplayOnlyAttribute]
-    public int[] Buttons;               //!< (Readonly) Array of buttons. 1 is pressed, 0 is unpressed.
-    [DisplayOnlyAttribute]
-    public int inkwell;                 //!<! (Readonly) 1 if inkwell button is triggered. 0 otherwise. (Not all devices have inkwells.)
+    [DisplayOnly]
+    public Vector3 stylusPositionRaw;   
+    [DisplayOnly]
+    public Vector3 stylusVelocityRaw;   
+    [DisplayOnly]
+    public Matrix4x4 stylusTransformRaw;    
+    [DisplayOnly]
+    public int[] Buttons;              
+    [DisplayOnly]
+    public int inkwell;                
 
-
-    [DisplayOnlyAttribute]
-    public Vector3 proxyPositionRaw;            //!< (Readonly) Proxy position, in device coordinates.
-    [DisplayOnlyAttribute]
-    public Quaternion proxyOrientationRaw;  //!< (Readonly) Proxy Orientation, in device coordinates.
-    [DisplayOnlyAttribute]
-    public Matrix4x4 proxyTransformRaw;     //!< (Readonly) Proxy Transform in device coordinates.
-    [DisplayOnlyAttribute]
+    [DisplayOnly]
+    public Vector3 proxyPositionRaw;           
+    [DisplayOnly]
+    public Quaternion proxyOrientationRaw;  
+    [DisplayOnly]
+    public Matrix4x4 proxyTransformRaw;     
+    [DisplayOnly]
     public Vector3 proxyNormalRaw;
-
-
 
     #region DLL_Imports
     [DllImport("OHToUnityBridge")]
-    public static extern void getVersionString(StringBuilder dest, int len);  //!< Retreives the OpenHaptics version string.
+    public static extern void getVersionString(StringBuilder dest, int len);  
 
-    // Setup Functions
     [DllImport("OHToUnityBridge")]
-    public static extern int initDevice(string deviceName); //!< Connects to and Initializes a haptic device.
+    public static extern int initDevice(string deviceName); 
     [DllImport("OHToUnityBridge")]
-    public static extern void getDeviceSN(string configName, StringBuilder dest, int len);  //!< Retrieves device serial number
+    public static extern void getDeviceSN(string configName, StringBuilder dest, int len); 
     [DllImport("OHToUnityBridge")]
-    public static extern void getDeviceModel(string configName, StringBuilder dest, int len);	//!< Retrieves devices model name
+    public static extern void getDeviceModel(string configName, StringBuilder dest, int len);	
     [DllImport("OHToUnityBridge")]
-    public static extern void startSchedulers();    //!< Starts the Open Haptic schedulers and assigns the required internal callbacks
+    public static extern void startSchedulers();   
 
-    // Device Information
-    //! Retrieves the bounds created by the physical limitations of the device.
-    //! Equivialant to an `hlWorkspace` call.
     [DllImport("OHToUnityBridge")]
     public static extern void getWorkspaceArea(string configName, double[] usable6, double[] max6);
 
-    // Updates
     [DllImport("OHToUnityBridge")]
     public static extern void getPosition(string configName, double[] position3);
     [DllImport("OHToUnityBridge")]
@@ -98,54 +85,39 @@ public class ProbeHapticPlugin : MonoBehaviour
     [DllImport("OHToUnityBridge")]
     public static extern void getButtons(string configName, int[] buttons4, ref int inkwell);
 
-    // Force output
     [DllImport("OHToUnityBridge")]
-    public static extern void setForce(string configName, double[] lateral3, double[] torque3); //!< Adds an additional force to the haptic device. Can be eseed for scripted forces, but in most cases using an Effect is preferable. 
+    public static extern void setForce(string configName, double[] lateral3, double[] torque3); 
 
-    //! The haptic device and the unity gameobject are connected by a simulated spring. (Because Unity runs at a much slower framerate than is required for directly setting physics forces.)
-    //! This call sets the current anchor position of the spring.  Normally the HapticPlugin script would call this during its update.
     [DllImport("OHToUnityBridge")]
     public static extern void setSpringAnchorPosition(string configName, double[] position3, double[] velocity3);
-    //! The haptic device and the unity gameobject are connected by a simulated spring. (Because Unity runs at a much slower framerate than is required for directly setting physics forces.)
-    //! This call sets the current stiffness of the spring. 
+ 
     [DllImport("OHToUnityBridge")]
     public static extern void setSpringStiffness(string configName, double stiffness, double damping);
 
-    // Shape Handling
-    //! Allocates an OH touchable shape. Typically called by the HapticPlugin object.
-    //! \return the handle ID for the newly created shape.
     [DllImport("OHToUnityBridge")]
     public static extern void shape_define(int id, string name, double[] ParticleSystemVertexStreams, int[] triangles, int vertCount, int triCount);
     [DllImport("OHToUnityBridge")]
-    public static extern void shape_setTransform(int id, double[] matrix16); //!< Sets the transform of an already defined touchable shape.  Typically called by HapticPlugin update function.
+    public static extern void shape_setTransform(int id, double[] matrix16); 
     [DllImport("OHToUnityBridge")]
-    public static extern void shape_remove(int id);  //!< Removes an already defined touchable shape.
+    public static extern void shape_remove(int id);  
     [DllImport("OHToUnityBridge")]
-    public static extern void shape_removeAll(); //!< Removes **all** touchable shapes.
-                                                 //! If the Proxy Stylus is currently touching a touchable object, this will retrieve the ID and the current depth (pressure) of the stylus.
-                                                 //! \return true if currently touching an object.
+    public static extern void shape_removeAll(); 
+
     [DllImport("OHToUnityBridge")]
     public static extern bool shape_getTouched(string configName, ref int shapeID, ref double depth);
-    //! Sets the parameters of a touchable object.
-    //! Refer to OH documentation for the meaning of the parameters.  
-    //! See also the helper script HapticSurface
+
     [DllImport("OHToUnityBridge")]
     public static extern void shape_settings(int id, double hlStiffness, double hlDamping, double hlStaticFriction, double hlDynamicFriction, double hlPopThrough);
 
-    //! Sets the current constraint parameters of a touchable object.
-    //! See also the helper script HapticSurface
     [DllImport("OHToUnityBridge")]
     public static extern void shape_constraintSettings(int id, int model, double snapDist);
-    //! If an object's normals are backwards, it can be corrected with this function.
+
     [DllImport("OHToUnityBridge")]
     public static extern void shape_flipNormals(int id, bool flipNormals);
-    //! Define which surface of the object (Inner or Outer) should be touchable.
-    //! \param facing  1=HL_FRONT, 2=HL_BACK, 3=HL_FRONT_AND_BACK
+
     [DllImport("OHToUnityBridge")]
-    public static extern void shape_facing(int id, int facing); //1=HL_FRONT, 2=HL_BACK, 3=HL_FRONT_AND_BACK
+    public static extern void shape_facing(int id, int facing); 
 
-
-    //! Called every update frame, **after** all the shape positions and parameters have been updated.
     [DllImport("OHToUnityBridge")]
     public static extern void shape_render(string configName, double[] matrix16);
 
@@ -153,7 +125,6 @@ public class ProbeHapticPlugin : MonoBehaviour
     public static extern void shape_enableShapeRendering();
     [DllImport("OHToUnityBridge")]
     public static extern void shape_disableShapeRendering();
-
 
     [DllImport("OHToUnityBridge")]
     public static extern void getProxyPosition(string configName, double[] position3);
@@ -164,12 +135,9 @@ public class ProbeHapticPlugin : MonoBehaviour
     [DllImport("OHToUnityBridge")]
     public static extern void getProxyTransform(string configName, double[] matrix16);
 
-
     [DllImport("OHToUnityBridge")]
-    public static extern void effects_resetAll(); //!< Delete all Effects.
+    public static extern void effects_resetAll(); 
 
-    //! Allocate a new OpenHaptics Effect
-    //! \return The handle ID for the new effect.
     [DllImport("OHToUnityBridge")]
     public static extern int effects_assignEffect(string configName);
     [DllImport("OHToUnityBridge")]
@@ -177,33 +145,17 @@ public class ProbeHapticPlugin : MonoBehaviour
     [DllImport("OHToUnityBridge")]
     public static extern void effects_stopEffect(string configName, int ID);
 
-    //! Update the parameters of the effect.
-    //! (Unused parameters may be set to 0.0)
-    //! \param gain	The strength of the effect. Used for **Vibrate**, **Viscocity**, **Spring**, and **Friction**
-    //! \param magnitude Maximum force limit. Used for **Vibrate**, **Constant**, **Viscocity**, **Spring**, and **Friction**
-    //! \param frequency Vibration frequency.  Used for **Vibrate**
-    //! \param position3 A point (defined as an array of 3 doubles) defining the focal point of the effect. Used for **Spring**
-    //! \param direction3 A unit vector (defined as an array of 3 doubles) defining the direction of the effect. Used for **Vibrate**, and **Constant**
     [DllImport("OHToUnityBridge")]
     public static extern void effects_settings(string configName, int ID, double gain, double magnitude, double frequency, double[] position3, double[] direction3);
     [DllImport("OHToUnityBridge")]
     public static extern void effects_deleteEffect(string configName, int ID);
 
-    //! Assigns the *type* of the effect.
-    //! \param type 0 = constant, 1 = spring, 2 = viscous, 3 = friction, 4 = vibration
     [DllImport("OHToUnityBridge")]
     public static extern void effects_type(string configName, int ID, int type);
 
-
-
-
-    //Cleanup functions
-    //! Disconnects from all devices.
-    //! In the process all **shapes** and all **effects** are also cleared.
     [DllImport("OHToUnityBridge")]
     public static extern void disconnectAllDevices();
 
-    //Error Handling Functions
     [DllImport("OHToUnityBridge")]
     public static extern int getHDError(StringBuilder Info, int len);
     [DllImport("OHToUnityBridge")]
@@ -213,17 +165,11 @@ public class ProbeHapticPlugin : MonoBehaviour
 
     private Queue hapticErrorQueue;
 
-    // Privates
-
     [System.NonSerialized]
     public double[] max_extents = new double[6];
     [System.NonSerialized]
     public double[] usable_extents = new double[6];
 
-    //private double scale = 1.0f;
-
-    // "Cooked" values. Raw position data multiplied by this object's transform.
-    // Updated every frame.
     Matrix4x4 stylusMatrixWorld;
     public Vector3 stylusPositionWorld;
     Vector3 stylusVelocityWorld;
@@ -239,12 +185,10 @@ public class ProbeHapticPlugin : MonoBehaviour
 
     private bool isIncorrectVersion = false;
 
-    // Use this for initialization
     void OnEnable()
     {
         Buttons = new int[4];
 
-        // Get Version String
         StringBuilder sb = new StringBuilder(256);
         getVersionString(sb, sb.Capacity);
         Debug.Log("Haptic Plugin Version : " + sb.ToString());
@@ -264,7 +208,7 @@ public class ProbeHapticPlugin : MonoBehaviour
         }
 
         //// FIXME
-        touchableObjects = GameObject.FindGameObjectsWithTag("Touchable") as GameObject[];  //FIXME  Does this fail gracefully?
+        touchableObjects = GameObject.FindGameObjectsWithTag(touchableTagName) as GameObject[];  //FIXME  Does this fail gracefully?
 
         hapticErrorQueue = new Queue();
 
@@ -703,7 +647,7 @@ public class ProbeHapticPlugin : MonoBehaviour
     {
         if (isIncorrectVersion) return;
 
-        touchableObjects = GameObject.FindGameObjectsWithTag("Touchable") as GameObject[];
+        touchableObjects = GameObject.FindGameObjectsWithTag(touchableTagName) as GameObject[];
 
         for (int ii = 0; ii < touchableObjects.Length; ii++)
         {
@@ -746,7 +690,7 @@ public class ProbeHapticPlugin : MonoBehaviour
     {
         if (isIncorrectVersion) return;
 
-        GameObject[] myObjects = GameObject.FindGameObjectsWithTag("Touchable") as GameObject[];
+        GameObject[] myObjects = GameObject.FindGameObjectsWithTag(touchableTagName) as GameObject[];
 
         for (int ii = 0; ii < myObjects.Length; ii++)
         {

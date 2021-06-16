@@ -3,10 +3,11 @@
 public class DisplayScreenProbe : MonoBehaviour
 {
     [SerializeField]
+    private string SkinTag = "Skin";
+    [SerializeField]
     private Material composite = null;
     [SerializeField]
     private Material ScreenPlaceHolder = null;
-
     [SerializeField]
     private GameObject Screenrenderer = null;
 
@@ -17,7 +18,8 @@ public class DisplayScreenProbe : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.gameObject.tag == "Skin")
+        Debug.Log("IN" + collision.collider.name);
+        if (collision.collider.gameObject.tag == SkinTag)
         {
             Screenrenderer.GetComponent<Renderer>().material = composite;
         }
@@ -25,7 +27,8 @@ public class DisplayScreenProbe : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.collider.gameObject.tag == "Skin")
+        Debug.Log("OUT" + collision.collider.name);
+        if (collision.collider.gameObject.tag == SkinTag)
         {
             Screenrenderer.GetComponent<Renderer>().material = ScreenPlaceHolder;
         }

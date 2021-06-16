@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   configName: Left Device
+  touchableTagName: Skin
   connect_On_Start: 1
   PhysicsForceStrength: 0.333
   PhysicsForceDamping: 0

@@ -16,6 +16,7 @@ public class NeedleHapticPlugin : MonoBehaviour
     [Header("Configuration Attributes")]
 
     public string configName = "Default Device";  //!< Filename of the Haptic Device Configuration. (Typically "Default Device")
+    public string touchableTagName = "Touchable";
     public bool connect_On_Start = true;        //!< Should the script connect to haptic the moment it's created?
 
     [Range(0.0f, 1.0f)]
@@ -264,7 +265,7 @@ public class NeedleHapticPlugin : MonoBehaviour
             }
         }
 
-        touchableObjects = GameObject.FindGameObjectsWithTag("Touchable") as GameObject[];  //FIXME  Does this fail gracefully?
+        touchableObjects = GameObject.FindGameObjectsWithTag(touchableTagName) as GameObject[];  //FIXME  Does this fail gracefully?
 
         hapticErrorQueue = new Queue();
 
@@ -712,7 +713,7 @@ public class NeedleHapticPlugin : MonoBehaviour
     {
         if (isIncorrectVersion) return;
 
-        touchableObjects = GameObject.FindGameObjectsWithTag("Touchable") as GameObject[];
+        touchableObjects = GameObject.FindGameObjectsWithTag(touchableTagName) as GameObject[];
 
         for (int ii = 0; ii < touchableObjects.Length; ii++)
         {
@@ -751,7 +752,7 @@ public class NeedleHapticPlugin : MonoBehaviour
     {
         if (isIncorrectVersion) return;
 
-        GameObject[] myObjects = GameObject.FindGameObjectsWithTag("Touchable") as GameObject[];
+        GameObject[] myObjects = GameObject.FindGameObjectsWithTag(touchableTagName) as GameObject[];
 
         for (int ii = 0; ii < myObjects.Length; ii++)
         {

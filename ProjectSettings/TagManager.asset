@@ -14,7 +14,6 @@ TagManager:
   - SondeArea
   - Probe
   - Needle
-  - Touchable22
   layers:
   - Default
   - TransparentFX
