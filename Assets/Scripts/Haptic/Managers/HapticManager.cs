@@ -79,7 +79,7 @@ public class HapticManager : MonoBehaviour
             Debug.LogError("HapticSurface has been assigned to object without mesh.");
         }
 
-        if (gameObject.tag != "Touchable")
+        if (gameObject.tag != "Skin")
         {
             Debug.LogError(transform.name+" doesn't have the tag Touchable !");
         }

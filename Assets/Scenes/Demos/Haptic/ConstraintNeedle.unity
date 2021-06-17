@@ -189,6 +189,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 1291087304260003818, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291087304260003818, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291087304260003818, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1291087304260003819, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
       propertyPath: m_Name
@@ -894,7 +909,7 @@ GameObject:
   - component: {fileID: 2479494591613248353}
   m_Layer: 9
   m_Name: OuterSkin
-  m_TagString: Touchable
+  m_TagString: Skin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

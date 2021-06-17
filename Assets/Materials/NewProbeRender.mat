@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ProbeRender
-  m_Shader: {fileID: 4800000, guid: 3b55d14eab358d24db6fae7ef4e957cb, type: 3}
+  m_Name: NewProbeRender
+  m_Shader: {fileID: 4800000, guid: 761b87fd2456423c8be213064d0e5165, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -28,31 +28,31 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LayerArtery:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 8400000, guid: e7bfd1a9be2240949a477274bf361a57, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LayerFilter:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 8400000, guid: 3778f80000ce4f1692140bc93beee778, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LayerMuscle:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 8400000, guid: e19924f565de4c949401be69486ae890, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LayerNeedle:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 8400000, guid: 1a25291fbeb94693a7aee30462e575f0, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LayerNerve:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 8400000, guid: 20b59250c8f782f4898a2ff7fd89be2c, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LayerNoise:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 8400000, guid: 94da4858139e41d8b9432e7144e6df5c, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LayerVeine:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 8400000, guid: 70d45529704aeb942b6eeaf6636fea6c, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex1:

@@ -18,7 +18,6 @@ public class DisplayScreenProbe : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("IN" + collision.collider.name);
         if (collision.collider.gameObject.tag == SkinTag)
         {
             Screenrenderer.GetComponent<Renderer>().material = composite;
@@ -27,7 +26,6 @@ public class DisplayScreenProbe : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        Debug.Log("OUT" + collision.collider.name);
         if (collision.collider.gameObject.tag == SkinTag)
         {
             Screenrenderer.GetComponent<Renderer>().material = ScreenPlaceHolder;

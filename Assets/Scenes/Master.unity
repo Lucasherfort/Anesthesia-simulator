@@ -15260,7 +15260,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 743882e8fe17ffb48aeb14c52daf37fa, type: 2}
+  - {fileID: 2100000, guid: 31bb7719e3c0b60448b4622150ca113f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -55504,25 +55504,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1804456656, guid: 128408b3a537edc4cbe4628573d54d05, type: 3}
-      propertyPath: m_Radius
-      value: 3.3978963
-      objectReference: {fileID: 0}
-    - target: {fileID: 1804456656, guid: 128408b3a537edc4cbe4628573d54d05, type: 3}
-      propertyPath: m_Center.z
-      value: 5.2588973
-      objectReference: {fileID: 0}
-    - target: {fileID: 1804456656, guid: 128408b3a537edc4cbe4628573d54d05, type: 3}
-      propertyPath: m_Height
-      value: 12.877385
-      objectReference: {fileID: 0}
-    - target: {fileID: 1804456656, guid: 128408b3a537edc4cbe4628573d54d05, type: 3}
-      propertyPath: m_Center.x
-      value: -0.00872877
-      objectReference: {fileID: 0}
-    - target: {fileID: 1804456656, guid: 128408b3a537edc4cbe4628573d54d05, type: 3}
-      propertyPath: m_Center.y
-      value: 0
+    - target: {fileID: 967601692809535291, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: e7bfd1a9be2240949a477274bf361a57, type: 2}
+    - target: {fileID: 967601692809535291, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 32768
       objectReference: {fileID: 0}
     - target: {fileID: 1291087304260003818, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
@@ -55584,11 +55574,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'HapticalProbe '
       objectReference: {fileID: 0}
+    - target: {fileID: 2461311669438012245, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 131072
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461311669656115908, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3367931148944579656, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 70d45529704aeb942b6eeaf6636fea6c, type: 2}
+    - target: {fileID: 3367931148944579656, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919463328354186038, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_Name
+      value: CrossCam-Nerve
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440060010847029748, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 20b59250c8f782f4898a2ff7fd89be2c, type: 2}
+    - target: {fileID: 7440060010847029748, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 65536
+      objectReference: {fileID: 0}
     - target: {fileID: 8606549164554889978, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
       propertyPath: Screenrenderer
       value: 
       objectReference: {fileID: 1576726948}
+    - target: {fileID: 8606549164554889978, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: composite
+      value: 
+      objectReference: {fileID: 2100000, guid: b9180ad367ca2e54a915d24c206d23de, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 128408b3a537edc4cbe4628573d54d05, type: 3}
 --- !u!1 &1804456652 stripped
@@ -71373,7 +71403,6 @@ Transform:
   m_Children:
   - {fileID: 4274272719178093893}
   - {fileID: 622498778}
-  - {fileID: 4274272719581845771}
   - {fileID: 4274272718413017534}
   - {fileID: 4274272718369888727}
   m_Father: {fileID: 4274272718100543717}
@@ -71421,7 +71450,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8c65fd94e74543d5bb378f41b61b2fe9, type: 2}
+  - {fileID: 2100000, guid: 31bb7719e3c0b60448b4622150ca113f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -71454,13 +71483,13 @@ GameObject:
   - component: {fileID: 4274272718369888712}
   - component: {fileID: 4274272718369888713}
   - component: {fileID: 4274272718369888726}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: CrossVein
   m_TagString: 
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &4274272718369888726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71486,7 +71515,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4274272718317493450}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4274272718371533562
 GameObject:
@@ -71550,7 +71579,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8c65fd94e74543d5bb378f41b61b2fe9, type: 2}
+  - {fileID: 2100000, guid: b0a4f279cc2a4b7ab0c9142dd8ddb2aa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -71604,7 +71633,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4274272718317493450}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4274272718413017535
 GameObject:
@@ -71618,13 +71647,13 @@ GameObject:
   - component: {fileID: 4274272718413017523}
   - component: {fileID: 4274272718413017520}
   - component: {fileID: 4274272718413017521}
-  m_Layer: 8
+  m_Layer: 16
   m_Name: CrossNerve
   m_TagString: 
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4274272718498554322
 Transform:
   m_ObjectHideFlags: 0
@@ -71809,13 +71838,13 @@ GameObject:
   - component: {fileID: 4274272719178093894}
   - component: {fileID: 4274272719178093895}
   - component: {fileID: 4274272719178093892}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: CrossArtery
   m_TagString: 
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &4274272719178093892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71869,7 +71898,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8c65fd94e74543d5bb378f41b61b2fe9, type: 2}
+  - {fileID: 2100000, guid: 60d73963a32074541bd9f86f06c49588, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -72171,99 +72200,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: ccf342b43aac4795a3a4cbd8419830fe, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!1 &4274272719581845768
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4274272719581845771}
-  - component: {fileID: 4274272719581845772}
-  - component: {fileID: 4274272719581845773}
-  - component: {fileID: 4274272719581845770}
-  m_Layer: 8
-  m_Name: CrossSkin
-  m_TagString: 
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &4274272719581845770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4274272719581845768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f59580c656c8c784eb6118540b28c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cutPlane: {fileID: 1804456652}
---- !u!4 &4274272719581845771
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4274272719581845768}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4274272718317493450}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4274272719581845772
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4274272719581845768}
-  m_Mesh: {fileID: 4300000, guid: 89f476a66bc0417a860cf870e38eaddd, type: 2}
---- !u!23 &4274272719581845773
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4274272719581845768}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 8c65fd94e74543d5bb378f41b61b2fe9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
