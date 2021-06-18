@@ -1,12 +1,10 @@
-Shader "Custom/ColorFilter"
+Shader "Custom/NewColorFilter"
 {
   Properties
   {
     _MainTex ("Texture", 2D) = "white" {}
-    _PickColor1 ("Visable Color 1", Color) = (1,0,1,0)
-    _PickColor2 ("Visable Color 2", Color) = (0,1,0,0)
-    _OutputColor1 ("Output Color 1", Color) = (1,1,1,1)
-    _OutputColor2 ("Output Color 2", Color) = (0.5,0.5,0.5,1)
+    _InputColor("InputColor", Color) = (1,0,1,0)
+    _OutputColor("OutputColor", Color) = (1,1,1,0)
   }
   SubShader
   {
@@ -21,10 +19,8 @@ Shader "Custom/ColorFilter"
       
       
       #define CODE_BLOCK_VERTEX
-      uniform float4 _PickColor1;
-      uniform float4 _PickColor2;
-      uniform float4 _OutputColor1;
-      uniform float4 _OutputColor2;
+      uniform float4 _InputColor;
+      uniform float4 _OutputColor;
       uniform sampler2D _MainTex;
 
       struct appdata_t
@@ -58,37 +54,21 @@ Shader "Custom/ColorFilter"
           return OUT;
       }
       
-      float4 PixelColorTexture1;
-      float4 PixelColorTexture2;
+	  float4 OutputTexture;
 
-      float4 frag(v2f IN) : SV_Target
+	  float4 frag(v2f IN) : SV_Target
       {
 
-        float4 OUT;
+		float4 OUT;
 	  
-		    PixelColorTexture1 = tex2D(_MainTex, IN.texcoord.xy);
+		OutputTexture.rgba = tex2D(_MainTex, IN.texcoord.xy).rgba;
 
-		    if (PixelColorTexture1.r > 0.5)
-		    {
-			    PixelColorTexture1 = _OutputColor1;
-		    }
-		    else
-		    {
-			   PixelColorTexture1 = float4(0, 0, 0, 0);
-		    }
+		if (_InputColor.r == float4(1, 0, 1, 0).r)
+		{
+			OutputTexture = _OutputColor;
+		}
 
-		    PixelColorTexture2 = tex2D(_MainTex, IN.texcoord.xy);
-
-		    if (PixelColorTexture2.g > 0.5)
-		    {
-			    PixelColorTexture2 = _OutputColor2;
-		    }
-		    else
-		    {
-			    PixelColorTexture2 = float4(0, 0, 0, 0);
-		    }
-
-		    OUT = PixelColorTexture1 + PixelColorTexture2;
+		OUT = OutputTexture;
 		  
         return OUT;
       }   
