@@ -65,8 +65,13 @@ Shader "Custon/NewComposite"
 			float4 fragmentFunc(v2f IN) : SV_Target
 			{
 				float4 OUT;
+
 				PixelColorMuscle = tex2D(_LayerMuscle, IN.uv.xy);
-				OUT = PixelColorMuscle;
+				PixelColorAzerty = tex2D(_LayerArtery, IN.uv.xy);
+				PixelColorNerve = tex2D(_LayerNerve, IN.uv.xy);
+				PixelColorVeine = tex2D(_LayerVeine, IN.uv.xy);
+
+				OUT = PixelColorMuscle + PixelColorAzerty + PixelColorNerve + PixelColorVeine;
 
 				return OUT;
 			}

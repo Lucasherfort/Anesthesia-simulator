@@ -3,8 +3,18 @@ Shader "Custom/NewColorFilter"
   Properties
   {
     _MainTex ("Texture", 2D) = "white" {}
-    _InputColor("InputColor", Color) = (1,0,1,0)
-    _OutputColor("OutputColor", Color) = (1,1,1,0)
+
+    _CrossMagentaInput("CrossMagentaInput", Color) = (1,1,1,1)
+    _CrossMagentaOutput("CrossMagentaOutput", Color) = (1,1,1,1)
+
+	_CrossYellowInput("CrossYellowInput", Color) = (1,1,1,1)
+	_CrossYellowOutput("CrossYellowOutput", Color) = (1,1,1,1)
+
+	_CrossGreenInput("CrossGreenInput", Color) = (1,1,1,1)
+	_CrossGreenOutput("CrossGreenOutput", Color) = (1,1,1,1)
+
+	_CrossCyanInput("CrossCyanInput", Color) = (1,1,1,1)
+	_CrossCyanOutput("CrossCyanOutput", Color) = (1,1,1,1)
   }
   SubShader
   {
@@ -17,11 +27,22 @@ Shader "Custom/NewColorFilter"
       
       #include "UnityCG.cginc"
       
-      
       #define CODE_BLOCK_VERTEX
-      uniform float4 _InputColor;
-      uniform float4 _OutputColor;
-      uniform sampler2D _MainTex;
+
+	  uniform sampler2D _MainTex;
+
+      uniform float4 _CrossMagentaInput;
+      uniform float4 _CrossMagentaOutput;
+
+	  uniform float4 _CrossYellowInput;
+	  uniform float4 _CrossYellowOutput;
+
+	  uniform float4 _CrossGreenInput;
+	  uniform float4 _CrossGreenOutput;
+
+	  uniform float4 _CrossCyanInput;
+	  uniform float4 _CrossCyanOutput;
+
 
       struct appdata_t
       {
@@ -61,11 +82,30 @@ Shader "Custom/NewColorFilter"
 
 		float4 OUT;
 	  
-		OutputTexture.rgba = tex2D(_MainTex, IN.texcoord.xy).rgba;
+		OutputTexture = tex2D(_MainTex, IN.texcoord.xy);
 
-		if (_InputColor.r == float4(1, 0, 1, 0).r)
+		// CrossMagenta
+		if (OutputTexture.r > _CrossMagentaInput.r && OutputTexture.b > _CrossMagentaInput.b && OutputTexture.a > _CrossMagentaInput.a)
 		{
-			OutputTexture = _OutputColor;
+			OutputTexture = _CrossMagentaOutput;
+		}
+
+		// CrossYellow
+		if (OutputTexture.r > _CrossYellowInput.r && OutputTexture.g > _CrossYellowInput.g && OutputTexture.a > _CrossYellowInput.a)
+		{
+			OutputTexture = _CrossYellowOutput;
+		}
+
+		// CrossGreen
+		if (OutputTexture.r > _CrossGreenInput.g && OutputTexture.a > _CrossGreenInput.a)
+		{
+			OutputTexture = _CrossGreenOutput;
+		}
+
+		// CrossCyan
+		if (OutputTexture.r > _CrossCyanInput.g && OutputTexture.b > _CrossCyanInput.b && OutputTexture.a > _CrossCyanInput.a)
+		{
+			OutputTexture = _CrossCyanOutput;
 		}
 
 		OUT = OutputTexture;
