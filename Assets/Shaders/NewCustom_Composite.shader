@@ -71,7 +71,7 @@ Shader "Custon/NewComposite"
 				PixelColorNerve = tex2D(_LayerNerve, IN.uv.xy);
 				PixelColorVeine = tex2D(_LayerVeine, IN.uv.xy);
 
-				OUT = PixelColorMuscle + PixelColorAzerty + PixelColorNerve + PixelColorVeine;
+				OUT = PixelColorMuscle + PixelColorVeine + PixelColorAzerty + PixelColorNerve + PixelColorNerve;
 
 				return OUT;
 			}
