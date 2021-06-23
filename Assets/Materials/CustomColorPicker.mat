@@ -81,13 +81,13 @@ Material:
     - _CrossGreenInput: {r: 0, g: 1, b: 0, a: 1}
     - _CrossGreenOutput: {r: 0, g: 1, b: 0, a: 1}
     - _CrossMagentaInput: {r: 1, g: 0, b: 1, a: 0}
-    - _CrossMagentaOutput: {r: 1, g: 0, b: 1, a: 0}
+    - _CrossMagentaOutput: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0}
     - _CrossMuscleColor: {r: 0, g: 1, b: 0, a: 0}
     - _CrossNeedleColor: {r: 0, g: 1, b: 0, a: 0}
     - _CrossNerveColor: {r: 0, g: 1, b: 0, a: 0}
     - _CrossVeineColor: {r: 0, g: 1, b: 0, a: 0}
     - _CrossYellowInput: {r: 1, g: 1, b: 0, a: 1}
-    - _CrossYellowOutput: {r: 1, g: 1, b: 0, a: 1}
+    - _CrossYellowOutput: {r: 1, g: 0.9843137, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _InputColor: {r: 1, g: 0, b: 1, a: 0}
     - _InputCrossColor: {r: 1, g: 0, b: 1, a: 0}

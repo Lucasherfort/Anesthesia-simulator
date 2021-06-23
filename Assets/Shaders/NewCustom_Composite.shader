@@ -61,6 +61,8 @@ Shader "Custon/NewComposite"
 			float4 PixelColorNoise;
 			float4 PixelColorFilter;
 			float4 PixelColorNeedle;
+			
+			float4 NoiseTextureResult;
 
 			float4 fragmentFunc(v2f IN) : SV_Target
 			{
@@ -71,7 +73,9 @@ Shader "Custon/NewComposite"
 				PixelColorNerve = tex2D(_LayerNerve, IN.uv.xy);
 				PixelColorVeine = tex2D(_LayerVeine, IN.uv.xy);
 
-				OUT = PixelColorMuscle + PixelColorVeine + PixelColorAzerty + PixelColorNerve + PixelColorNerve;
+				PixelColorNoise = tex2D(_LayerNoise, IN.uv.xy);
+
+				OUT = PixelColorVeine * PixelColorNoise;
 
 				return OUT;
 			}
