@@ -56,8 +56,6 @@ Shader "OldShader/Composite"
 				PixelColorTexture1 = tex2D(_Crossection1, IN.uv.xy);
 				PixelColorTexture2 = tex2D(_Crossection2, IN.uv.xy);
 				PixelColorTexture1 = (PixelColorTexture1 + PixelColorTexture2);
-				//u_xlat1_d = tex2D(_MainTex3, in_f.texcoord.xy);
-				//PixelColorTexture1 = (PixelColorTexture1 + u_xlat1_d);
 				PixelColorTexture2 = tex2D(_Noise, IN.uv.xy);
 
 				OUT = (PixelColorTexture1 * PixelColorTexture2);
