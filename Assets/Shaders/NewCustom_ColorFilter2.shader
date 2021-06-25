@@ -1,4 +1,4 @@
-Shader "Custom/NewColorFilter"
+Shader "Custom/NewColorFilter2"
 {
   Properties
   {
@@ -84,15 +84,10 @@ Shader "Custom/NewColorFilter"
 	  
 		OutputTexture = tex2D(_MainTex, IN.texcoord.xy);
 
-		if (OutputTexture.r < 0.1f && OutputTexture.b < 0.1f && OutputTexture.g < 0.1f)
+		// CrossMagenta
+		if (OutputTexture.r > _CrossYellowInput.r && OutputTexture.b > _CrossYellowInput.b)
 		{
-			OutputTexture = float4(0.5, 0.5, 0.5, 0);
-		}
-
-		// CrossYellow
-		if (OutputTexture.r > _CrossYellowInput.r && OutputTexture.g > _CrossYellowInput.g && OutputTexture.a > _CrossYellowInput.a)
-		{
-			OutputTexture = float4(0, 0, 0, 1);
+			OutputTexture = float4(1, 1, 1, 1);
 		}
 
 		OUT = OutputTexture;

@@ -75,7 +75,7 @@ Shader "Custon/NewComposite"
 
 				PixelColorNoise = tex2D(_LayerNoise, IN.uv.xy);
 
-				OUT = PixelColorVeine * PixelColorNoise;
+				OUT = (PixelColorAzerty + PixelColorVeine) * PixelColorNoise;
 
 				return OUT;
 			}
