@@ -1,4 +1,4 @@
-Shader "Custon/NewComposite"
+Shader "NewShader/CustomFinalRender"
 {
 	Properties
 	{

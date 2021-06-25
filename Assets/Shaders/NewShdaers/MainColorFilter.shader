@@ -1,20 +1,15 @@
-Shader "Custom/NewColorFilter"
+Shader "NewShader/MainColorFilter"
 {
   Properties
   {
     _MainTex ("Texture", 2D) = "white" {}
 
-    _CrossMagentaInput("CrossMagentaInput", Color) = (1,1,1,1)
-    _CrossMagentaOutput("CrossMagentaOutput", Color) = (1,1,1,1)
-
-	_CrossYellowInput("CrossYellowInput", Color) = (1,1,1,1)
-	_CrossYellowOutput("CrossYellowOutput", Color) = (1,1,1,1)
-
 	_CrossGreenInput("CrossGreenInput", Color) = (1,1,1,1)
 	_CrossGreenOutput("CrossGreenOutput", Color) = (1,1,1,1)
 
-	_CrossCyanInput("CrossCyanInput", Color) = (1,1,1,1)
-	_CrossCyanOutput("CrossCyanOutput", Color) = (1,1,1,1)
+	// Vous pouvez créer d'autre couleur pour d'autres éléments sauf le magenta
+
+	_ColorReplaceBackground("ColorReplaceBackground", Color) = (1,1,1,1)
   }
   SubShader
   {
@@ -31,18 +26,9 @@ Shader "Custom/NewColorFilter"
 
 	  uniform sampler2D _MainTex;
 
-      uniform float4 _CrossMagentaInput;
-      uniform float4 _CrossMagentaOutput;
-
-	  uniform float4 _CrossYellowInput;
-	  uniform float4 _CrossYellowOutput;
-
 	  uniform float4 _CrossGreenInput;
 	  uniform float4 _CrossGreenOutput;
-
-	  uniform float4 _CrossCyanInput;
-	  uniform float4 _CrossCyanOutput;
-
+	  uniform float4 _ColorReplaceBackground;
 
       struct appdata_t
       {
@@ -84,15 +70,16 @@ Shader "Custom/NewColorFilter"
 	  
 		OutputTexture = tex2D(_MainTex, IN.texcoord.xy);
 
+		// Si les pixels sont noirs 
 		if (OutputTexture.r < 0.1f && OutputTexture.b < 0.1f && OutputTexture.g < 0.1f)
 		{
-			OutputTexture = float4(0.5, 0.5, 0.5, 0);
+			OutputTexture = _ColorReplaceBackground;
 		}
 
-		// CrossYellow
-		if (OutputTexture.r > _CrossYellowInput.r && OutputTexture.g > _CrossYellowInput.g && OutputTexture.a > _CrossYellowInput.a)
+		// CrossGreen
+		if (OutputTexture.g > _CrossGreenInput.g && OutputTexture.a > _CrossGreenInput.a)
 		{
-			OutputTexture = float4(0, 0, 0, 1);
+			OutputTexture = _CrossGreenOutput;
 		}
 
 		OUT = OutputTexture;

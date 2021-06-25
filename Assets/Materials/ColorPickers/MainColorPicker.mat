@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CustomColorPicker2
-  m_Shader: {fileID: 4800000, guid: 1bd78ccd508f14e4c87d7c9ac349b1a7, type: 3}
+  m_Name: MainColorPicker
+  m_Shader: {fileID: 4800000, guid: c269073857f1f7b4ba56927ffff17f63, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -74,12 +74,13 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorReplaceBackground: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     - _CrossArteryColor: {r: 1, g: 0, b: 1, a: 0}
     - _CrossCyanInput: {r: 0, g: 1, b: 1, a: 1}
     - _CrossCyanOutput: {r: 0, g: 1, b: 1, a: 1}
     - _CrossFilterColor: {r: 0, g: 1, b: 0, a: 0}
     - _CrossGreenInput: {r: 0, g: 1, b: 0, a: 1}
-    - _CrossGreenOutput: {r: 0, g: 1, b: 0, a: 1}
+    - _CrossGreenOutput: {r: 0, g: 0, b: 0, a: 1}
     - _CrossMagentaInput: {r: 1, g: 0, b: 1, a: 0}
     - _CrossMagentaOutput: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0}
     - _CrossMuscleColor: {r: 0, g: 1, b: 0, a: 0}
@@ -87,7 +88,7 @@ Material:
     - _CrossNerveColor: {r: 0, g: 1, b: 0, a: 0}
     - _CrossVeineColor: {r: 0, g: 1, b: 0, a: 0}
     - _CrossYellowInput: {r: 1, g: 1, b: 0, a: 1}
-    - _CrossYellowOutput: {r: 1, g: 0.9843137, b: 0, a: 1}
+    - _CrossYellowOutput: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _InputColor: {r: 1, g: 0, b: 1, a: 0}
     - _InputCrossColor: {r: 1, g: 0, b: 1, a: 0}
