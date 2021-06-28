@@ -55495,16 +55495,36 @@ PrefabInstance:
         type: 3}
       propertyPath: EffectMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: e27a9236a53936c4b869e1473fed55e7, type: 2}
+      objectReference: {fileID: 2100000, guid: c0555de4bd1cca14983c93ace265fd0b, type: 2}
     - target: {fileID: 2461311564647521255, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461311669438012245, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 262144
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461311669438012245, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 4261eb7669658c0439d7323d21cde67f, type: 2}
+    - target: {fileID: 2461311669656115878, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2461311669656115908, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461311669656115908, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_Name
+      value: CrossCam-Border
       objectReference: {fileID: 0}
     - target: {fileID: 3367931148944579656, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
@@ -55530,7 +55550,7 @@ PrefabInstance:
         type: 3}
       propertyPath: EffectMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: c0555de4bd1cca14983c93ace265fd0b, type: 2}
+      objectReference: {fileID: 2100000, guid: e27a9236a53936c4b869e1473fed55e7, type: 2}
     - target: {fileID: 8606549164554889978, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
       propertyPath: Screenrenderer
@@ -70190,7 +70210,7 @@ GameObject:
   - component: {fileID: 4178998877982403866}
   - component: {fileID: 3312511624364631188}
   m_Layer: 11
-  m_Name: Cylinder.001
+  m_Name: Veine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70889,8 +70909,8 @@ GameObject:
   - component: {fileID: 1272064053399600613}
   - component: {fileID: 4047805524445950847}
   - component: {fileID: 7594759532150803361}
-  m_Layer: 15
-  m_Name: Cylinder
+  m_Layer: 18
+  m_Name: BorderVeine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -677,7 +677,7 @@ GameObject:
   - component: {fileID: 967601692897562989}
   - component: {fileID: 789600563989652814}
   - component: {fileID: 8117330140303558911}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CrossCam-Artery
   m_TagString: 
   m_Icon: {fileID: 0}
@@ -790,7 +790,6 @@ GameObject:
   - component: {fileID: 1291087304163355068}
   - component: {fileID: 1291087304163354947}
   - component: {fileID: 1900977286}
-  - component: {fileID: 8606549164131214508}
   m_Layer: 0
   m_Name: HapticalProbe
   m_TagString: Probe
@@ -898,19 +897,6 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3919463328786414944}
   m_Enabled: 1
---- !u!114 &2461311564551230857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2461311670029587696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eed0cc27e79a799d7326b6dddd75178, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EffectMaterial: {fileID: 2100000, guid: d8735abc56564053ba6e5d0c8a87dd40, type: 2}
 --- !u!114 &2461311564551230897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,14 +917,6 @@ Behaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2461311670029587682}
-  m_Enabled: 1
---- !u!124 &2461311564719002946
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2461311670029587696}
   m_Enabled: 1
 --- !u!124 &2461311564719002951
 Behaviour:
@@ -993,7 +971,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 131072
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 3778f80000ce4f1692140bc93beee778, type: 2}
   m_TargetDisplay: 2
@@ -1039,49 +1017,6 @@ Camera:
     m_Bits: 256
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: e19924f565de4c949401be69486ae890, type: 2}
-  m_TargetDisplay: 2
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!20 &2461311669006177550
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2461311670029587696}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0
-  far clip plane: 100
-  field of view: 60
-  orthographic: 1
-  orthographic size: 10
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4096
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: 1a25291fbeb94693a7aee30462e575f0, type: 2}
   m_TargetDisplay: 2
   m_TargetEye: 3
   m_HDR: 1
@@ -1380,20 +1315,6 @@ Transform:
   m_Father: {fileID: 2461311669811483910}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &2461311669811483946
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2461311670029587696}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: -9.6, z: 0}
-  m_LocalScale: {x: 0.6000001, y: 0.8, z: 0.6000001}
-  m_Children: []
-  m_Father: {fileID: 2461311669811483965}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2461311669811483953
 Transform:
   m_ObjectHideFlags: 0
@@ -1421,7 +1342,7 @@ Transform:
   m_LocalScale: {x: 4, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 2461311669811483965}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2461311669811483962
 Transform:
@@ -1456,7 +1377,6 @@ Transform:
   - {fileID: 8350448943401413988}
   - {fileID: 2739325319988980080}
   - {fileID: 2461311669811483871}
-  - {fileID: 2461311669811483946}
   - {fileID: 2461311669811483956}
   m_Father: {fileID: 2461311669811483942}
   m_RootOrder: 0
@@ -1489,7 +1409,7 @@ GameObject:
   - component: {fileID: 2461311669006177539}
   - component: {fileID: 2461311564719002951}
   - component: {fileID: 2461311564551230897}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: CrossCam-Filler
   m_TagString: 
   m_Icon: {fileID: 0}
@@ -1594,8 +1514,8 @@ GameObject:
   - component: {fileID: 2461311669006177549}
   - component: {fileID: 2461311564719002945}
   - component: {fileID: 1900977287}
-  m_Layer: 0
-  m_Name: CrossCam-Muscle
+  m_Layer: 8
+  m_Name: CrossCam-Skin
   m_TagString: 
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1612,25 +1532,6 @@ GameObject:
   - component: {fileID: 2461311669811483942}
   m_Layer: 0
   m_Name: ProbeTilt
-  m_TagString: 
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &2461311670029587696
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2461311669811483946}
-  - component: {fileID: 2461311669006177550}
-  - component: {fileID: 2461311564719002946}
-  - component: {fileID: 2461311564551230857}
-  m_Layer: 0
-  m_Name: CrossCam-Needle
   m_TagString: 
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1799,7 +1700,7 @@ GameObject:
   - component: {fileID: 2479494592150119160}
   - component: {fileID: 2479494592049455756}
   - component: {fileID: 2479494438823141891}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: CrossArtery
   m_TagString: 
   m_Icon: {fileID: 0}
@@ -1836,7 +1737,7 @@ GameObject:
   - component: {fileID: 2479494592150119140}
   - component: {fileID: 2479494592049455755}
   - component: {fileID: 2479494438823141896}
-  m_Layer: 11
+  m_Layer: 17
   m_Name: CrossFiller
   m_TagString: 
   m_Icon: {fileID: 0}
@@ -1938,7 +1839,7 @@ GameObject:
   - component: {fileID: 2479494592150119162}
   - component: {fileID: 2479494592049455758}
   - component: {fileID: 2479494438823141892}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: CrossVein
   m_TagString: 
   m_Icon: {fileID: 0}
@@ -2027,7 +1928,7 @@ GameObject:
   - component: {fileID: 2479494592150119152}
   - component: {fileID: 2479494592049455748}
   - component: {fileID: 2479494438823141907}
-  m_Layer: 8
+  m_Layer: 16
   m_Name: CrossNerve
   m_TagString: 
   m_Icon: {fileID: 0}
@@ -2898,7 +2799,7 @@ GameObject:
   - component: {fileID: 7440060011228891042}
   - component: {fileID: 2336495246944185382}
   - component: {fileID: 4873229604500402366}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: CrossCam-Nerve
   m_TagString: 
   m_Icon: {fileID: 0}
@@ -2917,7 +2818,7 @@ GameObject:
   - component: {fileID: 3367931148831543838}
   - component: {fileID: 3664111102137936839}
   - component: {fileID: 763798619258896221}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CrossCam-Veine
   m_TagString: 
   m_Icon: {fileID: 0}
@@ -3021,19 +2922,3 @@ Transform:
   m_Father: {fileID: 2461311669811483965}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8606549164131214508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1291087304163355069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23204d31051a6a04f86765dbb95ae421, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SkinTag: Skin
-  composite: {fileID: 2100000, guid: b9180ad367ca2e54a915d24c206d23de, type: 2}
-  ScreenPlaceHolder: {fileID: 2100000, guid: 12240c8414018424593e1ab4ea4ca0c3, type: 2}
-  Screenrenderer: {fileID: 0}

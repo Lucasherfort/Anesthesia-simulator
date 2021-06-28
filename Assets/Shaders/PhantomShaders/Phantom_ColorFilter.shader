@@ -1,12 +1,10 @@
-Shader "OldShader/ColorFilter"
+Shader "Phantom/ColorFilter"
 {
   Properties
   {
     _MainTex ("Texture", 2D) = "white" {}
-    _PickColor1 ("Visable Color 1", Color) = (1,0,1,0)
-    _PickColor2 ("Visable Color 2", Color) = (0,1,0,0)
-    _OutputColor1 ("Output Color 1", Color) = (1,1,1,1)
-    _OutputColor2 ("Output Color 2", Color) = (0.5,0.5,0.5,1)
+	_OutputElementsColor("OutputElementsColor", Color) = (0,1,0,0)
+	_OutputFilterColor("OutputFilterColor", Color) = (0.5,0.5,0.5,1)
   }
   SubShader
   {
@@ -21,10 +19,10 @@ Shader "OldShader/ColorFilter"
       
       
       #define CODE_BLOCK_VERTEX
-      uniform float4 _PickColor1;
-      uniform float4 _PickColor2;
-      uniform float4 _OutputColor1;
-      uniform float4 _OutputColor2;
+      uniform float4 _CrossElementsColor;
+      uniform float4 _OutputElementsColor;
+      uniform float4 _CrossFilterColor;
+      uniform float4 _OutputFilterColor;
       uniform sampler2D _MainTex;
 
       struct appdata_t
@@ -57,40 +55,41 @@ Shader "OldShader/ColorFilter"
           OUT.vertex = UnityObjectToClipPos(IN.vertex);
           return OUT;
       }
-      
-      float4 PixelColorTexture1;
-      float4 PixelColorTexture2;
-
+     
       float4 frag(v2f IN) : SV_Target
       {
 
-          float4 OUT;
+          float4 OutputTexture;
+		  float4 OutputTexture1;
+	      float4 OutputTexture2;
 	  
-		  PixelColorTexture1 = tex2D(_MainTex, IN.texcoord.xy);
+		  OutputTexture1 = tex2D(_MainTex, IN.texcoord.xy);
 
-		  if (PixelColorTexture1.r > 0.5)
+		  // Magenta filter
+		  if (OutputTexture1.r > 0.5f && OutputTexture1.b > 0.5f && OutputTexture1.a > 0.5f)
 		  {
-			  PixelColorTexture1 = _OutputColor1;
+			  OutputTexture1 = _OutputElementsColor;
 		  }
 		  else
 		  {
-			  PixelColorTexture1 = float4(0, 0, 0, 0);
+			  OutputTexture1 = float4(0, 0, 0, 0);
 		  }
 
-		  PixelColorTexture2 = tex2D(_MainTex, IN.texcoord.xy);
+		  OutputTexture2 = tex2D(_MainTex, IN.texcoord.xy);
 
-		  if (PixelColorTexture2.g > 0.5)
+		  // Green filter
+		  if (OutputTexture2.g > 0.5f && OutputTexture2.a > 0.5f)
 		  {
-			  PixelColorTexture2 = _OutputColor2;
+			  OutputTexture2 = _OutputFilterColor;
 		  }
 		  else
 		  {
-			  PixelColorTexture2 = float4(0, 0, 0, 0);
+			  OutputTexture2 = float4(0, 0, 0, 0);
 		  }
 
-		  OUT = PixelColorTexture1 + PixelColorTexture2;
+		  OutputTexture = OutputTexture1 + OutputTexture2;
 		  
-          return OUT;
+          return OutputTexture;
       }   
       ENDCG     
     } 
