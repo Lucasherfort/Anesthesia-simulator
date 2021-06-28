@@ -15,7 +15,7 @@ public class NoiseGenerator : MonoBehaviour
 
     [Header("Rendering")]
     [SerializeField]
-    private Renderer textureRender = null;
+    private RenderTexture outputRenderTexture = null;
 
     [Header("ReferenceOffset")]
     [SerializeField]
@@ -45,6 +45,7 @@ public class NoiseGenerator : MonoBehaviour
     private Vector2 offset;
     private Gradient coloring;
     private Vector3 curPos;
+
     private void Update()
     {
         SetupNoiseConfig();
@@ -184,6 +185,8 @@ public class NoiseGenerator : MonoBehaviour
         texture.SetPixels(colorNoise);
         texture.Apply();
 
-        textureRender.material.mainTexture = texture;
+        outputRenderTexture.enableRandomWrite = true;
+        RenderTexture.active = outputRenderTexture;
+        Graphics.Blit(texture,outputRenderTexture);
     }
 }

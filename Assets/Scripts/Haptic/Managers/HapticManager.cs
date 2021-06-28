@@ -81,7 +81,7 @@ public class HapticManager : MonoBehaviour
 
         if (gameObject.tag != "Skin")
         {
-            Debug.LogError(transform.name+" doesn't have the tag Touchable !");
+            Debug.LogError(transform.name+" doesn't have the tag Skin!");
         }
 
         probeDevice = (ProbeHapticPlugin)FindObjectOfType(typeof(ProbeHapticPlugin));
