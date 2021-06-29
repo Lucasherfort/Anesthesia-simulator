@@ -64,6 +64,7 @@ Shader "Square/FinalRender"
 				PixelColorNerve = tex2D(_LayerNerve, IN.uv.xy);
 				PixelColorVeine = tex2D(_LayerVeine, IN.uv.xy);
 				PixelColorBorder = tex2D(_LayerBorder, IN.uv.xy);
+				PixelColorNeedle = tex2D(_LayerNeedle, IN.uv.xy);
 
 				PixelColorNoise = tex2D(_LayerNoise, IN.uv.xy);
 

@@ -5,6 +5,8 @@ public class DisplayScreenProbe : MonoBehaviour
     [SerializeField]
     private string SkinTag = "Skin";
     [SerializeField]
+    private GameObject CrossCamsHandler = null;
+    [SerializeField]
     private Material composite = null;
     [SerializeField]
     private Material ScreenPlaceHolder = null;
@@ -13,6 +15,7 @@ public class DisplayScreenProbe : MonoBehaviour
 
     private void Start()
     {
+        CrossCamsHandler.SetActive(false);
         Screenrenderer.GetComponent<Renderer>().material = ScreenPlaceHolder;
     }
 
@@ -20,6 +23,7 @@ public class DisplayScreenProbe : MonoBehaviour
     {
         if (collision.collider.gameObject.tag == SkinTag)
         {
+            CrossCamsHandler.SetActive(true);
             Screenrenderer.GetComponent<Renderer>().material = composite;
         }
     }
@@ -29,6 +33,7 @@ public class DisplayScreenProbe : MonoBehaviour
         if (collision.collider.gameObject.tag == SkinTag)
         {
             Screenrenderer.GetComponent<Renderer>().material = ScreenPlaceHolder;
+            CrossCamsHandler.SetActive(false);
         }
     }
 }
