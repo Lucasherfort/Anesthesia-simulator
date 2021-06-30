@@ -17780,17 +17780,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: cb60c2dbc2cdeaa4ca97dd56af5060c8, type: 2}
+      objectReference: {fileID: 2100000, guid: 142af08d11c54f0db1166ab8f6925f98, type: 2}
     - target: {fileID: 446967066851202876, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
         type: 3}
       propertyPath: m_Layer
-      value: 18
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 446967066851202878, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
         type: 3}
       propertyPath: cutPlane
       value: 
       objectReference: {fileID: 1804456652}
+    - target: {fileID: 446967066851202878, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2521356766609680384, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -55430,6 +55435,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'HapticalProbe '
       objectReference: {fileID: 0}
+    - target: {fileID: 2461311564647521247, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: EffectMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: c0555de4bd1cca14983c93ace265fd0b, type: 2}
     - target: {fileID: 2461311669438012245, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
       propertyPath: orthographic size
@@ -55438,12 +55448,22 @@ PrefabInstance:
     - target: {fileID: 2461311669438012248, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 0
+      value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461311669438012248, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: far clip plane
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 2461311669656115878, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461311669656115878, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_Name
+      value: Camera-Needle
       objectReference: {fileID: 0}
     - target: {fileID: 2461311669706447497, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}

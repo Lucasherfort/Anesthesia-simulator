@@ -68,7 +68,7 @@ Shader "Square/FinalRender"
 
 				PixelColorNoise = tex2D(_LayerNoise, IN.uv.xy);
 
-				finalTexture = (PixelColorBorder + PixelColorVeine) * PixelColorNoise;
+				finalTexture = (PixelColorBorder + PixelColorVeine + PixelColorNeedle) * PixelColorNoise;
 
 				return finalTexture;
 			}

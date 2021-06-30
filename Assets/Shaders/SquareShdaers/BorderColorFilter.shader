@@ -66,6 +66,7 @@ Shader "Square/BorderColorFilter"
 		OutputTexture = tex2D(_MainTex, IN.texcoord.xy);
 
 		// CrossMagenta
+
 		if (OutputTexture.r > _CrossMagentaInput.r && OutputTexture.b > _CrossMagentaInput.b)
 		{
 			OutputTexture = _OutputColor;
