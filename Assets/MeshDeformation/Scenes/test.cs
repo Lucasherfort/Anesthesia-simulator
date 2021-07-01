@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
-    private float maxY = 0.0468f;
+    public float minY = 0f;
+    public float maxY = 0f;
 
-    private float mixScaleY = 0.004f;
-    private float maxScaleY = 0.009f;
+    public float mixScaleY = 0f;
+    public float maxScaleY = 0f;
 
-    [SerializeField]
-    [Range(0f,0.0468f)]
-    private float localY = 0;
-
+    public float localY = 0;
     private float ScalelocalY = 0;
 
     void Update()
