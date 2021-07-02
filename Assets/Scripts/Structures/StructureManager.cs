@@ -9,8 +9,7 @@ public enum Structure
 
 public class StructureManager : MonoBehaviour
 {
-    [SerializeField]
-    private Structure CurrentStructure;
+    public Structure CurrentStructure;
 
     void OnTriggerStay(Collider other)
     {
