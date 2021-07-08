@@ -3,7 +3,7 @@
 public class VeineDeformation : MonoBehaviour
 {
     [SerializeField]
-    private Transform[] objects = null;
+    private Transform[] veineList = null;
 
     private float maxY = 0f;
 
@@ -16,14 +16,14 @@ public class VeineDeformation : MonoBehaviour
 
     private void Start()
     {
-        if (objects.Length == 0)
+        if (veineList.Length == 0)
         {
-            Debug.LogWarning("The objects list is empty !");
+            Debug.LogWarning("VeineList list is empty !");
         }
         else
         {
-            maxY = objects[0].position.y;
-            maxScaleY = objects[0].localScale.y;
+            maxY = veineList[0].position.y;
+            maxScaleY = veineList[0].localScale.y;
         }
     }
 
@@ -31,14 +31,14 @@ public class VeineDeformation : MonoBehaviour
     {
         if(force == 1)
         {
-            foreach (Transform obj in objects)
+            foreach (Transform obj in veineList)
             {
                 obj.gameObject.SetActive(false);
             }
         }
         else
         {
-            foreach (Transform obj in objects)
+            foreach (Transform obj in veineList)
             {
                 obj.gameObject.SetActive(true);
             }
@@ -52,7 +52,7 @@ public class VeineDeformation : MonoBehaviour
         float localY = Map(force, 0f, 1f, maxY, 0);
         float ScalelocalY = ((maxScaleY - minScaleY) / maxY) * localY;
 
-        foreach (Transform obj in objects)
+        foreach (Transform obj in veineList)
         {
             Vector3 temp = obj.localScale;
             temp.y = ScalelocalY;

@@ -4,13 +4,13 @@ using System;
 public class CanvasEchographe : MonoBehaviour
 {
     [SerializeField]
-    private TMPro.TMP_Text DateAndHourTxt;
+    private TMPro.TMP_Text DateAndHourTxt = null;
 
     [SerializeField]
-    private TMPro.TMP_Text ZoomTxt;
+    private TMPro.TMP_Text ZoomTxt = null;
 
     [SerializeField]
-    private ZoomScreen zoomScreen;
+    private ZoomScreen zoomScreen = null;
 
     private void Update()
     {
