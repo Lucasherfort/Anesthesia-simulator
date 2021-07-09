@@ -18,11 +18,9 @@ public class ZoomScreen : MonoBehaviour
             Debug.LogWarning("CrossCamList in ZoomScreen is empty !");
         }
 
-        SwitchZoom();
-    }
+        TwoHapticsProbeNeedle.instance.ZoomDown += ZoomDown;
+        TwoHapticsProbeNeedle.instance.ZoomUp += ZoomUp;
 
-    private void Update()
-    {
         SwitchZoom();
     }
 
@@ -162,5 +160,11 @@ public class ZoomScreen : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    private void OnDestroy()
+    {
+        TwoHapticsProbeNeedle.instance.ZoomDown -= ZoomDown;
+        TwoHapticsProbeNeedle.instance.ZoomUp -= ZoomUp;
     }
 }

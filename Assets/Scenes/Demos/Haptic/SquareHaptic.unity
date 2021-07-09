@@ -37848,6 +37848,7 @@ MonoBehaviour:
   kDamping1stLayerHaptic: 1.67
   kCutting1stLayerHaptic: 1.22
   UnitLength: 0.01
+  lastbState: 0
 --- !u!4 &1192473220
 Transform:
   m_ObjectHideFlags: 0
@@ -55617,6 +55618,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1804456661, guid: 128408b3a537edc4cbe4628573d54d05, type: 3}
+      propertyPath: test
+      value: 
+      objectReference: {fileID: 1804456656}
     - target: {fileID: 1804456662, guid: 128408b3a537edc4cbe4628573d54d05, type: 3}
       propertyPath: Screenrenderer
       value: 
@@ -55713,6 +55718,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef2b1be887f8a74b885c2635d0b6e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &1804456656 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2461311669438012245, guid: 128408b3a537edc4cbe4628573d54d05,
+    type: 3}
+  m_PrefabInstance: {fileID: 1804456651}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1804456661 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1804456661, guid: 128408b3a537edc4cbe4628573d54d05,

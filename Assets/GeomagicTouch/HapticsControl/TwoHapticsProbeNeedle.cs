@@ -246,6 +246,11 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     /// </summary>
 	public float UnitLength = 0.01f;
 
+    public Action ZoomUp;
+    public Action ZoomDown;
+
+    public Buttons lastbState;
+
     //---------------------------------------------------------------------------
     // OBJECT ATTRIBUTES
     //---------------------------------------------------------------------------
@@ -403,6 +408,23 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         /* PROBE */
 
         HdAPI.hdBeginFrame(ProbeDevice.hHdAPI);
+
+        Buttons bState = Phantoms.GetButton();
+
+        if (bState == Buttons.Button1 && lastbState != bState)
+        {
+            Debug.Log("1");
+            ZoomDown.Invoke();
+        }
+
+        if (bState == Buttons.Button2 && lastbState != bState)
+        {
+            Debug.Log("2");
+            ZoomUp.Invoke();
+        }
+
+        lastbState = bState;
+
         Vector3 HandPosition_Left = Phantoms.GetPosition();
         Quaternion HandRotation_Left = Phantoms.GetRotation();
 
@@ -446,7 +468,6 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         }
 
         /***************************************************/
-
 
         /* NEEDLE */
 
