@@ -9,7 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8d7509cbe3b8d3419121e89f67c1a28, type: 3}
+  m_Script: {fileID: 11500000, guid: cacd6dcbdf698854ca791c4e49c56141, type: 3}
   m_Name: HapticConfig
   m_EditorClassIdentifier: 
-  hlTypeModel: 0
+  Force_Left: {x: 0, y: 0, z: 0}
+  Force_Right: {x: 0, y: 0, z: 0}
+  firstPlaneStiffness: 0.25
+  secondPlaneStiffness: 0.33
+  positionFirstPlane: 0
+  positionSecondPlane: -5
+  contactPosition: {x: 0, y: 0, z: 0}
+  kStiffness1stLayerHaptic: 31.5
+  forceStiffness1: 0
+  forceFriction1: 0
+  forceCutting1: 0
+  forceStiffness2: 0
+  forceFriction2: 0
+  forceCutting2: 0
+  forceDumping12: 0
+  forceTotalY: 0
+  kDamping1stLayerHaptic: 1.67
+  kCutting1stLayerHaptic: 1.22
+  UnitLength: 0.01
