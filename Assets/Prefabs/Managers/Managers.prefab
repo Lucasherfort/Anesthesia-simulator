@@ -56,4 +56,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63b69ef439eaae94aae9da3a3feea6b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnabledVR: 1
+  EnabledVR: 0
