@@ -16973,10 +16973,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 1080119
-      objectReference: {fileID: 0}
     - target: {fileID: 11465950, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: trackingOriginTransform
       value: 
@@ -35974,7 +35970,6 @@ MonoBehaviour:
   kDamping1stLayerHaptic: 1.67
   kCutting1stLayerHaptic: 1.22
   UnitLength: 0.01
-  lastbState: 0
 --- !u!4 &1192473220
 Transform:
   m_ObjectHideFlags: 0

@@ -16,3 +16,11 @@ MonoBehaviour:
     volume: 1
     mixer: {fileID: 0}
     clip: {fileID: 8300000, guid: 1681700b2cc5dcb4f8e68af224b01e41, type: 3}
+  fireAlarm:
+    volume: 1
+    mixer: {fileID: 0}
+    clip: {fileID: 8300000, guid: 87e7ed0f1ab6c3e488cf7cad96426973, type: 3}
+  phoneRinging:
+    volume: 1
+    mixer: {fileID: 0}
+    clip: {fileID: 8300000, guid: c4032e73d9cae4b49b3e855eadee3816, type: 3}

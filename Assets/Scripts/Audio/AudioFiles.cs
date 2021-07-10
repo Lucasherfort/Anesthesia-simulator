@@ -5,14 +5,21 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AudioFiles", menuName = "Audio/AudioFiles", order = 2)]
 public class AudioFiles : ScriptableObject
 {
-    [Header("Ambiance")]
     [SerializeField]
     private SoundLoopClip roomSoundEffect = null;
+
+    [SerializeField]
+    private SoundLoopClip fireAlarm = null;
+
+    [SerializeField]
+    private SingleSoundOneShotClip phoneRinging = null;
  
     public SoundOneShotClip SoundOneShotToClip (SoundOneShot sound) 
     {
         switch (sound) 
         {
+            case SoundOneShot.PhoneRinging : return phoneRinging;
+
             default : 
                 Debug.LogError("SoundOneShotClip : " + sound + " was not found!");
                 return null;
@@ -24,6 +31,7 @@ public class AudioFiles : ScriptableObject
         switch (sound) 
         {
             case SoundLoop.RoomSoundEffect : return roomSoundEffect;
+            case SoundLoop.FireAlarm : return fireAlarm;
 
             default : 
                 Debug.LogError("SoundLoopClip : " + sound + " was not found!");
@@ -34,10 +42,11 @@ public class AudioFiles : ScriptableObject
 
 public enum SoundOneShot 
 {
-
+    PhoneRinging
 }
 
 public enum SoundLoop 
 {
-    RoomSoundEffect
+    RoomSoundEffect,
+    FireAlarm
 }

@@ -249,7 +249,8 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     public Action ZoomUp;
     public Action ZoomDown;
 
-    public Buttons lastbState;
+    // way to set up GetButtonDown function
+    private Buttons lastLeftButtonsState;
 
     //---------------------------------------------------------------------------
     // OBJECT ATTRIBUTES
@@ -411,19 +412,17 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
         Buttons bState = Phantoms.GetButton();
 
-        if (bState == Buttons.Button1 && lastbState != bState)
+        if (bState == Buttons.Button1 && lastLeftButtonsState != bState)
         {
-            Debug.Log("1");
             ZoomDown.Invoke();
         }
 
-        if (bState == Buttons.Button2 && lastbState != bState)
+        if (bState == Buttons.Button2 && lastLeftButtonsState != bState)
         {
-            Debug.Log("2");
             ZoomUp.Invoke();
         }
 
-        lastbState = bState;
+        lastLeftButtonsState = bState;
 
         Vector3 HandPosition_Left = Phantoms.GetPosition();
         Quaternion HandRotation_Left = Phantoms.GetRotation();
