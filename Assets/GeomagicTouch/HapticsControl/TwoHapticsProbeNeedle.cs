@@ -1,16 +1,6 @@
-﻿
-//---------------------------------------------------------------------------
-// INCLUDES
-//---------------------------------------------------------------------------
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using HD;
-using System.Collections.Generic;
-
-//---------------------------------------------------------------------------
-// HAPTIC MANAGER
-//---------------------------------------------------------------------------
-
 
 public enum SimulationState : int
 {
@@ -40,20 +30,9 @@ public enum SimulationState : int
     MODE_NEW = 18
 }
 
-
-/// <summary>
-/// Needle Insertion Prototype
-/// </summary>
 public class TwoHapticsProbeNeedle : MonoBehaviour
 {
-    //---------------------------------------------------------------------------
-    // CLASS INSTANCE
-    //---------------------------------------------------------------------------
-
-    /// <summary>
-    /// class instance object -singleton-
-    /// </summary>
-	public static TwoHapticsProbeNeedle instance;
+    public static TwoHapticsProbeNeedle instance { get; private set; }
 
     //---------------------------------------------------------------------------
     // HAPTIC INFORMATION
@@ -91,7 +70,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     public double firstPlaneStiffness = .25;
     public double secondPlaneStiffness = .33;
 
-    public float positionFirstPlane = 0, positionSecondPlane = -5;
+    public float positionFirstPlane = 0, positionSecondPlane = -1.5f;
 
     /* NEEDLE PARAMETERS AND STUFF */
     /// <summary>
@@ -115,23 +94,51 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     public SimulationState _state = SimulationState.SIMULATION_OFF;
 
     /// <summary>
+    /// For determining X, Z restriction movements inside skin layers
+    /// </summary>
+    private const float OUTSIDE_POSITION = -999;
+
+    /// <summary>
+    /// Dimensions (half) of the tissue [mm] to know if it is inside the lateral boundaries
+    /// </summary>
+    [SerializeField]
+    private Vector3 TISSUE_DIMENSIONS = new Vector3(27, 0, 20.25f);
+
+    /// <summary>
+    /// Table position during experimentation
+    /// </summary>
+    /// <remarks>Modify RigidObstacles position to have correct force feedback</remarks>
+    [SerializeField]
+    private float GROUND_LEVEL = -0.15f;
+
+    /// <summary>
+    /// Top position of first layer (Unity units)
+    /// </summary>
+    [SerializeField]
+    private float FIRST_LAYER_TOP = 0.108f;
+
+    /// <summary>
     /// X position of the tip when entering the skin layers
     /// </summary>
-    private float contactPositionX = -999;
+    [SerializeField]
+    private float contactPositionX = OUTSIDE_POSITION;
 
     /// <summary>
     /// Z position of the tip when entering the skin layers
     /// </summary>
-    private float contactPositionZ = -999;
+    [SerializeField]
+    private float contactPositionZ = OUTSIDE_POSITION;
 
     /// <summary>
     /// The gimbal position [mm] stored when contact with first membrane (reseted when transpasing it)
     /// </summary>
-    public Vector3 contactPosition = Vector3.zero;
+    [SerializeField]
+    private Vector3 contactPosition = Vector3.zero;
 
     /// <summary>
     /// Initial position of the starting point
     /// </summary>
+    [SerializeField]
     private Vector3 StartPointPosition = new Vector3(0, 70, 0);
 
     /// <summary>
@@ -213,16 +220,12 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     /// <summary>
     /// Membrane forces before traspasing the membrane
     /// </summary>
-    private Vector3 membraneForce;
-
-    /// <summary>
-    /// Top position of first layer (Unity units)
-    /// </summary>
-    private const float FIRST_LAYER_TOP = 0.30f;
+    public Vector3 membraneForce;
 
     /// <summary>
     /// Exert force scale
     /// </summary>
+    [SerializeField]
     private const float DEVICE_FORCE_SCALE = 0.4f;
 
     /// <summary>
@@ -244,7 +247,8 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     /// <summary>
     /// Unit conversion from mm to Unity
     /// </summary>
-	public float UnitLength = 0.01f;
+	[SerializeField]
+    private float UnitLength = 0.01f;
 
     public Action ZoomUp;
     public Action ZoomDown;
@@ -265,6 +269,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        _state = SimulationState.SIMULATION_ON;
         if (Phantoms == null)
         {
             try
@@ -348,7 +353,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         {
             instance = this;
         }
-            
+
         else
             Debug.Log("Multiple instances of HapticManager");
     }
@@ -395,7 +400,9 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
         return false;
     }
-    
+
+
+    public float probeDop, probeDopStiffness = 0f;
     /// <summary>
     /// Method that is repeatedly called in PHANTOM's cycle (default rate 1 [kHz])
     /// </summary>
@@ -432,32 +439,40 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         // repel the user in the direction of the surface normal of the plane.
         // Penetration occurs if the plane is facing in +Y and the user's Y position
         // is negative, or vice versa.
-        if (HandPosition_Left.y <= positionFirstPlane) //0 la pos en y du plane
+        if (Mathf.Abs(HandPosition_Left.x) < TISSUE_DIMENSIONS.x && Mathf.Abs(HandPosition_Left.z) < TISSUE_DIMENSIONS.z)
         {
-            // Create a force vector repelling the user from the plane proportional
-            // to the penetration distance, using F=kx where k is the plane 
-            // stiffness and x is the penetration vector.  Since the plane is 
-            // oriented at the Y=0, the force direction is always either directly 
-            // upward or downward, i.e. either (0,1,0) or (0,-1,0).
-            // Hooke's law explicitly
-            float penetrationDistance = Mathf.Abs(HandPosition_Left[1]);
-
-            if (HandPosition_Left.y > positionSecondPlane)
+            if (HandPosition_Left.y <= positionFirstPlane) //0 la pos en y du plane
             {
-                ProbeDevice.force = new Vector3(0, (float)(penetrationDistance * firstPlaneStiffness), 0);
+                // Create a force vector repelling the user from the plane proportional
+                // to the penetration distance, using F=kx where k is the plane 
+                // stiffness and x is the penetration vector.  Since the plane is 
+                // oriented at the Y=0, the force direction is always either directly 
+                // upward or downward, i.e. either (0,1,0) or (0,-1,0).
+                // Hooke's law explicitly
+                float penetrationDistance = Mathf.Abs(HandPosition_Left[1]);
+
+                if (HandPosition_Left.y > positionSecondPlane)
+                {
+                    ProbeDevice.force = new Vector3(0, (float)(penetrationDistance * firstPlaneStiffness), 0);
+                    HandPosition_Left = HandPosition_Left * UnitLength;
+                    ProbeDevice.position = new Vector3(HandPosition_Left.x, HandPosition_Left.y, HandPosition_Left.z);
+                    ProbeDevice.rotation = new Quaternion(HandRotation_Left.x, HandRotation_Left.y, HandRotation_Left.z, HandRotation_Left.w);
+                }
+                else
+                {
+                    ProbeDevice.force = new Vector3(0, (float)(penetrationDistance * secondPlaneStiffness), 0);
+                    HandPosition_Left = HandPosition_Left * UnitLength;
+                    ProbeDevice.position = new Vector3(HandPosition_Left.x, positionSecondPlane * UnitLength, HandPosition_Left.z);
+                    ProbeDevice.rotation = new Quaternion(HandRotation_Left.x, HandRotation_Left.y, HandRotation_Left.z, HandRotation_Left.w);
+                }
+            }
+            else
+            {
+                ProbeDevice.force = Vector3.zero;
                 HandPosition_Left = HandPosition_Left * UnitLength;
                 ProbeDevice.position = new Vector3(HandPosition_Left.x, HandPosition_Left.y, HandPosition_Left.z);
                 ProbeDevice.rotation = new Quaternion(HandRotation_Left.x, HandRotation_Left.y, HandRotation_Left.z, HandRotation_Left.w);
             }
-            else
-            {
-                ProbeDevice.force = new Vector3(0, (float)(penetrationDistance * secondPlaneStiffness), 0);
-                HandPosition_Left = HandPosition_Left * UnitLength;
-                ProbeDevice.position = new Vector3(HandPosition_Left.x, positionSecondPlane * UnitLength, HandPosition_Left.z);
-                ProbeDevice.rotation = new Quaternion(HandRotation_Left.x, HandRotation_Left.y, HandRotation_Left.z, HandRotation_Left.w);
-            }
-            HdAPI.hdMakeCurrentDevice(ProbeDevice.hHdAPI);
-            Phantoms.SetForce(ProbeDevice.force);
         }
         else
         {
@@ -467,14 +482,15 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
             ProbeDevice.rotation = new Quaternion(HandRotation_Left.x, HandRotation_Left.y, HandRotation_Left.z, HandRotation_Left.w);
         }
 
+        HdAPI.hdMakeCurrentDevice(ProbeDevice.hHdAPI);
+        Phantoms.SetForce(ProbeDevice.force);
+
         /***************************************************/
 
         /* NEEDLE */
 
         HdAPI.hdBeginFrame(NeedleDevice.hHdAPI);
         HdAPI.hdMakeCurrentDevice(NeedleDevice.hHdAPI);
-
-        Vector3 HandPosition_Right = Phantoms.GetPosition();
 
         // Get the position of the hand (gimbal part) [mm]
         Vector3 HandPosition = Phantoms.GetPosition();
@@ -488,99 +504,32 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         // Re-init force feedback to 0
         Vector3 Force = Vector3.zero;
 
-        // get actual simulation state
-        lock (_lockState)
-            _state = _hapticState;
-
-        // SIMULATION ON - waiting for starting point
-        if (_state == SimulationState.SIMULATION_ON)
-        {
-            // distance to the starting point
-            float distanceToStartPoint = Mathf.Abs(StartPointPosition.y + 10 - HandPosition.y);
-
-            // Needle at starting point
-            if (distanceToStartPoint < 2f)
-            {
-                Debug.Log("Starting point met");
-
-                // notify simulator
-                //SimulationModule.StartTrial();
-
-                // update simulation state
-                lock (_lockState)
-                    _hapticState = SimulationState.NEEDLE_FEEDBACK_ON;
-
-                // reset forces
-                Phantoms.SetForce(Force);
-
-                HdAPI.hdEndFrame(NeedleDevice.hHdAPI);
-                HdAPI.hdEndFrame(ProbeDevice.hHdAPI);
-                return true;
-            }
-
-            // update force feedback around starting ball
-            float ballStiffness = 1.5f;
-            float clampValue = 1.2f;
-
-            Vector3 ballForces = ballStiffness * (StartPointPosition - HandPosition);
-            if (ballForces.magnitude > clampValue)
-            {
-                ballForces.Normalize();
-                ballForces *= clampValue;
-            }
-
-            // update force
-            Force += ballForces;
-
-            // update position & orientation
-            lock (_lock)
-            {
-                // set position and orientation for graphic needle
-                MyPosition = HandPosition * UnitLength;
-                MyRotation = HandRotation;
-
-                // If it is below table position -> set it back to ground level
-                if (HandPosition.y * UnitLength < -.30f && previousPosition != Vector3.zero)
-                    MyPosition = previousPosition;
-                else
-                    previousPosition = MyPosition;
-            }
-
-            // set ball resistance forces
-            Phantoms.SetForce(Force);
-
-            HdAPI.hdEndFrame(NeedleDevice.hHdAPI);
-            HdAPI.hdEndFrame(ProbeDevice.hHdAPI);
-            return true;
-        }
-
         // Hand position & rotation in the Unity world
-        //Vector3 
         Vector3 currentPosition = HandPosition * UnitLength;
         Quaternion currentRotation = HandRotation;
 
         // init forces to apply to haptic in the Y direction
-        float forceStiffness1, forceFriction1, forceCutting1, forceTotalY = 0f;
+        forceStiffness1 = forceFriction1 = forceCutting1 = forceTotalY = 0f;
 
         //---------------------------------------------------------------------------
         // FORCES FROM TISSUE - NEEDLE INTERACTION (1st and 2nd layer)
         //---------------------------------------------------------------------------
 
-        // TODO: 200 is tissue x dimension !!!!!!
         // if within the square of tissue in X, Z coordinates (big cube with all tissue layers inside)
-        if (Mathf.Abs(HandPosition.x) < 200 && Mathf.Abs(HandPosition.z) < 200)
+        if (Mathf.Abs(HandPosition.x) < TISSUE_DIMENSIONS.x && Mathf.Abs(HandPosition.z) < TISSUE_DIMENSIONS.z)
         {
             // get vertical position of the needle
             float verticalPosition = HandPosition.y * UnitLength;
 
             // if it has traspased the membrane
-            if (verticalPosition < 0.30f - 0.05)
+            if (verticalPosition < FIRST_LAYER_TOP)// - 0.05)
             {
                 contactPosition = Vector3.zero;
 
                 // set contact position, store position and rotation of needle at the moment of penetration
-                if (contactPositionX == -999 && contactPositionZ == -999)
+                if (contactPositionX == OUTSIDE_POSITION && contactPositionZ == OUTSIDE_POSITION)
                 {
+                    // POINT PIVOT !!!! 
                     contactPositionX = currentPosition.x;
                     contactPositionZ = currentPosition.z;
                     lastPosDevice = currentPosition;
@@ -588,7 +537,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
                     // get rotation matrix to get direction of the needle when penetrating
 
-                    Phantoms.GetRotationMatrix(out RotationMatrix);
+                    Phantoms.GetRotationMatrix(out RotationMatrix); // sortir de ce boucle je crois pour le point pivot
 
                     // needle is inside tissue
                     //SimulationModule.NeedleToSkinPositionChanged(true);
@@ -601,16 +550,16 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
                 //{
                 //    SimulationModule.NeedleToSkinPositionChanged(false);
                 //}
-                contactPositionX = contactPositionZ = -999;
+                contactPositionX = contactPositionZ = OUTSIDE_POSITION;
             }
 
             // init depth variables and velocity
-            float probeDop = 0f;
-            float probeDopStiffness = 0f;
+            probeDop = 0f;
+            probeDopStiffness = 0f;
             float velocity = 0f;
 
             // limit visual direction if needle inside tissue and calculate lateral forces
-            if (contactPositionX != -999 && contactPositionZ != -999)
+            if (contactPositionX != OUTSIDE_POSITION && contactPositionZ != OUTSIDE_POSITION)
             {
                 //---------------------------------------------------------------------------
                 // INSIDE SKIN LAYERS LATERAL FORCES ADDITION
@@ -644,7 +593,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
             probeDop = Mathf.Clamp(probeDop, 0f, 0.35f);
 
             // get position from top 1st layer position
-            probeDopStiffness = 0.30f + 0.125f - currentPosition.y;
+            probeDopStiffness = FIRST_LAYER_TOP + 0.05f - currentPosition.y;
 
             if (probeDopStiffness > 0 && probeDop == 0)
             {
@@ -782,25 +731,25 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
             //}
 
             // reset contact position
-            contactPositionX = contactPositionZ = -999;
+            contactPositionX = contactPositionZ = OUTSIDE_POSITION;
         }
         //---------------------------------------------------------------------------
 
         // Force feedback to PHANTOM device [N]
         Phantoms.SetForce(Force);
 
-        lock (_lock)
-        {
-            // set position and orientation for graphic needle
-            MyPosition = currentPosition;
-            MyRotation = currentRotation;
+        //lock (_lock)
+        //{
+        // set position and orientation for graphic needle
+        NeedleDevice.position = currentPosition;
+        NeedleDevice.rotation = currentRotation;
 
-            // If it is below table position -> set it back to ground level
-            //if (HandPosition.y * UNIT_LENGTH < GROUND_LEVEL && previousPosition != Vector3.zero)
-            //    MyPosition = previousPosition;
-            //else
-            //    previousPosition = MyPosition;
-        }
+        // If it is below table position -> set it back to ground level
+        //if (HandPosition.y * UnitLength < GROUND_LEVEL && previousPosition != Vector3.zero)
+        //    NeedleDevice.position = previousPosition;
+        //else
+        previousPosition = NeedleDevice.position;
+        //}
 
         // Log state
         //SimulationModule.LogEntry(Force.x + ";" + Force.y + ";" + Force.z + "," + currentPosition.x + ";" + currentPosition.y + ";" + currentPosition.z + "," + currentRotation.x + ";" + currentRotation.y + ";" + currentRotation.z + ";" + currentRotation.w);

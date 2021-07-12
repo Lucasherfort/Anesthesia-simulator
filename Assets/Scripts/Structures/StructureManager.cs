@@ -2,6 +2,7 @@
 
 public enum Structure
 {
+    None,
     Artery,
     Veine,
     Nerve
@@ -15,7 +16,25 @@ public class StructureManager : MonoBehaviour
     {
         if(other.gameObject.tag == "Needle")
         {
-            Debug.Log(CurrentStructure+" a été touché");
+            switch(CurrentStructure)
+            {
+                case Structure.None:
+                    break;
+
+                case Structure.Artery:
+                    // TODO
+                    break;
+
+                case Structure.Veine:
+                    // TODO
+                    break;
+
+                case Structure.Nerve:  
+                    // TODO               
+                    break;
+            }
+
+            Debug.Log(CurrentStructure + " a été touché");
         }
     }
 }

@@ -35,8 +35,10 @@ public class HapticConfig : ScriptableObject
 
     public float forceTotalY = 0f;
 
+    /// Damping coefficient for Skin Layer [N/m]
     public float kDamping1stLayerHaptic = 1.67f;
 
+    /// Cutting coefficient for Skin Layer [N/m]
     public float kCutting1stLayerHaptic = 1.22f;
 
     public float UnitLength = 0.01f;
