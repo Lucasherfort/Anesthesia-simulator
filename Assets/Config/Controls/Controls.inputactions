@@ -1,0 +1,33 @@
+{
+    "name": "Controls",
+    "maps": [
+        {
+            "name": "Apps",
+            "id": "cce3e72e-81fa-4afa-87f2-aed8d72fe798",
+            "actions": [
+                {
+                    "name": "Quit",
+                    "type": "Button",
+                    "id": "6264e53b-334a-4d23-b5f8-b59a07fa754c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cc9e4e1a-4e95-4a64-8f00-3a9366355aaa",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Quit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
