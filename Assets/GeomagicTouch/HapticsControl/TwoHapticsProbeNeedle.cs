@@ -366,6 +366,21 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         ProbeDevice.tool.transform.localRotation = ProbeDevice.rotation;
         NeedleDevice.tool.transform.localPosition = NeedleDevice.position;
         NeedleDevice.tool.transform.localRotation = NeedleDevice.rotation;
+
+        HdAPI.hdMakeCurrentDevice(ProbeDevice.hHdAPI);
+        Buttons bStateLeft = Phantoms.GetButton();
+
+        if (bStateLeft == Buttons.Button1 && lastLeftButtonsState != bStateLeft)
+        {
+            ZoomDown.Invoke();
+        }
+
+        if (bStateLeft == Buttons.Button2 && lastLeftButtonsState != bStateLeft)
+        {
+            ZoomUp.Invoke();
+        }
+
+        lastLeftButtonsState = bStateLeft;
     }
 
     bool PhantomUpdatePositions()
@@ -409,20 +424,6 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         /* PROBE */
 
         HdAPI.hdBeginFrame(ProbeDevice.hHdAPI);
-
-        Buttons bState = Phantoms.GetButton();
-
-        if (bState == Buttons.Button1 && lastLeftButtonsState != bState)
-        {
-            ZoomDown.Invoke();
-        }
-
-        if (bState == Buttons.Button2 && lastLeftButtonsState != bState)
-        {
-            ZoomUp.Invoke();
-        }
-
-        lastLeftButtonsState = bState;
 
         Vector3 HandPosition_Left = Phantoms.GetPosition();
         Quaternion HandRotation_Left = Phantoms.GetRotation();

@@ -2,6 +2,8 @@
 
 public class DisplayScreenProbe : MonoBehaviour
 {
+    static public DisplayScreenProbe Instance { get; private set; }
+
     [SerializeField]
     private string SkinTag = "Skin";
     [SerializeField]
@@ -12,6 +14,17 @@ public class DisplayScreenProbe : MonoBehaviour
     private Material ScreenPlaceHolder = null;
     [SerializeField]
     private GameObject Screenrenderer = null;
+
+    private void Awake()
+    {
+        if (Instance)
+        {
+            Destroy(this);
+            return;
+        }
+
+        Instance = this;
+    }
 
     private void Start()
     {

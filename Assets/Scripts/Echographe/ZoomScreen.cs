@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ZoomScreen : MonoBehaviour
 {
+    static public ZoomScreen Instance { get; private set; }
+
     [SerializeField]
     private List<Camera> CrossCamList = new List<Camera>();
 
@@ -10,6 +12,17 @@ public class ZoomScreen : MonoBehaviour
     private int minZoom = 1;
 
     public int currentZoom;
+
+    private void Awake()
+    {
+        if (Instance)
+        {
+            Destroy(this);
+            return;
+        }
+
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -48,7 +61,7 @@ public class ZoomScreen : MonoBehaviour
 
     private void SwitchZoom()
     {
-        switch(currentZoom)
+        switch(maxZoom + 1 - currentZoom)
         {
             case 1:
                 foreach (Camera cam in CrossCamList)
