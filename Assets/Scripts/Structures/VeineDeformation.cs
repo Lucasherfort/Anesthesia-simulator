@@ -3,7 +3,7 @@
 public class VeineDeformation : MonoBehaviour
 {
     [SerializeField]
-    private Transform[] veineList = null;
+    private Transform veine = null;
 
     private float maxY = 0f;
 
@@ -16,32 +16,28 @@ public class VeineDeformation : MonoBehaviour
 
     private void Start()
     {
-        if (veineList.Length == 0)
+        if (veine == null)
         {
-            Debug.LogWarning("VeineList list is empty !");
+            Debug.LogWarning("veine variable is empty !");
         }
         else
         {
-            maxY = veineList[0].position.y;
-            maxScaleY = veineList[0].localScale.y;
+            maxY = veine.position.y;
+            maxScaleY = veine.localScale.y;
         }
     }
 
     private void Update()
     {
-        if(force == 1)
+        if (force == 1)
         {
-            foreach (Transform obj in veineList)
-            {
-                obj.gameObject.SetActive(false);
-            }
+
+                veine.gameObject.SetActive(false);
+
         }
         else
         {
-            foreach (Transform obj in veineList)
-            {
-                obj.gameObject.SetActive(true);
-            }
+            veine.gameObject.SetActive(true);
         }
 
         ApplyDeformation(force);
@@ -52,16 +48,14 @@ public class VeineDeformation : MonoBehaviour
         float localY = Map(force, 0f, 1f, maxY, 0);
         float ScalelocalY = ((maxScaleY - minScaleY) / maxY) * localY;
 
-        foreach (Transform obj in veineList)
-        {
-            Vector3 temp = obj.localScale;
-            temp.y = ScalelocalY;
-            obj.localScale = temp;
 
-            Vector3 temp2 = obj.localPosition;
-            temp2.y = localY;
-            obj.localPosition = temp2;
-        }
+        Vector3 temp = veine.localScale;
+        temp.y = ScalelocalY;
+        veine.localScale = temp;
+
+        Vector3 temp2 = veine.localPosition;
+        temp2.y = localY;
+        veine.localPosition = temp2;     
     }
 
     private float Map(float variable, float x1, float x2, float y1, float y2)

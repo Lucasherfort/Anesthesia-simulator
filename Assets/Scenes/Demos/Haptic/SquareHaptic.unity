@@ -24212,6 +24212,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813756835}
   m_Mesh: {fileID: 4300000, guid: 1025f85c0f68ad84c8609e1f5b54b58f, type: 3}
+--- !u!4 &815830981 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 630324871, guid: 8d7a7947b3256f8498ae28b0fc47e554,
+    type: 3}
+  m_PrefabInstance: {fileID: 8457948273691153635}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &818016884
 GameObject:
   m_ObjectHideFlags: 0
@@ -68396,10 +68402,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 630324870, guid: 8d7a7947b3256f8498ae28b0fc47e554, type: 3}
+      propertyPath: m_Name
+      value: FullVeine
+      objectReference: {fileID: 0}
     - target: {fileID: 630324872, guid: 8d7a7947b3256f8498ae28b0fc47e554, type: 3}
       propertyPath: cutPlane
       value: 
       objectReference: {fileID: 1804456652}
+    - target: {fileID: 926226226, guid: 8d7a7947b3256f8498ae28b0fc47e554, type: 3}
+      propertyPath: m_Name
+      value: Veine
+      objectReference: {fileID: 0}
     - target: {fileID: 926226227, guid: 8d7a7947b3256f8498ae28b0fc47e554, type: 3}
       propertyPath: m_LocalPosition.y
       value: 16.7
@@ -68409,6 +68423,11 @@ PrefabInstance:
       propertyPath: cutPlane
       value: 
       objectReference: {fileID: 1804456652}
+    - target: {fileID: 2019489133426188099, guid: 8d7a7947b3256f8498ae28b0fc47e554,
+        type: 3}
+      propertyPath: m_Name
+      value: BorderArtery
+      objectReference: {fileID: 0}
     - target: {fileID: 5634547669498850305, guid: 8d7a7947b3256f8498ae28b0fc47e554,
         type: 3}
       propertyPath: m_Name
@@ -68484,25 +68503,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6384077738829312112, guid: 8d7a7947b3256f8498ae28b0fc47e554,
+        type: 3}
+      propertyPath: m_Name
+      value: FullArtery
+      objectReference: {fileID: 0}
     - target: {fileID: 6384077738829312119, guid: 8d7a7947b3256f8498ae28b0fc47e554,
         type: 3}
       propertyPath: cutPlane
       value: 
       objectReference: {fileID: 1804456652}
-    - target: {fileID: 8457948273691153638, guid: 8d7a7947b3256f8498ae28b0fc47e554,
-        type: 3}
-      propertyPath: pulseSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8457948273691153638, guid: 8d7a7947b3256f8498ae28b0fc47e554,
-        type: 3}
-      propertyPath: deformationFactor
-      value: 0.94
-      objectReference: {fileID: 0}
     - target: {fileID: 8457948273896070827, guid: 8d7a7947b3256f8498ae28b0fc47e554,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.2
+      value: 22.6
       objectReference: {fileID: 0}
     - target: {fileID: 8457948274312279428, guid: 8d7a7947b3256f8498ae28b0fc47e554,
         type: 3}
@@ -68512,16 +68526,75 @@ PrefabInstance:
     - target: {fileID: 8457948274312279432, guid: 8d7a7947b3256f8498ae28b0fc47e554,
         type: 3}
       propertyPath: CurrentStructure
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8457948274453027921, guid: 8d7a7947b3256f8498ae28b0fc47e554,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.7
+      value: 16.3
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5634547670957090723, guid: 8d7a7947b3256f8498ae28b0fc47e554, type: 3}
+    - target: {fileID: 8457948274453027922, guid: 8d7a7947b3256f8498ae28b0fc47e554,
+        type: 3}
+      propertyPath: m_Name
+      value: Artery
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d7a7947b3256f8498ae28b0fc47e554, type: 3}
+--- !u!1 &8457948273691153636 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8457948274453027922, guid: 8d7a7947b3256f8498ae28b0fc47e554,
+    type: 3}
+  m_PrefabInstance: {fileID: 8457948273691153635}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8457948273691153638 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 926226226, guid: 8d7a7947b3256f8498ae28b0fc47e554,
+    type: 3}
+  m_PrefabInstance: {fileID: 8457948273691153635}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8457948273691153639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8457948273691153636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d65dad92af6f9242ab6416c1ea7e400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arteryList:
+  - {fileID: 8457948273691153642}
+  - {fileID: 8457948273691153641}
+  pulseSpeed: 5
+  deformationFactor: 0.9
+--- !u!114 &8457948273691153640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8457948273691153638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88495ee19b946904f9c7a0f93cb8c0ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  veine: {fileID: 815830981}
+  force: 0
+--- !u!4 &8457948273691153641 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8252059864364026738, guid: 8d7a7947b3256f8498ae28b0fc47e554,
+    type: 3}
+  m_PrefabInstance: {fileID: 8457948273691153635}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8457948273691153642 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8303591285315748754, guid: 8d7a7947b3256f8498ae28b0fc47e554,
+    type: 3}
+  m_PrefabInstance: {fileID: 8457948273691153635}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &8698881504853072376
 Animator:
   serializedVersion: 3

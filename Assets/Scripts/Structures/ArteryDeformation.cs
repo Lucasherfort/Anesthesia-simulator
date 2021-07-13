@@ -1,40 +1,43 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ArteryDeformation : MonoBehaviour
 {
     [SerializeField]
-    private Transform artery = null;
+    private Transform[] arteryList = null;
 
     [SerializeField]
     [Min(0)]
     private int pulseSpeed = 1;
 
     [SerializeField]
-    [Range(0f,1f)]
+    [Range(0f, 1f)]
     private float deformationFactor = 0.9f;
 
     private float MaxScale;
 
     private void Start()
     {
-        if (artery == null)
+        if (arteryList.Length == 0)
         {
-            Debug.LogWarning("artery variable is empty !");
+            Debug.LogWarning("arteryList is empty !");
         }
         else
         {
-            MaxScale = artery.localScale.x;
+            MaxScale = arteryList[0].localScale.x;
         }
     }
 
     private void Update()
     {
-        var temp = artery.localScale;
+        var temp = arteryList[0].localScale;
         temp.x = Map(Mathf.Cos(Time.time * pulseSpeed), -1.0f, 1.0f, MaxScale * deformationFactor, MaxScale);
         temp.y = Map(Mathf.Cos(Time.time * pulseSpeed), -1.0f, 1.0f, MaxScale * deformationFactor, MaxScale);
-        artery.localScale = temp;
+
+
+        foreach(Transform artery in arteryList)
+        {
+            artery.localScale = temp;
+        }
     }
 
     private float Map(float variable, float x1, float x2, float y1, float y2)
