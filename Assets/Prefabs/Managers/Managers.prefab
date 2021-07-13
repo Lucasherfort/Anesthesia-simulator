@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 1271713770898215029}
   - component: {fileID: 1271713770898215027}
   - component: {fileID: 7175106214839184921}
+  - component: {fileID: 8947181097811420978}
+  - component: {fileID: 495401420489035483}
+  - component: {fileID: 3699624167909658619}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -59,3 +62,45 @@ MonoBehaviour:
   EnabledVR: 1
   HapticScript: {fileID: 0}
   EnabledHaptic: 1
+--- !u!114 &8947181097811420978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271713770898215028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1132520223ab98549b09f68c3445832d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioFiles: {fileID: 11400000, guid: 2597308b0f5de0b439994ebb38d8abcb, type: 2}
+  globalVolume: 1
+--- !u!114 &495401420489035483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271713770898215028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b230cc00287624d93144826e1c114b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasOneShotTrack: 0
+  nbLoopTrack: 1
+  is2D: 0
+--- !u!114 &3699624167909658619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271713770898215028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95cc39464f359984a9acb44cf92b2724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioBox: {fileID: 0}
