@@ -24,6 +24,12 @@ public class PhantomDeviceInfo : MonoBehaviour
     /// </summary>
     public Quaternion rotation;
 
+    public Quaternion correctionRotation;
+
+    public bool inside;
+
+    public Vector3 correctionPosition;
+
     /// <summary>
     /// Force to be applied to the attached device
     /// </summary>

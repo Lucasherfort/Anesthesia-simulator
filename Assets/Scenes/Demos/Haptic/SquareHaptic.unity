@@ -1575,6 +1575,11 @@ PrefabInstance:
       propertyPath: HapticScript
       value: 
       objectReference: {fileID: 1192473218}
+    - target: {fileID: 7175106214839184921, guid: cb5bc6e5977aff24ba8354cfe74d6a85,
+        type: 3}
+      propertyPath: EnabledVR
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb5bc6e5977aff24ba8354cfe74d6a85, type: 3}
 --- !u!1 &63992158
@@ -35740,8 +35745,6 @@ MonoBehaviour:
   secondPlaneStiffness: 0.33
   positionFirstPlane: 0
   positionSecondPlane: -1.5
-  _hapticState: 0
-  _state: 0
   TISSUE_DIMENSIONS: {x: 27, y: 0, z: 20.25}
   GROUND_LEVEL: -0.15
   FIRST_LAYER_TOP: 0.108
@@ -52980,7 +52983,7 @@ PrefabInstance:
     - target: {fileID: 1291087304260003818, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.181
+      value: 1.1966
       objectReference: {fileID: 0}
     - target: {fileID: 1291087304260003818, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
@@ -68470,6 +68473,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634547670174577969, guid: 8d7a7947b3256f8498ae28b0fc47e554,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.8
       objectReference: {fileID: 0}
     - target: {fileID: 5634547670957090783, guid: 8d7a7947b3256f8498ae28b0fc47e554,
         type: 3}
