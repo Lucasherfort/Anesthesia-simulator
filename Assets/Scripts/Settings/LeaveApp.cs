@@ -1,24 +1,20 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine;
 
 public class LeaveApp : MonoBehaviour
 {
-    private void Start() 
+    private void Update()
     {
-        InputManager.Input.Apps.Quit.performed += AbortSimualtion;
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            AbortSimualtion();
+        }
     }
 
-    public void AbortSimualtion(InputAction.CallbackContext _context)
+    private void AbortSimualtion()
     {
         if (!Application.isEditor)
         {
             System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
-    }
-
-    private void OnDestroy() 
-    {
-        InputManager.Input.Apps.Quit.performed -= AbortSimualtion;
     }
 }

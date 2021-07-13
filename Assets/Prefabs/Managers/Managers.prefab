@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1271713770898215029}
   - component: {fileID: 1271713770898215027}
-  - component: {fileID: 1271713770898215026}
+  - component: {fileID: 7175106214839184921}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476de3907b6f3b94bade5888102feafa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1271713770898215026
+--- !u!114 &7175106214839184921
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,7 +53,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1271713770898215028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63b69ef439eaae94aae9da3a3feea6b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 113a269286ac4244c8894547b5683655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnabledVR: 0
+  EnabledVR: 1
+  HapticScript: {fileID: 0}
+  EnabledHaptic: 1
