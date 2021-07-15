@@ -28,21 +28,22 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     /// <summary>
     /// Force feedback to apply to device
     /// </summary>
-    public Vector3 Force_Left = Vector3.zero;
+    private Vector3 ProbeForce = Vector3.zero;
 
     /// <summary>
     /// Force feedback to apply to device
     /// </summary>
-    public Vector3 Force_Right = Vector3.zero;
+    private Vector3 NeedleForce = Vector3.zero;
 
     /* PROBE PARAMETERS*/
 
     // Stiffnes, i.e.k value, of the plane.  Higher stiffness results
     // in a harder surface.
-    public double firstPlaneStiffness = .25;
-    public double secondPlaneStiffness = .33;
+    public float FirstPlaneStiffness = 0.25f;
+    public float SecondPlaneStiffness = 0.33f;
 
-    public float positionFirstPlane = 0, positionSecondPlane = -1.5f;
+    public float FirstPlanePosition = 0;
+    public float SecondPlanePosition = -1.5f;
 
     /* NEEDLE PARAMETERS AND STUFF */
     /// <summary>
@@ -83,13 +84,13 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     /// X position of the tip when entering the skin layers
     /// </summary>
     [SerializeField]
-    private float contactPositionX = OUTSIDE_POSITION;
+    private float NeedleContactPositionX = OUTSIDE_POSITION;
 
     /// <summary>
     /// Z position of the tip when entering the skin layers
     /// </summary>
     [SerializeField]
-    private float contactPositionZ = OUTSIDE_POSITION;
+    private float NeedleContactPositionZ = OUTSIDE_POSITION;
 
     /// <summary>
     /// The gimbal position [mm] stored when contact with first membrane (reseted when transpasing it)
@@ -112,7 +113,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     /// Stiffness coefficient for Skin Layer [N/m]
     /// </summary>
     [SerializeField]
-    private float kStiffness1stLayerHaptic = 31.5f; //20
+    private float FirstLayerStiffness = 31.5f; //20
 
     /// <summary>
     /// Position of the tip when entering the skin layers
@@ -132,47 +133,47 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     /// <summary>
     /// Current position of needle
     /// </summary>
-    private Vector3 MyPosition = Vector3.zero;
+    private Vector3 NeedleCurrentPosition = Vector3.zero;
 
     /// <summary>
     /// Current rotation of needle
     /// </summary>
-    private Quaternion MyRotation = Quaternion.identity;
+    private Quaternion NeedleCurrentRotation = Quaternion.identity;
 
     /// <summary>
     /// Stiffness force corresponding to first layer
     /// </summary>
-    public float forceStiffness1 = 0f;
+    public float FirstLayerForceStiffness = 0f;
 
     /// <summary>
     /// Friction force corresponding to first layer
     /// </summary>
-    public float forceFriction1 = 0f;
+    public float FirstLayerForceFriction = 0f;
 
     /// <summary>
     /// Cutting force corresponding to first layer
     /// </summary>
-    public float forceCutting1 = 0f;
+    public float FirstLayerForceCutting = 0f;
 
     /// <summary>
     /// Stiffness force corresponding to second layer
     /// </summary>
-    public float forceStiffness2 = 0f;
+    public float SecondLayerForceStiffness = 0f;
 
     /// <summary>
     /// Friction force corresponding to second layer
     /// </summary>
-    public float forceFriction2 = 0f;
+    public float SecondLayerForceFriction = 0f;
 
     /// <summary>
     /// Cutting force corresponding to second layer
     /// </summary>
-    public float forceCutting2 = 0f;
+    public float SecondLayerForceCutting = 0f;
 
     /// <summary>
     /// Dumping force corresponding to first & second layers
     /// </summary>
-    public float forceDumping12 = 0f;
+    public float FirstAndSecondForceDumping = 0f;
 
     /// <summary>
     /// Addition of forces in the Y direction
@@ -199,13 +200,13 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     /// Damping coefficient for Skin Layer [N/m]
     /// </summary>
     [SerializeField]
-    private float kDamping1stLayerHaptic = 1.67f; //2.2
+    private float FirstLayerDamping = 1.67f; //2.2
 
     /// <summary>
     /// Cutting coefficient for Skin Layer [N/m]
     /// </summary>
     [SerializeField]
-    private float kCutting1stLayerHaptic = 1.22f; //1.8
+    private float SkinLayerCutting = 1.22f; //1.8
 
     //---------------------------------------------------------------------------
     // SYSTEM CONSTANTS
@@ -222,14 +223,6 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
     // way to set up GetButtonDown function
     private Buttons lastLeftButtonsState;
-
-    //---------------------------------------------------------------------------
-    // OBJECT ATTRIBUTES
-    //---------------------------------------------------------------------------
-
-    //---------------------------------------------------------------------------
-    // FUNCTIONS
-    //---------------------------------------------------------------------------
 
     /// <summary>
     /// Runs only once when it is first activated
@@ -324,20 +317,18 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
             Debug.Log("Multiple instances of HapticManager");
     }
 
-
     /// <summary>
     /// Process each frame
     /// </summary>
     private void Update()
     {
-        //Phantoms.Do(PhantomUpdatePositions);
-
-        // MAJ du visuel
+        // Mise à jour du visuel
         ProbeDevice.tool.transform.localPosition = ProbeDevice.position;
         ProbeDevice.tool.transform.localRotation = ProbeDevice.rotation;
         NeedleDevice.tool.transform.localPosition = NeedleDevice.position;
         NeedleDevice.tool.transform.localRotation = NeedleDevice.rotation;
 
+        // Mise à jour des boutons 
         HdAPI.hdMakeCurrentDevice(ProbeDevice.hHdAPI);
         Buttons bStateLeft = Phantoms.GetButton();
 
@@ -354,22 +345,10 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         lastLeftButtonsState = bStateLeft;
     }
 
-    bool PhantomUpdatePositions()
-    {
-        HdAPI.hdMakeCurrentDevice(ProbeDevice.hHdAPI);
-        ProbeDevice.position = Phantoms.GetPosition();
-        ProbeDevice.rotation = Phantoms.GetRotation();
+    public float probeDop = 0f;
+    public float probeDopStiffness = 0f;
 
-        HdAPI.hdMakeCurrentDevice(NeedleDevice.hHdAPI);
-        NeedleDevice.position = Phantoms.GetPosition();
-        NeedleDevice.rotation = Phantoms.GetRotation();
-
-        return false;
-    }
-
-
-    public float probeDop, probeDopStiffness = 0f;
-    Vector3 currentPosition2;
+    Vector3 ProbeCurrentPosition;
     /// <summary>
     /// Method that is repeatedly called in PHANTOM's cycle (default rate 1 [kHz])
     /// </summary>
@@ -380,36 +359,35 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
         HdAPI.hdBeginFrame(ProbeDevice.hHdAPI);
 
-        Vector3 HandPosition_Left = Phantoms.GetPosition();
-        Quaternion HandRotation_Left = Phantoms.GetRotation();
+        Vector3 ProbeHandPosition = Phantoms.GetPosition();
+        Quaternion ProbeHandRotation = Phantoms.GetRotation();
 
         // If the user has penetrated the plane, set the device force to 
         // repel the user in the direction of the surface normal of the plane.
         // Penetration occurs if the plane is facing in +Y and the user's Y position
         // is negative, or vice versa.
-        if (Mathf.Abs(HandPosition_Left.x) < TISSUE_DIMENSIONS.x && Mathf.Abs(HandPosition_Left.z) < TISSUE_DIMENSIONS.z)
+        if (Mathf.Abs(ProbeHandPosition.x) < TISSUE_DIMENSIONS.x && Mathf.Abs(ProbeHandPosition.z) < TISSUE_DIMENSIONS.z)
         {
             // get position from top 1st layer position
-            currentPosition2 = HandPosition_Left * UnitLength;
-            float probeDopStiffness2 = positionFirstPlane + 0.075f - currentPosition2.y;
+            ProbeCurrentPosition = ProbeHandPosition * UnitLength;
+            float ProbeDopStiffness = FirstPlanePosition + 0.075f - ProbeCurrentPosition.y;
 
-            if (probeDopStiffness2 > 0)
+            if (ProbeDopStiffness > 0)
             {
                 //---------------------------------------------------------------------------
                 // MEMBRANE STIFFNESS FORCE (before penetration)
                 //---------------------------------------------------------------------------
 
-                Vector3 HandVelocityLeft = Phantoms.GetVelocity();
+                Vector3 ProbeHandVelocity = Phantoms.GetVelocity();
                 // get velocity and limit it
-                float velocity2 = HandVelocityLeft.y;
-                velocity2 = Mathf.Clamp(velocity2, -0.1f, 0.1f);
+                float ProbeVelocity = ProbeHandVelocity.y;
+                ProbeVelocity = Mathf.Clamp(ProbeVelocity, -0.1f, 0.1f);
 
                 // calculate stiffness force (Y direction)
-                float forceStiffnesssonde = (2.5f + kStiffness1stLayerHaptic) * probeDopStiffness2 + kDamping1stLayerHaptic * (-velocity2) * probeDopStiffness2;
+                float ProbeForceStiffness = (2.5f + FirstLayerStiffness) * ProbeDopStiffness + FirstLayerDamping * (-ProbeVelocity) * ProbeDopStiffness;
 
                 // apply scale factor for forces
-                forceStiffnesssonde = forceStiffnesssonde * DEVICE_FORCE_SCALE;
-                //forceTotalY = forceStiffness1;
+                ProbeForceStiffness *= DEVICE_FORCE_SCALE;
 
                 float membraneDamping = 0.003f;
                 float membraneStiffness = 0.04f;
@@ -417,7 +395,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
                 float ClampValue = 0.4f;
 
                 // lateral forces within the membrane: damping force
-                membraneForce2 = -membraneDamping * HandVelocityLeft;
+                membraneForce2 = -membraneDamping * ProbeHandVelocity;
                 if (membraneForce2.magnitude > ClampValue)
                 {
                     membraneForce2.Normalize();
@@ -425,13 +403,13 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
                 }
 
                 Vector3 ForceS = Vector3.zero;
-                ForceS.x += membraneForce2.x - probeDopStiffness2 * distanceCoeficient;
+                ForceS.x += membraneForce2.x - ProbeDopStiffness * distanceCoeficient;
                 ForceS.y += membraneForce2.y;
-                ForceS.z += membraneForce2.z - probeDopStiffness2 * distanceCoeficient; ;
+                ForceS.z += membraneForce2.z - ProbeDopStiffness * distanceCoeficient; ;
 
                 // lateral forces within the membrane: dynamic stiffness force
                 ClampValue = (float)Phantoms.GetContinuousForceLimit();
-                membraneForce2 = membraneStiffness * (Vector3.zero - HandPosition_Left);
+                membraneForce2 = membraneStiffness * (Vector3.zero - ProbeHandPosition);
                 if (membraneForce2.magnitude > ClampValue)
                 {
                     membraneForce2.Normalize();
@@ -442,10 +420,9 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
                 ForceS.y += membraneForce2.y;
                 ForceS.z += membraneForce2.z;
                 ProbeDevice.force = ForceS;
-                //---------------------------------------------------------------------------
             }
 
-            if (HandPosition_Left.y <= positionFirstPlane) //0 la pos en y du plane
+            if (ProbeHandPosition.y <= FirstPlanePosition) //0 la pos en y du plane
             {
                 // Create a force vector repelling the user from the plane proportional
                 // to the penetration distance, using F=kx where k is the plane 
@@ -453,37 +430,37 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
                 // oriented at the Y=0, the force direction is always either directly 
                 // upward or downward, i.e. either (0,1,0) or (0,-1,0).
                 // Hooke's law explicitly
-                float penetrationDistance = Mathf.Abs(HandPosition_Left[1]);
+                float penetrationDistance = Mathf.Abs(ProbeHandPosition.y);
 
-                if (HandPosition_Left.y > positionSecondPlane)
+                if (ProbeHandPosition.y > SecondPlanePosition)
                 {
-                    ProbeDevice.force += new Vector3(0, (float)(penetrationDistance * firstPlaneStiffness), 0);
-                    HandPosition_Left = HandPosition_Left * UnitLength;
-                    ProbeDevice.position = new Vector3(HandPosition_Left.x, HandPosition_Left.y, HandPosition_Left.z);
-                    ProbeDevice.rotation = new Quaternion(HandRotation_Left.x, HandRotation_Left.y, HandRotation_Left.z, HandRotation_Left.w);
+                    ProbeDevice.force += new Vector3(0, (float)(penetrationDistance * FirstPlaneStiffness), 0);
+                    ProbeHandPosition *= UnitLength;
+                    ProbeDevice.position = new Vector3(ProbeHandPosition.x, ProbeHandPosition.y, ProbeHandPosition.z);
+                    ProbeDevice.rotation = new Quaternion(ProbeHandRotation.x, ProbeHandRotation.y, ProbeHandRotation.z, ProbeHandRotation.w);
                 }
                 else
                 {
-                    ProbeDevice.force += new Vector3(0, (float)(penetrationDistance * secondPlaneStiffness), 0);
-                    HandPosition_Left = HandPosition_Left * UnitLength;
-                    ProbeDevice.position = new Vector3(HandPosition_Left.x, positionSecondPlane * UnitLength, HandPosition_Left.z);
-                    ProbeDevice.rotation = new Quaternion(HandRotation_Left.x, HandRotation_Left.y, HandRotation_Left.z, HandRotation_Left.w);
+                    ProbeDevice.force += new Vector3(0, (float)(penetrationDistance * SecondPlaneStiffness), 0);
+                    ProbeHandPosition *= UnitLength;
+                    ProbeDevice.position = new Vector3(ProbeHandPosition.x, SecondPlanePosition * UnitLength, ProbeHandPosition.z);
+                    ProbeDevice.rotation = new Quaternion(ProbeHandRotation.x, ProbeHandRotation.y, ProbeHandRotation.z, ProbeHandRotation.w);
                 }
             }
             else
             {
                 ProbeDevice.force += Vector3.zero;
-                HandPosition_Left = HandPosition_Left * UnitLength;
-                ProbeDevice.position = new Vector3(HandPosition_Left.x, HandPosition_Left.y, HandPosition_Left.z);
-                ProbeDevice.rotation = new Quaternion(HandRotation_Left.x, HandRotation_Left.y, HandRotation_Left.z, HandRotation_Left.w);
+                ProbeHandPosition *= UnitLength;
+                ProbeDevice.position = new Vector3(ProbeHandPosition.x, ProbeHandPosition.y, ProbeHandPosition.z);
+                ProbeDevice.rotation = new Quaternion(ProbeHandRotation.x, ProbeHandRotation.y, ProbeHandRotation.z, ProbeHandRotation.w);
             }
         }
         else
         {
             ProbeDevice.force = Vector3.zero;
-            HandPosition_Left = HandPosition_Left * UnitLength;
-            ProbeDevice.position = new Vector3(HandPosition_Left.x, HandPosition_Left.y, HandPosition_Left.z);
-            ProbeDevice.rotation = new Quaternion(HandRotation_Left.x, HandRotation_Left.y, HandRotation_Left.z, HandRotation_Left.w);
+            ProbeHandPosition *= UnitLength;
+            ProbeDevice.position = new Vector3(ProbeHandPosition.x, ProbeHandPosition.y, ProbeHandPosition.z);
+            ProbeDevice.rotation = new Quaternion(ProbeHandRotation.x, ProbeHandRotation.y, ProbeHandRotation.z, ProbeHandRotation.w);
         }
 
         HdAPI.hdMakeCurrentDevice(ProbeDevice.hHdAPI);
@@ -497,71 +474,71 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         HdAPI.hdMakeCurrentDevice(NeedleDevice.hHdAPI);
 
         // Get the position of the hand (gimbal part) [mm]
-        Vector3 HandPosition = Phantoms.GetPosition();
+        Vector3 NeedleHandPosition = Phantoms.GetPosition();
 
         // Get the hand posture (orientation)
-        Quaternion HandRotation = NeedleDevice.correctionRotation = Phantoms.GetRotation();
+        Quaternion NeedleHandRotation = NeedleDevice.correctionRotation = Phantoms.GetRotation();
 
         // Get the speed of the hand [mm/s]
-        Vector3 HandVelocity = Phantoms.GetVelocity();
+        Vector3 NeedleHandVelocity = Phantoms.GetVelocity();
 
         // Re-init force feedback to 0
         //Vector3 Force = Vector3.zero;
         NeedleDevice.force = Vector3.zero;
 
         // Hand position & rotation in the Unity world
-        Vector3 currentPosition = HandPosition * UnitLength;
-        Quaternion currentRotation = HandRotation;
+        Vector3 currentPosition = NeedleHandPosition * UnitLength;
+        Quaternion currentRotation = NeedleHandRotation;
 
         // init forces to apply to haptic in the Y direction
-        forceStiffness1 = forceFriction1 = forceCutting1 = forceTotalY = 0f;
+        FirstLayerForceStiffness = FirstLayerForceFriction = FirstLayerForceCutting = forceTotalY = 0f;
 
         //---------------------------------------------------------------------------
         // FORCES FROM TISSUE - NEEDLE INTERACTION (1st and 2nd layer)
         //---------------------------------------------------------------------------
 
         // if within the square of tissue in X, Z coordinates (big cube with all tissue layers inside)
-        if (Mathf.Abs(HandPosition.x) < TISSUE_DIMENSIONS.x && Mathf.Abs(HandPosition.z) < TISSUE_DIMENSIONS.z)
+        if (Mathf.Abs(NeedleHandPosition.x) < TISSUE_DIMENSIONS.x && Mathf.Abs(NeedleHandPosition.z) < TISSUE_DIMENSIONS.z)
         {
             // get vertical position of the needle
-            float verticalPosition = HandPosition.y * UnitLength;
+            float NeedleVerticalPosition = NeedleHandPosition.y * UnitLength;
 
             // if it has traspased the membrane
-            if (verticalPosition < FIRST_LAYER_TOP)// - 0.05)
+            if (NeedleVerticalPosition < FIRST_LAYER_TOP)// - 0.05)
             {
                 contactPosition = Vector3.zero;
 
                 // set contact position, store position and rotation of needle at the moment of penetration
-                if (contactPositionX == OUTSIDE_POSITION && contactPositionZ == OUTSIDE_POSITION)
+                if (NeedleContactPositionX == OUTSIDE_POSITION && NeedleContactPositionZ == OUTSIDE_POSITION)
                 {
                     // POINT PIVOT !!!! 
-                    contactPositionX = currentPosition.x;
-                    contactPositionZ = currentPosition.z;
+                    NeedleContactPositionX = currentPosition.x;
+                    NeedleContactPositionZ = currentPosition.z;
                     lastPosDevice = currentPosition;
-                    lastRotDevice = HandRotation;
+                    lastRotDevice = NeedleHandRotation;
 
                     // get rotation matrix to get direction of the needle when penetrating
 
                     Phantoms.GetRotationMatrix(out RotationMatrix); // sortir de ce boucle je crois pour le point pivot
 
                     // needle is inside tissue
-                    NeedleDevice.correctionPosition = new Vector3(contactPositionX, FIRST_LAYER_TOP, contactPositionZ);
+                    NeedleDevice.correctionPosition = new Vector3(NeedleContactPositionX, FIRST_LAYER_TOP, NeedleContactPositionZ);
                     NeedleDevice.inside = true;
                 }
             }
             else
             {
                 NeedleDevice.inside = false;
-                contactPositionX = contactPositionZ = OUTSIDE_POSITION;
+                NeedleContactPositionX = NeedleContactPositionZ = OUTSIDE_POSITION;
             }
 
             // init depth variables and velocity
             probeDop = 0f;
             probeDopStiffness = 0f;
-            float velocity = 0f;
+            float NeedleVelocity = 0f;
 
             // limit visual direction if needle inside tissue and calculate lateral forces
-            if (contactPositionX != OUTSIDE_POSITION && contactPositionZ != OUTSIDE_POSITION)
+            if (NeedleContactPositionX != OUTSIDE_POSITION && NeedleContactPositionZ != OUTSIDE_POSITION)
             {
                 //---------------------------------------------------------------------------
                 // INSIDE SKIN LAYERS LATERAL FORCES ADDITION
@@ -572,8 +549,8 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
                 // Temporal variable to calculate the lateral forces to limit position
                 Vector3 lateralInsideForce = Vector3.zero;
-                lateralInsideForce.x = CalculateLateralForce(currentPosition, HandVelocity, lastPosDevice, 0).x;
-                lateralInsideForce.z = CalculateLateralForce(currentPosition, HandVelocity, lastPosDevice, 2).z;
+                lateralInsideForce.x = CalculateLateralForce(currentPosition, NeedleHandVelocity, lastPosDevice, 0).x;
+                lateralInsideForce.z = CalculateLateralForce(currentPosition, NeedleHandVelocity, lastPosDevice, 2).z;
 
                 // add lateral forces
                 NeedleDevice.force += lateralInsideForce;
@@ -604,18 +581,18 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
                 //---------------------------------------------------------------------------
 
                 if (contactPosition == Vector3.zero)
-                    contactPosition = HandPosition;
+                    contactPosition = NeedleHandPosition;
 
                 // get velocity and limit it
-                velocity = HandVelocity.y;
-                velocity = Mathf.Clamp(velocity, -0.1f, 0.1f);
+                NeedleVelocity = NeedleHandVelocity.y;
+                NeedleVelocity = Mathf.Clamp(NeedleVelocity, -0.1f, 0.1f);
 
                 // calculate stiffness force (Y direction)
-                forceStiffness1 = (2.5f + kStiffness1stLayerHaptic) * probeDopStiffness + kDamping1stLayerHaptic * (-velocity) * probeDopStiffness;
+                FirstLayerForceStiffness = (2.5f + FirstLayerStiffness) * probeDopStiffness + FirstLayerDamping * (-NeedleVelocity) * probeDopStiffness;
 
                 // apply scale factor for forces
-                forceStiffness1 = forceStiffness1 * DEVICE_FORCE_SCALE;
-                forceTotalY = forceStiffness1;
+                FirstLayerForceStiffness *= DEVICE_FORCE_SCALE;
+                forceTotalY = FirstLayerForceStiffness;
 
                 float membraneDamping = 0.003f;
                 float membraneStiffness = 0.04f;
@@ -623,7 +600,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
                 float ClampValue = 0.4f;
 
                 // lateral forces within the membrane: damping force
-                membraneForce = -membraneDamping * HandVelocity;
+                membraneForce = -membraneDamping * NeedleHandVelocity;
                 if (membraneForce.magnitude > ClampValue)
                 {
                     membraneForce.Normalize();
@@ -636,7 +613,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
                 // lateral forces within the membrane: dynamic stiffness force
                 ClampValue = (float)Phantoms.GetContinuousForceLimit();
-                membraneForce = membraneStiffness * (contactPosition - HandPosition);
+                membraneForce = membraneStiffness * (contactPosition - NeedleHandPosition);
                 if (membraneForce.magnitude > ClampValue)
                 {
                     membraneForce.Normalize();
@@ -645,12 +622,12 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
                 NeedleDevice.force += membraneForce;
 
-                if ((contactPosition - HandPosition).magnitude > 5)
-                    contactPosition = HandPosition;
+                if ((contactPosition - NeedleHandPosition).magnitude > 5)
+                    contactPosition = NeedleHandPosition;
 
                 //---------------------------------------------------------------------------
             }
-            else if (probeDop > 0 && verticalPosition < FIRST_LAYER_TOP - 0.05)
+            else if (probeDop > 0 && NeedleVerticalPosition < FIRST_LAYER_TOP - 0.05)
             {
                 //---------------------------------------------------------------------------
                 // TISSUE FRICTION + CUTTING FORCE (after penetration)
@@ -661,20 +638,19 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
                 float b0 = -0.097f;
 
                 // get velocity and limit it
-                velocity = HandVelocity.y * UnitLength;
-                velocity = Mathf.Clamp(velocity, -1.5f, 1.5f);
+                NeedleVelocity = NeedleHandVelocity.y * UnitLength;
+                NeedleVelocity = Mathf.Clamp(NeedleVelocity, -1.5f, 1.5f);
 
                 // calculate friction force
-                forceFriction1 = (-velocity * 3 + 800 * ((f0 + b0) * Mathf.Exp(a0 * probeDopStiffness) + b0)) / kDamping1stLayerHaptic;
+                FirstLayerForceFriction = (-NeedleVelocity * 3 + 800 * ((f0 + b0) * Mathf.Exp(a0 * probeDopStiffness) + b0)) / FirstLayerDamping;
 
                 // apply scale factor for forces
-                forceFriction1 = forceFriction1 * DEVICE_FORCE_SCALE;
+                FirstLayerForceFriction *= DEVICE_FORCE_SCALE;
 
                 // add cutting force (= constant)
-                forceCutting1 = kCutting1stLayerHaptic;
+                FirstLayerForceCutting = SkinLayerCutting;
                 
-
-                forceTotalY = forceFriction1 + forceCutting1;// + forceTarget;
+                forceTotalY = FirstLayerForceFriction + FirstLayerForceCutting;
             }
             else
             {
@@ -691,7 +667,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
             NeedleDevice.inside = false;
 
             // reset contact position
-            contactPositionX = contactPositionZ = OUTSIDE_POSITION;
+            NeedleContactPositionX = NeedleContactPositionZ = OUTSIDE_POSITION;
         }
         //---------------------------------------------------------------------------
 
@@ -722,7 +698,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         Vector3 forceVec = Vector3.zero;
 
         // if two charges overlap...
-        if (dist < 12 * 2.0)
+        if (dist < 24.0f)
         {
             // Attract the charge to the center of the sphere.
             forceVec = new Vector3(-0.1f * pos.x, -0.1f * pos.y, -0.1f * pos.z);
@@ -735,7 +711,6 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
         return forceVec;
     }
-
 
     /// <summary>
     /// Seek the forces generated when the operating point is in contact with the lateral membrane
