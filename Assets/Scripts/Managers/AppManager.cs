@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class EnablePlugin : MonoBehaviour
+public class AppManager : MonoBehaviour
 {
-    static public EnablePlugin Instance { get; private set; }
+    static public AppManager Instance { get; private set; }
 
     [SerializeField]
     private bool EnabledVR = false;
@@ -24,5 +24,21 @@ public class EnablePlugin : MonoBehaviour
 
         UnityEngine.XR.XRSettings.enabled = EnabledVR;
         HapticScript.GetComponent<TwoHapticsProbeNeedle>().enabled = EnabledHaptic;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            AbortSimualtion();
+        }
+    }
+
+    private void AbortSimualtion()
+    {
+        if (!Application.isEditor)
+        {
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
+        }
     }
 }

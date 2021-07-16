@@ -221,8 +221,11 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     public Action ZoomUp;
     public Action ZoomDown;
 
+    public Action InsertAnesthesic;
+
     // way to set up GetButtonDown function
     private Buttons lastLeftButtonsState;
+    private Buttons lastRighttButtonsState;
 
     /// <summary>
     /// Runs only once when it is first activated
@@ -342,7 +345,15 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
             ZoomUp.Invoke();
         }
 
+        HdAPI.hdMakeCurrentDevice(NeedleDevice.hHdAPI);
+        Buttons bStateRight = Phantoms.GetButton();
+        if (bStateRight == Buttons.Button1 && lastRighttButtonsState != bStateRight)
+        {
+            InsertAnesthesic.Invoke();
+        }
+
         lastLeftButtonsState = bStateLeft;
+        lastRighttButtonsState = bStateRight;
     }
 
     public float probeDop = 0f;

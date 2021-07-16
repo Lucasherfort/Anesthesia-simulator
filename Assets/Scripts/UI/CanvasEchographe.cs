@@ -75,6 +75,11 @@ public class CanvasEchographe : MonoBehaviour
         ZoomTxt.text = "  Zoom : " + zoom;
     }
 
+    public void UpdateUIStateAnesthesia(int percentage)
+    {
+        StateAnesthesiaTxt.text = "  State of anesthesia : " + percentage + " %";
+    }
+
     public void UpdateTouchNerve()
     {
         NbNerveTouch++;
