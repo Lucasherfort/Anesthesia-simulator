@@ -12,7 +12,7 @@ public class StructureManager : MonoBehaviour
 {
     public Structure CurrentStructure;
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Needle")
         {
@@ -22,19 +22,17 @@ public class StructureManager : MonoBehaviour
                     break;
 
                 case Structure.Artery:
-                    // TODO
+                    CanvasEchographe.Instance.UpdateTouchArtery();
                     break;
 
                 case Structure.Veine:
-                    // TODO
+                    CanvasEchographe.Instance.UpdateTouchVein();
                     break;
 
-                case Structure.Nerve:  
-                    // TODO               
+                case Structure.Nerve:
+                    CanvasEchographe.Instance.UpdateTouchNerve();               
                     break;
             }
-
-            Debug.Log(CurrentStructure + " a été touché");
         }
     }
 }

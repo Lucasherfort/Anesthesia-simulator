@@ -145,6 +145,9 @@ MonoBehaviour:
   hHdAPI: 0
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}
+  correctionRotation: {x: 0, y: 0, z: 0, w: 0}
+  inside: 0
+  correctionPosition: {x: 0, y: 0, z: 0}
   force: {x: 0, y: 0, z: 0}
   tool: {fileID: 515588575789715909}
 --- !u!1 &1291087304260003819
@@ -582,9 +585,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CrossCamList:
   - {fileID: 3367931148944579656}
-  - {fileID: 7440060010847029748}
+  - {fileID: 967601692809535291}
   - {fileID: 7440060010847029748}
   - {fileID: 2461311669438012245}
+  - {fileID: 2461311669438012248}
   currentZoom: 5
 --- !u!114 &1804456662
 MonoBehaviour:

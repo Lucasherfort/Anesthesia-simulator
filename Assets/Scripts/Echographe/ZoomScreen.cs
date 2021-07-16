@@ -176,6 +176,8 @@ public class ZoomScreen : MonoBehaviour
                 }
                 break;
         }
+
+        CanvasEchographe.Instance.UpdateUIZoom(currentZoom);
     }
 
     private void OnDestroy()
