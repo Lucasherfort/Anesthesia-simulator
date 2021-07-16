@@ -1437,6 +1437,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 1271713770898215028, guid: cb5bc6e5977aff24ba8354cfe74d6a85,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1271713770898215029, guid: cb5bc6e5977aff24ba8354cfe74d6a85,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1497,6 +1502,16 @@ PrefabInstance:
       propertyPath: HapticScript
       value: 
       objectReference: {fileID: 1192473218}
+    - target: {fileID: 7175106214839184921, guid: cb5bc6e5977aff24ba8354cfe74d6a85,
+        type: 3}
+      propertyPath: EnabledVR
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175106214839184921, guid: cb5bc6e5977aff24ba8354cfe74d6a85,
+        type: 3}
+      propertyPath: EnabledHaptic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb5bc6e5977aff24ba8354cfe74d6a85, type: 3}
 --- !u!1 &63992158
@@ -17386,6 +17401,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HapticalNeedle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2521356766609680398, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818, type: 3}
@@ -40040,7 +40060,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296777646}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 801d147042ac8e64780e8f7c170bdca0, type: 3}
   m_Name: 
@@ -53467,6 +53487,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 'HapticalProbe '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291087304260003819, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2461311669438012248, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
@@ -68953,6 +68978,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SkinModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634547669498850305, guid: 8d7a7947b3256f8498ae28b0fc47e554,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5634547669498850310, guid: 8d7a7947b3256f8498ae28b0fc47e554,
         type: 3}
