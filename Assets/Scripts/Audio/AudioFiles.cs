@@ -9,16 +9,14 @@ public class AudioFiles : ScriptableObject
     private SoundLoopClip roomSoundEffect = null;
 
     [SerializeField]
-    private SoundLoopClip fireAlarm = null;
+    private SingleSoundOneShotClip cryPain = null;
 
-    [SerializeField]
-    private SingleSoundOneShotClip phoneRinging = null;
  
     public SoundOneShotClip SoundOneShotToClip (SoundOneShot sound) 
     {
         switch (sound) 
         {
-            case SoundOneShot.PhoneRinging : return phoneRinging;
+            case SoundOneShot.CryPain : return cryPain;
 
             default : 
                 Debug.LogError("SoundOneShotClip : " + sound + " was not found!");
@@ -31,7 +29,6 @@ public class AudioFiles : ScriptableObject
         switch (sound) 
         {
             case SoundLoop.RoomSoundEffect : return roomSoundEffect;
-            case SoundLoop.FireAlarm : return fireAlarm;
 
             default : 
                 Debug.LogError("SoundLoopClip : " + sound + " was not found!");
@@ -42,11 +39,10 @@ public class AudioFiles : ScriptableObject
 
 public enum SoundOneShot 
 {
-    PhoneRinging
+    CryPain
 }
 
 public enum SoundLoop 
 {
-    RoomSoundEffect,
-    FireAlarm
+    RoomSoundEffect
 }
