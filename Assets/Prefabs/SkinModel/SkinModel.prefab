@@ -160,13 +160,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926226226}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88495ee19b946904f9c7a0f93cb8c0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   veine: {fileID: 630324871}
-  NewPositionY: -5
+  NewPositionY: -3
   NewScaleY: 0
   force: 0
 --- !u!1 &1672341624739324133
