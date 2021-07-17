@@ -49483,46 +49483,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'HapticalProbe '
       objectReference: {fileID: 0}
-    - target: {fileID: 1291087304260003819, guid: 128408b3a537edc4cbe4628573d54d05,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2461311669438012248, guid: 128408b3a537edc4cbe4628573d54d05,
-        type: 3}
-      propertyPath: orthographic size
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 2461311669706447497, guid: 128408b3a537edc4cbe4628573d54d05,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2461311669706447740, guid: 128408b3a537edc4cbe4628573d54d05,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2461311669706447740, guid: 128408b3a537edc4cbe4628573d54d05,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2739325320102307622, guid: 128408b3a537edc4cbe4628573d54d05,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4920420538205158155, guid: 128408b3a537edc4cbe4628573d54d05,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8350448943506219826, guid: 128408b3a537edc4cbe4628573d54d05,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 128408b3a537edc4cbe4628573d54d05, type: 3}
 --- !u!1 &1804456652 stripped
@@ -64257,6 +64217,16 @@ PrefabInstance:
       propertyPath: cutPlane
       value: 
       objectReference: {fileID: 1804456652}
+    - target: {fileID: 8457948273691153640, guid: 8d7a7947b3256f8498ae28b0fc47e554,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457948273691153640, guid: 8d7a7947b3256f8498ae28b0fc47e554,
+        type: 3}
+      propertyPath: NewPositionY
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: 9011200662844794936, guid: 8d7a7947b3256f8498ae28b0fc47e554,
         type: 3}
       propertyPath: cutPlane

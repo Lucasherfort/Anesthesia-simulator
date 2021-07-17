@@ -5,64 +5,45 @@ public class VeineDeformation : MonoBehaviour
     [SerializeField]
     private Transform veine = null;
 
-    private float maxY = 0f;
+    private float NormalPositionY;
+    private float NormalScaleY;
 
-    private float minScaleY = 0f;
+    public float NewPositionY = -5f;
+    public float NewScaleY; 
 
-    private float maxScaleY = 0f;
-
-    [Range(0f, 1f)]
-    public float force = 0f;
+    [Range(0f,1f)]
+    public float force;
 
     private void Start()
     {
-        if (veine == null)
+        if(veine != null)
         {
-            Debug.LogWarning("veine variable is empty !");
-        }
-        else
-        {
-            maxY = veine.position.y;
-            maxScaleY = veine.localScale.y;
+            NormalPositionY = veine.localPosition.y;
+            NormalScaleY = veine.localScale.y;
         }
     }
 
     private void Update()
     {
-        if (force == 1)
-        {
-
-                veine.gameObject.SetActive(false);
-
-        }
-        else
-        {
-            veine.gameObject.SetActive(true);
-        }
-
         ApplyDeformation(force);
     }
 
     private void ApplyDeformation(float force)
     {
-        float localY = Map(force, 0f, 1f, maxY, 0);
-        float ScalelocalY = ((maxScaleY - minScaleY) / maxY) * localY;
+        float ResizePosY = Map(force, 0,1,NormalPositionY,NewPositionY);
+        float ResizeScaleY = Map(force, 0,1,NormalScaleY,NewScaleY);
 
+        var tempPos = veine.localPosition;
+        tempPos.y = ResizePosY;
+        veine.localPosition = tempPos;
 
-        Vector3 temp = veine.localScale;
-        temp.y = ScalelocalY;
-        veine.localScale = temp;
-
-        Vector3 temp2 = veine.localPosition;
-        temp2.y = localY;
-        veine.localPosition = temp2;     
+        var tempScale = veine.localScale;
+        tempScale.y = ResizeScaleY;
+        veine.localScale = tempScale;
     }
 
-    private float Map(float variable, float x1, float x2, float y1, float y2)
+    private float Map(float value, float FromLow, float ToLow, float FromHigh, float ToHigh)
     {
-        float a = (y1 - y2) / (x1 - x2);
-        float b = y1 - x1 * ((y1 - y2) / (x1 - x2));
-
-        return a * variable + b;
+        return (ToHigh - FromHigh) * ((value - FromLow) / (ToLow - FromLow)) + FromHigh;
     }
 }

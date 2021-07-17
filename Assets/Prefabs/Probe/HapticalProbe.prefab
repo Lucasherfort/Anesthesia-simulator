@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264538396864188397}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
-  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: -1.3}
   m_LocalScale: {x: 0.6000005, y: 0.8000001, z: 0.60000044}
   m_Children: []
   m_Father: {fileID: 8502884087229694478}
@@ -244,7 +244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2461311669656115878}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
-  m_LocalPosition: {x: 0, y: -9.600005, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: -1.3}
   m_LocalScale: {x: 0.6000002, y: 0.8, z: 0.6000002}
   m_Children: []
   m_Father: {fileID: 8502884087229694478}
@@ -277,7 +277,7 @@ Camera:
   far clip plane: 0.02
   field of view: 60
   orthographic: 1
-  orthographic size: 0.09
+  orthographic size: 0.05
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -324,7 +324,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2461311669706447714}
   - component: {fileID: 2461311669119245113}
-  - component: {fileID: 2461311668565596965}
   - component: {fileID: 2461311669421235013}
   m_Layer: 10
   m_Name: CutPlane
@@ -354,20 +353,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2461311669656115882}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &2461311668565596965
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2461311669656115882}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &2461311669421235013
 MeshRenderer:
@@ -435,7 +420,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2461311669656115908}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
-  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: -1.3}
   m_LocalScale: {x: 0.6000005, y: 0.8000001, z: 0.60000044}
   m_Children: []
   m_Father: {fileID: 8502884087229694478}
@@ -634,7 +619,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3919463328354186038}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
-  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: -1.3}
   m_LocalScale: {x: 0.6000005, y: 0.8000001, z: 0.60000044}
   m_Children: []
   m_Father: {fileID: 8502884087229694478}
@@ -762,7 +747,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4155786045805173175}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
-  m_LocalPosition: {x: 0, y: -5, z: -0}
+  m_LocalPosition: {x: 0, y: -5, z: -1.3}
   m_LocalScale: {x: 0.6000005, y: 0.8000001, z: 0.60000044}
   m_Children: []
   m_Father: {fileID: 8502884087229694478}
