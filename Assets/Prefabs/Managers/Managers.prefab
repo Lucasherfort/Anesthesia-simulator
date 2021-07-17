@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7175106214839184921}
   - component: {fileID: 8947181097811420978}
   - component: {fileID: 495401420489035483}
+  - component: {fileID: 1532911681}
   - component: {fileID: 3699624167909658619}
   m_Layer: 0
   m_Name: Managers
@@ -78,6 +79,18 @@ MonoBehaviour:
   hasOneShotTrack: 0
   nbLoopTrack: 1
   is2D: 0
+--- !u!114 &1532911681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271713770898215028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f831b07b5a15cc4c906ade365daae09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3699624167909658619
 MonoBehaviour:
   m_ObjectHideFlags: 0

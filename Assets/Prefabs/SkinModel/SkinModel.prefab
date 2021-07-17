@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 630324871}
   - component: {fileID: 630324874}
   - component: {fileID: 630324873}
-  - component: {fileID: 630324872}
   - component: {fileID: 6325196986607707532}
+  - component: {fileID: 630324872}
   - component: {fileID: 8457948273691153638}
   m_Layer: 11
   m_Name: FullVeine
@@ -82,19 +82,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &630324872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630324870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f59580c656c8c784eb6118540b28c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cutPlane: {fileID: 0}
 --- !u!64 &6325196986607707532
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -109,6 +96,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7387706064836869012, guid: 9619bd920ece0e74fa3a396bab748de8, type: 3}
+--- !u!114 &630324872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630324870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f59580c656c8c784eb6118540b28c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutPlane: {fileID: 0}
 --- !u!114 &8457948273691153638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   veine: {fileID: 630324871}
+  NewPositionY: -5
+  NewScaleY: 0
   force: 0
 --- !u!1 &1672341624739324133
 GameObject:
@@ -178,8 +180,8 @@ GameObject:
   - component: {fileID: 9202400482506754784}
   - component: {fileID: 4464396229564358436}
   - component: {fileID: 8310314497405815361}
-  - component: {fileID: 9011200662844794936}
   - component: {fileID: 4411211728220687636}
+  - component: {fileID: 9011200662844794936}
   - component: {fileID: 8457948273691153639}
   - component: {fileID: 2006710432}
   m_Layer: 18
@@ -250,19 +252,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &9011200662844794936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1672341624739324133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f59580c656c8c784eb6118540b28c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cutPlane: {fileID: 0}
 --- !u!64 &4411211728220687636
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -277,6 +266,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7387706064836869012, guid: 9619bd920ece0e74fa3a396bab748de8, type: 3}
+--- !u!114 &9011200662844794936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672341624739324133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f59580c656c8c784eb6118540b28c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutPlane: {fileID: 0}
 --- !u!114 &8457948273691153639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -742,8 +744,8 @@ GameObject:
   - component: {fileID: 8303591285315748754}
   - component: {fileID: 1709119888693870930}
   - component: {fileID: 5520958435423222265}
-  - component: {fileID: 6384077738829312119}
   - component: {fileID: 8457948273691153641}
+  - component: {fileID: 6384077738829312119}
   - component: {fileID: 5694421178707269327}
   m_Layer: 11
   m_Name: FullArtery
@@ -813,19 +815,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &6384077738829312119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6384077738829312112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f59580c656c8c784eb6118540b28c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cutPlane: {fileID: 0}
 --- !u!64 &8457948273691153641
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -840,6 +829,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7387706064836869012, guid: 9619bd920ece0e74fa3a396bab748de8, type: 3}
+--- !u!114 &6384077738829312119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6384077738829312112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f59580c656c8c784eb6118540b28c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutPlane: {fileID: 0}
 --- !u!114 &5694421178707269327
 MonoBehaviour:
   m_ObjectHideFlags: 0
