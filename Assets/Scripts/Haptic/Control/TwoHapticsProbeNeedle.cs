@@ -221,7 +221,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     public Action ZoomUp;
     public Action ZoomDown;
 
-    public Action InsertAnesthesic;
+    public Action<int> InsertAnesthesic;
 
     // way to set up GetButtonDown function
     private Buttons lastLeftButtonsState;
@@ -349,7 +349,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         Buttons bStateRight = Phantoms.GetButton();
         if (bStateRight == Buttons.Button1 && lastRighttButtonsState != bStateRight)
         {
-            InsertAnesthesic.Invoke();
+            InsertAnesthesic.Invoke(20);
         }
 
         lastLeftButtonsState = bStateLeft;

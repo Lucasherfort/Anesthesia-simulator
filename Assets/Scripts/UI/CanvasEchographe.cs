@@ -32,7 +32,8 @@ public class CanvasEchographe : MonoBehaviour
 
     private float elapsedTime;
 
-    private TimeSpan timePlaying;
+    [HideInInspector]  
+    public TimeSpan timePlaying;
 
     [HideInInspector]
     public int NbNerveTouch;
@@ -101,7 +102,7 @@ public class CanvasEchographe : MonoBehaviour
         TouchArteryTxt.text = NbArteryTouch.ToString();
     }
 
-    private IEnumerator UpdateTimer()
+    public IEnumerator UpdateTimer()
     {
         while (TimerOngoing)
         {

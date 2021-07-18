@@ -33,6 +33,7 @@ public class NerveCollision : MonoBehaviour
             audioBox.StopAll();
             audioBox.PlayOneShot(SoundOneShot.CryPain);
             CanvasEchographe.Instance.UpdateTouchNerve();
+            AnestheticManager.Instance.ApplyAnesthesic(-10);
         }
     }
 
