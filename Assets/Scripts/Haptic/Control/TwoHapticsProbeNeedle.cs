@@ -328,8 +328,17 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         // Mise à jour du visuel
         ProbeDevice.tool.transform.localPosition = ProbeDevice.position;
         ProbeDevice.tool.transform.localRotation = ProbeDevice.rotation;
-        NeedleDevice.tool.transform.localPosition = NeedleDevice.position;
-        NeedleDevice.tool.transform.localRotation = NeedleDevice.rotation;
+
+        if (!NeedleDevice.inside)
+        {
+            NeedleDevice.tool.transform.localPosition = NeedleDevice.position;
+            NeedleDevice.tool.transform.localRotation = NeedleDevice.rotation;
+        }
+        else
+        {
+            NeedleDevice.tool.transform.localPosition = NeedleDevice.position;
+            NeedleDevice.tool.transform.localRotation = NeedleDevice.correctionRotation;
+        }
 
         // Mise à jour des boutons 
         HdAPI.hdMakeCurrentDevice(ProbeDevice.hHdAPI);
@@ -426,7 +435,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
                     membraneForce2.Normalize();
                     membraneForce2 *= ClampValue;
                 }
-                
+
                 ForceS.x += membraneForce2.x;
                 ForceS.y += membraneForce2.y;
                 ForceS.z += membraneForce2.z;
@@ -504,6 +513,9 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         // init forces to apply to haptic in the Y direction
         FirstLayerForceStiffness = FirstLayerForceFriction = FirstLayerForceCutting = forceTotalY = 0f;
 
+        // get rotation matrix to get direction of the needle when penetrating
+        Phantoms.GetRotationMatrix(out RotationMatrix); // sortir de cette boucle je crois pour le point pivot
+
         //---------------------------------------------------------------------------
         // FORCES FROM TISSUE - NEEDLE INTERACTION (1st and 2nd layer)
         //---------------------------------------------------------------------------
@@ -527,10 +539,6 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
                     NeedleContactPositionZ = currentPosition.z;
                     lastPosDevice = currentPosition;
                     lastRotDevice = NeedleHandRotation;
-
-                    // get rotation matrix to get direction of the needle when penetrating
-
-                    Phantoms.GetRotationMatrix(out RotationMatrix); // sortir de ce boucle je crois pour le point pivot
 
                     // needle is inside tissue
                     NeedleDevice.correctionPosition = new Vector3(NeedleContactPositionX, FIRST_LAYER_TOP, NeedleContactPositionZ);
@@ -617,7 +625,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
                     membraneForce.Normalize();
                     membraneForce *= ClampValue;
                 }
-                
+
                 NeedleDevice.force.x += membraneForce.x - probeDopStiffness * distanceCoeficient;
                 NeedleDevice.force.y += membraneForce.y;
                 NeedleDevice.force.z += membraneForce.z - probeDopStiffness * distanceCoeficient; ;
@@ -660,7 +668,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
                 // add cutting force (= constant)
                 FirstLayerForceCutting = SkinLayerCutting;
-                
+
                 forceTotalY = FirstLayerForceFriction + FirstLayerForceCutting;
             }
             else
@@ -684,13 +692,13 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
         // Force feedback to PHANTOM device [N]
         Phantoms.SetForce(NeedleDevice.force);
-        
+
         // set position and orientation for graphic needle
         NeedleDevice.position = currentPosition;
         NeedleDevice.rotation = currentRotation;
-        
+
         previousPosition = NeedleDevice.position;
-        
+
         HdAPI.hdEndFrame(NeedleDevice.hHdAPI);
         HdAPI.hdEndFrame(ProbeDevice.hHdAPI);
 

@@ -9366,6 +9366,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 521816831, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818, type: 3}
+      propertyPath: needle
+      value: 
+      objectReference: {fileID: 521816830}
+    - target: {fileID: 521816831, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2521356766609680384, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9445,6 +9453,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef2b1be887f8a74b885c2635d0b6e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &521816830 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7464066551771991713, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
+    type: 3}
+  m_PrefabInstance: {fileID: 521816828}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &523242281
 GameObject:
   m_ObjectHideFlags: 0
