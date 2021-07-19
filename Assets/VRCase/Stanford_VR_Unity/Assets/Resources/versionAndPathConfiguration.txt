@@ -1,1 +1,0 @@
-{"appVersion":"V2.0.0", "communicationKey":"bd4CrKtAKR9R5QM5Edq9bqRAg4KXiT", "getWordingPath":"http://ressources-pg.interaction-multimedia.org/pf_v3/", "getXMLServiceURL":"http://ressources-pg.interaction-multimedia.org/clients/PatientGeneSys"}
