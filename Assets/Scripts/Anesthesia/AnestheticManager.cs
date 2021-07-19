@@ -31,20 +31,32 @@ public class AnestheticManager : MonoBehaviour
         {
             StateAnesthesia += amount;
 
-            if(StateAnesthesia < 0)
+            if(StateAnesthesia >= 100)
             {
-                StateAnesthesia = 0;
-            }
-
-            if(StateAnesthesia == 100)
-            {
+                StateAnesthesia = 100;
                 SuccessfulAnesthesia = true;
-                StopCoroutine(CanvasEchographe.Instance.UpdateTimer());
+                CanvasEchographe.Instance.StopTimer();
                 DataRecorder.Instance.SaveData(CanvasEchographe.Instance.timePlaying,CanvasEchographe.Instance.NbNerveTouch,CanvasEchographe.Instance.NbVeinTouch,CanvasEchographe.Instance.NbArteryTouch);
             }
 
             CanvasEchographe.Instance.UpdateUIStateAnesthesia(StateAnesthesia);
         }
+    }
+
+    public void RemoveAnesthesic(int amount)
+    {
+        if(!SuccessfulAnesthesia)
+        {
+            StateAnesthesia -= amount;
+
+            if (StateAnesthesia < 0)
+            {
+                StateAnesthesia = 0;
+            }
+
+            CanvasEchographe.Instance.UpdateUIStateAnesthesia(StateAnesthesia);
+        }
+
     }
 
     void OnTriggerEnter(Collider other)

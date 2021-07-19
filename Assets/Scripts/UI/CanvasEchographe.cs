@@ -44,6 +44,8 @@ public class CanvasEchographe : MonoBehaviour
     [HideInInspector]
     public int NbArteryTouch;
 
+    public Coroutine Timer;
+
     private void Awake()
     {
         if (Instance)
@@ -68,7 +70,13 @@ public class CanvasEchographe : MonoBehaviour
     public void StartTimer()
     {
         TimerOngoing = true;
-        StartCoroutine(UpdateTimer());
+        Timer = StartCoroutine(UpdateTimer());
+    }
+
+    public void StopTimer()
+    {
+        TimerOngoing = false;
+        StopCoroutine(Timer);
     }
 
     public void UpdateUIZoom(int zoom)
@@ -104,7 +112,7 @@ public class CanvasEchographe : MonoBehaviour
 
     public IEnumerator UpdateTimer()
     {
-        while (TimerOngoing)
+        while(TimerOngoing)
         {
             elapsedTime += Time.deltaTime;
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
