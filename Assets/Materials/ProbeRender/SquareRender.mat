@@ -39,6 +39,10 @@ Material:
         m_Texture: {fileID: 8400000, guid: 3778f80000ce4f1692140bc93beee778, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _LayerInside:
+        m_Texture: {fileID: 8400000, guid: 70d45529704aeb942b6eeaf6636fea6c, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _LayerMuscle:
         m_Texture: {fileID: 8400000, guid: e19924f565de4c949401be69486ae890, type: 2}
         m_Scale: {x: 1, y: 1}

@@ -356,7 +356,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
         HdAPI.hdMakeCurrentDevice(NeedleDevice.hHdAPI);
         Buttons bStateRight = Phantoms.GetButton();
-        if (bStateRight == Buttons.Button1 && lastRighttButtonsState != bStateRight)
+        if ((bStateRight == Buttons.Button1 || bStateRight == Buttons.Button2) && lastRighttButtonsState != bStateRight)
         {
             InsertAnesthesic.Invoke(20);
         }

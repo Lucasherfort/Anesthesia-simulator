@@ -1210,11 +1210,6 @@ PrefabInstance:
       propertyPath: HapticScript
       value: 
       objectReference: {fileID: 1192473218}
-    - target: {fileID: 7175106214839184921, guid: cb5bc6e5977aff24ba8354cfe74d6a85,
-        type: 3}
-      propertyPath: EnabledVR
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb5bc6e5977aff24ba8354cfe74d6a85, type: 3}
 --- !u!1 &66069113
@@ -7067,7 +7062,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MISKATES
+  m_text: MISTAKES
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9183,6 +9178,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1048631
+      objectReference: {fileID: 0}
     - target: {fileID: 11465950, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: trackingOriginTransform
       value: 
@@ -9366,12 +9365,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 521816831, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818, type: 3}
-      propertyPath: needle
-      value: 
-      objectReference: {fileID: 521816830}
-    - target: {fileID: 521816831, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818, type: 3}
-      propertyPath: m_Enabled
+    - target: {fileID: 1918255941500540197, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2521356766609680384, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
@@ -9434,12 +9430,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: HapticalNeedle
       objectReference: {fileID: 0}
-    - target: {fileID: 2521356766609680398, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 521816831, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818, type: 3}
 --- !u!114 &521816829 stripped
 MonoBehaviour:
@@ -9459,6 +9451,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 521816828}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &521816831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1918255941500540197, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
+    type: 3}
+  m_PrefabInstance: {fileID: 521816828}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &521816832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521816831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3432e78d72d5e5d40ac8b7340352b76b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  needleInfo: {fileID: 521816829}
+  previousStateInsertion: 0
+  needle: {fileID: 521816830}
+  oldPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &523242281
 GameObject:
   m_ObjectHideFlags: 0
