@@ -9430,6 +9430,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HapticalNeedle
       objectReference: {fileID: 0}
+    - target: {fileID: 2521356766609680398, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 5781268032626599678, guid: 1dc58e17a3ea9ba4ca9378c25b2d0818,
         type: 3}
       propertyPath: m_Layer
@@ -28241,6 +28246,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'HapticalProbe '
       objectReference: {fileID: 0}
+    - target: {fileID: 1291087304260003819, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 2461311564647521247, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
       propertyPath: m_Enabled
@@ -28251,10 +28261,20 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 2048
       objectReference: {fileID: 0}
+    - target: {fileID: 2461311669438012248, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: far clip plane
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 2461311669656115878, guid: 128408b3a537edc4cbe4628573d54d05,
         type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212822984466484085, guid: 128408b3a537edc4cbe4628573d54d05,
+        type: 3}
+      propertyPath: m_TagString
+      value: Probe
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 128408b3a537edc4cbe4628573d54d05, type: 3}
@@ -38625,6 +38645,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634547670174577968, guid: 8d7a7947b3256f8498ae28b0fc47e554,
+        type: 3}
+      propertyPath: m_TagString
+      value: Skin
       objectReference: {fileID: 0}
     - target: {fileID: 6384077738829312119, guid: 8d7a7947b3256f8498ae28b0fc47e554,
         type: 3}

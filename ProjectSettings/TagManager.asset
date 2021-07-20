@@ -4,16 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Touchable
-  - Deep
-  - NeedleEntry
-  - Skin
-  - Gel
-  - DropArea
-  - GuideEntry
-  - SondeArea
-  - Probe
   - Needle
+  - Probe
   layers:
   - Default
   - TransparentFX
