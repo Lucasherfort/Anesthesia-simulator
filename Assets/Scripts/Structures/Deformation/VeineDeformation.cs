@@ -25,6 +25,15 @@ public class VeineDeformation : MonoBehaviour
 
     private void Update()
     {
+        if(force == 1)
+        {
+            veine.gameObject.SetActive(false);
+        }
+        else
+        {
+            veine.gameObject.SetActive(true);
+        }
+
         ApplyDeformation(force);
     }
 

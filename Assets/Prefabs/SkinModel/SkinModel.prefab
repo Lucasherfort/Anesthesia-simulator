@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   veine: {fileID: 630324871}
-  NewPositionY: -3
+  NewPositionY: -1.2
   NewScaleY: 0
   force: 0
 --- !u!1 &1672341624739324133
