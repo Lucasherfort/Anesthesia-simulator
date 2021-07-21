@@ -17,6 +17,6 @@ MonoBehaviour:
     mixer: {fileID: 0}
     clip: {fileID: 8300000, guid: 1681700b2cc5dcb4f8e68af224b01e41, type: 3}
   cryPain:
-    volume: 1
+    volume: 0.2
     mixer: {fileID: 0}
     clip: {fileID: 8300000, guid: 9d2e8b625dedb304680a02ecc249ce45, type: 3}
