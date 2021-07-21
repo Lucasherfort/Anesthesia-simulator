@@ -11,8 +11,11 @@ public class VeineDeformation : MonoBehaviour
     public float NewPositionY = -5f;
     public float NewScaleY; 
 
-    [Range(0f,1f)]
-    public float force;
+    [SerializeField]
+    private float MinForce;
+
+    [SerializeField]
+    private float MaxForce;
 
     private void Start()
     {
@@ -21,10 +24,13 @@ public class VeineDeformation : MonoBehaviour
             NormalPositionY = veine.localPosition.y;
             NormalScaleY = veine.localScale.y;
         }
+
+        TwoHapticsProbeNeedle.instance.ForceProbeApply += ApplyDeformation;
     }
 
     private void Update()
     {
+        /*
         if(force == 1)
         {
             veine.gameObject.SetActive(false);
@@ -33,14 +39,13 @@ public class VeineDeformation : MonoBehaviour
         {
             veine.gameObject.SetActive(true);
         }
-
-        ApplyDeformation(force);
+        */
     }
 
     private void ApplyDeformation(float force)
-    {
-        float ResizePosY = Map(force, 0,1,NormalPositionY,NewPositionY);
-        float ResizeScaleY = Map(force, 0,1,NormalScaleY,NewScaleY);
+    {        
+        float ResizePosY = Map(force, MinForce,MaxForce,NormalPositionY,NewPositionY);
+        float ResizeScaleY = Map(force, MinForce,MaxForce,NormalScaleY,NewScaleY);
 
         var tempPos = veine.localPosition;
         tempPos.y = ResizePosY;

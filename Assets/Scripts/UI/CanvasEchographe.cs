@@ -16,7 +16,9 @@ public class CanvasEchographe : MonoBehaviour
     private TMPro.TMP_Text TimeTxt = null;
 
     [SerializeField]
-    private TMPro.TMP_Text StateAnesthesiaTxt = null;
+    private TMPro.TMP_Text UpPartAnsthesiaTxt = null;
+    [SerializeField]
+    private TMPro.TMP_Text DownPartAnsthesiaTxt = null;
 
     [SerializeField]
     private TMPro.TMP_Text TouchNerveTxt = null;
@@ -84,9 +86,14 @@ public class CanvasEchographe : MonoBehaviour
         ZoomTxt.text = "  Zoom : " + zoom;
     }
 
-    public void UpdateUIStateAnesthesia(int percentage)
+    public void UpdateUIUpAnesthesia(int percentage)
     {
-        StateAnesthesiaTxt.text = "  State of anesthesia : " + percentage + " %";
+        UpPartAnsthesiaTxt.text = "  State of anesthesia : " + percentage + " %";
+    }
+
+    public void UpdateUIDownAnesthesia(int percentage)
+    {
+        DownPartAnsthesiaTxt.text = "  State of anesthesia : " + percentage + " %";
     }
 
     public void UpdateTouchNerve()

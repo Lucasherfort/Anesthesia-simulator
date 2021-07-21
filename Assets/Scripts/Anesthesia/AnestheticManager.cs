@@ -12,8 +12,10 @@ public class AnestheticManager : MonoBehaviour
     public int StateUp = 0;
     public int StateDown = 0;
 
-    private int StateAnesthesia = 0;
     private bool SuccessfulAnesthesia;
+
+    [SerializeField]
+    private Transform Needle = null;
 
     private void Awake()
     {
@@ -35,17 +37,34 @@ public class AnestheticManager : MonoBehaviour
     {
         if(NeedleInsideArea && !NerveCollision.Instance.NerveIsTouch && !SuccessfulAnesthesia)
         {
-            StateAnesthesia += amount;
-
-            if(StateAnesthesia >= 100)
+            if(Needle.position.y > transform.position.y)
             {
-                StateAnesthesia = 100;
+                StateUp += 20;
+
+                if(StateUp >= 100)
+                {
+                    StateUp = 100;
+                }
+
+                CanvasEchographe.Instance.UpdateUIUpAnesthesia(StateUp);
+            }
+            else
+            {
+                StateDown += 20;
+                if (StateDown >= 100)
+                {
+                    StateDown = 100;
+                }
+
+                CanvasEchographe.Instance.UpdateUIDownAnesthesia(StateDown);
+            }
+
+            if(StateUp + StateDown == 200)
+            {
                 SuccessfulAnesthesia = true;
                 CanvasEchographe.Instance.StopTimer();
                 DataRecorder.Instance.SaveData(CanvasEchographe.Instance.timePlaying,CanvasEchographe.Instance.NbNerveTouch,CanvasEchographe.Instance.NbVeinTouch,CanvasEchographe.Instance.NbArteryTouch);
             }
-
-            CanvasEchographe.Instance.UpdateUIStateAnesthesia(StateAnesthesia);
         }
     }
 
@@ -53,14 +72,27 @@ public class AnestheticManager : MonoBehaviour
     {
         if(!SuccessfulAnesthesia)
         {
-            StateAnesthesia -= amount;
-
-            if (StateAnesthesia < 0)
+            if (Needle.position.y > transform.position.y)
             {
-                StateAnesthesia = 0;
-            }
+                StateUp -= amount;
 
-            CanvasEchographe.Instance.UpdateUIStateAnesthesia(StateAnesthesia);
+                if (StateUp < 0)
+                {
+                    StateUp = 0;
+                }
+
+                CanvasEchographe.Instance.UpdateUIUpAnesthesia(StateUp);
+            }
+            else
+            {
+                StateDown -= amount;
+                if (StateDown < 0)
+                {
+                    StateDown = 0;
+                }
+
+                CanvasEchographe.Instance.UpdateUIDownAnesthesia(StateDown);
+            }
         }
 
     }

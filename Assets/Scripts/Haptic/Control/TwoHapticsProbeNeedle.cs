@@ -222,6 +222,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     public Action ZoomDown;
 
     public Action<int> InsertAnesthesic;
+    public Action<float> ForceProbeApply;
 
     // way to set up GetButtonDown function
     private Buttons lastLeftButtonsState;
@@ -408,6 +409,8 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
                 // apply scale factor for forces
                 ProbeForceStiffness *= DEVICE_FORCE_SCALE;
+
+                ForceProbeApply.Invoke(ProbeForceStiffness);
 
                 float membraneDamping = 0.003f;
                 float membraneStiffness = 0.04f;
