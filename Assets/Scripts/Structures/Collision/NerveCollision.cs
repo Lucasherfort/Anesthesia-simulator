@@ -9,6 +9,9 @@ public class NerveCollision : MonoBehaviour
 
     private AudioBox audioBox;
 
+    [SerializeField]
+    private Animator CameraVRAnim = null;
+
     private void Awake()
     {
         if (Instance)
@@ -32,6 +35,7 @@ public class NerveCollision : MonoBehaviour
             NerveIsTouch = true;
             audioBox.StopAll();
             audioBox.PlayOneShot(SoundOneShot.CryPain);
+            CameraVRAnim.SetBool("PlayEffect", true);
             CanvasEchographe.Instance.UpdateTouchNerve();
             AnestheticManager.Instance.RemoveAnesthesic(10);
         }
@@ -42,6 +46,7 @@ public class NerveCollision : MonoBehaviour
         if (other.gameObject.tag == "Needle")
         {
             NerveIsTouch = false;
+            CameraVRAnim.SetBool("PlayEffect", false);
         }
     }
 }

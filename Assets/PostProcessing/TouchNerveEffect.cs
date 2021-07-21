@@ -1,15 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Rendering;
+﻿using UnityEngine;
 
-[RequireComponent(typeof(Volume))]
+[RequireComponent(typeof(Animation))]
 public class TouchNerveEffect : MonoBehaviour
 {
-    private Volume Volume;
+    private Animation anim;
 
     private void Start()
     {
-        Volume = GetComponent<Volume>();
+        anim = GetComponent<Animation>();
+    }
+
+    private void PllayerEffect()
+    {
+        if(anim.isPlaying)
+        {
+            return;
+        }
+
+        anim.Play();
     }
 }
