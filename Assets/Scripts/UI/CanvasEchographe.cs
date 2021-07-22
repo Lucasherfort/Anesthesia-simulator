@@ -88,12 +88,12 @@ public class CanvasEchographe : MonoBehaviour
 
     public void UpdateUIUpAnesthesia(int percentage)
     {
-        UpPartAnsthesiaTxt.text = "  State of anesthesia : " + percentage + " %";
+        UpPartAnsthesiaTxt.text = "  Partie supérieure : " + percentage + " %";
     }
 
     public void UpdateUIDownAnesthesia(int percentage)
     {
-        DownPartAnsthesiaTxt.text = "  State of anesthesia : " + percentage + " %";
+        DownPartAnsthesiaTxt.text = "  Partie inférieure : " + percentage + " %";
     }
 
     public void UpdateTouchNerve()

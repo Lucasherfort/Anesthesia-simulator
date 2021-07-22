@@ -6,16 +6,22 @@ public class AnestheticManager : MonoBehaviour
 
     private bool NeedleInsideArea = false;
 
-    public bool NeedleIsUp = false;
-    public bool NeedleIsDown = false;
+    private bool NeedleIsUp = false;
+    private bool NeedleIsDown = false;
 
-    public int StateUp = 0;
-    public int StateDown = 0;
+    private int StateUp = 0;
+    private int StateDown = 0;
 
     private bool SuccessfulAnesthesia;
 
     [SerializeField]
     private Transform Needle = null;
+
+    [SerializeField]
+    private Transform AnesthesiaFeedback = null;
+
+    public float minScale;
+    public float maxScale;
 
     private void Awake()
     {
@@ -59,7 +65,14 @@ public class AnestheticManager : MonoBehaviour
                 CanvasEchographe.Instance.UpdateUIDownAnesthesia(StateDown);
             }
 
-            if(StateUp + StateDown == 200)
+            Vector3 temp = transform.localScale;
+            var temp2 = Map(StateDown + StateUp, 0, 200, minScale, maxScale);
+            temp.x = temp2;
+            temp.y = temp2;
+
+            AnesthesiaFeedback.transform.localScale = temp;
+
+            if (StateUp + StateDown == 200)
             {
                 SuccessfulAnesthesia = true;
                 CanvasEchographe.Instance.StopTimer();
@@ -93,6 +106,13 @@ public class AnestheticManager : MonoBehaviour
 
                 CanvasEchographe.Instance.UpdateUIDownAnesthesia(StateDown);
             }
+
+            Vector3 temp = transform.localScale;
+            var temp2 = Map(StateDown + StateUp, 0, 200, minScale, maxScale);
+            temp.x = temp2;
+            temp.y = temp2;
+
+            AnesthesiaFeedback.transform.localScale = temp;
         }
 
     }
@@ -111,5 +131,10 @@ public class AnestheticManager : MonoBehaviour
         {
             NeedleInsideArea = false;
         }
+    }
+
+    private float Map(float value, float FromLow, float ToLow, float FromHigh, float ToHigh)
+    {
+        return (ToHigh - FromHigh) * ((value - FromLow) / (ToLow - FromLow)) + FromHigh;
     }
 }

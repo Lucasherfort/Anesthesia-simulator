@@ -17447,7 +17447,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "  Partie inf\xE9rieure: 0%"
+  m_text: "  Partie inf\xE9rieure: 0 %"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -17516,9 +17516,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1017401083}
-    characterCount: 23
+    characterCount: 24
     spriteCount: 0
-    spaceCount: 4
+    spaceCount: 5
     wordCount: 4
     linkCount: 0
     lineCount: 1
@@ -25994,7 +25994,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "  Partie sup\xE9rieure : 0%"
+  m_text: "  Partie sup\xE9rieure : 0 %"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -26063,9 +26063,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1552892652}
-    characterCount: 24
+    characterCount: 25
     spriteCount: 0
-    spaceCount: 5
+    spaceCount: 6
     wordCount: 4
     linkCount: 0
     lineCount: 1
@@ -43343,6 +43343,11 @@ PrefabInstance:
       propertyPath: cutPlane
       value: 
       objectReference: {fileID: 1804456652}
+    - target: {fileID: 4214368949412209519, guid: 8d7a7947b3256f8498ae28b0fc47e554,
+        type: 3}
+      propertyPath: cutPlane
+      value: 
+      objectReference: {fileID: 1804456652}
     - target: {fileID: 5634547669498850305, guid: 8d7a7947b3256f8498ae28b0fc47e554,
         type: 3}
       propertyPath: m_Name
@@ -43403,11 +43408,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5634547670174577968, guid: 8d7a7947b3256f8498ae28b0fc47e554,
-        type: 3}
-      propertyPath: m_TagString
-      value: Skin
-      objectReference: {fileID: 0}
     - target: {fileID: 6384077738829312119, guid: 8d7a7947b3256f8498ae28b0fc47e554,
         type: 3}
       propertyPath: cutPlane
@@ -43418,21 +43418,6 @@ PrefabInstance:
       propertyPath: CameraVRAnim
       value: 
       objectReference: {fileID: 512483860}
-    - target: {fileID: 8457948273691153640, guid: 8d7a7947b3256f8498ae28b0fc47e554,
-        type: 3}
-      propertyPath: MinForce
-      value: 1.334077
-      objectReference: {fileID: 0}
-    - target: {fileID: 8457948273691153640, guid: 8d7a7947b3256f8498ae28b0fc47e554,
-        type: 3}
-      propertyPath: MaxForce
-      value: 4.259501
-      objectReference: {fileID: 0}
-    - target: {fileID: 8457948273691153640, guid: 8d7a7947b3256f8498ae28b0fc47e554,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8877469894494921592, guid: 8d7a7947b3256f8498ae28b0fc47e554,
         type: 3}
       propertyPath: Needle
