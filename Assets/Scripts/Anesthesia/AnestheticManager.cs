@@ -6,9 +6,6 @@ public class AnestheticManager : MonoBehaviour
 
     private bool NeedleInsideArea = false;
 
-    private bool NeedleIsUp = false;
-    private bool NeedleIsDown = false;
-
     private int StateUp = 0;
     private int StateDown = 0;
 

@@ -20589,6 +20589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProbeDevice: {fileID: 1804456655}
   NeedleDevice: {fileID: 521816829}
+  HapticConfig: {fileID: 11400000, guid: a8f668fd0c35f394cb102660ff91ccc7, type: 2}
   FirstPlaneStiffness: 0.25
   SecondPlaneStiffness: 0.33
   FirstPlanePosition: 0

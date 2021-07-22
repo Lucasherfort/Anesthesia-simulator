@@ -9,23 +9,29 @@ public class HapticConfig : ScriptableObject
     public float FirstPlaneStiffness = 0.25f;
     public float SecondPlaneStiffness = 0.33f;
 
+    public float SkinLayerStiffness = 31.5f;
+
     public Vector3 TISSUE_DIMENSIONS = new Vector3(27, 0, 20.25f);
 
-    public float GROUND_LEVEL = -0.15f;
-
     public float FIRST_LAYER_TOP = 0.10f;
+   
+    public float FirstLayerForceStiffness = 0f;
 
-    public Vector3 contactPosition = Vector3.zero;
+    public float FirstLayerForceFriction = 0f;
 
-    public Vector3 StartPointPosition = new Vector3(0, 70, 0);
+    public float FirstLayerForceCutting = 0f;
 
-    public float FirstLayerStiffness = 31.5f;
+    public float SecondLayerForceStiffness = 0f;
 
+    public float SecondLayerForceFriction = 0f;
+
+    public float SecondLayerForceCutting = 0f;
 
     public float DEVICE_FORCE_SCALE = 0.4f;
 
-    public float FirstLayerDamping = 1.67f; 
+    public float FirstLayerDamping = 1.67f;
 
-    public float SkinLayerCutting = 1.22f; 
+    public float SkinLayerCutting = 1.22f;
 
+    public float UnitLength = 0.01f;
 }
