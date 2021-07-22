@@ -45,6 +45,8 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     public float FirstPlanePosition = 0;
     public float SecondPlanePosition = -1.5f;
 
+    private float ProbeForceStiffness;
+
     /* NEEDLE PARAMETERS AND STUFF */
     /// <summary>
     /// Mutex for thread safety for simulator state
@@ -364,6 +366,8 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
         lastLeftButtonsState = bStateLeft;
         lastRighttButtonsState = bStateRight;
+
+        ForceProbeApply.Invoke(ProbeForceStiffness);
     }
 
     public float probeDop = 0f;
@@ -405,12 +409,10 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
                 ProbeVelocity = Mathf.Clamp(ProbeVelocity, -0.1f, 0.1f);
 
                 // calculate stiffness force (Y direction)
-                float ProbeForceStiffness = (2.5f + FirstLayerStiffness) * ProbeDopStiffness + FirstLayerDamping * (-ProbeVelocity) * ProbeDopStiffness;
+                ProbeForceStiffness = (2.5f + FirstLayerStiffness) * ProbeDopStiffness + FirstLayerDamping * (-ProbeVelocity) * ProbeDopStiffness;
 
                 // apply scale factor for forces
                 ProbeForceStiffness *= DEVICE_FORCE_SCALE;
-
-                ForceProbeApply.Invoke(ProbeForceStiffness);
 
                 float membraneDamping = 0.003f;
                 float membraneStiffness = 0.04f;
