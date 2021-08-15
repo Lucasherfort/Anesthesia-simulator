@@ -403,7 +403,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
                 Vector3 ForceS = Vector3.zero;
                 ForceS.x += membraneForce2.x - ProbeDopStiffness * distanceCoeficient;
                 ForceS.y += membraneForce2.y;
-                ForceS.z += membraneForce2.z - ProbeDopStiffness * distanceCoeficient; ;
+                ForceS.z += membraneForce2.z - ProbeDopStiffness * distanceCoeficient; 
 
                 // lateral forces within the membrane: dynamic stiffness force
                 ClampValue = (float)Phantoms.GetContinuousForceLimit();

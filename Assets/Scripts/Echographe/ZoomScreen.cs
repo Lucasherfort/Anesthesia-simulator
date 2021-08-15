@@ -26,6 +26,7 @@ public class ZoomScreen : MonoBehaviour
 
     private void Start()
     {
+
         if(CrossCamList.Count == 0)
         {
             Debug.LogWarning("CrossCamList in ZoomScreen is empty !");

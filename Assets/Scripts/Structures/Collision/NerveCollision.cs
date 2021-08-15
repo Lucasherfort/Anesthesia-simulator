@@ -4,6 +4,8 @@ public class NerveCollision : MonoBehaviour
 {
     static public NerveCollision Instance { get; private set; }
 
+    public bool Penalty = true;
+
     [HideInInspector]
     public bool NerveIsTouch = false;
 
@@ -32,12 +34,19 @@ public class NerveCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Needle")
         {
-            NerveIsTouch = true;
-            audioBox.StopAll();
-            audioBox.PlayOneShot(SoundOneShot.CryPain);
-            CameraVRAnim.SetBool("PlayEffect", true);
-            CanvasEchographe.Instance.UpdateTouchNerve();
-            AnestheticManager.Instance.RemoveAnesthesic(10);
+            if(GameManager.Instance.Mode == Mode.Reality)
+            {
+                NerveIsTouch = true;
+                audioBox.StopAll();
+                audioBox.PlayOneShot(SoundOneShot.CryPain);
+                CameraVRAnim.SetBool("PlayEffect", true);
+                CanvasEchographe.Instance.UpdateTouchNerve();
+
+                if(Penalty)
+                {
+                    AnestheticManager.Instance.RemoveAnesthesic(10);
+                }
+            }
         }
     }
 
@@ -45,8 +54,11 @@ public class NerveCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Needle")
         {
-            NerveIsTouch = false;
-            CameraVRAnim.SetBool("PlayEffect", false);
+            if(GameManager.Instance.Mode == Mode.Reality)
+            {
+                NerveIsTouch = false;
+                CameraVRAnim.SetBool("PlayEffect", false);           
+            }
         }
     }
 }

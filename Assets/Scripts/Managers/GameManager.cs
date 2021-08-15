@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Mode
+{
+    Training,
+    Reality
+}
+
+
 [RequireComponent(typeof(AudioBox))]
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private AudioBox audioBox;
+
+    public Mode Mode = Mode.Reality;
 
     private void Awake()
     {

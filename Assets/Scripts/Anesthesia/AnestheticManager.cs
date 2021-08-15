@@ -73,7 +73,11 @@ public class AnestheticManager : MonoBehaviour
             {
                 SuccessfulAnesthesia = true;
                 CanvasEchographe.Instance.StopTimer();
-                DataRecorder.Instance.SaveData(CanvasEchographe.Instance.timePlaying,CanvasEchographe.Instance.NbNerveTouch,CanvasEchographe.Instance.NbVeinTouch,CanvasEchographe.Instance.NbArteryTouch);
+
+                if(GameManager.Instance.Mode == Mode.Reality)
+                {
+                    DataRecorder.Instance.SaveData(CanvasEchographe.Instance.timePlaying,CanvasEchographe.Instance.NbNerveTouch,CanvasEchographe.Instance.NbVeinTouch,CanvasEchographe.Instance.NbArteryTouch);                    
+                }
             }
         }
     }
