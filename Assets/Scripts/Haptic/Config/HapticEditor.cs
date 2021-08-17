@@ -30,10 +30,6 @@ public class HapticEditor : Editor
         hapticConfig.FirstLayerForceCutting = EditorGUILayout.FloatField("First Layer Force Cutting", hapticConfig.FirstLayerForceCutting);
         hapticConfig.FirstLayerDamping = EditorGUILayout.FloatField("First Layer Damping", hapticConfig.FirstLayerDamping);
 
-        hapticConfig.SecondLayerForceStiffness = EditorGUILayout.FloatField("Second Layer Force Stiffness", hapticConfig.SecondLayerForceStiffness);
-        hapticConfig.SecondLayerForceFriction = EditorGUILayout.FloatField("Second Layer Force Friction", hapticConfig.SecondLayerForceFriction);
-        hapticConfig.SecondLayerForceCutting = EditorGUILayout.FloatField("Second Layer Force Cutting", hapticConfig.SecondLayerForceCutting);
-
         EditorGUILayout.Space(20);
         EditorGUILayout.LabelField("OTHER PARAMETERS", EditorStyles.boldLabel);
         EditorGUILayout.Space(5);

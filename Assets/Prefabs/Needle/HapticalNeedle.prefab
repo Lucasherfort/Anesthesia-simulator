@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 2521356766609680384}
   m_Layer: 0
   m_Name: HapticalNeedle
-  m_TagString: Needle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 8209646418500395471}
   - component: {fileID: 1918255943117078583}
   - component: {fileID: 1918255943117078568}
+  - component: {fileID: 7539951210498212197}
   m_Layer: 0
   m_Name: Manipulator
   m_TagString: Needle
@@ -130,7 +131,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
@@ -142,12 +143,25 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3315853207902453802}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.081560254
   m_Height: 15.092453
   m_Direction: 2
   m_Center: {x: -0.028825108, y: 0.0020335945, z: 5.8779187}
+--- !u!114 &7539951210498212197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3315853207902453802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfadfa192abe84f4c9eadbe52473dedc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  marker: {fileID: 0}
 --- !u!1 &5781268032626599678
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,7 +173,7 @@ GameObject:
   - component: {fileID: 5146416683956979596}
   - component: {fileID: 59074685592176303}
   - component: {fileID: 861326840585085159}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: CrossNeedle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +220,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 142af08d11c54f0db1166ab8f6925f98, type: 2}
+  - {fileID: 2100000, guid: cb60c2dbc2cdeaa4ca97dd56af5060c8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

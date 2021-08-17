@@ -56,7 +56,7 @@ namespace Valve.VR.InteractionSystem
 
         protected RigidbodyInterpolation hadInterpolation = RigidbodyInterpolation.None;
 
-        protected new Rigidbody rigidbody;
+        protected Rigidbody rigidbody;
 
         [HideInInspector]
         public Interactable interactable;

@@ -21,12 +21,6 @@ public class HapticConfig : ScriptableObject
 
     public float FirstLayerForceCutting = 0f;
 
-    public float SecondLayerForceStiffness = 0f;
-
-    public float SecondLayerForceFriction = 0f;
-
-    public float SecondLayerForceCutting = 0f;
-
     public float DEVICE_FORCE_SCALE = 0.4f;
 
     public float FirstLayerDamping = 1.67f;

@@ -12,7 +12,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     private PhantomDeviceInfo ProbeDevice = null;
 
     [SerializeField]
-    private PhantomDeviceInfo NeedleDevice = null;
+    public PhantomDeviceInfo NeedleDevice = null;
 
     [SerializeField]
     private HapticConfig HapticConfig = null;
@@ -29,17 +29,6 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     private float SecondPlaneStiffness;
 
     private float ProbeForceStiffness;
-
-    /* NEEDLE PARAMETERS AND STUFF */
-    /// <summary>
-    /// Mutex for thread safety for simulator state
-    /// </summary>
-    private readonly object _lockState = new object();
-
-    /// <summary>
-    /// Mutex for thread safety for position & rotation variables
-    /// </summary>
-    private readonly object _lock = new object();
 
     /// <summary>
     /// For determining X, Z restriction movements inside skin layers
@@ -97,16 +86,6 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     private double[] RotationMatrix;
 
     /// <summary>
-    /// Current position of needle
-    /// </summary>
-    private Vector3 NeedleCurrentPosition = Vector3.zero;
-
-    /// <summary>
-    /// Current rotation of needle
-    /// </summary>
-    private Quaternion NeedleCurrentRotation = Quaternion.identity;
-
-    /// <summary>
     /// Stiffness force corresponding to first layer
     /// </summary>
     private float FirstLayerForceStiffness = 0f;
@@ -120,21 +99,6 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     /// Cutting force corresponding to first layer
     /// </summary>
     private float FirstLayerForceCutting = 0f;
-
-    /// <summary>
-    /// Stiffness force corresponding to second layer
-    /// </summary>
-    private float SecondLayerForceStiffness = 0f;
-
-    /// <summary>
-    /// Friction force corresponding to second layer
-    /// </summary>
-    private float SecondLayerForceFriction = 0f;
-
-    /// <summary>
-    /// Cutting force corresponding to second layer
-    /// </summary>
-    private float SecondLayerForceCutting = 0f;
 
     /// <summary>
     /// Addition of forces in the Y direction
@@ -271,9 +235,6 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         FirstLayerForceStiffness = HapticConfig.FirstLayerForceStiffness;
         FirstLayerForceFriction = HapticConfig.FirstLayerForceFriction;
         FirstLayerForceCutting = HapticConfig.FirstLayerForceCutting;
-        SecondLayerForceStiffness = HapticConfig.SecondLayerForceStiffness;
-        SecondLayerForceFriction = HapticConfig.SecondLayerForceFriction;
-        SecondLayerForceCutting = HapticConfig.SecondLayerForceCutting;
         DEVICE_FORCE_SCALE = HapticConfig.DEVICE_FORCE_SCALE;
         FirstLayerDamping = HapticConfig.FirstLayerDamping;
         SkinLayerCutting = HapticConfig.SkinLayerCutting;
@@ -680,32 +641,6 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         HdAPI.hdEndFrame(ProbeDevice.hHdAPI);
 
         return true;
-    }
-
-    /// <summary>
-    /// Auxiliar function to calculate attraction force between devices
-    /// </summary>
-    /// <param name="pos">position difference between devices</param>
-    /// <returns>the force to be applied to the haptic devices</returns>
-    private Vector3 ForceField(Vector3 pos)
-    {
-        float dist = pos.magnitude;
-
-        Vector3 forceVec = Vector3.zero;
-
-        // if two charges overlap...
-        if (dist < 24.0f)
-        {
-            // Attract the charge to the center of the sphere.
-            forceVec = new Vector3(-0.1f * pos.x, -0.1f * pos.y, -0.1f * pos.z);
-        }
-        else
-        {
-            Vector3 unitPos = pos.normalized;
-            forceVec = -1200.0f * unitPos / (dist * dist);
-        }
-
-        return forceVec;
     }
 
     /// <summary>

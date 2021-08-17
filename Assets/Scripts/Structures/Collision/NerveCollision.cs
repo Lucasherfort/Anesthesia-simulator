@@ -6,6 +6,9 @@ public class NerveCollision : MonoBehaviour
 
     public bool Penalty = true;
 
+    [SerializeField]
+    private int PenaltyValue = 10;
+
     [HideInInspector]
     public bool NerveIsTouch = false;
 
@@ -44,7 +47,7 @@ public class NerveCollision : MonoBehaviour
 
                 if(Penalty)
                 {
-                    AnestheticManager.Instance.RemoveAnesthesic(10);
+                    AnestheticManager.Instance.RemoveAnesthesic(PenaltyValue);
                 }
             }
         }
