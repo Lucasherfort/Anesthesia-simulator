@@ -5,10 +5,10 @@
       "app_key": "application.generated.unity.ihhaptic.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\Lucas Herfort\\Desktop\\Anesthesia-simulator\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\Amine\\Desktop\\Anesthesia-simulator\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
-          "name": "IHHaptic [Testing]"
+          "name": "Anesthesia-simulator [Testing]"
         }
       }
     }
