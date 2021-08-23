@@ -1,14 +1,34 @@
 ﻿using UnityEngine;
 
-public class Marker : MonoBehaviour
+public class NeedleCollision : MonoBehaviour
 {
+    static public NeedleCollision Instance { get; private set; }
+
     [SerializeField]
     private Transform marker = null;
+
+    public int NbInsertion = 0;
+
+    private void Awake()
+    {
+        if (Instance)
+        {
+            Destroy(this);
+            return;
+        }
+
+        Instance = this;
+    }
 
     private void OnTriggerEnter(Collider col)
     {
         if(col.gameObject.tag == "Skin")
         {
+            if(!AnestheticManager.Instance.SuccessfulAnesthesia)
+            {
+                NbInsertion++;
+            }
+
             marker.transform.position = TwoHapticsProbeNeedle.instance.NeedleDevice.transform.position;
 
             var temp = marker.transform.position;

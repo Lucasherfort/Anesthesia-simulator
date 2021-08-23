@@ -16,7 +16,7 @@ public class DataRecorder : MonoBehaviour
         Instance = this;
     }
 
-    public void SaveData(TimeSpan DurationAnesthesia, int NbTouchNerve, int NbTouchVein, int NbTouchArtery)
+    public void SaveData(TimeSpan DurationAnesthesia, int NbInsertion, int NbTouchNerve, int NbTouchVein, int NbTouchArtery)
     {
         if(!Application.isEditor) 
         {
@@ -25,12 +25,12 @@ public class DataRecorder : MonoBehaviour
             path = path.Substring(0, path.LastIndexOf('/'));
             path = path + "/RecordedData/";
             System.IO.Directory.CreateDirectory(path);
-            path = path + "RecordedData_" + System.DateTime.Now.ToString("dd-MM-yy") + "_" + System.DateTime.Now.ToString("HH-mm-ss") + ".txt";
+            path = path + "RecordedData_" + DateTime.Now.ToString("dd-MM-yy") + "_" + DateTime.Now.ToString("HH-mm-ss") + ".txt";
 
             string minute = string.Format("{0:D2}", DurationAnesthesia.Minutes);
             string seconds = string.Format("{0:D2}", DurationAnesthesia.Seconds);
 
-            string report = "Date : "+System.DateTime.Now.ToString()+"\n\nDurée de l'anesthésie : "+minute+":"+seconds+"\n\nNb nerfs touchés : "+NbTouchNerve+"\n\nNb veines touchées : "+NbTouchVein+"\n\nNb artères touchées : "+NbTouchArtery;
+            string report = "Date : "+DateTime.Now.ToString()+"\n\nDurée de l'anesthésie : "+minute+":"+seconds+"\n\nNb insertions aiguille : "+NbInsertion+ "\n\nNb nerfs touchés : " + NbTouchNerve + "\n\nNb veines touchées : " +NbTouchVein+"\n\nNb artères touchées : "+NbTouchArtery;
           
             System.IO.File.WriteAllText(path, report);            
             

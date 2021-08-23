@@ -9,7 +9,7 @@ public class AnestheticManager : MonoBehaviour
     private int StateUp = 0;
     private int StateDown = 0;
 
-    private bool SuccessfulAnesthesia;
+    public bool SuccessfulAnesthesia =false;
 
     [SerializeField]
     private Transform Needle = null;
@@ -76,7 +76,7 @@ public class AnestheticManager : MonoBehaviour
 
                 if(GameManager.Instance.Mode == Mode.Reality)
                 {
-                    DataRecorder.Instance.SaveData(CanvasEchographe.Instance.timePlaying,CanvasEchographe.Instance.NbNerveTouch,CanvasEchographe.Instance.NbVeinTouch,CanvasEchographe.Instance.NbArteryTouch);                    
+                    DataRecorder.Instance.SaveData(CanvasEchographe.Instance.timePlaying, NeedleCollision.Instance.NbInsertion, CanvasEchographe.Instance.NbNerveTouch,CanvasEchographe.Instance.NbVeinTouch,CanvasEchographe.Instance.NbArteryTouch);                    
                 }
             }
         }
