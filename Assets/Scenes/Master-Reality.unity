@@ -1218,7 +1218,7 @@ PrefabInstance:
     - target: {fileID: 7175106214839184921, guid: cb5bc6e5977aff24ba8354cfe74d6a85,
         type: 3}
       propertyPath: EnabledVR
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7175106214839184921, guid: cb5bc6e5977aff24ba8354cfe74d6a85,
         type: 3}
@@ -10708,11 +10708,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.09
+      value: -0.064
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.34
+      value: 0.635
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -43830,6 +43830,11 @@ PrefabInstance:
       propertyPath: CameraVRAnim
       value: 
       objectReference: {fileID: 512483860}
+    - target: {fileID: 8457948273691153639, guid: 8d7a7947b3256f8498ae28b0fc47e554,
+        type: 3}
+      propertyPath: Penalty
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8877469894494921592, guid: 8d7a7947b3256f8498ae28b0fc47e554,
         type: 3}
       propertyPath: Needle
