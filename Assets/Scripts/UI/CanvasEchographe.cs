@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class CanvasEchographe : MonoBehaviour
 {
@@ -19,6 +20,12 @@ public class CanvasEchographe : MonoBehaviour
     private TMPro.TMP_Text UpPartAnsthesiaTxt = null;
     [SerializeField]
     private TMPro.TMP_Text DownPartAnsthesiaTxt = null;
+
+    [SerializeField]
+    private Image BarUpPart = null;
+
+    [SerializeField]
+    private Image BarDownPart = null;
 
     [SerializeField]
     private TMPro.TMP_Text TouchNerveTxt = null;
@@ -89,11 +96,13 @@ public class CanvasEchographe : MonoBehaviour
     public void UpdateUIUpAnesthesia(int percentage)
     {
         UpPartAnsthesiaTxt.text = percentage + " %";
+        BarUpPart.fillAmount = (int)percentage / 100;
     }
 
     public void UpdateUIDownAnesthesia(int percentage)
     {
         DownPartAnsthesiaTxt.text = percentage + " %";
+        BarDownPart.fillAmount = (int)percentage / 100;
     }
 
     public void UpdateTouchNerve()
