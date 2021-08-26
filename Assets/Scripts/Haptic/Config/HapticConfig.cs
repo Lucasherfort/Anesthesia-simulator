@@ -17,7 +17,7 @@ public class HapticConfig : ScriptableObject
 
     public float DEVICE_FORCE_SCALE = 0.4f;
 
-    public float FirstLayerDamping = 1.67f;
+    public float FirstLayerDamping = 5f;
 
     public float SkinLayerCutting = 1.22f;
 
