@@ -16,7 +16,6 @@ public class HapticEditor : Editor
 
         hapticConfig.FirstPlaneStiffness = EditorGUILayout.FloatField("First Plane Stiffness", hapticConfig.FirstPlaneStiffness);
         hapticConfig.SecondPlaneStiffness = EditorGUILayout.FloatField("Second Plane Stiffness", hapticConfig.SecondPlaneStiffness);
-        hapticConfig.SkinLayerCutting = EditorGUILayout.FloatField("Skin Layer Cutting", hapticConfig.SkinLayerCutting);
         hapticConfig.SkinLayerStiffness = EditorGUILayout.FloatField("Skin Layer Stiffness", hapticConfig.SkinLayerStiffness);
 
         EditorGUILayout.Space(20);
@@ -24,10 +23,7 @@ public class HapticEditor : Editor
         EditorGUILayout.Space(5);
         hapticConfig.TISSUE_DIMENSIONS = EditorGUILayout.Vector3Field("TISSUE DIMENSIONS", hapticConfig.TISSUE_DIMENSIONS);
         hapticConfig.FIRST_LAYER_TOP = EditorGUILayout.FloatField("FIRST LAYER TOP", hapticConfig.FIRST_LAYER_TOP);
-
-        hapticConfig.FirstLayerForceStiffness = EditorGUILayout.FloatField("First LayerForce Stiffness", hapticConfig.FirstLayerForceStiffness);
-        hapticConfig.FirstLayerForceFriction = EditorGUILayout.FloatField("First Layer Force Friction", hapticConfig.FirstLayerForceFriction);
-        hapticConfig.FirstLayerForceCutting = EditorGUILayout.FloatField("First Layer Force Cutting", hapticConfig.FirstLayerForceCutting);
+        hapticConfig.SkinLayerCutting = EditorGUILayout.FloatField("Skin Layer Cutting", hapticConfig.SkinLayerCutting);
         hapticConfig.FirstLayerDamping = EditorGUILayout.FloatField("First Layer Damping", hapticConfig.FirstLayerDamping);
 
         EditorGUILayout.Space(20);

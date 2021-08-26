@@ -232,9 +232,6 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
         TISSUE_DIMENSIONS = HapticConfig.TISSUE_DIMENSIONS;
         FIRST_LAYER_TOP = HapticConfig.FIRST_LAYER_TOP;
-        FirstLayerForceStiffness = HapticConfig.FirstLayerForceStiffness;
-        FirstLayerForceFriction = HapticConfig.FirstLayerForceFriction;
-        FirstLayerForceCutting = HapticConfig.FirstLayerForceCutting;
         DEVICE_FORCE_SCALE = HapticConfig.DEVICE_FORCE_SCALE;
         FirstLayerDamping = HapticConfig.FirstLayerDamping;
         SkinLayerCutting = HapticConfig.SkinLayerCutting;

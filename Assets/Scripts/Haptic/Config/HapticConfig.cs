@@ -14,12 +14,6 @@ public class HapticConfig : ScriptableObject
     public Vector3 TISSUE_DIMENSIONS = new Vector3(27, 0, 20.25f);
 
     public float FIRST_LAYER_TOP = 0.10f;
-   
-    public float FirstLayerForceStiffness = 0f;
-
-    public float FirstLayerForceFriction = 0f;
-
-    public float FirstLayerForceCutting = 0f;
 
     public float DEVICE_FORCE_SCALE = 0.4f;
 
