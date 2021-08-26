@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public class NeedleCollision : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class NeedleCollision : MonoBehaviour
     private Transform marker = null;
 
     public int NbInsertion = 0;
+
+    private TimeSpan firstInsertion = TimeSpan.Zero;
 
     private void Awake()
     {
@@ -26,6 +29,10 @@ public class NeedleCollision : MonoBehaviour
         {
             if(!AnestheticManager.Instance.SuccessfulAnesthesia)
             {
+                if(firstInsertion == TimeSpan.Zero)
+                {
+                    firstInsertion = TimeSpan.FromSeconds(CanvasEchographe.Instance.elapsedTime);
+                }
                 NbInsertion++;
             }
 

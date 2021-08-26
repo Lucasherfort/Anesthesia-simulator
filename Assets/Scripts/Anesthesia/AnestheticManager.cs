@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public class AnestheticManager : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class AnestheticManager : MonoBehaviour
 
     public float minScale;
     public float maxScale;
+
+    private TimeSpan TimeMiddleAnesthesia = TimeSpan.Zero;
 
     private void Awake()
     {
@@ -68,6 +71,11 @@ public class AnestheticManager : MonoBehaviour
             temp.y = temp2;
 
             AnesthesiaFeedback.transform.localScale = temp;
+
+            if(StateUp + StateDown >= 100 && TimeMiddleAnesthesia == TimeSpan.Zero)
+            {
+                TimeMiddleAnesthesia = TimeSpan.FromSeconds(CanvasEchographe.Instance.elapsedTime);
+            }
 
             if (StateUp + StateDown == 200)
             {

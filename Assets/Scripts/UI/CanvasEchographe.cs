@@ -39,7 +39,7 @@ public class CanvasEchographe : MonoBehaviour
     [HideInInspector]
     public bool TimerOngoing = false;
 
-    private float elapsedTime;
+    public float elapsedTime;
 
     [HideInInspector]  
     public TimeSpan timePlaying;

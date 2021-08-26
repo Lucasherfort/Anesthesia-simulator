@@ -1218,11 +1218,16 @@ PrefabInstance:
     - target: {fileID: 7175106214839184921, guid: cb5bc6e5977aff24ba8354cfe74d6a85,
         type: 3}
       propertyPath: EnabledVR
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7175106214839184921, guid: cb5bc6e5977aff24ba8354cfe74d6a85,
         type: 3}
       propertyPath: EnabledHaptic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175106214839184921, guid: cb5bc6e5977aff24ba8354cfe74d6a85,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -22796,6 +22801,7 @@ MonoBehaviour:
   TouchVeinTxt: {fileID: 626442098}
   TouchArteryTxt: {fileID: 1838720853}
   TimerOngoing: 0
+  elapsedTime: 0
   NbNerveTouch: 0
   NbVeinTouch: 0
   NbArteryTouch: 0
