@@ -31975,7 +31975,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1804456661, guid: 128408b3a537edc4cbe4628573d54d05, type: 3}
       propertyPath: currentZoom
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1804456662, guid: 128408b3a537edc4cbe4628573d54d05, type: 3}
       propertyPath: Screenrenderer

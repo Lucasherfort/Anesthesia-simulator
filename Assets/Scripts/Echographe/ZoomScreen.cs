@@ -11,7 +11,8 @@ public class ZoomScreen : MonoBehaviour
     private int maxZoom = 10;
     private int minZoom = 1;
 
-    public int currentZoom;
+    public bool ZoomEnabled;
+    public int currentZoom = 5;
 
     private void Awake()
     {
@@ -43,24 +44,31 @@ public class ZoomScreen : MonoBehaviour
 
     public void ZoomUp()
     {
-        if(currentZoom == maxZoom)
-        {
-            return;
-        }
 
-        currentZoom++;
-        SwitchZoom();
+        if(ZoomEnabled)
+        {
+            if (currentZoom == maxZoom)
+            {
+                return;
+            }
+
+            currentZoom++;
+            SwitchZoom();
+        }  
     }
 
     public void ZoomDown()
     {
-        if(currentZoom == minZoom)
+        if(ZoomEnabled)
         {
-            return;
-        }
+            if (currentZoom == minZoom)
+            {
+                return;
+            }
 
-        currentZoom--;
-        SwitchZoom();
+            currentZoom--;
+            SwitchZoom();
+        }
     }
 
     private void SwitchZoom()
