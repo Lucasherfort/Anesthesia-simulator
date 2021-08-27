@@ -219,25 +219,6 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Process at the start of the simulation
-    /// </summary>
-    private void Start()
-    {
-        FirstPlanePosition = HapticConfig.FirstPlanePosition;
-        SecondPlanePosition = HapticConfig.SecondPlanePosition;
-        FirstPlaneStiffness = HapticConfig.FirstPlaneStiffness;
-        SecondPlaneStiffness = HapticConfig.SecondPlaneStiffness;
-        SkinLayerStiffness = HapticConfig.SkinLayerStiffness;
-
-        TISSUE_DIMENSIONS = HapticConfig.TISSUE_DIMENSIONS;
-        FIRST_LAYER_TOP = HapticConfig.FIRST_LAYER_TOP;
-        DEVICE_FORCE_SCALE = HapticConfig.DEVICE_FORCE_SCALE;
-        FirstLayerDamping = HapticConfig.FirstLayerDamping;
-        SkinLayerCutting = HapticConfig.SkinLayerCutting;
-
-        UnitLength = HapticConfig.UnitLength;
-    }
 
     /// <summary>
     /// Initialization of the manager
@@ -259,6 +240,21 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        FirstPlanePosition = HapticConfig.FirstPlanePosition;
+        SecondPlanePosition = HapticConfig.SecondPlanePosition;
+        FirstPlaneStiffness = HapticConfig.FirstPlaneStiffness;
+        SecondPlaneStiffness = HapticConfig.SecondPlaneStiffness;
+        SkinLayerStiffness = HapticConfig.SkinLayerStiffness;
+
+        TISSUE_DIMENSIONS = HapticConfig.TISSUE_DIMENSIONS;
+        FIRST_LAYER_TOP = HapticConfig.FIRST_LAYER_TOP;
+        DEVICE_FORCE_SCALE = HapticConfig.DEVICE_FORCE_SCALE;
+        FirstLayerDamping = HapticConfig.FirstLayerDamping;
+        SkinLayerCutting = HapticConfig.SkinLayerCutting;
+
+        UnitLength = HapticConfig.UnitLength;
+
+
         // Mise à jour du visuel
         ProbeDevice.tool.transform.localPosition = ProbeDevice.position;
         ProbeDevice.tool.transform.localRotation = ProbeDevice.rotation;
@@ -549,7 +545,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
                 forceTotalY = FirstLayerForceStiffness;
 
                 float membraneDamping = 0.003f;
-                float membraneStiffness = 0.04f;
+                float membraneStiffness = 0.04f; 
                 float distanceCoeficient = 0.08f;
                 float ClampValue = 0.4f;
 

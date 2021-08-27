@@ -29,11 +29,15 @@ public class NeedleCollision : MonoBehaviour
         {
             if(!AnestheticManager.Instance.SuccessfulAnesthesia)
             {
-                if(firstInsertion == TimeSpan.Zero)
+                if(TimeSpan.FromSeconds(CanvasEchographe.Instance.elapsedTime) > TimeSpan.FromSeconds(3))
                 {
-                    firstInsertion = TimeSpan.FromSeconds(CanvasEchographe.Instance.elapsedTime);
+                    NbInsertion++;
+
+                    if (firstInsertion == TimeSpan.Zero)
+                    {
+                        firstInsertion = TimeSpan.FromSeconds(CanvasEchographe.Instance.elapsedTime);
+                    }
                 }
-                NbInsertion++;
             }
 
             marker.transform.position = TwoHapticsProbeNeedle.instance.NeedleDevice.transform.position;
