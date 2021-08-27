@@ -30,25 +30,28 @@ public class VeineDeformation : MonoBehaviour
 
     private void ApplyDeformation(float force)
     {
-        if (force >= MaxForce)
+        if(force >= MinForce)
         {
-            veine.gameObject.SetActive(false);
+            if (force >= MaxForce)
+            {
+                veine.gameObject.SetActive(false);
+            }
+            else
+            {
+                veine.gameObject.SetActive(true);
+            }
+
+            float ResizePosY = Map(force, MinForce, MaxForce, NormalPositionY, NewPositionY);
+            float ResizeScaleY = Map(force, MinForce, MaxForce, NormalScaleY, NewScaleY);
+
+            var tempPos = veine.localPosition;
+            tempPos.y = ResizePosY;
+            veine.localPosition = tempPos;
+
+            var tempScale = veine.localScale;
+            tempScale.y = ResizeScaleY;
+            veine.localScale = tempScale;
         }
-        else
-        {
-            veine.gameObject.SetActive(true);
-        }
-
-        float ResizePosY = Map(force, MinForce,MaxForce,NormalPositionY,NewPositionY);
-        float ResizeScaleY = Map(force, MinForce,MaxForce,NormalScaleY,NewScaleY);
-
-        var tempPos = veine.localPosition;
-        tempPos.y = ResizePosY;
-        veine.localPosition = tempPos;
-
-        var tempScale = veine.localScale;
-        tempScale.y = ResizeScaleY;
-        veine.localScale = tempScale;
     }
 
     private float Map(float value, float FromLow, float ToLow, float FromHigh, float ToHigh)

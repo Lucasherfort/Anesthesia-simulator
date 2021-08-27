@@ -23,6 +23,7 @@ public class AppManager : MonoBehaviour
         Instance = this;
 
         UnityEngine.XR.XRSettings.enabled = EnabledVR;
+
         HapticScript.GetComponent<TwoHapticsProbeNeedle>().enabled = EnabledHaptic;
     }
 
