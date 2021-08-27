@@ -10,7 +10,7 @@ public class NeedleCollision : MonoBehaviour
 
     public int NbInsertion = 0;
 
-    private TimeSpan firstInsertion = TimeSpan.Zero;
+    public TimeSpan firstInsertion = TimeSpan.Zero;
 
     private void Awake()
     {

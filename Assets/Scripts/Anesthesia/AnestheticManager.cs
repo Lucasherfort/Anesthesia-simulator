@@ -84,7 +84,7 @@ public class AnestheticManager : MonoBehaviour
 
                 if(GameManager.Instance.Mode == Mode.Reality)
                 {
-                    DataRecorder.Instance.SaveData(CanvasEchographe.Instance.timePlaying, NeedleCollision.Instance.NbInsertion, CanvasEchographe.Instance.NbNerveTouch,CanvasEchographe.Instance.NbVeinTouch,CanvasEchographe.Instance.NbArteryTouch);                    
+                    DataRecorder.Instance.SaveData(CanvasEchographe.Instance.timePlaying,NeedleCollision.Instance.firstInsertion, TimeMiddleAnesthesia, NeedleCollision.Instance.NbInsertion, CanvasEchographe.Instance.NbNerveTouch,CanvasEchographe.Instance.NbVeinTouch,CanvasEchographe.Instance.NbArteryTouch);                    
                 }
             }
         }
