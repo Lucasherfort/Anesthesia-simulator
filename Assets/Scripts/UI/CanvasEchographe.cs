@@ -78,8 +78,11 @@ public class CanvasEchographe : MonoBehaviour
 
     public void StartTimer()
     {
-        TimerOngoing = true;
-        Timer = StartCoroutine(UpdateTimer());
+        if(GameManager.Instance.Mode == Mode.Reality)
+        {
+            TimerOngoing = true;
+            Timer = StartCoroutine(UpdateTimer());            
+        }
     }
 
     public void StopTimer()
