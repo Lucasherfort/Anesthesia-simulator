@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71f2eb785dcdc724d87c55dbcf43039a, type: 3}
-  m_Name: NerfNoise
+  m_Name: ConfigNoise
   m_EditorClassIdentifier: 
   textureFormat: 3
   resolutionX: 256
@@ -18,20 +18,20 @@ MonoBehaviour:
   mipChain: 0
   linear: 0
   wrapMode: 1
-  filterMode: 0
+  filterMode: 1
   anisoLevel: 9
-  scale: 0.3
-  frequency: 20
-  persistance: 20
-  lacunarity: 20
+  scale: 1.4
+  frequency: 1
+  persistance: 1
+  lacunarity: 1
   amplitude: 1
   octaves: 1
-  seed: 1
+  seed: 9
   offsetDynamic: 0
   offset: {x: 0, y: 0}
   coloring:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
+    key0: {r: 0, g: 0, b: 0, a: 1}
     key1: {r: 1, g: 1, b: 1, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
