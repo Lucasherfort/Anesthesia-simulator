@@ -37,13 +37,14 @@ public class NerveCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Needle")
         {
-            if(GameManager.Instance.Mode == Mode.Reality)
+            NerveIsTouch = true;
+            CanvasEchographe.Instance.UpdateTouchNerve();
+
+            if (GameManager.Instance.Mode == Mode.Reality)
             {
-                NerveIsTouch = true;
                 audioBox.StopAll();
                 audioBox.PlayOneShot(SoundOneShot.CryPain);
                 CameraVRAnim.SetBool("PlayEffect", true);
-                CanvasEchographe.Instance.UpdateTouchNerve();
 
                 if(Penalty)
                 {
@@ -57,9 +58,9 @@ public class NerveCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Needle")
         {
-            if(GameManager.Instance.Mode == Mode.Reality)
+            NerveIsTouch = false;
+            if (GameManager.Instance.Mode == Mode.Reality)
             {
-                NerveIsTouch = false;
                 CameraVRAnim.SetBool("PlayEffect", false);           
             }
         }
