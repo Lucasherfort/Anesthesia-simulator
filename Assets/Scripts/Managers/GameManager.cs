@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviour
     static public GameManager Instance{get; private set;}
 
     [SerializeField]
+    private bool EnabledVR = false;
+
+    public bool EnabledHaptic = false;
+
+    [SerializeField]
     private AudioBox audioBox;
 
     public Mode Mode = Mode.Reality;
@@ -28,12 +33,24 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-
         audioBox = GetComponent<AudioBox>();
+        UnityEngine.XR.XRSettings.enabled = EnabledVR;
     }
 
     private void Start()
     {
         audioBox.PlayLoop(SoundLoop.RoomSoundEffect);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!Application.isEditor)
+            {
+                // AbortSimualtion
+                System.Diagnostics.Process.GetCurrentProcess().Kill();
+            }
+        }
     }
 }
