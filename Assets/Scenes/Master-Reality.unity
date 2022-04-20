@@ -1208,7 +1208,7 @@ PrefabInstance:
     - target: {fileID: 3699624167909658619, guid: cb5bc6e5977aff24ba8354cfe74d6a85,
         type: 3}
       propertyPath: EnabledVR
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3699624167909658619, guid: cb5bc6e5977aff24ba8354cfe74d6a85,
         type: 3}

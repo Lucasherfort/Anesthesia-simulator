@@ -41,13 +41,8 @@ public class NoiseEditor : Editor
         SerializedProperty colorGradient = serializedGradient.FindProperty("coloring");
         EditorGUILayout.PropertyField(colorGradient, true, null);
         if (EditorGUI.EndChangeCheck())
-            serializedGradient.ApplyModifiedProperties();
-
-        EditorGUILayout.Space(20);
-        EditorGUILayout.LabelField("SAVE DATA", EditorStyles.boldLabel);
-        if (GUILayout.Button("SAVE HAPTIC DATA"))
         {
-            // TODO pour les tests
+            serializedGradient.ApplyModifiedProperties();
         }
     }
 }
