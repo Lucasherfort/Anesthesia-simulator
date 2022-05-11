@@ -36,7 +36,10 @@ public class AnestheticManager : MonoBehaviour
 
     private void Start()
     {
-        TwoHapticsProbeNeedle.instance.InsertAnesthesic += ApplyAnesthesic;
+        if(GameManager.Instance.EnabledHaptic)
+        {
+            TwoHapticsProbeNeedle.instance.InsertAnesthesic += ApplyAnesthesic;
+        }
     }
 
     public void ApplyAnesthesic(int amount)

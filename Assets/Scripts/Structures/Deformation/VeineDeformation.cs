@@ -25,7 +25,10 @@ public class VeineDeformation : MonoBehaviour
             NormalScaleY = veine.localScale.y;
         }
 
-        TwoHapticsProbeNeedle.instance.ForceProbeApply += ApplyDeformation;
+        if(GameManager.Instance.EnabledHaptic)
+        {
+            TwoHapticsProbeNeedle.instance.ForceProbeApply += ApplyDeformation;
+        }
     }
 
     private void ApplyDeformation(float force)
