@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95cc39464f359984a9acb44cf92b2724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnabledVR: 0
+  EnabledVR: 1
+  EnabledHaptic: 1
   audioBox: {fileID: 0}
   Mode: 1

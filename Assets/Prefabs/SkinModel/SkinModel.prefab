@@ -146,8 +146,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926226226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 19.4, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -4, y: 18, z: 0}
+  m_LocalScale: {x: 1.10655, y: 1.10655, z: 0.5116466}
   m_Children:
   - {fileID: 630324871}
   m_Father: {fileID: 5634547669751318569}
@@ -168,7 +168,7 @@ MonoBehaviour:
   veine: {fileID: 630324871}
   NewPositionY: -1.2
   NewScaleY: 0
-  MinForce: 1.334077
+  MinForce: 1.5
   MaxForce: 2
 --- !u!1 &716410651767615534
 GameObject:
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0abdde860d325e9458b6a83dddf03fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Penalty: 1
+  Penalty: 0
   PenaltyValue: 10
   NerveIsTouch: 0
   CameraVRAnim: {fileID: 0}
@@ -611,7 +611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6011757165844709310
 Transform:
   m_ObjectHideFlags: 0
@@ -694,6 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9087bb6ee9eff5540a03779bdc2f9d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SuccessfulAnesthesia: 0
   Needle: {fileID: 0}
   AnesthesiaFeedback: {fileID: 7927929819672727742}
   minScale: 85.77608
@@ -722,8 +723,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5445889118837927031}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 19.4, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_LocalPosition: {x: 4, y: 18, z: 0}
+  m_LocalScale: {x: 1.659825, y: 1.659825, z: 0.7674699}
   m_Children:
   - {fileID: 9202400482506754784}
   - {fileID: 7927929819672727742}
@@ -1025,7 +1026,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5188744888699296427
 Transform:
   m_ObjectHideFlags: 0
@@ -1066,8 +1067,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8457948274453027922}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 19.4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 18, z: 0}
+  m_LocalScale: {x: 2.2131, y: 2.2131, z: 1.023293}
   m_Children:
   - {fileID: 8303591285315748754}
   - {fileID: 8252059864364026738}
@@ -1081,7 +1082,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8457948274453027922}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d65dad92af6f9242ab6416c1ea7e400, type: 3}
   m_Name: 
@@ -1293,7 +1294,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &366219910991270866
 Transform:
   m_ObjectHideFlags: 0

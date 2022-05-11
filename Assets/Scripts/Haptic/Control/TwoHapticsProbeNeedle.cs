@@ -154,6 +154,11 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        if(!GameManager.Instance.EnabledHaptic)
+        {
+            return;
+        }
+
         if (Phantoms == null)
         {
             try
@@ -185,6 +190,11 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
+        if (!GameManager.Instance.EnabledHaptic)
+        {
+            return;
+        }
+
         Init();
 
         Debug.Log("INITIALIZING DEVICE...");
@@ -199,6 +209,11 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
+        if (!GameManager.Instance.EnabledHaptic)
+        {
+            return;
+        }
+
         Debug.Log("CLOSING DEVICE...");
         try
         {
@@ -240,6 +255,11 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        if (!GameManager.Instance.EnabledHaptic)
+        {
+            return;
+        }
+
         FirstPlanePosition = HapticConfig.FirstPlanePosition;
         SecondPlanePosition = HapticConfig.SecondPlanePosition;
         FirstPlaneStiffness = HapticConfig.FirstPlaneStiffness;
