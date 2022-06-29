@@ -4,7 +4,7 @@ public class NerveCollision : MonoBehaviour
 {
     static public NerveCollision Instance { get; private set; }
 
-    public bool Penalty = true;
+    public bool Penalty = false;
 
     [SerializeField]
     private int PenaltyValue = 10;
