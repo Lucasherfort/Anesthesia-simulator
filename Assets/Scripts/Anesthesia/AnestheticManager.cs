@@ -48,7 +48,7 @@ public class AnestheticManager : MonoBehaviour
         {
             if(Needle.position.y > transform.position.y)
             {
-                /*
+                
                 StateUp += 20;
 
                 if(StateUp >= 100)
@@ -57,11 +57,11 @@ public class AnestheticManager : MonoBehaviour
                 }
 
                 CanvasEchographe.Instance.UpdateUIUpAnesthesia(StateUp);
-                */
+                
             }
             else
             {
-                /*
+                
                 StateDown += 20;
                 if (StateDown >= 100)
                 {
@@ -69,7 +69,7 @@ public class AnestheticManager : MonoBehaviour
                 }
 
                 CanvasEchographe.Instance.UpdateUIDownAnesthesia(StateDown);
-                */
+                
             }
 
             Vector3 temp = transform.localScale;
