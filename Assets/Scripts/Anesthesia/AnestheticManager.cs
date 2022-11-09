@@ -47,8 +47,7 @@ public class AnestheticManager : MonoBehaviour
         if(NeedleInsideArea && !NerveCollision.Instance.NerveIsTouch && !SuccessfulAnesthesia)
         {
             if(Needle.position.y > transform.position.y)
-            {
-                
+            {             
                 StateUp += 20;
 
                 if(StateUp >= 100)
