@@ -1,7 +1,7 @@
 # Anesthesia-simulator
 
-Unity 2019.4.2f1
+Unity 2021.3.34f1
 
-VR Headset : HTC Vive & Oculus Rift
+VR Headset : HTC Vive / Oculus Rift / Oculus Quest 2
 
-Phantom Haptic
+Steam VR & Phantom Haptic
