@@ -40,7 +40,8 @@ public class NeedleCollision : MonoBehaviour
                 }
             }
 
-            marker.transform.position = TwoHapticsProbeNeedle.instance.NeedleDevice.transform.position;
+            if(GameManager.Instance.EnabledHaptic)
+                marker.transform.position = TwoHapticsProbeNeedle.instance.NeedleDevice.transform.position;
 
             var temp = marker.transform.position;
             temp.y = 1.181488f;
