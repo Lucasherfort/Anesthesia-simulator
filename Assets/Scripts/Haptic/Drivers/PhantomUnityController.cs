@@ -640,5 +640,10 @@ public class PhantomUnityController
         }
     }
 
+    internal void GetJointAngles(float[] jointAngles)
+    {
+        throw new NotImplementedException();
+    }
+
     #endregion
 }

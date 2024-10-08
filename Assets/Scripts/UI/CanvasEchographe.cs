@@ -22,10 +22,10 @@ public class CanvasEchographe : MonoBehaviour
     private TMPro.TMP_Text DownPartAnsthesiaTxt = null;
 
     [SerializeField]
-    private Image BarUpPart = null;
+    public Image BarUpPart = null;
 
     [SerializeField]
-    private Image BarDownPart = null;
+    public Image BarDownPart = null;
 
     [SerializeField]
     private TMPro.TMP_Text TouchNerveTxt = null;

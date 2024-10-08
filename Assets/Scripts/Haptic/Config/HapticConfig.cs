@@ -21,5 +21,5 @@ public class HapticConfig : ScriptableObject
 
     public float SkinLayerCutting = 1.22f;
 
-    public float UnitLength = 0.01f;
+    public float UnitLength = 0.001f;
 }
