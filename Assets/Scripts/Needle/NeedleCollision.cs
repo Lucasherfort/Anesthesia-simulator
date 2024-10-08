@@ -44,6 +44,7 @@ public class NeedleCollision : MonoBehaviour
                 marker.transform.position = TwoHapticsProbeNeedle.instance.NeedleDevice.transform.position;
 
             var temp = marker.transform.position;
+            temp = GameObject.Find("tst").transform.position;  //
             temp.y = 1.181488f;
             marker.transform.position = temp;
 

@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using System;
+using Phidget22;
+using Phidget22.Events;
 
 public class AnestheticManager : MonoBehaviour
 {
-    static public AnestheticManager Instance{get; private set;}
+    public static AnestheticManager Instance { get; private set; }
 
     private bool NeedleInsideArea = false;
-
     private int StateUp = 0;
     private int StateDown = 0;
-
-    public bool SuccessfulAnesthesia =false;
+    public bool SuccessfulAnesthesia = false;
+    private Vector3 lastNeedlePosition;
 
     [SerializeField]
     private Transform Needle = null;
@@ -20,8 +21,11 @@ public class AnestheticManager : MonoBehaviour
 
     public float minScale;
     public float maxScale;
-
     private TimeSpan TimeMiddleAnesthesia = TimeSpan.Zero;
+
+    private int lastPotentiometerValue = 0;
+    private const int maxPotentiometerValue = 60;
+    private bool isInSecondPhase = false;
 
     private void Awake()
     {
@@ -30,109 +34,153 @@ public class AnestheticManager : MonoBehaviour
             Destroy(this);
             return;
         }
-
         Instance = this;
     }
 
     private void Start()
     {
-        if(GameManager.Instance.EnabledHaptic)
+        if (GameManager.Instance.EnabledHaptic)
         {
             TwoHapticsProbeNeedle.instance.InsertAnesthesic += ApplyAnesthesic;
         }
-    }
 
-    public void ApplyAnesthesic(int amount)
-    {
-        if(NeedleInsideArea && !NerveCollision.Instance.NerveIsTouch && !SuccessfulAnesthesia)
+        // Initialize the lastNeedlePosition
+        if (Needle != null)
         {
-            if(Needle.position.y > transform.position.y)
-            {             
-                StateUp += 20;
-
-                if(StateUp >= 100)
-                {
-                    StateUp = 100;
-                }
-
-                CanvasEchographe.Instance.UpdateUIUpAnesthesia(StateUp);
-                
-            }
-            else
-            {
-                
-                StateDown += 20;
-                if (StateDown >= 100)
-                {
-                    StateDown = 100;
-                }
-
-                CanvasEchographe.Instance.UpdateUIDownAnesthesia(StateDown);
-                
-            }
-
-            Vector3 temp = transform.localScale;
-            var temp2 = Map(StateDown + StateUp, 0, 200, minScale, maxScale);
-            temp.x = temp2;
-            temp.y = temp2;
-
-            AnesthesiaFeedback.transform.localScale = temp;
-
-            if(StateUp + StateDown >= 100 && TimeMiddleAnesthesia == TimeSpan.Zero)
-            {
-                TimeMiddleAnesthesia = TimeSpan.FromSeconds(CanvasEchographe.Instance.elapsedTime);
-            }
-
-            if (StateUp + StateDown == 200)
-            {
-                SuccessfulAnesthesia = true;
-                CanvasEchographe.Instance.StopTimer();
-
-                if(GameManager.Instance.Mode == Mode.Reality)
-                {
-                    DataRecorder.Instance.SaveData(CanvasEchographe.Instance.timePlaying,NeedleCollision.Instance.firstInsertion, TimeMiddleAnesthesia, NeedleCollision.Instance.NbInsertion, CanvasEchographe.Instance.NbNerveTouch,CanvasEchographe.Instance.NbVeinTouch,CanvasEchographe.Instance.NbArteryTouch);                    
-                }
-            }
+            lastNeedlePosition = Needle.position;
         }
     }
 
-    /* Péalité si le nerf est touché */
+    private void Update()
+    {
+        // Update the anesthetic state based on needle position
+        if (Needle != null)
+        {
+            UpdateAnestheticState();
+            lastNeedlePosition = Needle.position;
+        }
+    }
+
+    private void UpdateAnestheticState()
+    {
+        // Detect when the needle crosses the threshold
+        if (lastNeedlePosition.y > (transform.position.y + 0.17f) && Needle.position.y <= (transform.position.y + 0.17f))
+        {
+            // Needle moved from above to below the threshold
+            CanvasEchographe.Instance.UpdateUIDownAnesthesia(StateDown);
+        }
+        else if (lastNeedlePosition.y <= (transform.position.y + 0.17f) && Needle.position.y > (transform.position.y + 0.17f))
+        {
+            // Needle moved from below to above the threshold
+            CanvasEchographe.Instance.UpdateUIUpAnesthesia(StateUp);
+        }
+    }
+
+    private void ApplyAnesthesic(int amount)
+    {
+        if (NeedleInsideArea && !NerveCollision.Instance.NerveIsTouch && !SuccessfulAnesthesia)
+        {
+            int increment = Mathf.Clamp(amount - lastPotentiometerValue, 0, maxPotentiometerValue);
+
+            if (!isInSecondPhase)
+            {
+                if (Needle.position.y > transform.position.y + 0.17f)
+                {
+                    StateUp = Mathf.Clamp(StateUp + increment, 0, 100);
+                    CanvasEchographe.Instance.UpdateUIUpAnesthesia(StateUp);
+                }
+                else
+                {
+                    StateDown = Mathf.Clamp(StateDown + increment, 0, 100);
+                    CanvasEchographe.Instance.UpdateUIDownAnesthesia(StateDown);
+                }
+
+                if (StateUp == 100 || StateDown == 100)
+                {
+                    isInSecondPhase = true;
+                    lastPotentiometerValue = 0; // Reset the potentiometer value
+                }
+            }
+            else
+            {
+                // In the second phase, keep adding to the existing value
+                if (Needle.position.y > transform.position.y + 0.17f)
+                {
+                    StateUp = Mathf.Clamp(StateUp + increment, 0, 100);
+                    CanvasEchographe.Instance.UpdateUIUpAnesthesia(StateUp);
+                }
+                else
+                {
+                    StateDown = Mathf.Clamp(StateDown + increment, 0, 100);
+                    CanvasEchographe.Instance.UpdateUIDownAnesthesia(StateDown);
+                }
+            }
+
+            lastPotentiometerValue = amount; // Update last potentiometer value
+            UpdateAnesthesiaFeedback();
+            CheckForSuccessfulAnesthesia();
+        }
+    }
+
     public void RemoveAnesthesic(int amount)
     {
-        if(!SuccessfulAnesthesia)
+        if (!SuccessfulAnesthesia)
         {
+            int decrement = Mathf.Clamp(lastPotentiometerValue - amount, 0, maxPotentiometerValue);
+
             if (Needle.position.y > transform.position.y)
             {
-                StateUp -= amount;
-
-                if (StateUp < 0)
-                {
-                    StateUp = 0;
-                }
-
+                StateUp = Mathf.Clamp(StateUp - decrement, 0, 100);
                 CanvasEchographe.Instance.UpdateUIUpAnesthesia(StateUp);
             }
             else
             {
-                StateDown -= amount;
-                if (StateDown < 0)
-                {
-                    StateDown = 0;
-                }
-
+                StateDown = Mathf.Clamp(StateDown - decrement, 0, 100);
                 CanvasEchographe.Instance.UpdateUIDownAnesthesia(StateDown);
             }
 
-            Vector3 temp = transform.localScale;
-            var temp2 = Map(StateDown + StateUp, 0, 200, minScale, maxScale);
-            temp.x = temp2;
-            temp.y = temp2;
-
-            AnesthesiaFeedback.transform.localScale = temp;
+            lastPotentiometerValue = amount; // Update last potentiometer value
+            UpdateAnesthesiaFeedback();
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    private void UpdateAnesthesiaFeedback()
+    {
+        Vector3 temp = transform.localScale;
+        var temp2 = Map(StateDown + StateUp, 0, 200, minScale, maxScale);
+        temp.x = temp2;
+        temp.y = temp2;
+        AnesthesiaFeedback.transform.localScale = temp;
+    }
+
+    private void CheckForSuccessfulAnesthesia()
+    {
+        if (StateUp + StateDown >= 100 && TimeMiddleAnesthesia == TimeSpan.Zero)
+        {
+            TimeMiddleAnesthesia = TimeSpan.FromSeconds(CanvasEchographe.Instance.elapsedTime);
+        }
+
+        if (StateUp + StateDown == 200)
+        {
+            SuccessfulAnesthesia = true;
+            CanvasEchographe.Instance.StopTimer();
+
+            if (GameManager.Instance.Mode == Mode.Reality)
+            {
+                DataRecorder.Instance.SaveData(
+                    CanvasEchographe.Instance.timePlaying,
+                    NeedleCollision.Instance.firstInsertion,
+                    TimeMiddleAnesthesia,
+                    NeedleCollision.Instance.NbInsertion,
+                    CanvasEchographe.Instance.NbNerveTouch,
+                    CanvasEchographe.Instance.NbVeinTouch,
+                    CanvasEchographe.Instance.NbArteryTouch
+                );
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Needle")
         {
@@ -140,7 +188,7 @@ public class AnestheticManager : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Needle")
         {
@@ -153,3 +201,15 @@ public class AnestheticManager : MonoBehaviour
         return (ToHigh - FromHigh) * ((value - FromLow) / (ToLow - FromLow)) + FromHigh;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

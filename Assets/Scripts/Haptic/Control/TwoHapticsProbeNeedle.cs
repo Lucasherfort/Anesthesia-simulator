@@ -1,10 +1,192 @@
 ﻿using UnityEngine;
 using System;
 using HD;
+using System.Runtime.InteropServices;
+using System.Collections;
+using System.Collections.Generic;
+using Phidget22;
+using Phidget22.Events;
+using System.IO;
+//using UnityEngine; // Import Unity engine namespace if using Unity
+struct Vector6
+{
+    public float X1 { get; set; }
+    public float X2 { get; set; }
+    public float X3 { get; set; }
+    public float X4 { get; set; }
+    public float X5 { get; set; }
+    public float X6 { get; set; }
+
+    public Vector6(float x1, float x2, float x3, float x4, float x5, float x6)
+    {
+        X1 = x1;
+        X2 = x2;
+        X3 = x3;
+        X4 = x4;
+        X5 = x5;
+        X6 = x6;
+    }
+
+    // Method to display the vector
+    public override string ToString()
+    {
+        return $"[{X1}, {X2}, {X3}, {X4}, {X5}, {X6}]";
+    }
+}
+public class VelocityChecker
+{
+    public int VelocityCheck(float velocity)
+    {
+        if (Mathf.Abs(velocity) > 0)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+}
+
+public class GeomagicTouchController : MonoBehaviour
+{
+    // Import the necessary functions from the Geomagic Touch SDK DLL
+    [DllImport("HD")]
+    private static extern void hdGetDoublev(int pname, double[] values);
+
+    // Constants representing the joint angle queries
+    private const int HD_CURRENT_JOINT_ANGLES = 0x2000;
+
+    void Start()
+    {
+        // Initialize the Geomagic Touch device
+        InitializeDevice();
+    }
+
+    void Update()
+    {
+        // Get the joint angles
+        float[] jointAngles = GetJointAngles();
+
+        // Print the joint angles to the console
+        Debug.Log("Joint Angles: " + string.Join(", ", jointAngles));
+    }
+
+    void InitializeDevice()
+    {
+        // Implementation to initialize the Geomagic Touch device
+        // This may involve connecting to the device, starting the scheduler, etc.
+    }
+
+    float[] GetJointAngles()
+    {
+        double[] jointAnglesDouble = new double[6]; // Assuming a 6-DOF arm
+        hdGetDoublev(HD_CURRENT_JOINT_ANGLES, jointAnglesDouble);
+
+        float[] jointAnglesFloat = new float[jointAnglesDouble.Length];
+        for (int i = 0; i < jointAnglesDouble.Length; i++)
+        {
+            jointAnglesFloat[i] = (float)jointAnglesDouble[i];
+        }
+        return jointAnglesFloat;
+    }
+}
+
+
+
+
 
 public class TwoHapticsProbeNeedle : MonoBehaviour
 {
+    // Import the necessary functions from the Geomagic Touch SDK DLL
+    [DllImport("HD")]
+    private static extern void hdGetDoublev(int pname, double[] values);
+
+    // Constants representing the joint angle queries
+    private const int HD_CURRENT_JOINT_ANGLES = 0x2000;
+    private StreamWriter writer;
+    void Start()
+    {
+        // Initialize the Geomagic Touch device
+        InitializeDevice();
+        InitializePhidget();
+        writer = new StreamWriter("NeedleForceData.csv");
+        writer.WriteLine("NeedleVerticalPosition,ForceY");
+    }
+
+    /*void Update()
+    {
+        // Get the joint angles
+        float[] jointAngles = GetJointAngles();
+
+        // Print the joint angles to the console
+        Debug.Log("Joint Angles: " + string.Join(", ", jointAngles));
+    }*/
+
+    void InitializeDevice()
+    {
+        // Implementation to initialize the Geomagic Touch device
+        // This may involve connecting to the device, starting the scheduler, etc.
+    }
+
+    float[] GetJointAngles()
+    {
+        double[] jointAnglesDouble = new double[6]; // Assuming a 6-DOF arm
+        hdGetDoublev(HD_CURRENT_JOINT_ANGLES, jointAnglesDouble);
+
+        float[] jointAnglesFloat = new float[jointAnglesDouble.Length];
+        for (int i = 0; i < jointAnglesDouble.Length; i++)
+        {
+            jointAnglesFloat[i] = (float)jointAnglesDouble[i];
+        }
+        return jointAnglesFloat;
+    }
     public static TwoHapticsProbeNeedle instance { get; private set; }
+    public event Action<int> InsertAnesthesic;
+    private VoltageRatioInput potentiometer;
+    private const float maxPotentiometerValue = 60.0f; // Maximum value of the potentiometer
+
+    private void InitializePhidget()
+    {
+        potentiometer = new VoltageRatioInput();
+        potentiometer.Channel = 0; // Set to the correct channel for your potentiometer
+        potentiometer.VoltageRatioChange += Potentiometer_VoltageRatioChange;
+        potentiometer.Open();
+    }
+
+    private void Potentiometer_VoltageRatioChange(object sender, VoltageRatioInputVoltageRatioChangeEventArgs e)
+    {
+        float potentiometerValue = (float)e.VoltageRatio * maxPotentiometerValue; // Scale to the max potentiometer value
+        float anestheticAmount = CalculateAnestheticAmount(potentiometerValue);
+
+        // Trigger the application of the anesthetic amount based on potentiometer value
+        if (anestheticAmount > 1)
+        {
+            int roundedAnestheticAmount = Mathf.RoundToInt(anestheticAmount);
+            MainThreadDispatcher.Enqueue(() => TriggerInsertAnesthesic(roundedAnestheticAmount));
+        }
+    }
+
+    private float CalculateAnestheticAmount(float potentiometerValue)
+    {
+        // Calculate the anesthetic amount as a percentage of the potentiometer value relative to the maximum value
+        return (potentiometerValue / maxPotentiometerValue) * 100.0f;
+    }
+    public void TriggerInsertAnesthesic(int amount)
+    {
+        InsertAnesthesic?.Invoke(amount);
+    }
+    private void OnDestroy()
+    {
+        if (potentiometer != null)
+        {
+            potentiometer.VoltageRatioChange -= Potentiometer_VoltageRatioChange;
+            potentiometer.Close();
+            potentiometer = null;
+        }
+
+    }
+    public object GeomagicTouchAPI { get; private set; }
 
     private PhantomUnityController Phantoms = null;
 
@@ -123,12 +305,12 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     /// <summary>
     /// Damping coefficient for Skin Layer [N/m]
     /// </summary>
-    private float FirstLayerDamping = 1.67f; 
+    private float FirstLayerDamping = 1.67f;
 
     /// <summary>
     /// Cutting coefficient for Skin Layer [N/m]
     /// </summary>
-    private float SkinLayerCutting = 1.22f; 
+    private float SkinLayerCutting = 1.22f;
 
     //---------------------------------------------------------------------------
     // SYSTEM CONSTANTS
@@ -142,7 +324,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     public Action ZoomUp;
     public Action ZoomDown;
 
-    public Action<int> InsertAnesthesic;
+    //public Action<int> InsertAnesthesic;
     public Action<float> ForceProbeApply;
 
     // way to set up GetButtonDown function
@@ -154,7 +336,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        if(!GameManager.Instance.EnabledHaptic)
+        if (!GameManager.Instance.EnabledHaptic)
         {
             return;
         }
@@ -255,6 +437,11 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        // Get the joint angles
+        float[] jointAngles = GetJointAngles();
+
+        // Print the joint angles to the console
+        Debug.Log("Joint Angles: " + string.Join(", ", jointAngles));
         if (!GameManager.Instance.EnabledHaptic)
         {
             return;
@@ -290,8 +477,13 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
             NeedleDevice.tool.transform.localRotation = NeedleDevice.correctionRotation;
         }
 
+        //VoltageRatioInput potentiometer1;
+        //potentiometer.VoltageRatioChange += Potentiometer_VoltageRatioChange;
+        float potentiometerValue = (float)potentiometer.VoltageRatio * maxPotentiometerValue; // Scale to the max potentiometer value
+        float anestheticAmount = CalculateAnestheticAmount(potentiometerValue);
+        InsertAnesthesic.Invoke(Mathf.RoundToInt(anestheticAmount));
         // Mise à jour des boutons 
-        HdAPI.hdMakeCurrentDevice(ProbeDevice.hHdAPI);
+        /*HdAPI.hdMakeCurrentDevice(ProbeDevice.hHdAPI);
         Buttons bStateLeft = Phantoms.GetButton();
 
         if (bStateLeft == Buttons.Button1 && lastLeftButtonsState != bStateLeft)
@@ -312,7 +504,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         }
 
         lastLeftButtonsState = bStateLeft;
-        lastRighttButtonsState = bStateRight;
+        lastRighttButtonsState = bStateRight;*/
 
         ForceProbeApply.Invoke(ProbeForceStiffness);
     }
@@ -341,7 +533,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         if (Mathf.Abs(ProbeHandPosition.x) < TISSUE_DIMENSIONS.x && Mathf.Abs(ProbeHandPosition.z) < TISSUE_DIMENSIONS.z)
         {
             // get position from top 1st layer position
-            ProbeCurrentPosition = ProbeHandPosition * UnitLength;
+            ProbeCurrentPosition = ProbeHandPosition * 0.0065f;
             float ProbeDopStiffness = FirstPlanePosition + 0.075f - ProbeCurrentPosition.y;
 
             if (ProbeDopStiffness > 0)
@@ -353,7 +545,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
                 Vector3 ProbeHandVelocity = Phantoms.GetVelocity();
                 // get velocity and limit it
                 float ProbeVelocity = ProbeHandVelocity.y;
-                ProbeVelocity = Mathf.Clamp(ProbeVelocity, -0.1f, 0.1f);
+                ProbeVelocity = Mathf.Clamp(ProbeVelocity, -0.5f, 0.5f);
 
                 // calculate stiffness force (Y direction)
                 ProbeForceStiffness = (2.5f + SkinLayerStiffness) * ProbeDopStiffness + FirstLayerDamping * (-ProbeVelocity) * ProbeDopStiffness;
@@ -362,10 +554,11 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
                 ProbeForceStiffness *= DEVICE_FORCE_SCALE;
 
                 float membraneDamping = 0.003f;
-                float membraneStiffness = 0.04f;
-                float distanceCoeficient = 0.08f;
-                float ClampValue = 0.4f;
-
+                float membraneStiffness = 1f;
+                float distanceCoeficient = 0.008f;
+                float ClampValue = 2f;
+                float coeffOfFriction = 0.1f;
+                Vector3 frictionForce = -coeffOfFriction * ProbeHandVelocity.normalized; //friction force due to friction between probe and skin
                 // lateral forces within the membrane: damping force
                 membraneForce2 = -membraneDamping * ProbeHandVelocity;
                 if (membraneForce2.magnitude > ClampValue)
@@ -375,9 +568,9 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
                 }
 
                 Vector3 ForceS = Vector3.zero;
-                ForceS.x += membraneForce2.x - ProbeDopStiffness * distanceCoeficient;
-                ForceS.y += membraneForce2.y;
-                ForceS.z += membraneForce2.z - ProbeDopStiffness * distanceCoeficient; 
+                ForceS.x += membraneForce2.x - ProbeDopStiffness * distanceCoeficient + frictionForce.x;
+                ForceS.y += membraneForce2.y + frictionForce.y;
+                ForceS.z += membraneForce2.z - ProbeDopStiffness * distanceCoeficient + frictionForce.z;
 
                 // lateral forces within the membrane: dynamic stiffness force
                 ClampValue = (float)Phantoms.GetContinuousForceLimit();
@@ -403,7 +596,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
                 // upward or downward, i.e. either (0,1,0) or (0,-1,0).
                 // Hooke's law explicitly
                 float penetrationDistance = Mathf.Abs(ProbeHandPosition.y);
-
+                Vector3 ProbeHandVelocity = Phantoms.GetVelocity();
                 if (ProbeHandPosition.y > SecondPlanePosition)
                 {
                     ProbeDevice.force += new Vector3(0, (float)(penetrationDistance * FirstPlaneStiffness), 0);
@@ -461,7 +654,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
         // Hand position & rotation in the Unity world
         Vector3 currentPosition = NeedleHandPosition * UnitLength;
         Quaternion currentRotation = NeedleHandRotation;
-
+        //currentPosition.y = currentPosition.y - 0.25f;
         // init forces to apply to haptic in the Y direction
         FirstLayerForceStiffness = FirstLayerForceFriction = FirstLayerForceCutting = forceTotalY = 0f;
 
@@ -542,7 +735,7 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
             probeDop = Mathf.Clamp(probeDop, 0f, 0.35f);
 
             // get position from top 1st layer position
-            probeDopStiffness = FIRST_LAYER_TOP + 0.05f - currentPosition.y;
+            probeDopStiffness = FIRST_LAYER_TOP + 0.025f - currentPosition.y;
 
             if (probeDopStiffness > 0 && probeDop == 0)
             {
@@ -555,17 +748,28 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
                 // get velocity and limit it
                 NeedleVelocity = NeedleHandVelocity.y;
-                NeedleVelocity = Mathf.Clamp(NeedleVelocity, -0.1f, 0.1f);
-
+                NeedleVelocity = Mathf.Clamp(NeedleVelocity, -0.5f, 0.5f);
+                float a1 = 48f;
+                float a2 = 5.2f;
+                float Cuttingforce = 0f;
                 // calculate stiffness force (Y direction)
-                FirstLayerForceStiffness = (2.5f + SkinLayerStiffness) * probeDopStiffness + FirstLayerDamping * (-NeedleVelocity) * probeDopStiffness;
+                if (currentPosition.y <= FIRST_LAYER_TOP && currentPosition.y >= FIRST_LAYER_TOP - 0.022)
+                {
+                    FirstLayerForceStiffness = a1 * (currentPosition.y - FIRST_LAYER_TOP) + a2 * (currentPosition.y - FIRST_LAYER_TOP) * (currentPosition.y - FIRST_LAYER_TOP);
+                    //FirstLayerForceStiffness = a1 * probeDopStiffness + a2 * probeDopStiffness * probeDopStiffness;
+                    //FirstLayerForceStiffness = (2.5f + SkinLayerStiffness) * probeDopStiffness + FirstLayerDamping * (-NeedleVelocity) * probeDopStiffness;
+                    FirstLayerForceCutting = 30f;
+                    Cuttingforce = (FirstLayerForceCutting / 0.00125f) * (currentPosition.y - FIRST_LAYER_TOP);
+                }
+
 
                 // apply scale factor for forces
-                FirstLayerForceStiffness *= DEVICE_FORCE_SCALE;
-                forceTotalY = FirstLayerForceStiffness;
+                //FirstLayerForceStiffness *= DEVICE_FORCE_SCALE;
+                FirstLayerForceCutting = SkinLayerCutting;
+                forceTotalY = FirstLayerForceStiffness + Cuttingforce;
 
                 float membraneDamping = 0.003f;
-                float membraneStiffness = 0.04f; 
+                float membraneStiffness = 0.04f;
                 float distanceCoeficient = 0.08f;
                 float ClampValue = 0.4f;
 
@@ -597,38 +801,81 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
                 //---------------------------------------------------------------------------
             }
-            else if (probeDop > 0 && NeedleVerticalPosition < FIRST_LAYER_TOP - 0.05)
+            else if (probeDop > 0 && NeedleVerticalPosition < FIRST_LAYER_TOP - 0.022)
             {
                 //---------------------------------------------------------------------------
                 // TISSUE FRICTION + CUTTING FORCE (after penetration)
                 //---------------------------------------------------------------------------
-
-                float f0 = 0.185f;
-                float a0 = 0.12f;
-                float b0 = -0.097f;
-
-                // get velocity and limit it
-                NeedleVelocity = NeedleHandVelocity.y * UnitLength;
-                NeedleVelocity = Mathf.Clamp(NeedleVelocity, -1.5f, 1.5f);
-
+                // Define the target force and initialize the current force
+                float Gapforce = 0f;
+                /*if (NeedleVerticalPosition - FIRST_LAYER_TOP > -0.028)
+                {
+                    Gapforce = 0.851083f * (FIRST_LAYER_TOP - currentPosition.y);//8.51083f
+                    Gapforce *= DEVICE_FORCE_SCALE;
+                }*/
+                if (NeedleVerticalPosition - FIRST_LAYER_TOP < -0.025)
+                {   //float f0 = 0.185f;
+                    //float a0 = 0.12f;
+                    //float b0 = -0.097f;
+                    float Cn = -11.96f;
+                    float Cp = 10.57f;
+                    float bn = -320f;
+                    float bp = 260f;
+                    float Dn = -18.23f;
+                    float Dp = 18.45f;
+                    // get velocity and limit it
+                    NeedleVelocity = NeedleHandVelocity.y * UnitLength;
+                    NeedleVelocity = Mathf.Clamp(NeedleVelocity, -2f, 2f);
+                    FirstLayerForceFriction = Gapforce;
+                    if (NeedleVelocity < -0.01)
+                    {
+                        FirstLayerForceFriction = (Cn * Math.Sign(NeedleVelocity) + bn * NeedleVelocity) * 0.008f;
+                    }
+                    else if (NeedleVelocity >= 0.01)
+                    {
+                        FirstLayerForceFriction = (Cp * Math.Sign(NeedleVelocity) + bp * NeedleVelocity) * 0.008f;
+                    }
+                    else if (NeedleVelocity <= 0 && NeedleVelocity > -0.01)
+                    {
+                        FirstLayerForceFriction = Math.Max(forceTotalY, Dn) * 0.008f;
+                    }
+                    if (NeedleVelocity > 0 && NeedleVelocity < 0.01)
+                    {
+                        FirstLayerForceFriction = Math.Max(forceTotalY, Dp) * 0.008f;
+                    }
+                }
                 // calculate friction force
-                FirstLayerForceFriction = (-NeedleVelocity * 3 + 800 * ((f0 + b0) * Mathf.Exp(a0 * probeDopStiffness) + b0)) / FirstLayerDamping;
-
+                //FirstLayerForceFriction = (-NeedleVelocity * 3 + 800 * ((f0 + b0) * Mathf.Exp(a0 * probeDopStiffness) + b0)) / FirstLayerDamping;
+                float ClampValue = 0.4f;
+                ClampValue = (float)Phantoms.GetContinuousForceLimit();
                 // apply scale factor for forces
                 FirstLayerForceFriction *= DEVICE_FORCE_SCALE;
-
+                FirstLayerForceFriction *= ClampValue;
                 // add cutting force (= constant)
                 FirstLayerForceCutting = SkinLayerCutting;
+                VelocityChecker checker = new VelocityChecker();
+                forceTotalY = 0f;
+                //forceTotalY = checker.VelocityCheck(NeedleHandVelocity.y) * FirstLayerForceFriction + Gapforce + 1f;// + FirstLayerForceFriction; //+ checker.VelocityCheck(NeedleHandVelocity.y) * FirstLayerForceCutting;
+                //Console.WriteLine(forceTotalY);
 
-                forceTotalY = FirstLayerForceFriction + FirstLayerForceCutting;
+
             }
             else
             {
-                NeedlecontactPosition = Vector3.zero;
+            NeedlecontactPosition = Vector3.zero;
             }
 
-            // update calculated forces
+            //NeedleDevice.force.y += 0f;
             NeedleDevice.force.y += forceTotalY;
+            float needleForceY = NeedleDevice.force.y;
+            float relativePosition = -NeedleVerticalPosition + FIRST_LAYER_TOP;
+
+            // Log data to file
+            writer.WriteLine($"{relativePosition},{needleForceY}");
+            void OnDestroy()
+            {
+                writer.Close();
+            }
             //---------------------------------------------------------------------------
         }
         else
@@ -639,10 +886,71 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
             // reset contact position
             NeedleContactPositionX = NeedleContactPositionZ = OUTSIDE_POSITION;
         }
-        //---------------------------------------------------------------------------
+        float Theta1;
+        float Theta2;
+        float Theta3;
+        float Theta4;
+        float Theta5;
+        float Theta6;
+        float[] jointAngles = new float[6];
+        // Get the joint angles
+        jointAngles = GetJointAngles();
 
+        // Update your robotic arm with the new joint angles
+        //UpdateRobotArm(jointAngles);
+
+        
+        Theta1 = jointAngles[0];
+        Theta2 = jointAngles[1];
+        Theta3 = jointAngles[2];
+        Theta4 = jointAngles[3];
+        Theta5 = jointAngles[4];
+        Theta6 = jointAngles[5];
+        float sinTheta1 = (float)Math.Sin(Theta1);
+        float cosTheta1 = (float)Math.Cos(Theta1);
+        float sinTheta2PlusTheta3 = (float)Math.Sin(Theta2 + Theta3);
+        float cosTheta2PlusTheta3 = (float)Math.Cos(Theta2 + Theta3);
+        float sinTheta4 = (float)Math.Sin(Theta4);
+        float cosTheta4 = (float)Math.Cos(Theta4);
+        float sinTheta5 = (float)Math.Sin(Theta5);
+        float cosTheta5 = (float)Math.Cos(Theta5);
+        float[,] T = new float[4, 4]
+        {
+            {
+                (sinTheta2PlusTheta3 * sinTheta5 + cosTheta2PlusTheta3 * cosTheta4 * cosTheta5) * cosTheta1 - cosTheta1 * cosTheta5 * sinTheta4,
+                -sinTheta1,
+                (sinTheta2PlusTheta3 * cosTheta5 - cosTheta2PlusTheta3 * cosTheta4 * sinTheta5) * cosTheta1 + cosTheta1 * sinTheta4 * sinTheta5,
+                cosTheta1 * ((float)Math.Cos(Theta2) + (float)Math.Cos(Theta2 + Theta3))
+            },
+            {
+                (sinTheta2PlusTheta3 * sinTheta5 + cosTheta2PlusTheta3 * cosTheta4 * cosTheta5) * sinTheta1 - cosTheta5 * sinTheta1 * sinTheta4,
+                cosTheta1,
+                (sinTheta2PlusTheta3 * cosTheta5 - cosTheta2PlusTheta3 * cosTheta4 * sinTheta5) * sinTheta1 + sinTheta1 * sinTheta4 * sinTheta5,
+                sinTheta1 * ((float)Math.Cos(Theta2) + (float)Math.Cos(Theta2 + Theta3))
+            },
+            {
+                -cosTheta2PlusTheta3 * sinTheta5 + sinTheta2PlusTheta3 * cosTheta4 * cosTheta5,
+                0,
+                -cosTheta2PlusTheta3 * cosTheta5 - sinTheta2PlusTheta3 * cosTheta4 * sinTheta5,
+                1 + (float)Math.Cos(Theta2) + (float)Math.Cos(Theta2 + Theta3)
+            },
+            { 0, 0, 0, 1 }
+        };
+        float[,] R = new float[3, 3]
+        {
+            {T[0, 0], T[0, 1], T[0, 2]},
+            {T[1, 0], T[1, 1], T[1, 2]},
+            {T[2, 0], T[2, 1], T[2, 2]},
+        };
+        Vector3 S = new Vector3(T[0, 3], T[1, 3], T[2, 3]);
+        Vector3 armForce = MultiplyMatrixByVector(R, NeedleDevice.force);
+        /*NeedleDevice.force.y = armForce.y;
+        NeedleDevice.force.x = armForce.x;
+        NeedleDevice.force.z = -armForce.z;*/
+        //---------------------------------------------------------------------------
         // Force feedback to PHANTOM device [N]
-        Phantoms.SetForce(NeedleDevice.force);
+        //Phantoms.SetForce(armForce);
+        Phantoms.SetForce(new Vector3(0, 0, 0));
 
         // set position and orientation for graphic needle
         NeedleDevice.position = currentPosition;
@@ -652,8 +960,21 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
         HdAPI.hdEndFrame(NeedleDevice.hHdAPI);
         HdAPI.hdEndFrame(ProbeDevice.hHdAPI);
-
         return true;
+        
+        
+    }
+
+    public static Vector3 MultiplyMatrixByVector(float[,] matrix, Vector3 vector)
+    {
+        if (matrix.GetLength(0) != 3 || matrix.GetLength(1) != 3)
+            throw new ArgumentException("The matrix must be 3x3.");
+
+        float x = matrix[0, 0] * vector.x + matrix[0, 1] * vector.y + matrix[0, 2] * vector.z;
+        float y = matrix[1, 0] * vector.y + matrix[1, 1] * vector.y + matrix[1, 2] * vector.z;
+        float z = -(matrix[2, 0] * vector.x + matrix[2, 1] * vector.y + matrix[2, 2] * vector.z);
+
+        return new Vector3(x, y, z);
     }
 
     /// <summary>
@@ -696,4 +1017,33 @@ public class TwoHapticsProbeNeedle : MonoBehaviour
 
         return (force * differencePositions) - DUMPING * tipVelocity;
     }
+    static float[] MultiplyMatrixByVector(float[,] matrix, float[] vector)
+    {
+        int matrixRows = matrix.GetLength(0);
+        int matrixCols = matrix.GetLength(1);
+
+        if (matrixCols != vector.Length)
+            throw new ArgumentException("Matrix columns must match vector length.");
+
+        float[] result = new float[matrixRows];
+
+        for (int i = 0; i < matrixRows; i++)
+        {
+            float sum = 0;
+            for (int j = 0; j < matrixCols; j++)
+            {
+                sum += matrix[i, j] * vector[j];
+            }
+            result[i] = sum;
+        }
+
+        return result;
+    }
+
+
+
+
+
 }
+
+
