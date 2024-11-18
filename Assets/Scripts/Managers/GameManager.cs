@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.XR.Management;
 
 public enum Mode
 {
@@ -35,7 +36,15 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         audioBox = GetComponent<AudioBox>();
-        UnityEngine.XR.XRSettings.enabled = EnabledVR;
+
+        if (EnabledVR)
+        {
+            XRGeneralSettings.Instance.Manager.StartSubsystems();
+        }
+        else
+        {
+            XRGeneralSettings.Instance.Manager.StopSubsystems();
+        }
     }
 
     private void Start()
