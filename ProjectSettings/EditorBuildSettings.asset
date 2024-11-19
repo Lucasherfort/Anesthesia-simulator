@@ -12,7 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Master-Training.unity
     guid: e6a8587776ac3ba488a963b06e650ebf
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: cea41fa7b029b2d4697eac816629bfa7,
+      type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 5b1176f8f7be5a741a0d838632ff5084,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 864d986c43c5dc145b26a21e4328a30b,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 7bf05623dbad14e468b4f9f203df65e3,
       type: 2}
