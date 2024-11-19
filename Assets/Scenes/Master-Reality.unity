@@ -13735,7 +13735,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31bb7719e3c0b60448b4622150ca113f, type: 2}
+  - {fileID: 2100000, guid: c1c23d210aa8503428a6bc27b8cb3cfd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -46598,6 +46598,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &5693369925226909258 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5693369925226909258, guid: 691e2f11d4b1cde448b006f8f2d5def6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7535983149005339063}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5693369925862124233
 Transform:
   m_ObjectHideFlags: 0
@@ -46664,12 +46670,12 @@ PrefabInstance:
     - target: {fileID: 7367773673403020611, guid: 691e2f11d4b1cde448b006f8f2d5def6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.168
+      value: 0.482
       objectReference: {fileID: 0}
     - target: {fileID: 7367773673403020611, guid: 691e2f11d4b1cde448b006f8f2d5def6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.288
+      value: -1.109
       objectReference: {fileID: 0}
     - target: {fileID: 7367773673403020611, guid: 691e2f11d4b1cde448b006f8f2d5def6,
         type: 3}
@@ -46876,7 +46882,7 @@ PrefabInstance:
         type: 3}
       propertyPath: CameraVRAnim
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5693369925226909258}
     - target: {fileID: 8457948274453027922, guid: 8d7a7947b3256f8498ae28b0fc47e554,
         type: 3}
       propertyPath: m_StaticEditorFlags
